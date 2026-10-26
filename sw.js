@@ -1,6 +1,6 @@
 /* Offline cache so the guide works on site without signal. Bump CACHE when the site changes. */
-const CACHE = "fabguide-v1";
-const CORE = ["/", "/index.html", "/manifest.webmanifest"];
+const CACHE = "fabguide-v2";
+const CORE = ["./", "index.html", "manifest.webmanifest"];
 self.addEventListener("install", e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(CORE)).then(() => self.skipWaiting()));
 });
@@ -17,6 +17,6 @@ self.addEventListener("fetch", e => {
       const copy = res.clone();
       caches.open(CACHE).then(c => c.put(req, copy)).catch(() => {});
       return res;
-    }).catch(() => caches.match(req).then(hit => hit || caches.match("/index.html")))
+    }).catch(() => caches.match(req).then(hit => hit || caches.match("index.html")))
   );
 });
