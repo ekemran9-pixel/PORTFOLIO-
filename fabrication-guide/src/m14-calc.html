@@ -1,0 +1,179 @@
+<section class="mod" id="m-calc" data-title="ক্যালকুলেটর" hidden>
+<div class="sheet"><div class="t">
+  <span class="eb">DWG FAB-14 · টুলস</span>
+  <h1>ফোরম্যানের ক্যালকুলেটর</h1>
+  <p class="lede">সাইটে প্রতিদিন যেসব হিসাব লাগে: পাইপ ওজন, কাট লেংথ, অফসেট, মাইটার, ফিশমাউথ টেমপ্লেট, হাইড্রোটেস্ট চাপ, বোল্ট টর্ক, ইলেক্ট্রোড খরচ, ইঞ্চ-ডায়া, CE, হিট ইনপুট ও ইউনিট রূপান্তর।</p>
+</div><div class="tb">
+  <div><small>ক্যালকুলেটর</small><b>১৩টি</b></div>
+  <div><small>ইউনিট</small><b>মিমি, bar, kg</b></div>
+  <div><small>ডেটা</small><b>ASME B36.10 / B16.9</b></div>
+  <div><small>সতর্কতা</small><b>ফলাফল যাচাই করুন</b></div>
+</div></div>
+
+<div class="sec" id="calc-all">
+  <div class="chips calcnav" id="calcNav" role="tablist" aria-label="ক্যালকুলেটর বেছে নিন">
+    <button class="chip" data-k="cw" aria-pressed="true">পাইপ ওজন ও আয়তন</button>
+    <button class="chip" data-k="cut" aria-pressed="false">কাট লেংথ</button>
+    <button class="chip" data-k="off" aria-pressed="false">অফসেট</button>
+    <button class="chip" data-k="mit" aria-pressed="false">মাইটার কাট</button>
+    <button class="chip" data-k="fish" aria-pressed="false">ফিশমাউথ টেমপ্লেট</button>
+    <button class="chip" data-k="hyd" aria-pressed="false">হাইড্রোটেস্ট চাপ</button>
+    <button class="chip" data-k="tq" aria-pressed="false">বোল্ট টর্ক</button>
+    <button class="chip" data-k="el" aria-pressed="false">ইলেক্ট্রোড খরচ</button>
+    <button class="chip" data-k="id" aria-pressed="false">ইঞ্চ-ডায়া ও ম্যানপাওয়ার</button>
+    <button class="chip" data-k="ce" aria-pressed="false">কার্বন ইকুইভ্যালেন্ট</button>
+    <button class="chip" data-k="hi" aria-pressed="false">হিট ইনপুট</button>
+    <button class="chip" data-k="slope" aria-pressed="false">ঢাল</button>
+    <button class="chip" data-k="unit" aria-pressed="false">ইউনিট রূপান্তর</button>
+  </div>
+
+  <div class="calc" data-calc="cw"><header><h3>পাইপ ওজন, আয়তন ও পানির পরিমাণ</h3><p>সাইজ, শিডিউল আর দৈর্ঘ্য দিন। ফ্ল্যাঞ্জ-ফিটিং ছাড়া শুধু পাইপের ওজন।</p></header><div class="bd">
+    <div class="fields">
+      <div class="fld"><label for="cwN">সাইজ (NPS)</label><select id="cwN"></select></div>
+      <div class="fld"><label for="cwS">শিডিউল</label><select id="cwS"></select></div>
+      <div class="fld"><label for="cwL">দৈর্ঘ্য (মিটার)</label><input id="cwL" type="number" value="6" min="0" step="0.1"></div>
+      <div class="fld"><label for="cwM">ম্যাটেরিয়াল</label><select id="cwM"><option value="7.85">কার্বন/অ্যালয় স্টিল (৭.৮৫)</option><option value="7.98">স্টেইনলেস 304/316 (৭.৯৮)</option><option value="7.80">ডুপ্লেক্স (৭.৮০)</option><option value="8.94">কপার-নিকেল (৮.৯৪)</option></select></div>
+    </div>
+    <div class="out" id="cwOut"></div>
+  </div></div>
+
+  <div class="calc" data-calc="cut" hidden><header><h3>কাট লেংথ (সেন্টার-টু-সেন্টার থেকে)</h3><p>দুই প্রান্তে কোন ফিটিং আছে বেছে নিন; B16.9 টেক-অফ স্বয়ংক্রিয়ভাবে বাদ যাবে।</p></header><div class="bd">
+    <div class="fields">
+      <div class="fld"><label for="ctN">সাইজ (NPS)</label><select id="ctN"></select></div>
+      <div class="fld"><label for="ctD">ড্রয়িং মাপ (মিমি)</label><input id="ctD" type="number" value="1500" step="1"></div>
+      <div class="fld"><label for="ctA">প্রান্ত ১</label><select id="ctA"></select></div>
+      <div class="fld"><label for="ctB">প্রান্ত ২</label><select id="ctB"></select></div>
+      <div class="fld"><label for="ctG">রুট গ্যাপ প্রতি জয়েন্ট (মিমি)</label><input id="ctG" type="number" value="3" step="0.5"></div>
+      <div class="fld"><label for="ctX">অন্য বাদ (মিমি, যেমন ফ্ল্যাঞ্জ লেংথ)</label><input id="ctX" type="number" value="0" step="1"></div>
+    </div>
+    <div class="out" id="ctOut"></div>
+  </div></div>
+
+  <div class="calc" data-calc="off" hidden><header><h3>অফসেট ও রোলিং অফসেট</h3><p>দুই সমান্তরাল লাইনের মাঝে কোণাকুণি অংশ। রোলিং অফসেটে উচ্চতা (রাইজ) ও পাশের সরণ (রোল) দুটো দিন।</p></header><div class="bd">
+    <div class="fields">
+      <div class="fld"><label for="ofR">রাইজ / অফসেট (মিমি)</label><input id="ofR" type="number" value="600" step="1"></div>
+      <div class="fld"><label for="ofL">রোল (মিমি, না থাকলে ০)</label><input id="ofL" type="number" value="0" step="1"></div>
+      <div class="fld"><label for="ofA">ফিটিং কোণ</label><select id="ofA"><option value="45" selected>৪৫°</option><option value="60">৬০°</option><option value="30">৩০°</option><option value="22.5">২২.৫°</option><option value="11.25">১১.২৫°</option></select></div>
+      <div class="fld"><label for="ofN">সাইজ (৪৫° এলবো টেক-অফের জন্য)</label><select id="ofN"></select></div>
+      <div class="fld"><label for="ofG">রুট গ্যাপ (মিমি)</label><input id="ofG" type="number" value="3" step="0.5"></div>
+    </div>
+    <div class="out" id="ofOut"></div>
+    <p class="hint">ট্রাভেল = সেট ÷ sin(কোণ); রান = সেট ÷ tan(কোণ)। টেক-অফ শুধু ৪৫° LR এলবোর জন্য B16.9 টেবিল থেকে নেওয়া হয়; অন্য কোণে এলবো কেটে বানালে টেক-অফ = R × tan(কোণ/২)।</p>
+  </div></div>
+
+  <div class="calc" data-calc="mit" hidden><header><h3>মাইটার বেন্ড কাটিং</h3><p>পাইপ টুকরো করে বাঁক বানাতে প্রতিটি কাটের কোণ ও কাট-ব্যাক।</p></header><div class="bd">
+    <div class="fields">
+      <div class="fld"><label for="miD">পাইপ OD (মিমি)</label><input id="miD" type="number" value="323.8" step="0.1"></div>
+      <div class="fld"><label for="miA">মোট বাঁকের কোণ (°)</label><input id="miA" type="number" value="90" step="1"></div>
+      <div class="fld"><label for="miW">ওয়েল্ড জয়েন্ট সংখ্যা</label><input id="miW" type="number" value="3" min="1" step="1"></div>
+      <div class="fld"><label for="miR">বাঁকের রেডিয়াস (মিমি)</label><input id="miR" type="number" value="485" step="1"></div>
+    </div>
+    <div class="out" id="miOut"></div>
+  </div></div>
+
+  <div class="calc" data-calc="fish" hidden><header><h3>ফিশমাউথ / স্যাডল কাট টেমপ্লেট (৯০° ব্রাঞ্চ)</h3><p>ব্রাঞ্চ পাইপের মাথা মূল পাইপের গায়ে মেলাতে। পরিধি সমান ভাগে ভাগ করে প্রতিটি দাগে কতটা কাটতে হবে।</p></header><div class="bd">
+    <div class="fields">
+      <div class="fld"><label for="fsM">মূল পাইপ OD (মিমি)</label><input id="fsM" type="number" value="219.1" step="0.1"></div>
+      <div class="fld"><label for="fsB">ব্রাঞ্চ পাইপ OD (মিমি)</label><input id="fsB" type="number" value="114.3" step="0.1"></div>
+      <div class="fld"><label for="fsD">ভাগ সংখ্যা</label><select id="fsD"><option>8</option><option selected>16</option><option>24</option><option>32</option></select></div>
+    </div>
+    <div class="out" id="fsOut"></div>
+    <div class="tw" style="padding:8px"><svg id="fsSvg" viewBox="0 0 600 200" style="min-width:520px;width:100%" role="img" aria-label="ফিশমাউথ টেমপ্লেটের খোলা নকশা"></svg></div>
+    <p class="hint">ব্যবহার: ব্রাঞ্চ পাইপের পরিধিতে সমান দূরত্বে দাগ দিন (দূরত্ব উপরে দেখানো), প্রতিটি দাগে মাথা থেকে টেবিলের মাপ নিচে বিন্দু দিন, বিন্দুগুলো মসৃণ রেখায় যোগ করে কাটুন। কাগজে আসল মাপে এঁকে র‍্যাপ করেও করা যায়। সেট-অন জয়েন্টে বেভেল আলাদা করে দিন।</p>
+  </div></div>
+
+  <div class="calc" data-calc="hyd" hidden><header><h3>হাইড্রোটেস্ট চাপ (ASME B31.3)</h3><p>টেস্ট চাপ ও উচ্চতা অনুযায়ী গেজে কত দেখাতে হবে।</p></header><div class="bd">
+    <div class="fields">
+      <div class="fld"><label for="hyP">ডিজাইন চাপ (barg)</label><input id="hyP" type="number" value="10" step="0.1"></div>
+      <div class="fld"><label for="hyR">St/S অনুপাত</label><input id="hyR" type="number" value="1" step="0.01" min="1" max="6.5"></div>
+      <div class="fld"><label for="hyH">সর্বোচ্চ বিন্দু থেকে গেজ কত মিটার নিচে</label><input id="hyH" type="number" value="8" step="0.1"></div>
+      <div class="fld"><label for="hyT">ধরন</label><select id="hyT"><option value="1.5">হাইড্রোস্ট্যাটিক (১.৫×)</option><option value="1.1">নিউমেটিক (১.১×)</option></select></div>
+    </div>
+    <div class="out" id="hyOut"></div>
+  </div></div>
+
+  <div class="calc" data-calc="tq" hidden><header><h3>বোল্ট টর্ক (আনুমানিক)</h3><p>T = K × F × d। F = বোল্ট স্ট্রেস × টেনসাইল স্ট্রেস এরিয়া। প্রজেক্টের অনুমোদিত টর্ক চার্ট থাকলে সেটাই মানুন।</p></header><div class="bd">
+    <div class="fields">
+      <div class="fld"><label for="tqD">স্টাড সাইজ</label><select id="tqD"></select></div>
+      <div class="fld"><label for="tqS">লক্ষ্য বোল্ট স্ট্রেস (MPa)</label><input id="tqS" type="number" value="345" step="5"></div>
+      <div class="fld"><label for="tqK">ঘর্ষণ ফ্যাক্টর K</label><select id="tqK"><option value="0.16">০.১৬ (মলি/নিকেল লুব্রিকেন্ট)</option><option value="0.2">০.২০ (হালকা তেল)</option><option value="0.12">০.১২ (PTFE কোটেড)</option></select></div>
+    </div>
+    <div class="out" id="tqOut"></div>
+    <p class="hint">B7 বোল্টে (ইয়েল্ড ৭২৫ MPa) সাধারণ লক্ষ্য ইয়েল্ডের ৪০–৫০% (২৯০–৩৬০ MPa)। গ্যাসকেট ও ফ্ল্যাঞ্জ ক্লাস অনুযায়ী আলাদা হতে পারে।</p>
+  </div></div>
+
+  <div class="calc" data-calc="el" hidden><header><h3>ওয়েল্ড মেটাল ও ইলেক্ট্রোড খরচ (বাট জয়েন্ট)</h3><p>সিঙ্গেল-ভি বেভেল ধরে আনুমানিক হিসাব; পরিকল্পনা ও রিকুইজিশনের জন্য।</p></header><div class="bd">
+    <div class="fields">
+      <div class="fld"><label for="elN">সাইজ (NPS)</label><select id="elN"></select></div>
+      <div class="fld"><label for="elS">শিডিউল</label><select id="elS"></select></div>
+      <div class="fld"><label for="elJ">জয়েন্ট সংখ্যা</label><input id="elJ" type="number" value="10" min="1" step="1"></div>
+      <div class="fld"><label for="elE">প্রসেস দক্ষতা</label><select id="elE"><option value="0.6">SMAW (৬০%)</option><option value="0.95">GTAW রড (৯৫%)</option><option value="0.85">FCAW (৮৫%)</option><option value="0.92">GMAW (৯২%)</option></select></div>
+    </div>
+    <div class="out" id="elOut2"></div>
+  </div></div>
+
+  <div class="calc" data-calc="id" hidden><header><h3>ইঞ্চ-ডায়া ও ম্যানপাওয়ার</h3><p>প্রতিটি সাইজে জয়েন্ট সংখ্যা লিখুন।</p></header><div class="bd">
+    <div class="fields" id="idRows"></div>
+    <div class="fields">
+      <div class="fld"><label for="idRate">প্রতি ওয়েল্ডার/দিন (ID)</label><input id="idRate" type="number" value="18" step="1"></div>
+      <div class="fld"><label for="idDays">কাজের দিন</label><input id="idDays" type="number" value="20" step="1"></div>
+    </div>
+    <div class="out" id="idOut"></div>
+  </div></div>
+
+  <div class="calc" data-calc="ce" hidden><header><h3>কার্বন ইকুইভ্যালেন্ট (IIW)</h3><p>MTC থেকে রাসায়নিক মান (%) দিন।</p></header><div class="bd">
+    <div class="fields">
+      <div class="fld"><label for="ceC">C</label><input id="ceC" type="number" value="0.18" step="0.01"></div>
+      <div class="fld"><label for="ceMn">Mn</label><input id="ceMn" type="number" value="1.05" step="0.01"></div>
+      <div class="fld"><label for="ceCr">Cr</label><input id="ceCr" type="number" value="0.05" step="0.01"></div>
+      <div class="fld"><label for="ceMo">Mo</label><input id="ceMo" type="number" value="0.02" step="0.01"></div>
+      <div class="fld"><label for="ceV">V</label><input id="ceV" type="number" value="0.01" step="0.01"></div>
+      <div class="fld"><label for="ceNi">Ni</label><input id="ceNi" type="number" value="0.04" step="0.01"></div>
+      <div class="fld"><label for="ceCu">Cu</label><input id="ceCu" type="number" value="0.06" step="0.01"></div>
+    </div>
+    <div class="out" id="ceOut"></div>
+  </div></div>
+
+  <div class="calc" data-calc="hi" hidden><header><h3>হিট ইনপুট</h3><p>WPS এ সর্বোচ্চ/সর্বনিম্ন হিট ইনপুট থাকলে মিলিয়ে দেখুন।</p></header><div class="bd">
+    <div class="fields">
+      <div class="fld"><label for="hiV">ভোল্টেজ (V)</label><input id="hiV" type="number" value="24" step="0.5"></div>
+      <div class="fld"><label for="hiA">কারেন্ট (A)</label><input id="hiA" type="number" value="120" step="1"></div>
+      <div class="fld"><label for="hiL">ওয়েল্ডের দৈর্ঘ্য (মিমি)</label><input id="hiL" type="number" value="150" step="1"></div>
+      <div class="fld"><label for="hiT">সময় (সেকেন্ড)</label><input id="hiT" type="number" value="60" step="1"></div>
+      <div class="fld"><label for="hiE">প্রসেস</label><select id="hiE"><option value="1">ASME IX (ফ্যাক্টর ছাড়া)</option><option value="0.8">SMAW (০.৮)</option><option value="0.6">GTAW (০.৬)</option><option value="0.8">GMAW/FCAW (০.৮)</option><option value="1">SAW (১.০)</option></select></div>
+    </div>
+    <div class="out" id="hiOut"></div>
+  </div></div>
+
+  <div class="calc" data-calc="slope" hidden><header><h3>ঢাল ও এলিভেশন</h3><p>ড্রেন লাইন বা গ্র্যাভিটি লাইনের এক প্রান্ত থেকে অন্য প্রান্তে কত নামবে।</p></header><div class="bd">
+    <div class="fields">
+      <div class="fld"><label for="slX">ঢাল ১ : x (যেমন ১:১০০)</label><input id="slX" type="number" value="100" step="1"></div>
+      <div class="fld"><label for="slL">দৈর্ঘ্য (মিমি)</label><input id="slL" type="number" value="12000" step="10"></div>
+      <div class="fld"><label for="slE">শুরুর এলিভেশন (মিমি)</label><input id="slE" type="number" value="3500" step="1"></div>
+    </div>
+    <div class="out" id="slOut"></div>
+  </div></div>
+
+  <div class="calc" data-calc="unit" hidden><header><h3>ইউনিট রূপান্তর</h3><p>যেকোনো ঘরে লিখুন, বাকিগুলো সাথে সাথে বদলাবে।</p></header><div class="bd">
+    <div class="fields">
+      <div class="fld"><label for="uMm">মিমি</label><input id="uMm" type="number" value="25.4" step="any"></div>
+      <div class="fld"><label for="uIn">ইঞ্চি</label><input id="uIn" type="number" step="any"></div>
+      <div class="fld"><label for="uFt">ফুট</label><input id="uFt" type="number" step="any"></div>
+    </div>
+    <div class="fields">
+      <div class="fld"><label for="uBar">bar</label><input id="uBar" type="number" value="10" step="any"></div>
+      <div class="fld"><label for="uPsi">psi</label><input id="uPsi" type="number" step="any"></div>
+      <div class="fld"><label for="uMpa">MPa</label><input id="uMpa" type="number" step="any"></div>
+      <div class="fld"><label for="uKsc">kg/cm²</label><input id="uKsc" type="number" step="any"></div>
+    </div>
+    <div class="fields">
+      <div class="fld"><label for="uC">°C</label><input id="uC" type="number" value="150" step="any"></div>
+      <div class="fld"><label for="uF">°F</label><input id="uF" type="number" step="any"></div>
+      <div class="fld"><label for="uKg">কেজি</label><input id="uKg" type="number" value="100" step="any"></div>
+      <div class="fld"><label for="uLb">পাউন্ড</label><input id="uLb" type="number" step="any"></div>
+      <div class="fld"><label for="uNm">N·m</label><input id="uNm" type="number" value="300" step="any"></div>
+      <div class="fld"><label for="uFtlb">ft·lb</label><input id="uFtlb" type="number" step="any"></div>
+    </div>
+  </div></div>
+</div>
+</section>

@@ -1,0 +1,143 @@
+<section class="mod" id="m-drawing" data-title="আইসোমেট্রিক ড্রয়িং" hidden>
+<div class="sheet"><div class="t">
+  <span class="eb">DWG FAB-10 · কাজ ও মান</span>
+  <h1>আইসোমেট্রিক ড্রয়িং পড়া</h1>
+  <p class="lede">P&amp;ID, GA আর আইসোর পার্থক্য; আইসোর চিহ্ন, এলিভেশন, BOM, স্পুল ও ওয়েল্ড নম্বর পড়া, আর আইসো থেকে কাট লিস্ট বানানো।</p>
+</div><div class="tb">
+  <div><small>ধরন</small><b>Piping Isometric</b></div>
+  <div><small>পড়ার সময়</small><b>৩৫ মিনিট</b></div>
+  <div><small>শিখবেন</small><b>২০+ চিহ্ন</b></div>
+  <div><small>টুল</small><b>নমুনা আইসো</b></div>
+</div></div>
+
+<div class="sec" id="dwg-types">
+  <h2><span class="n">10.1</span>কোন ড্রয়িং কী বলে</h2>
+  <div class="grid g3">
+    <div class="card"><span class="k">P&amp;ID</span><h4>পাইপিং ও ইনস্ট্রুমেন্টেশন ডায়াগ্রাম</h4><p>প্রসেসের "নকশা": কোন লাইন কোথা থেকে কোথায়, কোন ভাল্ভ, ইনস্ট্রুমেন্ট, লাইন নম্বর। মাপ বা আসল অবস্থান নেই।</p></div>
+    <div class="card"><span class="k">GA / PLOT PLAN</span><h4>জেনারেল অ্যারেঞ্জমেন্ট</h4><p>উপর থেকে দেখা (প্ল্যান) ও সেকশন; যন্ত্র, পাইপ র‍্যাক, লাইনের আসল অবস্থান ও কো-অর্ডিনেট।</p></div>
+    <div class="card"><span class="k">ISOMETRIC</span><h4>আইসোমেট্রিক (আইসো)</h4><p>একটি লাইনের ৩D ছবি, ৩০° কোণে আঁকা, স্কেল ছাড়া। সব মাপ, ফিটিং, ওয়েল্ড, BOM, স্পুল নম্বর থাকে। <b>ফ্যাব্রিকেশনের মূল কাগজ।</b></p></div>
+  </div>
+</div>
+
+<div class="sec" id="dwg-symbols">
+  <h2><span class="n">10.2</span>আইসো চিহ্ন (Symbols)</h2>
+  <div class="tw"><table class="t" id="symTable">
+    <thead><tr><th>চিহ্ন</th><th>নাম</th><th>মানে</th></tr></thead>
+    <tbody>
+      <tr><td><svg width="90" height="30" viewBox="0 0 90 30"><path d="M5 15 H85" class="s" stroke-width="3"/></svg></td><td>পাইপ</td><td>মোটা লাইন; পাশে সাইজ লেখা থাকে</td></tr>
+      <tr><td><svg width="90" height="30" viewBox="0 0 90 30"><path d="M5 15 H85" class="s"/><circle cx="45" cy="15" r="4.5" fill="var(--ink)"/></svg></td><td>শপ ওয়েল্ড</td><td>ভরা বিন্দু; ওয়ার্কশপে হবে</td></tr>
+      <tr><td><svg width="90" height="30" viewBox="0 0 90 30"><path d="M5 15 H85" class="s"/><path d="M45 6 V24" class="s"/><text x="50" y="10" class="tx" style="font-size:9px">FW</text></svg></td><td>ফিল্ড ওয়েল্ড</td><td>সাইটে ইরেকশনের সময় হবে</td></tr>
+      <tr><td><svg width="90" height="30" viewBox="0 0 90 30"><path d="M5 15 H85" class="s"/><rect x="38" y="6" width="14" height="18" fill="none" stroke="var(--ink)" stroke-width="1.5"/><text x="56" y="10" class="tx" style="font-size:9px">FFW</text></svg></td><td>ফিল্ড ফিট ওয়েল্ড</td><td>পাইপ ১০০–১৫০ মিমি বেশি রেখে পাঠানো হয়, সাইটে মাপ নিয়ে কাটা হয়</td></tr>
+      <tr><td><svg width="90" height="30" viewBox="0 0 90 30"><path d="M5 15 H40 M50 15 H85" class="s"/><path d="M42 5 V25 M48 5 V25" class="s" stroke-width="2.5"/></svg></td><td>ফ্ল্যাঞ্জ জোড়া</td><td>দুই ফ্ল্যাঞ্জ, মাঝে গ্যাসকেট</td></tr>
+      <tr><td><svg width="90" height="30" viewBox="0 0 90 30"><path d="M5 15 H32" class="s"/><path d="M32 9 L40 15 L32 21 Z" fill="var(--ink)"/><path d="M42 5 V25" class="s" stroke-width="2.5"/></svg></td><td>ওয়েল্ড নেক ফ্ল্যাঞ্জ</td><td>হাবসহ ফ্ল্যাঞ্জ (ত্রিভুজ = হাব)</td></tr>
+      <tr><td><svg width="90" height="30" viewBox="0 0 90 30"><path d="M5 15 H40" class="s"/><path d="M42 5 V25 M48 5 V25" class="s" stroke-width="2.5"/><path d="M48 8 L54 15 L48 22" fill="none" stroke="var(--ink)" stroke-width="2"/></svg></td><td>ব্লাইন্ড ফ্ল্যাঞ্জ</td><td>লাইনের শেষ বন্ধ</td></tr>
+      <tr><td><svg width="90" height="30" viewBox="0 0 90 30"><path d="M5 15 H25 M65 15 H85" class="s"/><path d="M25 5 L65 25 V5 L25 25 Z" class="f"/></svg></td><td>গেট ভাল্ভ</td><td>বো-টাই আকার</td></tr>
+      <tr><td><svg width="90" height="30" viewBox="0 0 90 30"><path d="M5 15 H25 M65 15 H85" class="s"/><path d="M25 5 L65 25 V5 L25 25 Z" class="f"/><circle cx="45" cy="15" r="4" fill="var(--ink)"/></svg></td><td>গ্লোব ভাল্ভ</td><td>বো-টাই + মাঝে ভরা বিন্দু</td></tr>
+      <tr><td><svg width="90" height="30" viewBox="0 0 90 30"><path d="M5 15 H25 M65 15 H85" class="s"/><path d="M25 5 L65 25 V5 L25 25 Z" class="f"/><circle cx="45" cy="15" r="6" class="fl"/></svg></td><td>বল ভাল্ভ</td><td>বো-টাই + মাঝে বৃত্ত</td></tr>
+      <tr><td><svg width="90" height="30" viewBox="0 0 90 30"><path d="M5 15 H25 M65 15 H85" class="s"/><path d="M25 5 L45 15 L25 25 Z" class="f"/><path d="M65 5 L45 15 L65 25 Z" fill="var(--ink)"/></svg></td><td>চেক ভাল্ভ</td><td>অর্ধেক ভরা; ফ্লো ভরা দিকের বিপরীত থেকে আসে (তীর দেখুন)</td></tr>
+      <tr><td><svg width="90" height="30" viewBox="0 0 90 30"><path d="M5 15 H36 M54 15 H85" class="s"/><path d="M38 4 V26 M52 4 V26" class="s"/><path d="M38 24 L52 6" class="s"/></svg></td><td>বাটারফ্লাই ভাল্ভ</td><td>দুই খাড়া লাইন + কোণাকুণি</td></tr>
+      <tr><td><svg width="90" height="30" viewBox="0 0 90 30"><path d="M5 15 H30 M60 15 H85" class="s"/><path d="M30 5 L60 11 V19 L30 25 Z" class="f"/></svg></td><td>কনসেন্ট্রিক রিডিউসার</td><td>সমান ঢালের ট্রাপিজিয়াম</td></tr>
+      <tr><td><svg width="90" height="30" viewBox="0 0 90 30"><path d="M5 15 H30 M60 18 H85" class="s"/><path d="M30 5 L60 13 V23 L30 25 Z" class="f" transform="translate(0,0)"/><text x="62" y="10" class="tx" style="font-size:9px">FOB</text></svg></td><td>এক্সেন্ট্রিক রিডিউসার</td><td>এক দিক সমান; পাশে FOT/FOB লেখা</td></tr>
+      <tr><td><svg width="90" height="30" viewBox="0 0 90 30"><path d="M5 15 H45 V2" class="s" stroke-width="3"/><circle cx="45" cy="15" r="2" fill="var(--ink)"/></svg></td><td>এলবো</td><td>দিক বদলের কোণা; শপ ওয়েল্ড দুই পাশে</td></tr>
+      <tr><td><svg width="90" height="30" viewBox="0 0 90 30"><path d="M5 20 H85 M45 20 V2" class="s" stroke-width="3"/></svg></td><td>টি</td><td>লাইন থেকে ব্রাঞ্চ</td></tr>
+      <tr><td><svg width="90" height="30" viewBox="0 0 90 30"><path d="M5 20 H85" class="s" stroke-width="3"/><path d="M45 20 V4" class="s" stroke-width="2"/><circle cx="45" cy="18" r="4" class="f"/></svg></td><td>ওলেট</td><td>ব্রাঞ্চের গোড়ায় বৃত্ত বা "WOL/SOL"</td></tr>
+      <tr><td><svg width="90" height="30" viewBox="0 0 90 30"><path d="M5 15 H55" class="s" stroke-width="3"/><path d="M55 6 Q72 15 55 24" fill="none" stroke="var(--ink)" stroke-width="2.5"/></svg></td><td>ক্যাপ</td><td>লাইনের শেষ ওয়েল্ড করে বন্ধ</td></tr>
+      <tr><td><svg width="90" height="30" viewBox="0 0 90 30"><path d="M5 12 H85" class="s" stroke-width="3"/><path d="M35 28 L45 14 L55 28 Z" class="fm"/></svg></td><td>পাইপ সাপোর্ট</td><td>সাথে ট্যাগ (PS-xx, শু, গাইড, অ্যাঙ্কর)</td></tr>
+      <tr><td><svg width="90" height="30" viewBox="0 0 90 30"><path d="M5 15 H85" class="s"/><path d="M30 15 L60 15" stroke="var(--steel)" stroke-width="2"/><path d="M58 10 L68 15 L58 20 Z" fill="var(--steel)"/></svg></td><td>ফ্লো তীর</td><td>ফ্লুইড কোন দিকে যায়</td></tr>
+      <tr><td><svg width="90" height="30" viewBox="0 0 90 30"><path d="M5 10 H85" class="s"/><path d="M20 26 H60 L20 16 Z" fill="none" stroke="var(--ink)"/><text x="62" y="27" class="tx" style="font-size:9px">1:100</text></svg></td><td>ঢাল (Slope)</td><td>নির্দিষ্ট দিকে ঢাল, যেমন ১:১০০ (প্রতি মিটারে ১০ মিমি)</td></tr>
+      <tr><td><svg width="90" height="30" viewBox="0 0 90 30"><path d="M5 15 H40" class="s" stroke-width="3"/><path d="M40 15 l5 -8 l5 16 l5 -8" fill="none" stroke="var(--ink)" stroke-width="2"/><path d="M55 15 H85" class="s" stroke-width="3" stroke-dasharray="6 4"/></svg></td><td>কন্টিনিউয়েশন / ম্যাচ লাইন</td><td>লাইন পরের শিটে চলে গেছে (CONT. ON DWG …)</td></tr>
+    </tbody>
+  </table></div>
+</div>
+
+<div class="sec" id="dwg-sample">
+  <h2><span class="n">10.3</span>নমুনা আইসো: কী কোথায় লেখা</h2>
+  <div class="tw" style="padding:10px"><svg viewBox="0 0 640 400" style="min-width:600px;width:100%" role="img" aria-label="নমুনা আইসোমেট্রিক ড্রয়িং: উত্তর তীর, এলিভেশন, ওয়েল্ড নম্বর, স্পুল নম্বর ও BOM সহ">
+    <rect x="1" y="1" width="638" height="398" fill="var(--panel)" stroke="var(--ink)" stroke-width="1.5"/>
+    <path d="M440 1 V399" stroke="var(--ink)" stroke-width="1"/>
+    <g stroke="var(--line)" stroke-width="1"><path d="M20 360 L220 245 M60 380 L260 265 M100 395 L300 280"/></g>
+    <!-- north arrow -->
+    <path d="M60 70 L60 30 M60 30 L52 44 M60 30 L68 44" stroke="var(--ink)" stroke-width="2" fill="none"/><text x="56" y="24" style="font-family:var(--mono);font-size:13px;font-weight:600;fill:var(--ink)">N</text>
+    <path d="M60 70 L95 90 M60 70 L25 90" stroke="var(--ink-3)" stroke-width="1"/>
+    <!-- pipe route: start flange at nozzle, run east, elbow up, run north, valve, flange -->
+    <g fill="none" stroke="var(--ink)" stroke-width="4" stroke-linejoin="round">
+      <path d="M80 300 L250 202 L250 120 L390 200"/>
+      <path d="M250 202 L320 242"/>
+    </g>
+    <g stroke="var(--ink)" stroke-width="3"><path d="M74 290 L86 310"/><path d="M68 294 L80 314"/><path d="M384 190 L396 210"/></g>
+    <path d="M300 148 L330 166 L318 186 L288 168 Z" fill="var(--panel)" stroke="var(--ink)" stroke-width="2"/><path d="M300 148 L318 186 M330 166 L288 168" stroke="var(--ink)" stroke-width="2"/>
+    <g fill="var(--ink)"><circle cx="110" cy="283" r="4"/><circle cx="236" cy="210" r="4"/><circle cx="250" cy="188" r="4"/><circle cx="250" cy="134" r="4"/><circle cx="264" cy="128" r="4"/></g>
+    <path d="M200 225 V245" stroke="var(--ink)" stroke-width="2"/><text x="186" y="258" style="font-family:var(--mono);font-size:10px;fill:var(--ink)">FW</text>
+    <path d="M320 242 L332 249 M326 236 L326 256" stroke="var(--ink)" stroke-width="2"/>
+    <path d="M360 182 L366 186" stroke="var(--ink)" stroke-width="6"/>
+    <g style="font-family:var(--mono);font-size:10.5px;fill:var(--ink-2)">
+      <text x="112" y="273">1</text><text x="222" y="208">2</text><text x="256" y="192">3</text><text x="256" y="146">4</text><text x="268" y="122">5</text>
+      <text x="90" y="330">E-101 N2 · EL +1250</text>
+      <text x="150" y="232">1200</text><text x="262" y="166">EL +2850 BOP</text>
+      <text x="330" y="150">GV-101</text><text x="340" y="232">8" ব্রাঞ্চ</text>
+      <text x="370" y="226">CONT. ISO-1202</text>
+    </g>
+    <path d="M130 312 L210 266" stroke="var(--accent)" stroke-width="1"/><text x="150" y="304" class="txa">SP-01</text>
+    <path d="M300 206 L360 240" stroke="var(--accent)" stroke-width="1"/><text x="296" y="264" class="txa">SP-02</text>
+    <!-- BOM -->
+    <g style="font-family:var(--mono);font-size:10px;fill:var(--ink)">
+      <text x="452" y="24" style="font-weight:600">BILL OF MATERIAL</text>
+      <text x="452" y="44">PT  DESCRIPTION        QTY</text>
+      <text x="452" y="62">1   PIPE 8" SCH40 A106B  6.2M</text>
+      <text x="452" y="78">2   ELL 90 LR 8" WPB     2</text>
+      <text x="452" y="94">3   TEE 8" WPB           1</text>
+      <text x="452" y="110">4   FLG WN 8" 150 RF     3</text>
+      <text x="452" y="126">5   GATE VLV 8" 150 RF   1</text>
+      <text x="452" y="142">6   GSKT SPW 8" 150      3</text>
+      <text x="452" y="158">7   STUD 3/4"x110 B7/2H 24</text>
+    </g>
+    <path d="M440 176 H639" stroke="var(--ink)"/>
+    <g style="font-family:var(--mono);font-size:10px;fill:var(--ink-2)">
+      <text x="452" y="196">LINE: 8"-CW-1201-A1A</text>
+      <text x="452" y="214">DESIGN: 10 barg / 65°C</text>
+      <text x="452" y="232">TEST: 15 barg HYDRO</text>
+      <text x="452" y="250">NDT: 5% RT · PWHT: NO</text>
+      <text x="452" y="268">INSUL: NIL · PAINT: SYS-2</text>
+    </g>
+    <path d="M440 284 H639" stroke="var(--ink)"/>
+    <g style="font-family:var(--mono);font-size:10px;fill:var(--ink-2)">
+      <text x="452" y="304">DWG NO: ISO-CW-1201-01</text>
+      <text x="452" y="322">SHEET 1 OF 2 · REV 2</text>
+      <text x="452" y="340">CO-ORD: E 1050.250</text>
+      <text x="452" y="358">        N 2210.500</text>
+    </g>
+    <path d="M548 368 q10 -14 20 0 q10 -14 20 0 q10 14 0 20 q-10 14 -20 0 q-10 14 -20 0 q-10 -14 0 -20" fill="none" stroke="var(--crit)" stroke-width="1.2"/><text x="560" y="386" style="font-family:var(--mono);font-size:9px;fill:var(--crit)">REV 2</text>
+  </svg></div>
+  <div class="grid g2">
+    <div class="card"><h4>যা যা পড়তে হবে</h4><ul class="l">
+      <li><b>উত্তর তীর (N)</b>: আইসো সবসময় উত্তর তীর অনুযায়ী ঘোরানো; সাইটে কম্পাস/প্লট প্ল্যান দিয়ে মিলিয়ে নিন।</li>
+      <li><b>এলিভেশন</b>: EL +2850 BOP = পাইপের তলা (Bottom Of Pipe) ২৮৫০ মিমি। COP/CL = সেন্টারলাইন, TOP = উপরিভাগ।</li>
+      <li><b>কো-অর্ডিনেট</b>: E (ইস্টিং), N (নর্থিং) মিটার/মিমিতে; নজল বা ফ্ল্যাঞ্জ ফেসের অবস্থান।</li>
+      <li><b>মাপ</b>: সাধারণত সেন্টার-টু-সেন্টার বা ফেস-টু-সেন্টার, মিমিতে।</li>
+      <li><b>ওয়েল্ড নম্বর</b> (১, ২, ৩…): প্রতিটি জয়েন্টের নম্বর, ওয়েল্ড ম্যাপ ও লগে এটাই ব্যবহার হয়।</li>
+      <li><b>স্পুল নম্বর</b> (SP-01): শপে যে অংশ একসাথে বানানো হবে।</li>
+    </ul></div>
+    <div class="card"><h4>টাইটেল ব্লক ও নোট</h4><ul class="l">
+      <li><b>লাইন নম্বর ও ক্লাস</b> → ম্যাটেরিয়াল।</li>
+      <li><b>ডিজাইন/টেস্ট চাপ</b> → টেস্ট প্যাক।</li>
+      <li><b>NDT %, PWHT, ইনসুলেশন, পেইন্ট</b> → ইন্সপেকশন পরিকল্পনা।</li>
+      <li><b>রিভিশন</b>: মেঘের মতো চিহ্ন (revision cloud) দিয়ে পরিবর্তিত অংশ দেখানো হয়। পুরনো রিভিশনের কপি "SUPERSEDED" লিখে সরিয়ে ফেলুন।</li>
+      <li><b>BOM</b>: প্রতিটি আইটেমের পার্ট নম্বর, বিবরণ, পরিমাণ। ম্যাটেরিয়াল রিকুইজিশন এখান থেকে।</li>
+    </ul></div>
+  </div>
+</div>
+
+<div class="sec" id="dwg-cutlist">
+  <h2><span class="n">10.4</span>আইসো থেকে কাট লিস্ট বানানো: উদাহরণ</h2>
+  <div class="prose">
+    <p>উপরের SP-01 এ ফ্ল্যাঞ্জ ফেস থেকে এলবোর সেন্টার পর্যন্ত মাপ ১২০০ মিমি, লাইন ৮" Sch 40।</p>
+  </div>
+  <ol class="l">
+    <li>৮" WN 150# ফ্ল্যাঞ্জের দৈর্ঘ্য (ফেস থেকে ওয়েল্ড প্রান্ত, রেইজড ফেস সহ) ≈ <b>১০২ মিমি</b> (B16.5 টেবিল থেকে)।</li>
+    <li>৮" 90° LR এলবোর C-E = <b>৩০৫ মিমি</b>।</li>
+    <li>দুটি রুট গ্যাপ, প্রতিটি ৩ মিমি = <b>৬ মিমি</b>।</li>
+    <li>কাট লেংথ = ১২০০ − ১০২ − ৩০৫ − ৬ = <mark><b>৭৮৭ মিমি</b></mark>।</li>
+  </ol>
+  <div class="callout tip"><b class="h">কাট লিস্টের কলাম</b>স্পুল নম্বর · পার্ট নম্বর · সাইজ/শিডিউল · কাট লেংথ · এন্ড প্রিপ (BE/PE) · হিট নম্বর · কাটার · তারিখ। কাটার আগে লেংথ দ্বিতীয় জনকে দিয়ে মিলিয়ে নিন ("মাপো দুবার, কাটো একবার")।</div>
+</div>
+</section>

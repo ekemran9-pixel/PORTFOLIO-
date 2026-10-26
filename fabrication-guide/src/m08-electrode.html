@@ -1,0 +1,115 @@
+<section class="mod" id="m-electrode" data-title="ইলেক্ট্রোড সিলেকশন" hidden>
+<div class="sheet"><div class="t">
+  <span class="eb">DWG FAB-08 · ওয়েল্ডিং ও ধাতু</span>
+  <h1>ইলেক্ট্রোড ও ফিলার সিলেকশন</h1>
+  <p class="lede">কোন গ্রেডের জন্য কোন রড ও তার, ভিন্ন ধাতু জোড়ায় কী দিতে হয়, AWS নম্বর পড়ার নিয়ম, আর বেকিং-স্টোরেজ ও কারেন্ট সেটিং।</p>
+</div><div class="tb">
+  <div><small>স্ট্যান্ডার্ড</small><b>AWS A5.1 / A5.5 / A5.4 / A5.18 / A5.28</b></div>
+  <div><small>পড়ার সময়</small><b>৩৫ মিনিট</b></div>
+  <div><small>শিখবেন</small><b>গ্রেড অনুযায়ী ফিলার</b></div>
+  <div><small>টুল</small><b>AWS কোড ডিকোডার</b></div>
+</div></div>
+
+<div class="sec" id="el-select">
+  <h2><span class="n">08.1</span>বেস মেটাল বেছে নিন: কোন ইলেক্ট্রোড</h2>
+  <p>পাইপের গ্রেড বেছে নিলে প্রচলিত ফিলার দেখাবে। একই তথ্য নিচের পূর্ণ টেবিলেও আছে।</p>
+  <div class="calc"><div class="bd">
+    <div class="fields">
+      <div class="fld"><label for="elBase">বেস মেটাল</label><select id="elBase"></select></div>
+    </div>
+    <div class="out" id="elOut"></div>
+  </div></div>
+</div>
+
+<div class="sec" id="el-table">
+  <h2><span class="n">08.2</span>সম্পূর্ণ সিলেকশন টেবিল</h2>
+  <div class="tw"><table class="t" id="elTable"></table></div>
+  <p class="tcap">এগুলো প্রচলিত মিল (matching) ফিলার। চূড়ান্ত পছন্দ সবসময় অনুমোদিত WPS এ লেখা থাকে; WPS এর বাইরের ফিলার ব্যবহার করা যাবে না।</p>
+</div>
+
+<div class="sec" id="el-dissimilar">
+  <h2><span class="n">08.3</span>ভিন্ন ধাতু জোড়া (Dissimilar Welding)</h2>
+  <div class="tw"><table class="t">
+    <thead><tr><th>জোড়া</th><th>SMAW</th><th>GTAW</th><th>নোট</th></tr></thead>
+    <tbody>
+      <tr><td>CS + SS (304/316)</td><td>E309L-16</td><td>ER309L</td><td>309 এ বেশি Cr-Ni থাকে, CS এর মিশ্রণ সামলাতে পারে। উচ্চ তাপ (&gt; ৪২৫°C) হলে নিকেল ফিলার</td></tr>
+      <tr><td>CS + SS (উচ্চ তাপ) / CS + নিকেল অ্যালয়</td><td>ENiCrFe-3</td><td>ERNiCr-3</td><td>কার্বন মাইগ্রেশন ও তাপীয় প্রসারণের পার্থক্য কম সমস্যা করে</td></tr>
+      <tr><td>CS + P11 / P22</td><td>E7018 বা E8018-B2</td><td>ER70S-2 / ER80S-B2</td><td>সাধারণত দুর্বল ধাতুর ফিলার; প্রি-হিট ও PWHT উচ্চ অ্যালয়ের দিক অনুযায়ী</td></tr>
+      <tr><td>P11 + P22</td><td>E8018-B2</td><td>ER80S-B2</td><td>নিম্ন অ্যালয়ের ফিলার; PWHT P22 অনুযায়ী</td></tr>
+      <tr><td>CS + ডুপ্লেক্স</td><td>E309LMo বা E2209</td><td>ER309LMo / ER2209</td><td>প্রজেক্ট অনুযায়ী</td></tr>
+      <tr><td>SS + ডুপ্লেক্স</td><td>E2209</td><td>ER2209</td><td>ফেরাইট পরীক্ষা</td></tr>
+      <tr><td>304 + 316</td><td>E308L / E316L</td><td>ER308L / ER316L</td><td>সাধারণত দুর্বল দিকের (308L); ক্ষয়ের দাবি থাকলে 316L</td></tr>
+      <tr><td>CS + 6Mo / সুপার ডুপ্লেক্স / Cu-Ni</td><td>ENiCrMo-3 / ENiCu-7</td><td>ERNiCrMo-3 / ERNiCu-7</td><td>বিশেষজ্ঞ WPS লাগবে</td></tr>
+    </tbody>
+  </table></div>
+</div>
+
+<div class="sec" id="el-aws">
+  <h2><span class="n">08.4</span>AWS নম্বর পড়া</h2>
+  <div class="grid g2">
+    <div class="card">
+      <span class="k">SMAW কার্বন স্টিল · AWS A5.1</span>
+      <div style="font-family:var(--mono);font-size:30px;font-weight:600;letter-spacing:.04em;color:var(--ink)">E <span style="background:var(--marker);color:var(--marker-ink);padding:0 4px">70</span> <span style="background:var(--steel-soft);padding:0 4px">1</span> <span style="background:var(--accent-soft);padding:0 4px">8</span></div>
+      <ul class="l">
+        <li><b>E</b> = ইলেক্ট্রোড (বিদ্যুৎ বহন করে)</li>
+        <li><b>70</b> = ন্যূনতম টেনসাইল ৭০,০০০ psi (৪৮০ MPa)</li>
+        <li><b>1</b> = পজিশন: ১ = সব পজিশন; ২ = ফ্ল্যাট ও হরাইজন্টাল ফিলেট; ৪ = সব, ভার্টিক্যাল নিচের দিকে</li>
+        <li><b>8</b> = (শেষ দুই অঙ্ক মিলে) কোটিং ও কারেন্ট: ১০ = সেলুলোজ সোডিয়াম DCEP · ১১ = সেলুলোজ পটাশিয়াম AC/DCEP · ১৩ = রুটাইল AC/DC · ১৮ = লো-হাইড্রোজেন আয়রন পাউডার AC/DCEP · ১৫/১৬ = লো-হাইড্রোজেন</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="k">সাফিক্স ও অন্যান্য</span>
+      <ul class="l">
+        <li><b>-1</b> (E7018-1): উন্নত ইমপ্যাক্ট টাফনেস (−৪৬°C এ টেস্টেড)</li>
+        <li><b>H4 / H8 / H16</b>: ওয়েল্ড মেটালে প্রতি ১০০ গ্রামে সর্বোচ্চ ডিফিউজিবল হাইড্রোজেন (মিলি)। H4 সবচেয়ে ভালো</li>
+        <li><b>R</b>: আর্দ্রতা প্রতিরোধী কোটিং</li>
+        <li><b>A5.5 লো-অ্যালয়</b>: E8018<b>-B2</b> (১¼Cr-½Mo), E9018<b>-B3</b> (২¼Cr-১Mo), E8018<b>-C1</b> (২.৫Ni), E9015<b>-B9</b> (P91), E7018<b>-A1</b> (C-½Mo)</li>
+        <li><b>SS (A5.4)</b>: E308L<b>-16</b>: শেষ অঙ্ক ১৫ = বেসিক DCEP, ১৬ = রুটাইল AC/DC, ১৭ = রুটাইল-সিলিকা (মসৃণ বিড)</li>
+        <li><b>তার (A5.18)</b>: ER70S-6: ER = ইলেক্ট্রোড বা রড, ৭০ ksi, S = সলিড, ৬ = বেশি Mn-Si (ময়লা সহনশীল)। ER70S-2 তে Ti-Zr-Al, রুট পাসে প্রিয়</li>
+        <li><b>ফ্লাক্স কোর (A5.20)</b>: E71T-1C: ৭০ ksi, ১ = সব পজিশন, T = টিউবুলার, -১ = গ্যাস শিল্ডেড, C = CO₂</li>
+      </ul>
+    </div>
+  </div>
+  <div class="calc"><header><h3>কোড ডিকোডার</h3><p>যেকোনো AWS কোড লিখুন, যেমন E7018-1 H4R, E6010, ER70S-6, E308L-16, E9015-B9</p></header><div class="bd">
+    <div class="fld"><label for="awsIn">AWS কোড</label><input id="awsIn" type="text" value="E7018-1 H4R"></div>
+    <div class="out" id="awsOut"></div>
+  </div></div>
+</div>
+
+<div class="sec" id="el-store">
+  <h2><span class="n">08.5</span>বেকিং ও স্টোরেজ</h2>
+  <div class="tw"><table class="t">
+    <thead><tr><th>ইলেক্ট্রোড</th><th>রি-ড্রাই (বেকিং)</th><th>হোল্ডিং ওভেন</th><th>খোলা বাতাসে সর্বোচ্চ</th></tr></thead>
+    <tbody>
+      <tr><td>E7018, E7018-1 (লো-H)</td><td>২৬০–৪২৫°C, ১–২ ঘণ্টা (প্রচলিত ৩৫০°C, ১ ঘণ্টা)</td><td>১২০°C বা বেশি</td><td>৪ ঘণ্টা (AWS D1.1); অনেক প্রজেক্ট ২ ঘণ্টা</td></tr>
+      <tr><td>E8018-xx</td><td>৩৭০–৪৩০°C, ১ ঘণ্টা</td><td>১২০°C+</td><td>২ ঘণ্টা</td></tr>
+      <tr><td>E9018 / E9015-B9</td><td>৩৭০–৪৩০°C, ১ ঘণ্টা</td><td>১২০°C+</td><td>১ ঘণ্টা</td></tr>
+      <tr><td>E10018 / E11018</td><td>৩৭০–৪৩০°C, ১ ঘণ্টা</td><td>১২০°C+</td><td>৩০ মিনিট</td></tr>
+      <tr><td>SS (E308L-16 ইত্যাদি)</td><td>ভেজা হলে ২৫০–৩০০°C, ১ ঘণ্টা</td><td>৬৫–১২০°C</td><td>তৈরিকারকের নির্দেশনা</td></tr>
+      <tr><td>E6010 / E6011 (সেলুলোজিক)</td><td><b>বেক করবেন না</b>: কোটিং-এ আর্দ্রতা লাগে</td><td>ঘরের তাপমাত্রা, শুকনো</td><td>—</td></tr>
+      <tr><td>E6013 (রুটাইল)</td><td>দরকারে ৯০–১৫০°C</td><td>শুকনো স্টোর</td><td>—</td></tr>
+    </tbody>
+  </table></div>
+  <ul class="l">
+    <li>সাইটে লো-হাইড্রোজেন রড <b>পোর্টেবল কুইভারে (৬৫°C+)</b>, প্লাগ চালু রেখে। কুইভার বন্ধ থাকলে রড আবার বেক করতে হবে।</li>
+    <li>লো-হাইড্রোজেন রড সাধারণত <b>সর্বোচ্চ ২ বার</b> রি-ড্রাই করা যায় (প্রজেক্ট অনুযায়ী ১ বার)। ভিজে গেলে বাতিল।</li>
+    <li>ইলেক্ট্রোড ইস্যু রেজিস্টার রাখুন: ওয়েল্ডার, রডের ধরন, ব্যাচ, পরিমাণ, সময়, ফেরত। ওভেনের তাপমাত্রা লগ দিনে ২ বার।</li>
+    <li>TIG রড পরিষ্কার ও প্যাকেটে লেবেলসহ রাখুন; প্রতিটি রডের মাথায় AWS কোড স্ট্যাম্প/ফ্ল্যাগ থাকে, মিশে যাওয়া রড চেনা যায় না।</li>
+  </ul>
+</div>
+
+<div class="sec" id="el-current">
+  <h2><span class="n">08.6</span>কারেন্ট সেটিং (আনুমানিক)</h2>
+  <div class="tw"><table class="t">
+    <thead><tr><th>রডের ব্যাস</th><th class="num">E6010 (A)</th><th class="num">E7018 (A)</th><th class="num">E308L-16 (A)</th><th>সাধারণ ব্যবহার</th></tr></thead>
+    <tbody>
+      <tr><td>২.৫ মিমি (³⁄₃₂")</td><td class="num">৫০–৮০</td><td class="num">৭০–১০০</td><td class="num">৫০–৮০</td><td>রুট, হট পাস, পাতলা পাইপ</td></tr>
+      <tr><td>৩.২ মিমি (⅛")</td><td class="num">৭৫–১২৫</td><td class="num">৯০–১৪০</td><td class="num">৭০–১১০</td><td>ফিল ও ক্যাপ, সব পজিশন</td></tr>
+      <tr><td>৪.০ মিমি (⁵⁄₃₂")</td><td class="num">১১০–১৬০</td><td class="num">১৩০–১৯০</td><td class="num">১০০–১৪০</td><td>মোটা পাইপের ফিল, ফ্ল্যাট/হরাইজন্টাল</td></tr>
+      <tr><td>৫.০ মিমি (³⁄₁₆")</td><td class="num">১৪০–২০০</td><td class="num">১৮০–২৫০</td><td class="num">১৪০–১৮০</td><td>ফ্ল্যাট, শপ</td></tr>
+    </tbody>
+  </table></div>
+  <p class="tcap">তৈরিকারকের প্যাকেট ও WPS এর রেঞ্জই চূড়ান্ত। ওভারহেড ও ভার্টিক্যালে রেঞ্জের নিচের দিকে রাখুন।</p>
+  <div class="callout tip"><b class="h">TIG (GTAW) টিপস</b>CS/SS এ DCEN (টাংস্টেন নেগেটিভ), ২% থোরিয়েটেড (লাল) বা ল্যান্থানেটেড (সোনালি/নীল) টাংস্টেন। আর্গন টর্চে সাধারণত ৮–১৫ লিটার/মিনিট। অ্যালুমিনিয়ামে AC ও পিউর/জিরকোনিয়েটেড টাংস্টেন।</div>
+</div>
+</section>

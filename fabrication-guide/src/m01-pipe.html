@@ -1,0 +1,112 @@
+<section class="mod" id="m-pipe" data-title="পাইপ: সাইজ ও শিডিউল" hidden>
+<div class="sheet"><div class="t">
+  <span class="eb">DWG FAB-01 · পাইপিং বেসিক</span>
+  <h1>পাইপ: সাইজ, শিডিউল ও প্রকারভেদ</h1>
+  <p class="lede">পাইপের "সাইজ" আসলে কী মাপ, শিডিউল দিয়ে কী বোঝায়, আর সিমলেস ও ওয়েল্ডেড পাইপ কিভাবে আলাদা করবেন।</p>
+</div><div class="tb">
+  <div><small>স্ট্যান্ডার্ড</small><b>ASME B36.10M / B36.19M</b></div>
+  <div><small>পড়ার সময়</small><b>২৫ মিনিট</b></div>
+  <div><small>শিখবেন</small><b>NPS, OD, WT, Sch</b></div>
+  <div><small>টুল</small><b>শিডিউল টেবিল</b></div>
+</div></div>
+
+<div class="sec" id="pipe-nps">
+  <h2><span class="n">01.1</span>NPS, OD আর DN: পাইপের সাইজ বোঝা</h2>
+  <div class="prose">
+    <p><b>NPS (Nominal Pipe Size)</b> হলো পাইপের নামের সাইজ, আসল মাপ নয়। যেমন "৬ ইঞ্চি পাইপ" এর বাইরের ব্যাস (OD) আসলে <b>১৬৮.৩ মিমি (৬.৬২৫")</b>। ভেতরের ব্যাসও ৬" নয়; সেটা শিডিউল অনুযায়ী বদলায়।</p>
+    <p><b>মূল নিয়ম:</b> একই NPS-এর সব পাইপের <mark>OD সবসময় একই</mark>। শিডিউল বাড়লে দেয়াল মোটা হয় ভেতরের দিকে, ফলে ID কমে। তাই একই সাইজের ফিটিং ও ফ্ল্যাঞ্জ সব শিডিউলের পাইপে বাইরে থেকে মিলে যায়।</p>
+    <p><b>NPS ১৪" থেকে বড়</b> হলে OD = NPS × ২৫.৪ মিমি (যেমন ১৬" = ৪০৬.৪ মিমি)। ১২" পর্যন্ত OD নামের চেয়ে বড়।</p>
+    <p><b>DN (Diameter Nominal)</b> হলো মেট্রিক নাম: DN 150 = NPS 6, DN 50 = NPS 2, DN 25 = NPS 1। সহজ হিসাব: NPS × ২৫ ≈ DN (ছোট সাইজে ব্যতিক্রম: ½" = DN15, ¾" = DN20)।</p>
+  </div>
+  <div class="grid g2">
+    <div class="card">
+      <svg viewBox="0 0 300 170" role="img" aria-label="পাইপের প্রস্থচ্ছেদ: OD, ID ও ওয়াল থিকনেস">
+        <circle cx="90" cy="85" r="70" class="fl"/><circle cx="90" cy="85" r="56" class="f"/>
+        <path d="M20 85 H160" class="d"/><path d="M90 15 V155" class="d"/>
+        <path d="M34 85 H146" stroke="var(--steel)" stroke-width="1.5"/>
+        <path d="M150 37 L195 22" stroke="var(--ink-3)"/><text x="198" y="26" class="tx">WT (দেয়াল)</text>
+        <text x="62" y="80" class="txa">ID</text>
+        <path d="M20 160 H160" stroke="var(--ink)" stroke-width="1"/><path d="M20 155 v10 M160 155 v10" stroke="var(--ink)"/>
+        <text x="80" y="152" class="tx">OD</text>
+        <text x="180" y="78" class="tx">ID = OD − ২×WT</text>
+        <text x="180" y="100" class="tx">৬" Sch40:</text>
+        <text x="180" y="118" class="tx">১৬৮.৩ − ২×৭.১১</text>
+        <text x="180" y="136" class="txa">= ১৫৪.১ মিমি</text>
+      </svg>
+    </div>
+    <div class="card">
+      <h4>কোন মাপ কোথায় লাগে</h4>
+      <ul class="l">
+        <li><b>OD</b>: ফিটিং, ফ্ল্যাঞ্জ মেলানো; বেভেল ও ফিট-আপ; ইনসুলেশন।</li>
+        <li><b>WT (Wall Thickness)</b>: ওয়েল্ডিং পাস সংখ্যা, প্রি-হিট/PWHT লাগবে কিনা, RT ফিল্ম।</li>
+        <li><b>ID</b>: ফ্লো, পানির আয়তন (হাইড্রোটেস্ট), পিগিং।</li>
+        <li><b>ইঞ্চ-ডায়া</b>: প্রোডাক্টিভিটি হিসাব NPS দিয়ে হয় (৬" জয়েন্ট = ৬ ID)।</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="sec" id="pipe-sch">
+  <h2><span class="n">01.2</span>শিডিউল (Schedule) কী</h2>
+  <div class="prose">
+    <p>শিডিউল নম্বর হলো <b>দেয়ালের পুরুত্বের কোড</b>। Sch 5, 10, 20, 30, 40, 60, 80, 100, 120, 140, 160। নম্বর যত বড়, দেয়াল তত মোটা, চাপ সহ্য করার ক্ষমতা তত বেশি।</p>
+    <p><b>STD, XS, XXS</b>: পুরনো ওজন-ভিত্তিক নাম। STD (Standard), XS (Extra Strong), XXS (Double Extra Strong)। ১০" পর্যন্ত STD = Sch 40, ৮" পর্যন্ত XS = Sch 80। এর চেয়ে বড় সাইজে আলাদা: ১২" ও তার বড় সব সাইজে STD = ৯.৫৩ মিমি, XS = ১২.৭০ মিমি।</p>
+    <p><b>"S" লাগানো শিডিউল</b> (5S, 10S, 40S, 80S) স্টেইনলেস স্টিলের জন্য (ASME B36.19M)। SS পাইপ দামি, তাই পাতলা 10S বেশি ব্যবহার হয়।</p>
+  </div>
+  <div class="callout warn"><b class="h">ভুল করবেন না</b>১২" Sch 40 (১০.৩১ মিমি) আর ১২" STD (৯.৫৩ মিমি) এক নয়। ড্রয়িং-এ যা লেখা, ঠিক সেটাই নিন। ফিটিং-এর শিডিউলও পাইপের সাথে মিলতে হবে, না হলে ভেতরে ধাপ (mismatch) তৈরি হবে।</div>
+</div>
+
+<div class="sec" id="pipe-table">
+  <h2><span class="n">01.3</span>পাইপ শিডিউল টেবিল (OD ও ওয়াল থিকনেস, মিমি)</h2>
+  <p>একটি সাইজে ট্যাপ করলে নিচে সেই সাইজের প্রতি মিটার ওজনও দেখাবে (কার্বন স্টিল)। "—" মানে সেই সাইজে ওই শিডিউল নেই।</p>
+  <div class="tw" style="max-height:520px"><table class="t dense" id="schTable"></table></div>
+  <div class="card" id="schPick"><span class="k">নির্বাচিত সাইজ</span><div id="schDetail" class="hint">উপরের টেবিলে যেকোনো সারিতে ট্যাপ করুন।</div></div>
+  <p class="tcap">উৎস: ASME B36.10M ও B36.19M। ওজন = (OD − WT) × WT × ০.০২৪৬৬ কেজি/মিটার (কার্বন স্টিল, ঘনত্ব ৭.৮৫)। SS হলে প্রায় ১% বেশি।</p>
+</div>
+
+<div class="sec" id="pipe-types">
+  <h2><span class="n">01.4</span>পাইপ তৈরির ধরন: সিমলেস ও ওয়েল্ডেড</h2>
+  <div class="grid g2">
+    <div class="card"><h4>সিমলেস (SMLS)</h4><p>গরম বিলেট ফুটো করে (piercing) টেনে তৈরি। কোনো জোড়া/সিম নেই। উচ্চচাপ, উচ্চতাপ, হাইড্রোকার্বন লাইনে বেশি। উদাহরণ: A106 Gr.B, A333 Gr.6 SMLS, A335 P11।</p><p class="k">চেনার উপায়: ভেতরে-বাইরে কোনো লম্বা ওয়েল্ড লাইন নেই; স্টেনসিলে "SMLS" লেখা।</p></div>
+    <div class="card"><h4>ERW (Electric Resistance Welded)</h4><p>স্টিল প্লেট/কয়েল গোল করে ফিলার ছাড়া বিদ্যুৎ দিয়ে জোড়া। সাধারণত ২৪" পর্যন্ত। পানি, এয়ার, কম চাপের লাইন। A53 Type E, API 5L ERW।</p><p class="k">চেনার উপায়: ভেতরে খুব সরু সোজা সিম; বাইরে প্রায় দেখা যায় না।</p></div>
+    <div class="card"><h4>LSAW / EFW (Longitudinal)</h4><p>প্লেট বাঁকিয়ে লম্বালম্বি সাবমার্জড আর্ক ওয়েল্ড। বড় সাইজ (১৬"+)। A671/A672, API 5L LSAW, SS-এ A358 EFW।</p><p class="k">চেনার উপায়: বাইরে-ভেতরে উঁচু সোজা ওয়েল্ড বিড স্পষ্ট দেখা যায়।</p></div>
+    <div class="card"><h4>SSAW / HSAW (Spiral)</h4><p>কয়েল পেঁচিয়ে (spiral) ওয়েল্ড। খুব বড় ব্যাস, পানির পাইপলাইন, পাইলিং।</p><p class="k">চেনার উপায়: গায়ে পেঁচানো (হেলিক্যাল) ওয়েল্ড লাইন।</p></div>
+  </div>
+  <div class="callout tip"><b class="h">ফিট-আপ টিপস</b>দুটি ওয়েল্ডেড পাইপ জোড়া দেওয়ার সময় দুই পাইপের লম্বা সিম একই লাইনে রাখবেন না। সাধারণত কমপক্ষে ৩০° বা ৫০ মিমি সরিয়ে (stagger) রাখুন এবং সিম পাইপের উপরের দিকে (১০টা–২টার ঘরে) রাখুন যাতে ইন্সপেকশন সহজ হয়। ব্রাঞ্চ বা সাপোর্টের নিচে সিম পড়বে না।</div>
+</div>
+
+<div class="sec" id="pipe-ends">
+  <h2><span class="n">01.5</span>পাইপের প্রান্ত (End Preparation)</h2>
+  <div class="grid g3">
+    <div class="fig"><div class="pic"><svg viewBox="0 0 200 110" aria-label="প্লেইন এন্ড"><rect x="20" y="30" width="150" height="50" class="fl"/><rect x="20" y="40" width="150" height="30" class="f"/><text x="60" y="100" class="tx">PE · সোজা কাটা</text></svg></div><div class="bd"><h4>PE <span class="en">Plain End</span></h4><p>সোজা ৯০° কাটা। সকেট ওয়েল্ড বা স্লিপ-অন ফ্ল্যাঞ্জে ব্যবহার, সাধারণত ২" ও ছোট।</p></div></div>
+    <div class="fig"><div class="pic"><svg viewBox="0 0 200 110" aria-label="বেভেল্ড এন্ড"><path d="M20 30 H150 L165 40 V70 L150 80 H20 Z" class="fl"/><rect x="20" y="40" width="145" height="30" class="f"/><text x="150" y="24" class="txa">37.5°</text><text x="50" y="100" class="tx">BE · বেভেল করা</text></svg></div><div class="bd"><h4>BE <span class="en">Beveled End</span></h4><p>বাট ওয়েল্ডের জন্য ৩৭.৫° ± ২.৫° বেভেল, রুট ফেস ১.৬ ± ০.৮ মিমি (ASME B16.25)। সাধারণত ২" এর বড় সব লাইনে।</p></div></div>
+    <div class="fig"><div class="pic"><svg viewBox="0 0 200 110" aria-label="থ্রেডেড এন্ড"><rect x="20" y="30" width="110" height="50" class="fl"/><path d="M130 30 l6 6 l6 -6 l6 6 l6 -6 l6 6 l6 -6 V80 l-6 -6 l-6 6 l-6 -6 l-6 6 l-6 -6 l-6 6 Z" class="fl"/><rect x="20" y="40" width="150" height="30" class="f"/><text x="50" y="100" class="tx">TE · NPT থ্রেড</text></svg></div><div class="bd"><h4>TE / TOE <span class="en">Threaded End</span></h4><p>NPT প্যাঁচ কাটা (টেপার থ্রেড)। ছোট সাইজের ইউটিলিটি, এয়ার, পানি, গ্যালভানাইজড লাইন। TOE = Thread One End।</p></div></div>
+  </div>
+</div>
+
+<div class="sec" id="pipe-marking">
+  <h2><span class="n">01.6</span>পাইপের স্টেনসিল মার্কিং পড়া</h2>
+  <p>প্রতিটি পাইপের গায়ে মিল (তৈরিকারক) মার্কিং থাকে। স্টোর থেকে নেওয়ার সময় এটা মিলিয়ে MTC (Mill Test Certificate) এর সাথে চেক করতে হয়।</p>
+  <div class="card" style="font-family:var(--mono);font-size:13.5px;overflow-x:auto;white-space:nowrap;color:var(--ink)">TENARIS · ASTM A106 GR.B / A53 GR.B / API 5L PSL1 X42 · SMLS · 6" SCH40 · 168.3×7.11 · HT 4C2187 · HYDRO 2800 PSI · 2025-08</div>
+  <div class="tw"><table class="t">
+    <thead><tr><th>অংশ</th><th>মানে</th></tr></thead>
+    <tbody>
+      <tr><td>TENARIS</td><td>তৈরিকারকের নাম (Manufacturer)</td></tr>
+      <tr><td>A106 GR.B / A53 GR.B / API 5L</td><td>ট্রিপল সার্টিফায়েড: একসাথে তিনটি স্ট্যান্ডার্ড পূরণ করে। যেকোনোটির জায়গায় ব্যবহার করা যায়</td></tr>
+      <tr><td>SMLS</td><td>সিমলেস</td></tr>
+      <tr><td>6" SCH40 · 168.3×7.11</td><td>সাইজ ও শিডিউল; OD × WT মিমি</td></tr>
+      <tr><td>HT 4C2187</td><td><b>হিট নম্বর</b>: যে স্টিল গলানো ব্যাচ থেকে তৈরি। MTC-এর সাথে এটাই মেলাতে হয় এবং কাটার পর প্রতিটি টুকরায় ট্রান্সফার করতে হয়</td></tr>
+      <tr><td>HYDRO 2800 PSI</td><td>মিলে হাইড্রো টেস্টের চাপ</td></tr>
+    </tbody>
+  </table></div>
+</div>
+
+<div class="sec" id="pipe-length">
+  <h2><span class="n">01.7</span>পাইপের দৈর্ঘ্য</h2>
+  <ul class="l">
+    <li><b>SRL (Single Random Length)</b>: প্রায় ৫–৭ মিটার (সাধারণত ৬ মি / ২০ ফুট)।</li>
+    <li><b>DRL (Double Random Length)</b>: প্রায় ১১–১৩ মিটার (সাধারণত ১২ মি / ৪০ ফুট)।</li>
+    <li>কাট প্ল্যান করার সময় ছোট টুকরা (offcut) কম রাখতে <b>নেস্টিং</b> করুন: বড় টুকরা আগে, ছোট টুকরা বাকি অংশ থেকে। প্রতিটি অফকাটে হিট নম্বর লিখে রাখুন।</li>
+  </ul>
+</div>
+</section>
