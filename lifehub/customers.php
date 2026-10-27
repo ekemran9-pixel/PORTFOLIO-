@@ -9,8 +9,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     check_csrf();
     $id = (int) ($_POST['id'] ?? 0);
     if (post('do') === 'delete') {
-        $name = q('SELECT name FROM customers WHERE id = ?', [$id])->fetchColumn();
+        $row = q('SELECT name, notion_id FROM customers WHERE id = ?', [$id])->fetch();
+        $name = $row['name'] ?? '';
         q('DELETE FROM customers WHERE id = ?', [$id]);
+        notion_archive($row['notion_id'] ?? null);
         log_activity('customer_deleted', (string) $name);
         flash(t('deleted'));
         redirect('customers.php');
@@ -33,6 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         q("INSERT INTO customers ($cols, created_at, updated_at) VALUES ($marks, ?, ?)", [...array_values($data), now(), now()]);
         $id = (int) db()->lastInsertId();
         log_activity('customer_added', $data['name']);
+        fire_event('customer_added', customer_event_data($id));
     }
     flash(t('saved'));
     redirect('customer.php?id=' . $id);

@@ -50,6 +50,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         session_write_close();
         $res = ai_chat([['role' => 'user', 'content' => 'Reply with exactly: OK']]);
         json_out($res['ok'] ? ['ok' => true, 'text' => AI_PROVIDERS[$res['provider']]['label'] . ': ' . mb_strimwidth($res['text'], 0, 80, '…')] : ['ok' => false, 'text' => $res['error']]);
+    } elseif ($do === 'feed_reset') {
+        set_setting('feed_key', bin2hex(random_bytes(20)));
+        flash(t('saved'));
     } elseif ($do === 'backup') {
         $data = ['app' => 'LifeHub', 'version' => APP_VERSION, 'exported_at' => now()];
         foreach (['customers', 'entries', 'media', 'activity', 'commands', 'recipes', 'ai_chats', 'ai_messages'] as $tbl) {
@@ -68,7 +71,7 @@ $mask = fn(string $v) => $v === '' ? '' : str_repeat('•', 8) . substr($v, -4);
 page_header(t('nav_settings'));
 ?>
 <div class="grid-2">
-  <section class="card span-2">
+  <section class="card span-2" id="keys">
     <div class="card-head"><h3>🔑 <?= e(t('api_keys')) ?></h3></div>
     <p class="muted"><?= e(t('api_help')) ?></p>
     <form method="post" class="form">
@@ -117,6 +120,21 @@ page_header(t('nav_settings'));
       <?php endforeach; ?>
       <div class="full form-actions"><button class="btn primary"><?= e(t('save')) ?></button></div>
     </form>
+  </section>
+
+  <section class="card span-2" id="feed">
+    <div class="card-head"><h3>📗 <?= e(t('feed_title')) ?></h3>
+      <form method="post" data-confirm><?= csrf_field() ?><input type="hidden" name="do" value="feed_reset"><button class="btn sm"><?= e(t('feed_reset')) ?></button></form></div>
+    <p class="muted small"><?= e(t('feed_help')) ?></p>
+    <?php $feed = base_url() . 'feed.php?key=' . secret('feed_key'); ?>
+    <div class="form">
+      <?php foreach (['entries' => t('nav_entries'), 'customers' => t('nav_customers'), 'summary' => t('feed_summary')] as $tb => $lbl): ?>
+        <label><?= e($lbl) ?>
+          <div class="code-box"><input readonly value="<?= e('=IMPORTDATA("' . $feed . '&table=' . $tb . '")') ?>" onclick="this.select()"><button type="button" class="btn sm" data-copy="<?= e('=IMPORTDATA("' . $feed . '&table=' . $tb . '")') ?>"><?= e(t('copy')) ?></button></div>
+        </label>
+      <?php endforeach; ?>
+      <p class="small"><strong>Excel:</strong> <?= e(t('feed_excel')) ?><br><code><?= e($feed . '&table=entries&bom=1') ?></code></p>
+    </div>
   </section>
 
   <section class="card">

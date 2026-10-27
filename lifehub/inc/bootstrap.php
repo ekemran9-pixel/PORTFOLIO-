@@ -234,3 +234,6 @@ function json_out(array $data, int $code = 200): never
 require_once __DIR__ . '/ai.php';
 require_once __DIR__ . '/actions.php';
 require_once __DIR__ . '/automation.php';
+require_once __DIR__ . '/notion.php';
+require_once __DIR__ . '/report.php';
+require_once __DIR__ . '/telegram.php';

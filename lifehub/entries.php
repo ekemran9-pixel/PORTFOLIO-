@@ -14,13 +14,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $back = 'entries.php';
     }
     if (post('do') === 'delete') {
+        $notionId = q('SELECT notion_id FROM entries WHERE id = ?', [$id])->fetchColumn();
         q('DELETE FROM entries WHERE id = ?', [$id]);
+        notion_archive($notionId ?: null);
         log_activity('entry_deleted', '#' . $id);
         flash(t('deleted'));
         redirect($back);
     }
     if (post('do') === 'toggle') {
-        q("UPDATE entries SET status = CASE WHEN status = 'done' THEN 'open' ELSE 'done' END WHERE id = ?", [$id]);
+        q("UPDATE entries SET status = CASE WHEN status = 'done' THEN 'open' ELSE 'done' END, updated_at = ? WHERE id = ?", [now(), $id]);
+        $row = entry_event_data($id);
+        if (($row['status'] ?? '') === 'done' && $row['type'] === 'task') {
+            fire_event('task_done', $row);
+        }
         redirect($back);
     }
     $type = in_array(post('type'), ENTRY_TYPES, true) ? post('type') : 'note';
@@ -34,11 +40,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     $vals = [$customerId, $type, $title, (float) str_replace(',', '', post('amount', '0')), $date, $status, post('notes')];
     if ($id) {
-        q('UPDATE entries SET customer_id = ?, type = ?, title = ?, amount = ?, entry_date = ?, status = ?, notes = ? WHERE id = ?', [...$vals, $id]);
+        q('UPDATE entries SET customer_id = ?, type = ?, title = ?, amount = ?, entry_date = ?, status = ?, notes = ?, updated_at = ? WHERE id = ?', [...$vals, now(), $id]);
         log_activity('entry_updated', $title);
     } else {
-        q('INSERT INTO entries (customer_id, type, title, amount, entry_date, status, notes, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?)', [...$vals, now()]);
+        q('INSERT INTO entries (customer_id, type, title, amount, entry_date, status, notes, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)', [...$vals, now(), now()]);
+        $newId = (int) db()->lastInsertId();
         log_activity('entry_added', $title);
+        fire_event('entry_added', entry_event_data($newId));
     }
     flash(t('saved'));
     redirect($customerId && post('from_customer') ? 'customer.php?id=' . $customerId : 'entries.php');
