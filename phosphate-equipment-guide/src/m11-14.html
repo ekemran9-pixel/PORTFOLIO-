@@ -1,0 +1,104 @@
+<section class="mod" id="m-trouble" data-title="ট্রাবলশুটিং" hidden>
+<div class="sheet"><div class="t">
+  <span class="eb">DWG PHD-11 · সমস্যা সমাধান</span>
+  <h1>ট্রাবলশুটিং গাইড</h1>
+  <p class="lede">লক্ষণ থেকে সম্ভাব্য কারণ ও করণীয়। ইকুইপমেন্ট বেছে নিন বা লক্ষণ লিখে খুঁজুন। কারণগুলো সম্ভাবনার ক্রমে সাজানো: আগে সহজ ও সাধারণ কারণ যাচাই করুন।</p>
+</div><div class="tb">
+  <div><small>সমস্যা</small><b id="tsCount">—</b></div>
+  <div><small>ধরন</small><b>প্রসেস ও মেকানিক্যাল</b></div>
+  <div><small>পদ্ধতি</small><b>সহজ কারণ আগে</b></div>
+  <div><small>শেষে</small><b>RCA লিখুন</b></div>
+</div></div>
+<div class="sec" id="ts-list">
+  <h2><span class="n">11.1</span>লক্ষণ বেছে নিন</h2>
+  <div class="chips" id="tsEq" role="group" aria-label="ইকুইপমেন্ট ফিল্টার">
+    <button class="chip" data-v="all" aria-pressed="true">সব</button>
+    <button class="chip" data-v="common" aria-pressed="false">মেকানিক্যাল (সব ড্রাম)</button>
+    <button class="chip" data-v="gran" aria-pressed="false">গ্রানুলেটর</button>
+    <button class="chip" data-v="dryer" aria-pressed="false">ড্রায়ার</button>
+    <button class="chip" data-v="coat" aria-pressed="false">কোটিং ড্রাম</button>
+  </div>
+  <input id="tsQ" type="text" placeholder="লক্ষণ লিখুন: শব্দ, গরম, ধুলা, বড় দানা…" aria-label="লক্ষণ খুঁজুন" style="max-width:460px">
+  <div class="grid" id="tsWrap"></div>
+</div>
+</section>
+
+<section class="mod" id="m-safety" data-title="সেফটি" hidden>
+<div class="sheet"><div class="t">
+  <span class="eb">DWG PHD-12 · নিরাপত্তা</span>
+  <h1>সেফটি: ড্রামের আশেপাশে কাজ</h1>
+  <p class="lede">ঘূর্ণায়মান যন্ত্র, অ্যামোনিয়া, গরম পৃষ্ঠ, বার্নার, কনফাইন্ড স্পেস, ধুলা ও ফ্লোরিন যৌগ। প্রতিটি ঝুঁকি ও নিয়ন্ত্রণ।</p>
+</div><div class="tb">
+  <div><small>প্রধান ঝুঁকি</small><b>৮টি</b></div>
+  <div><small>আইসোলেশন</small><b>মেইন + অক্সিলিয়ারি</b></div>
+  <div><small>NH₃ সীমা (TWA)</small><b>২৫ ppm</b></div>
+  <div><small>নিয়ম</small><b>পারমিট ছাড়া কাজ নয়</b></div>
+</div></div>
+
+<div class="sec" id="sf-hz">
+  <h2><span class="n">12.1</span>ঝুঁকি ও নিয়ন্ত্রণ</h2>
+  <div class="grid g2">
+    <div class="card"><span class="k">ঘূর্ণায়মান অংশ</span><p>গার্থ গিয়ার-পিনিয়ন মেশ, টায়ার-রোলার নিপ পয়েন্ট, কাপলিং, চেইন। একবার ধরলে টেনে নেয়। <b>নিয়ন্ত্রণ:</b> গার্ড সবসময় লাগানো, চলন্ত অবস্থায় গ্রিজ দিতে বা মাপতে হলে নিরাপদ পয়েন্ট (রিমোট নিপল), ঢিলা কাপড় নয়, নিপ পয়েন্টে হাত নয়।</p></div>
+    <div class="card"><span class="k">অ্যামোনিয়া (NH₃)</span><p>বিষাক্ত, চোখ-ফুসফুস পোড়ায়; TWA ২৫ ppm, STEL ৩৫ ppm, IDLH ৩০০ ppm। তরল NH₃ ত্বকে ফ্রস্টবাইট। <b>নিয়ন্ত্রণ:</b> গ্যাস ডিটেক্টর, উইন্ডসক, এস্কেপ রেসপিরেটর, আইওয়াশ ও সেফটি শাওয়ার কাছে, স্পার্জার কাজে ডাবল ব্লক-ব্লিড ও ব্লাইন্ড।</p></div>
+    <div class="card"><span class="k">গরম পৃষ্ঠ ও গ্যাস</span><p>ড্রায়ারের শেল, কম্বাশন চেম্বার, ব্রিচিং, স্লারি লাইন ১০০–৩০০°C+। <b>নিয়ন্ত্রণ:</b> পার্সোনেল প্রোটেকশন ইনসুলেশন/গার্ড, তাপ-রোধী গ্লাভস, কুল-ডাউন সময় মানা।</p></div>
+    <div class="card"><span class="k">বার্নার বিস্ফোরণ</span><p>পার্জ ছাড়া জ্বালানো বা ফ্লেম নিভে গেলে জমে থাকা জ্বালানি বাষ্প বিস্ফোরিত হয়। <b>নিয়ন্ত্রণ:</b> BMS ইন্টারলক কখনো বাইপাস নয়, পর্যবেক্ষণ পোর্ট থেকে দূরে দাঁড়ান, ইগনিশনের সময় শুধু প্রয়োজনীয় লোক।</p></div>
+    <div class="card"><span class="k">কনফাইন্ড স্পেস (ড্রামের ভেতরে)</span><p>অক্সিজেনের অভাব, NH₃/CO/HF, গরম, পড়ন্ত বিল্ড-আপ, হঠাৎ ঘোরা। <b>নিয়ন্ত্রণ:</b> পারমিট, গ্যাস টেস্ট (O₂ ১৯.৫–২৩.৫%, LEL &lt;১০%, NH₃ &lt;২৫ ppm, CO &lt;২৫ ppm), অবিরাম বায়ুচলাচল, বাইরে অ্যাটেনডেন্ট, রেসকিউ প্ল্যান, উপরের ঝুলন্ত বিল্ড-আপ আগে নামানো।</p></div>
+    <div class="card"><span class="k">ফ্লোরিন যৌগ ও অ্যাসিড</span><p>ফসফরিক অ্যাসিড ও স্লারি থেকে HF/SiF₄ (বিশেষত TSP)। ত্বক ও চোখে গুরুতর ক্ষতি। <b>নিয়ন্ত্রণ:</b> ফেস শিল্ড, অ্যাসিড-রোধী গ্লাভস ও স্যুট; ক্যালসিয়াম গ্লুকোনেট জেল প্রাথমিক চিকিৎসা কিটে।</p></div>
+    <div class="card"><span class="k">ধুলা ও শব্দ</span><p>সার ধুলা চোখ-শ্বাসনালীতে জ্বালা; ফ্যান, ক্রাশার, গিয়ার শব্দ। <b>নিয়ন্ত্রণ:</b> ডাস্ট মাস্ক (P2/N95), গগলস, ৮৫ dB(A)-এর বেশি এলাকায় কানের সুরক্ষা।</p></div>
+    <div class="card"><span class="k">ভারী তোলা ও উচ্চতা</span><p>গিয়ার সেগমেন্ট, রোলার, টায়ার শিম, জ্যাকিং। <b>নিয়ন্ত্রণ:</b> লিফটিং প্ল্যান, সার্টিফায়েড স্লিং ও চেইন ব্লক, জ্যাকের নিচে সবসময় সলিড সাপোর্ট, উচ্চতায় হারনেস।</p></div>
+  </div>
+</div>
+
+<div class="sec" id="sf-loto">
+  <h2><span class="n">12.2</span>ড্রামের LOTO (লকআউট-ট্যাগআউট) ধাপ</h2>
+  <div class="flow">
+    <div class="step"><div><h4>পরিকল্পনা ও ঘোষণা</h4><p>কোন কোন শক্তির উৎস: মেইন মোটর, অক্সিলিয়ারি মোটর/ডিজেল ইঞ্জিন, স্ক্র্যাপার মোটর, ফ্যান, বার্নার জ্বালানি, NH₃, স্লারি, স্টিম, কম্প্রেসড এয়ার, অয়েল পাম্প।</p></div></div>
+    <div class="step"><div><h4>স্বাভাবিক উপায়ে বন্ধ</h4><p>প্রসেস খালি, ফিড বন্ধ, ড্রাম থামানো।</p></div></div>
+    <div class="step"><div><h4>আইসোলেশন</h4><p>MCC-তে ব্রেকার র‍্যাক-আউট ও লক (প্রতিটি মোটর), ডিজেল ইঞ্জিনের ব্যাটারি বিচ্ছিন্ন, ভাল্ভ বন্ধ ও লক, প্রয়োজনে ব্লাইন্ড।</p></div></div>
+    <div class="step"><div><h4>সঞ্চিত শক্তি মুক্ত</h4><p>অসম ভারী বিল্ড-আপ বা অসমান বেড থাকলে ড্রাম নিজে থেকেই ঘুরে যেতে পারে। ড্রাম যান্ত্রিকভাবে লক করুন (লকিং পিন/চেইন বা ব্রেক), লাইনের চাপ ড্রেন।</p></div></div>
+    <div class="step"><div><h4>যাচাই (Try)</h4><p>স্থানীয় স্টার্ট বোতাম চেপে নিশ্চিত হোন চালু হয় না; মিটারে শূন্য বিভব।</p></div></div>
+    <div class="step"><div><h4>ব্যক্তিগত লক</h4><p>প্রতিটি কর্মী নিজের লক ও ট্যাগ দেবেন; কাজ শেষে নিজের লক নিজেই খুলবেন।</p></div></div>
+  </div>
+</div>
+
+<div class="sec" id="sf-nh3">
+  <h2><span class="n">12.3</span>অ্যামোনিয়া লিক হলে</h2>
+  <ol class="l">
+    <li>বাতাসের উল্টো দিকে (উইন্ডসক দেখে, বাতাস যেদিক থেকে আসছে সেদিকে) ও উঁচু জায়গায় সরে যান; সতর্কসংকেত দিন।</li>
+    <li>সম্ভব হলে নিরাপদ দূর থেকে রিমোট আইসোলেশন ভাল্ভ বন্ধ (ESD)।</li>
+    <li>প্রশিক্ষিত দল SCBA ও কেমিক্যাল স্যুট পরে ঢুকবে; ওয়াটার কার্টেন দিয়ে গ্যাস শোষণ (তরল NH₃ পুলে সরাসরি পানি নয়)।</li>
+    <li>চোখে লাগলে কমপক্ষে ১৫ মিনিট পানি দিয়ে ধুয়ে চিকিৎসা; ত্বকে লাগলে কাপড় খুলে প্রচুর পানি।</li>
+  </ol>
+</div>
+</section>
+
+<section class="mod" id="m-quiz" data-title="কুইজ" hidden>
+<div class="sheet"><div class="t">
+  <span class="eb">DWG PHD-13 · অনুশীলন</span>
+  <h1>কুইজ: নিজেকে যাচাই করুন</h1>
+  <p class="lede">প্রতি রাউন্ডে প্রশ্নভাণ্ডার থেকে এলোমেলো ১০টি প্রশ্ন। প্রতিটি উত্তরের পর ব্যাখ্যা।</p>
+</div><div class="tb">
+  <div><small>প্রশ্নভাণ্ডার</small><b id="qzCount">—</b></div>
+  <div><small>প্রতি রাউন্ড</small><b>১০টি</b></div>
+  <div><small>সেরা স্কোর</small><b id="qzBest">—</b></div>
+  <div><small>বিষয়</small><b>সব মডিউল</b></div>
+</div></div>
+<div class="sec" id="qz-box"><div class="card qz" id="quizBox"></div></div>
+</section>
+
+<section class="mod" id="m-glossary" data-title="শব্দকোষ" hidden>
+<div class="sheet"><div class="t">
+  <span class="eb">DWG PHD-14 · রেফারেন্স</span>
+  <h1>শব্দকোষ</h1>
+  <p class="lede">প্লান্টে ইংরেজিতে যে শব্দগুলো বলা হয়, সেগুলোর বাংলা অর্থ ও ব্যাখ্যা।</p>
+</div><div class="tb">
+  <div><small>শব্দ</small><b id="glCount">—</b></div>
+  <div><small>ক্রম</small><b>ইংরেজি বর্ণানুক্রমে</b></div>
+  <div><small>খোঁজা</small><b>বাংলা বা ইংরেজি</b></div>
+  <div><small>সংযুক্ত</small><b>সব মডিউল</b></div>
+</div></div>
+<div class="sec" id="gl-box">
+  <input id="glQ" type="text" placeholder="শব্দ খুঁজুন…" aria-label="শব্দকোষে খুঁজুন" style="max-width:420px">
+  <dl class="gl" id="glList"></dl>
+</div>
+</section>

@@ -1,0 +1,339 @@
+<section class="mod" id="m-calc" data-title="সব ক্যালকুলেশন" hidden>
+<div class="sheet"><div class="t">
+  <span class="eb">DWG PHD-10 · ক্যালকুলেটর</span>
+  <h1>সব ক্যালকুলেশন</h1>
+  <p class="lede">ড্রামের গতি, রিটেনশন টাইম, ফিল, পাওয়ার, গিয়ার রেশিও, রোলার লোড, টায়ার ক্রিপ, ওভালিটি, তাপ প্রসারণ, ড্রায়ারের হিট-গ্যাস ব্যালান্স, DAP ম্যাস ব্যালান্স, মোল রেশিও, রিসাইকেল, কোটিং ডোজ, গ্রিজ, গিয়ার ক্লিয়ারেন্স, ক্ষয়, ঢাল ও গ্যাস ভলিউম। প্রতিটি সূত্রসহ।</p>
+</div><div class="tb">
+  <div><small>ক্যালকুলেটর</small><b>২১টি</b></div>
+  <div><small>ইউনিট</small><b>SI (মি, কেজি, °C)</b></div>
+  <div><small>সূত্র</small><b>প্রতিটির নিচে</b></div>
+  <div><small>সতর্কতা</small><b>ফলাফল আনুমানিক</b></div>
+</div></div>
+
+<div class="sec" id="calc-all">
+  <div class="chips calcnav" id="calcNav" role="tablist" aria-label="ক্যালকুলেটর বেছে নিন">
+    <button class="chip" data-k="crit" aria-pressed="true">ক্রিটিকাল গতি</button>
+    <button class="chip" data-k="ret" aria-pressed="false">রিটেনশন ও ফিল</button>
+    <button class="chip" data-k="seg" aria-pressed="false">বেডের জ্যামিতি</button>
+    <button class="chip" data-k="pow" aria-pressed="false">ড্রাইভ পাওয়ার</button>
+    <button class="chip" data-k="gear" aria-pressed="false">গিয়ার রেশিও ও rpm</button>
+    <button class="chip" data-k="load" aria-pressed="false">রোলার লোড ও থ্রাস্ট</button>
+    <button class="chip" data-k="creep" aria-pressed="false">টায়ার ক্রিপ ও গ্যাপ</button>
+    <button class="chip" data-k="oval" aria-pressed="false">ওভালিটি</button>
+    <button class="chip" data-k="therm" aria-pressed="false">তাপ প্রসারণ</button>
+    <button class="chip" data-k="dry" aria-pressed="false">ড্রায়ার হিট ও গ্যাস</button>
+    <button class="chip" data-k="size" aria-pressed="false">ড্রায়ার সাইজিং</button>
+    <button class="chip" data-k="dap" aria-pressed="false">DAP ম্যাস ব্যালান্স</button>
+    <button class="chip" data-k="mr" aria-pressed="false">মোল রেশিও</button>
+    <button class="chip" data-k="rr" aria-pressed="false">রিসাইকেল রেশিও</button>
+    <button class="chip" data-k="coat" aria-pressed="false">কোটিং ডোজ</button>
+    <button class="chip" data-k="grease" aria-pressed="false">গ্রিজ পরিমাণ ও সময়</button>
+    <button class="chip" data-k="gearcl" aria-pressed="false">রুট ক্লিয়ারেন্স ও ব্যাকল্যাশ</button>
+    <button class="chip" data-k="corr" aria-pressed="false">শেল ক্ষয় ও আয়ু</button>
+    <button class="chip" data-k="slope" aria-pressed="false">ঢাল রূপান্তর</button>
+    <button class="chip" data-k="gas" aria-pressed="false">গ্যাস ভলিউম</button>
+    <button class="chip" data-k="skewm" aria-pressed="false">স্কিউ পরিমাণ</button>
+  </div>
+
+  <div class="calc" data-calc="crit"><header><h3>ক্রিটিকাল গতি, % ক্রিটিকাল ও পেরিফেরাল গতি</h3><p>ক্রিটিকাল গতিতে দানা কেন্দ্রাতিগ বলে শেলের সাথে লেগে ঘোরে, পড়ে না। ড্রাম সবসময় এর অনেক নিচে চলে।</p></header><div class="bd">
+    <div class="fields">
+      <div class="fld"><label for="crD">ভেতরের ব্যাস D (মি)</label><input id="crD" type="number" value="4" step="0.1" min="0.1"></div>
+      <div class="fld"><label for="crN">বর্তমান গতি (rpm)</label><input id="crN" type="number" value="8" step="0.1" min="0"></div>
+      <div class="fld"><label for="crE">ইকুইপমেন্ট</label><select id="crE"><option value="gran">গ্রানুলেটর</option><option value="dryer">ড্রায়ার</option><option value="coat">কোটিং ড্রাম</option></select></div>
+    </div>
+    <div class="out" id="crOut"></div>
+    <div class="formula">Nc (rpm) = ৪২.৩ ÷ √D(মি)          % ক্রিটিকাল = N ÷ Nc × ১০০
+পেরিফেরাল গতি v (মি/সে) = π × D × N ÷ ৬০      ফ্রাউড সংখ্যা Fr = ω²R/g = (N/Nc)²</div>
+  </div></div>
+
+  <div class="calc" data-calc="ret" hidden><header><h3>রিটেনশন টাইম, হোল্ডআপ ও ফিল %</h3><p>দুটি পদ্ধতি: USBM (ফ্লাইট ছাড়া/গ্রানুলেটর/কোটিং) এবং ফ্লাইটেড ড্রায়ারের জন্য ফ্রিডম্যান-মার্শাল (গ্যাস প্রবাহের প্রভাবসহ)।</p></header><div class="bd">
+    <div class="fields">
+      <div class="fld"><label for="rtL">দৈর্ঘ্য L (মি)</label><input id="rtL" type="number" value="25" step="0.5"></div>
+      <div class="fld"><label for="rtD">ভেতরের ব্যাস D (মি)</label><input id="rtD" type="number" value="4" step="0.1"></div>
+      <div class="fld"><label for="rtS">ঢাল (ডিগ্রি)</label><input id="rtS" type="number" value="2" step="0.1"></div>
+      <div class="fld"><label for="rtN">গতি (rpm)</label><input id="rtN" type="number" value="3.5" step="0.1"></div>
+      <div class="fld"><label for="rtA">রিপোজ কোণ (ডিগ্রি)</label><input id="rtA" type="number" value="35" step="1"></div>
+      <div class="fld"><label for="rtF">USBM ফ্যাক্টর F</label><input id="rtF" type="number" value="1" step="0.1"></div>
+      <div class="fld"><label for="rtQ">সলিড ফিড রেট (টন/ঘণ্টা)</label><input id="rtQ" type="number" value="250" step="1"></div>
+      <div class="fld"><label for="rtRho">বাল্ক ঘনত্ব (টন/মি³)</label><input id="rtRho" type="number" value="0.95" step="0.01"></div>
+      <div class="fld"><label for="rtG">গ্যাস প্রবাহ (কেজি/ঘণ্টা, শুধু ড্রায়ার)</label><input id="rtG" type="number" value="90000" step="1000"></div>
+      <div class="fld"><label for="rtP">গড় দানার সাইজ (µm)</label><input id="rtP" type="number" value="2800" step="100"></div>
+      <div class="fld"><label for="rtM">ড্রায়ারে প্রবাহ</label><select id="rtM"><option value="-1">কো-কারেন্ট</option><option value="1">কাউন্টার-কারেন্ট</option></select></div>
+    </div>
+    <div class="out" id="rtOut"></div>
+    <div class="formula">USBM:  t (মিনিট) = ১.৭৭ × √θ × L × F ÷ (S × D × N)    [θ, S ডিগ্রিতে; L, D ফুটে]
+ফ্রিডম্যান-মার্শাল:  t = ০.২৩ L ÷ (s × N^০.৯ × D) ± ০.৬ × B × L × G ÷ F
+   [L, D ফুট; s = ঢাল ফুট/ফুট; B = ৫ × dp^−০.৫ (dp µm); G, F = lb/ঘণ্টা·ফুট²; + কাউন্টার, − কো-কারেন্ট]
+হোল্ডআপ = ফিড রেট × t      ফিল % = হোল্ডআপ আয়তন ÷ ড্রামের আয়তন × ১০০</div>
+  </div></div>
+
+  <div class="calc" data-calc="seg" hidden><header><h3>বেডের জ্যামিতি (ফিল % ↔ বেড গভীরতা)</h3><p>বৃত্তাকার সেগমেন্টের হিসাব: স্পার্জার ঢাকা আছে কিনা, ড্যাম রিং কত উঁচু হবে বুঝতে কাজে লাগে।</p></header><div class="bd">
+    <div class="fields">
+      <div class="fld"><label for="sgD">ভেতরের ব্যাস D (মি)</label><input id="sgD" type="number" value="4" step="0.1"></div>
+      <div class="fld"><label for="sgMode">যা জানেন</label><select id="sgMode"><option value="f">ফিল %</option><option value="h">বেড গভীরতা (মিমি)</option></select></div>
+      <div class="fld"><label for="sgV">মান</label><input id="sgV" type="number" value="25" step="1"></div>
+    </div>
+    <div class="out" id="sgOut"></div>
+    <div class="formula">কেন্দ্রীয় কোণ φ:  ফিল = (φ − sin φ) ÷ (২π)         বেড গভীরতা h = R(১ − cos(φ/২))
+কর্ড (বেডের উপরের প্রস্থ) = ২R sin(φ/২)       অক্ষ থেকে বেডের ভরকেন্দ্র = ৪R sin³(φ/২) ÷ [৩(φ − sin φ)]</div>
+  </div></div>
+
+  <div class="calc" data-calc="pow" hidden><header><h3>ড্রাইভ পাওয়ার (আনুমানিক)</h3><p>বেড তোলার টর্ক + রোলারে ঘর্ষণ টর্ক। মোটর সিলেকশনে স্টার্টিং টর্ক (চলন্তের ১.৫–২.৫ গুণ) ও বিল্ড-আপ ভাতা যোগ করুন।</p></header><div class="bd">
+    <div class="fields">
+      <div class="fld"><label for="pwD">ভেতরের ব্যাস D (মি)</label><input id="pwD" type="number" value="4" step="0.1"></div>
+      <div class="fld"><label for="pwL">দৈর্ঘ্য L (মি)</label><input id="pwL" type="number" value="10" step="0.5"></div>
+      <div class="fld"><label for="pwF">ফিল %</label><input id="pwF" type="number" value="25" step="1"></div>
+      <div class="fld"><label for="pwRho">বাল্ক ঘনত্ব (টন/মি³)</label><input id="pwRho" type="number" value="0.95" step="0.01"></div>
+      <div class="fld"><label for="pwN">গতি (rpm)</label><input id="pwN" type="number" value="10" step="0.1"></div>
+      <div class="fld"><label for="pwB">ডাইনামিক রিপোজ কোণ (ডিগ্রি)</label><input id="pwB" type="number" value="35" step="1"></div>
+      <div class="fld"><label for="pwW">ড্রামের ঘূর্ণায়মান ওজন, মালামাল ছাড়া (টন)</label><input id="pwW" type="number" value="120" step="1"></div>
+      <div class="fld"><label for="pwT">টায়ারের বাইরের ব্যাস (মি)</label><input id="pwT" type="number" value="4.6" step="0.1"></div>
+      <div class="fld"><label for="pwMu">রোলিং + বেয়ারিং ঘর্ষণ সহগ</label><input id="pwMu" type="number" value="0.015" step="0.001"></div>
+      <div class="fld"><label for="pwEta">ড্রাইভ দক্ষতা</label><input id="pwEta" type="number" value="0.88" step="0.01"></div>
+    </div>
+    <div class="out" id="pwOut"></div>
+    <div class="formula">বেডের ভর M = ρ × A_সেগমেন্ট × L           লোড টর্ক Tₗ = M × g × r_c × sin β
+ঘর্ষণ টর্ক T_f = μ × (W_মোট × g ÷ cos৩০°) × R_টায়ার
+পাওয়ার P = (Tₗ + T_f) × ২πN/৬০ ÷ η</div>
+  </div></div>
+
+  <div class="calc" data-calc="gear" hidden><header><h3>গিয়ার রেশিও, ড্রাম rpm ও রোলার rpm</h3><p>মোটর থেকে ড্রাম পর্যন্ত গতি; নতুন লক্ষ্য গতির জন্য কত গিয়ারবক্স রেশিও লাগবে।</p></header><div class="bd">
+    <div class="fields">
+      <div class="fld"><label for="grM">মোটর গতি (rpm)</label><input id="grM" type="number" value="1480" step="1"></div>
+      <div class="fld"><label for="grI">গিয়ারবক্স রেশিও</label><input id="grI" type="number" value="25" step="0.1"></div>
+      <div class="fld"><label for="grZp">পিনিয়নের দাঁত</label><input id="grZp" type="number" value="20" step="1"></div>
+      <div class="fld"><label for="grZg">গার্থ গিয়ারের দাঁত</label><input id="grZg" type="number" value="180" step="1"></div>
+      <div class="fld"><label for="grT">টায়ারের বাইরের ব্যাস (মি)</label><input id="grT" type="number" value="4.6" step="0.05"></div>
+      <div class="fld"><label for="grR">রোলারের ব্যাস (মি)</label><input id="grR" type="number" value="1.3" step="0.05"></div>
+      <div class="fld"><label for="grTgt">লক্ষ্য ড্রাম গতি (rpm)</label><input id="grTgt" type="number" value="8" step="0.1"></div>
+    </div>
+    <div class="out" id="grOut"></div>
+    <div class="formula">পিনিয়ন rpm = মোটর rpm ÷ গিয়ারবক্স রেশিও
+ড্রাম rpm = পিনিয়ন rpm × Zp ÷ Zg          রোলার rpm = ড্রাম rpm × D_টায়ার ÷ D_রোলার</div>
+  </div></div>
+
+  <div class="calc" data-calc="load" hidden><header><h3>রোলার লোড, অ্যাক্সিয়াল থ্রাস্ট ও কন্টাক্ট স্ট্রেস</h3><p>প্রতি রোলারে স্বাভাবিক বল, ঢালের কারণে ডাউনহিল থ্রাস্ট এবং হার্জ কন্টাক্ট চাপ।</p></header><div class="bd">
+    <div class="fields">
+      <div class="fld"><label for="ldW">মোট ঘূর্ণায়মান ওজন, মালামালসহ (টন)</label><input id="ldW" type="number" value="180" step="1"></div>
+      <div class="fld"><label for="ldS">স্টেশন সংখ্যা</label><input id="ldS" type="number" value="2" step="1" min="1"></div>
+      <div class="fld"><label for="ldSh">এই স্টেশনের ভাগ (%)</label><input id="ldSh" type="number" value="50" step="1"></div>
+      <div class="fld"><label for="ldA">রোলার কোণ উল্লম্ব থেকে (ডিগ্রি)</label><input id="ldA" type="number" value="30" step="0.5"></div>
+      <div class="fld"><label for="ldSl">ঢাল (ডিগ্রি)</label><input id="ldSl" type="number" value="2" step="0.1"></div>
+      <div class="fld"><label for="ldT">টায়ারের বাইরের ব্যাস (মি)</label><input id="ldT" type="number" value="4.6" step="0.05"></div>
+      <div class="fld"><label for="ldR">রোলারের ব্যাস (মি)</label><input id="ldR" type="number" value="1.3" step="0.05"></div>
+      <div class="fld"><label for="ldB">কন্টাক্ট প্রস্থ (টায়ারের প্রস্থ, মিমি)</label><input id="ldB" type="number" value="400" step="10"></div>
+    </div>
+    <div class="out" id="ldOut"></div>
+    <div class="formula">প্রতি রোলারের বল = স্টেশন লোড ÷ (২ cos α)          অ্যাক্সিয়াল থ্রাস্ট = W × sin(ঢাল)
+লাইন লোড q = বল ÷ b      হার্জ চাপ p_max = √[ q × E ÷ (২π(১−ν²)) × (১/R₁ + ১/R₂) ]   (স্টিল E = ২১০ GPa, ν = ০.৩)</div>
+  </div></div>
+
+  <div class="calc" data-calc="creep" hidden><header><h3>টায়ার ক্রিপ ও গ্যাপ</h3><p>মাপা ক্রিপ থেকে গ্যাপ, এবং শেল-টায়ার তাপমাত্রা পার্থক্যে গরম অবস্থার গ্যাপ।</p></header><div class="bd">
+    <div class="fields">
+      <div class="fld"><label for="cpX">দাগের মধ্যকার দূরত্ব (মিমি)</label><input id="cpX" type="number" value="60" step="1"></div>
+      <div class="fld"><label for="cpN">পাক সংখ্যা</label><input id="cpN" type="number" value="5" step="1" min="1"></div>
+      <div class="fld"><label for="cpD">শেলের বাইরের ব্যাস (মি)</label><input id="cpD" type="number" value="4.0" step="0.05"></div>
+      <div class="fld"><label for="cpTs">শেলের তাপমাত্রা টায়ারের নিচে (°C)</label><input id="cpTs" type="number" value="150" step="1"></div>
+      <div class="fld"><label for="cpTt">টায়ারের তাপমাত্রা (°C)</label><input id="cpTt" type="number" value="110" step="1"></div>
+    </div>
+    <div class="out" id="cpOut"></div>
+    <div class="formula">ক্রিপ (মিমি/পাক) = দূরত্ব ÷ পাক        গ্যাপ ≈ ক্রিপ ÷ π
+তাপে গ্যাপ কমে: Δগ্যাপ = α × D × (T_শেল − T_টায়ার), α = ১২×১০⁻⁶/°C</div>
+  </div></div>
+
+  <div class="calc" data-calc="oval" hidden><header><h3>শেল ওভালিটি</h3><p>দুই লম্ব ব্যাস থেকে আপেক্ষিক ওভালিটি ও সাধারণ নির্দেশিকা সীমার সাথে তুলনা।</p></header><div class="bd">
+    <div class="fields">
+      <div class="fld"><label for="ovN">নমিনাল ব্যাস (মিমি)</label><input id="ovN" type="number" value="4000" step="1"></div>
+      <div class="fld"><label for="ovX">সর্বোচ্চ ব্যাস (মিমি)</label><input id="ovX" type="number" value="4009" step="0.5"></div>
+      <div class="fld"><label for="ovI">সর্বনিম্ন ব্যাস (মিমি)</label><input id="ovI" type="number" value="3994" step="0.5"></div>
+    </div>
+    <div class="out" id="ovOut"></div>
+    <div class="formula">ω (%) = (Dmax − Dmin) ÷ Dnom × ১০০        নির্দেশিকা সীমা ≈ D(মি) ÷ ১০ %</div>
+  </div></div>
+
+  <div class="calc" data-calc="therm" hidden><header><h3>তাপ প্রসারণ (শেল দৈর্ঘ্য ও ব্যাস)</h3><p>গরম ড্রায়ার কতটা লম্বা হয়, রোলার ফেস ও থ্রাস্ট রোলারের অবস্থান ঠিক করতে কাজে লাগে।</p></header><div class="bd">
+    <div class="fields">
+      <div class="fld"><label for="thL">শেলের দৈর্ঘ্য (মি)</label><input id="thL" type="number" value="30" step="0.5"></div>
+      <div class="fld"><label for="thD">শেলের ব্যাস (মি)</label><input id="thD" type="number" value="4" step="0.1"></div>
+      <div class="fld"><label for="thT1">ঠান্ডা তাপমাত্রা (°C)</label><input id="thT1" type="number" value="30" step="1"></div>
+      <div class="fld"><label for="thT2">গড় চালু তাপমাত্রা (°C)</label><input id="thT2" type="number" value="140" step="1"></div>
+      <div class="fld"><label for="thA">α (×১০⁻⁶/°C)</label><select id="thA"><option value="12">কার্বন স্টিল (১২)</option><option value="16.5">স্টেইনলেস ৩০৪/৩১৬ (১৬.৫)</option></select></div>
+      <div class="fld"><label for="thX">গিয়ার স্টেশন থেকে দূরবর্তী টায়ারের দূরত্ব (মি)</label><input id="thX" type="number" value="18" step="0.5"></div>
+    </div>
+    <div class="out" id="thOut"></div>
+    <div class="formula">ΔL = α × L × ΔT          ΔD = α × D × ΔT</div>
+  </div></div>
+
+  <div class="calc" data-calc="dry" hidden><header><h3>ড্রায়ার: ম্যাস ব্যালান্স, হিট ব্যালান্স, গ্যাস ও জ্বালানি</h3><p>কত পানি শুকাতে হবে, কত তাপ, কত গ্যাস, কত জ্বালানি এবং ড্রামে গ্যাসের বেগ।</p></header><div class="bd">
+    <div class="fields">
+      <div class="fld"><label for="dyF">ভেজা ফিড (টন/ঘণ্টা)</label><input id="dyF" type="number" value="250" step="1"></div>
+      <div class="fld"><label for="dyX1">ইনলেট আর্দ্রতা (% ভেজা ভিত্তি)</label><input id="dyX1" type="number" value="3" step="0.1"></div>
+      <div class="fld"><label for="dyX2">আউটলেট আর্দ্রতা (%)</label><input id="dyX2" type="number" value="1.2" step="0.1"></div>
+      <div class="fld"><label for="dyTs1">দানার ইনলেট তাপমাত্রা (°C)</label><input id="dyTs1" type="number" value="85" step="1"></div>
+      <div class="fld"><label for="dyTs2">দানার আউটলেট তাপমাত্রা (°C)</label><input id="dyTs2" type="number" value="90" step="1"></div>
+      <div class="fld"><label for="dyCp">দানার Cp (kJ/kg·K)</label><input id="dyCp" type="number" value="1.2" step="0.05"></div>
+      <div class="fld"><label for="dyTg1">ইনলেট গ্যাস (°C)</label><input id="dyTg1" type="number" value="380" step="5"></div>
+      <div class="fld"><label for="dyTg2">আউটলেট গ্যাস (°C)</label><input id="dyTg2" type="number" value="100" step="1"></div>
+      <div class="fld"><label for="dyLoss">তাপ লস (%)</label><input id="dyLoss" type="number" value="12" step="1"></div>
+      <div class="fld"><label for="dyFuel">জ্বালানি</label><select id="dyFuel"><option value="40.5|kg">ফার্নেস অয়েল (LHV ৪০.৫ MJ/kg)</option><option value="42.7|kg">ডিজেল (৪২.৭ MJ/kg)</option><option value="34.0|Nm3">প্রাকৃতিক গ্যাস (৩৪ MJ/Nm³)</option></select></div>
+      <div class="fld"><label for="dyD">ড্রামের ভেতরের ব্যাস (মি)</label><input id="dyD" type="number" value="4" step="0.1"></div>
+      <div class="fld"><label for="dyL">দৈর্ঘ্য (মি)</label><input id="dyL" type="number" value="25" step="0.5"></div>
+    </div>
+    <div class="out" id="dyOut"></div>
+    <div class="formula">শুকনো সলিড = F(১ − x₁)     পণ্য = শুকনো সলিড ÷ (১ − x₂)     বাষ্পীভূত পানি W = F − পণ্য
+Q_পানি = W × [৪.১৯(১০০ − Ts₁) + ২২৫৭ + ১.৯(Tg₂ − ১০০)]   kJ
+Q_সলিড = পণ্য × Cp × (Ts₂ − Ts₁)        Q_মোট = (Q_পানি + Q_সলিড) ÷ (১ − লস)
+গ্যাস (কেজি/ঘণ্টা) = Q_মোট ÷ [১.০৮ × (Tg₁ − Tg₂)]       জ্বালানি = Q_মোট ÷ LHV</div>
+  </div></div>
+
+  <div class="calc" data-calc="size" hidden><header><h3>ড্রায়ার সাইজিং: গ্যাস বেগ থেকে ব্যাস</h3><p>নির্দিষ্ট গ্যাস প্রবাহ ও অনুমোদিত বেগে কত ব্যাস লাগে; এবং ভলিউমেট্রিক ইভাপোরেশন যাচাই।</p></header><div class="bd">
+    <div class="fields">
+      <div class="fld"><label for="szQ">আউটলেটে প্রকৃত গ্যাস প্রবাহ (মি³/ঘণ্টা)</label><input id="szQ" type="number" value="140000" step="1000"></div>
+      <div class="fld"><label for="szV">অনুমোদিত গ্যাস বেগ (মি/সে)</label><input id="szV" type="number" value="2.8" step="0.1"></div>
+      <div class="fld"><label for="szF">ফিল + ফ্লাইটে দানা (%)</label><input id="szF" type="number" value="12" step="1"></div>
+      <div class="fld"><label for="szW">বাষ্পীভূত পানি (কেজি/ঘণ্টা)</label><input id="szW" type="number" value="4600" step="100"></div>
+      <div class="fld"><label for="szLD">L/D অনুপাত</label><input id="szLD" type="number" value="6" step="0.5"></div>
+    </div>
+    <div class="out" id="szOut"></div>
+    <div class="formula">D = √[ ৪Q ÷ (π × v × ৩৬০০ × (১ − ফিল)) ]      L = (L/D) × D
+ভলিউমেট্রিক ইভাপোরেশন = W ÷ (π D² L ÷ ৪)    [সাধারণ ১০–৫০ কেজি/ঘণ্টা·মি³; DAP-এ কম পানি বলে নিচের দিকে]</div>
+  </div></div>
+
+  <div class="calc" data-calc="dap" hidden><header><h3>DAP/MAP ম্যাস ব্যালান্স: অ্যাসিড, অ্যামোনিয়া, রিসাইকেল</h3><p>নির্দিষ্ট উৎপাদনের জন্য কাঁচামাল, অ্যামোনিয়া বণ্টন ও বিক্রিয়ার তাপ (আনুমানিক)।</p></header><div class="bd">
+    <div class="fields">
+      <div class="fld"><label for="dpP">উৎপাদন (টন/ঘণ্টা)</label><input id="dpP" type="number" value="60" step="1"></div>
+      <div class="fld"><label for="dpN">পণ্যে N (%)</label><input id="dpN" type="number" value="18" step="0.1"></div>
+      <div class="fld"><label for="dpP2">পণ্যে P₂O₅ (%)</label><input id="dpP2" type="number" value="46" step="0.1"></div>
+      <div class="fld"><label for="dpA">অ্যাসিডের শক্তি (% P₂O₅)</label><input id="dpA" type="number" value="52" step="0.5"></div>
+      <div class="fld"><label for="dpRho">অ্যাসিডের ঘনত্ব (টন/মি³)</label><input id="dpRho" type="number" value="1.68" step="0.01"></div>
+      <div class="fld"><label for="dpLoss">P₂O₅ লস (%)</label><input id="dpLoss" type="number" value="1" step="0.5"></div>
+      <div class="fld"><label for="dpNl">NH₃ লস স্ক্রাবারের পরে (%)</label><input id="dpNl" type="number" value="2" step="0.5"></div>
+      <div class="fld"><label for="dpMRp">প্রি-নিউট্রালাইজার MR</label><input id="dpMRp" type="number" value="1.4" step="0.05"></div>
+      <div class="fld"><label for="dpRR">রিসাইকেল রেশিও</label><input id="dpRR" type="number" value="4" step="0.5"></div>
+    </div>
+    <div class="out" id="dpOut"></div>
+    <div class="formula">P₂O₅ দরকার = উৎপাদন × P₂O₅% ÷ (১ − লস)       অ্যাসিড = P₂O₅ ÷ অ্যাসিড শক্তি
+NH₃ = উৎপাদন × N% × (১৭.০৩ ÷ ১৪.০১) ÷ (১ − NH₃ লস)
+MR = (N ÷ ১৪.০১) ÷ (২ × P₂O₅ ÷ ১৪১.৯৪)      PN-এ NH₃ ভাগ ≈ MR_PN ÷ MR_মোট
+বিক্রিয়ার তাপ ≈ n_P × [১৩৪ + (MR − ১) × ৭৮] kJ  (n_P = H₃PO₄ kmol; আনুমানিক)</div>
+  </div></div>
+
+  <div class="calc" data-calc="mr" hidden><header><h3>মোল রেশিও (NH₃ : H₃PO₄)</h3><p>দুইভাবে: ল্যাব বিশ্লেষণ (N%, P₂O₅%) থেকে, অথবা ফিড ফ্লো থেকে।</p></header><div class="bd">
+    <div class="fields">
+      <div class="fld"><label for="mrN">নমুনায় N (%)</label><input id="mrN" type="number" value="17.6" step="0.1"></div>
+      <div class="fld"><label for="mrP">নমুনায় P₂O₅ (%)</label><input id="mrP" type="number" value="46.2" step="0.1"></div>
+      <div class="fld"><label for="mrNH">NH₃ ফ্লো (কেজি/ঘণ্টা)</label><input id="mrNH" type="number" value="13300" step="100"></div>
+      <div class="fld"><label for="mrAc">অ্যাসিড ফ্লো (কেজি/ঘণ্টা)</label><input id="mrAc" type="number" value="53600" step="100"></div>
+      <div class="fld"><label for="mrAs">অ্যাসিডের শক্তি (% P₂O₅)</label><input id="mrAs" type="number" value="52" step="0.5"></div>
+    </div>
+    <div class="out" id="mrOut"></div>
+    <div class="formula">বিশ্লেষণ থেকে:  MR = (N% ÷ ১৪.০০৭) ÷ (২ × P₂O₅% ÷ ১৪১.৯৪)
+ফ্লো থেকে:  MR = (NH₃ ÷ ১৭.০৩১) ÷ (২ × অ্যাসিড × শক্তি ÷ ১৪১.৯৪)
+N:P₂O₅ ওজন অনুপাত, DAP (MR ২.০) = ০.৩৯৫</div>
+  </div></div>
+
+  <div class="calc" data-calc="rr" hidden><header><h3>রিসাইকেল রেশিও ও গ্রানুলেটর লোড</h3><p>অন-সাইজ ভগ্নাংশ থেকে কতটা রিসাইকেল হবে, আর মোট লুপের লোড।</p></header><div class="bd">
+    <div class="fields">
+      <div class="fld"><label for="rrP">উৎপাদন (টন/ঘণ্টা)</label><input id="rrP" type="number" value="60" step="1"></div>
+      <div class="fld"><label for="rrX">স্ক্রিনে অন-সাইজ ভগ্নাংশ (%)</label><input id="rrX" type="number" value="25" step="1"></div>
+      <div class="fld"><label for="rrB">অন-সাইজ থেকে নিয়ন্ত্রণের জন্য ফেরত (টন/ঘণ্টা)</label><input id="rrB" type="number" value="0" step="1"></div>
+    </div>
+    <div class="out" id="rrOut"></div>
+    <div class="formula">স্ক্রিনে মোট = (উৎপাদন + অন-সাইজ ফেরত) ÷ অন-সাইজ ভগ্নাংশ
+রিসাইকেল = স্ক্রিনে মোট − উৎপাদন          রিসাইকেল রেশিও = রিসাইকেল ÷ উৎপাদন</div>
+  </div></div>
+
+  <div class="calc" data-calc="coat" hidden><header><h3>কোটিং অয়েল ও পাউডার ডোজ</h3><p>পাম্প সেটিং, দৈনিক খরচ ও স্টক কত দিন চলবে।</p></header><div class="bd">
+    <div class="fields">
+      <div class="fld"><label for="ctP">উৎপাদন (টন/ঘণ্টা)</label><input id="ctP" type="number" value="60" step="1"></div>
+      <div class="fld"><label for="ctD">অয়েল ডোজ (কেজি/টন)</label><input id="ctD" type="number" value="2" step="0.1"></div>
+      <div class="fld"><label for="ctRho">অয়েলের ঘনত্ব (কেজি/লিটার)</label><input id="ctRho" type="number" value="0.88" step="0.01"></div>
+      <div class="fld"><label for="ctPw">পাউডার ডোজ (%)</label><input id="ctPw" type="number" value="0" step="0.1"></div>
+      <div class="fld"><label for="ctDisp">পাম্পের ডিসপ্লেসমেন্ট (মিলি/পাক)</label><input id="ctDisp" type="number" value="25" step="1"></div>
+      <div class="fld"><label for="ctH">দিনে চালু ঘণ্টা</label><input id="ctH" type="number" value="22" step="1"></div>
+      <div class="fld"><label for="ctStk">অয়েলের স্টক (টন)</label><input id="ctStk" type="number" value="20" step="1"></div>
+    </div>
+    <div class="out" id="ctOut"></div>
+    <div class="formula">অয়েল (কেজি/ঘণ্টা) = উৎপাদন × ডোজ       লিটার/ঘণ্টা = কেজি ÷ ঘনত্ব
+পাম্প rpm = লিটার/ঘণ্টা × ১০০০ ÷ (৬০ × ডিসপ্লেসমেন্ট)    কোটিং % = ডোজ ÷ ১০</div>
+  </div></div>
+
+  <div class="calc" data-calc="grease" hidden><header><h3>বেয়ারিং গ্রিজের পরিমাণ ও রিলুব্রিকেশন সময়</h3><p>SKF-এর প্রচলিত আনুমানিক সূত্র। তাপমাত্রা ৭০°C-এর বেশি হলে প্রতি ১৫°C-এ সময় অর্ধেক।</p></header><div class="bd">
+    <div class="fields">
+      <div class="fld"><label for="grsD">বাইরের ব্যাস D (মিমি)</label><input id="grsD" type="number" value="400" step="1"></div>
+      <div class="fld"><label for="grsB">প্রস্থ B (মিমি)</label><input id="grsB" type="number" value="128" step="1"></div>
+      <div class="fld"><label for="grsd">বোর d (মিমি)</label><input id="grsd" type="number" value="240" step="1"></div>
+      <div class="fld"><label for="grsN">বেয়ারিংয়ের গতি (rpm)</label><input id="grsN" type="number" value="30" step="1"></div>
+      <div class="fld"><label for="grsK">বেয়ারিং ধরন</label><select id="grsK"><option value="1">স্ফেরিক্যাল/টেপার রোলার (k=১)</option><option value="5">সিলিন্ড্রিক্যাল রোলার (k=৫)</option><option value="10">বল বেয়ারিং (k=১০)</option></select></div>
+      <div class="fld"><label for="grsT">চালু তাপমাত্রা (°C)</label><input id="grsT" type="number" value="60" step="1"></div>
+      <div class="fld"><label for="grsS">গ্রিজ গান: গ্রাম প্রতি স্ট্রোক</label><input id="grsS" type="number" value="1.3" step="0.1"></div>
+    </div>
+    <div class="out" id="grsOut"></div>
+    <div class="formula">G (গ্রাম) = ০.০০৫ × D × B
+t_f (ঘণ্টা) ≈ k × [ ১৪×১০⁶ ÷ (n × √d) − ৪d ]   (৭০°C পর্যন্ত; ধুলাময় পরিবেশে কমিয়ে নিন)</div>
+  </div></div>
+
+  <div class="calc" data-calc="gearcl" hidden><header><h3>গার্থ গিয়ার: পিচ ব্যাস, রুট ক্লিয়ারেন্স ও ব্যাকল্যাশ</h3><p>মডিউল ও দাঁত থেকে মাপ; গরমে গিয়ার বড় হওয়ার ভাতাসহ ঠান্ডা অবস্থার সেটিং।</p></header><div class="bd">
+    <div class="fields">
+      <div class="fld"><label for="gcM">মডিউল m (মিমি)</label><input id="gcM" type="number" value="20" step="1"></div>
+      <div class="fld"><label for="gcZg">গার্থ গিয়ারের দাঁত</label><input id="gcZg" type="number" value="180" step="1"></div>
+      <div class="fld"><label for="gcZp">পিনিয়নের দাঁত</label><input id="gcZp" type="number" value="20" step="1"></div>
+      <div class="fld"><label for="gcDT">গিয়ার রিমের তাপ বৃদ্ধি (°C)</label><input id="gcDT" type="number" value="40" step="1"></div>
+      <div class="fld"><label for="gcDP">পিনিয়নের তাপ বৃদ্ধি (°C)</label><input id="gcDP" type="number" value="15" step="1"></div>
+    </div>
+    <div class="out" id="gcOut"></div>
+    <div class="formula">পিচ ব্যাস d = m × z      সেন্টার দূরত্ব a = m(z_g + z_p) ÷ ২
+নমিনাল রুট ক্লিয়ারেন্স ≈ ০.২৫m       ঠান্ডা সেটিং = ০.২৫m + Δr_গিয়ার + Δr_পিনিয়ন   (দুটোই গরমে বড় হয়ে ফাঁক কমায়)
+ব্যাকল্যাশ নির্দেশিকা ≈ ০.০৪m – ০.০৮m</div>
+  </div></div>
+
+  <div class="calc" data-calc="corr" hidden><header><h3>শেল ক্ষয়ের হার ও বাকি আয়ু</h3><p>UT মাপ থেকে বছরে কত ক্ষয় হচ্ছে ও কবে ন্যূনতম পুরুত্বে পৌঁছাবে।</p></header><div class="bd">
+    <div class="fields">
+      <div class="fld"><label for="coT0">মূল পুরুত্ব (মিমি)</label><input id="coT0" type="number" value="25" step="0.5"></div>
+      <div class="fld"><label for="coT1">বর্তমান মাপা ন্যূনতম (মিমি)</label><input id="coT1" type="number" value="21.4" step="0.1"></div>
+      <div class="fld"><label for="coY">চালু বছর</label><input id="coY" type="number" value="8" step="0.5"></div>
+      <div class="fld"><label for="coTm">অনুমোদিত ন্যূনতম (মিমি)</label><input id="coTm" type="number" value="17.5" step="0.5"></div>
+    </div>
+    <div class="out" id="coOut"></div>
+    <div class="formula">ক্ষয়ের হার = (মূল − বর্তমান) ÷ বছর        বাকি আয়ু = (বর্তমান − ন্যূনতম) ÷ হার</div>
+  </div></div>
+
+  <div class="calc" data-calc="slope" hidden><header><h3>ঢাল রূপান্তর ও উচ্চতার পার্থক্য</h3><p>যেকোনো একটি ঘরে লিখুন, বাকিগুলো বদলে যাবে।</p></header><div class="bd">
+    <div class="fields">
+      <div class="fld"><label for="slDeg">ডিগ্রি</label><input id="slDeg" type="number" value="2" step="0.01"></div>
+      <div class="fld"><label for="slPct">শতাংশ (%)</label><input id="slPct" type="number" step="0.01"></div>
+      <div class="fld"><label for="slMm">মিমি প্রতি মিটার</label><input id="slMm" type="number" step="0.1"></div>
+      <div class="fld"><label for="slIn">ইঞ্চ প্রতি ফুট</label><input id="slIn" type="number" step="0.001"></div>
+      <div class="fld"><label for="slLen">দুই টায়ারের দূরত্ব (মি)</label><input id="slLen" type="number" value="15" step="0.1"></div>
+    </div>
+    <div class="out" id="slOut"></div>
+  </div></div>
+
+  <div class="calc" data-calc="gas" hidden><header><h3>গ্যাস ভলিউম: Nm³ ↔ প্রকৃত m³ ↔ কেজি</h3><p>ফ্যান ও ডাক্টের হিসাবে প্রকৃত তাপমাত্রা ও চাপে আয়তন।</p></header><div class="bd">
+    <div class="fields">
+      <div class="fld"><label for="gsN">প্রবাহ (Nm³/ঘণ্টা, ০°C, ১ atm)</label><input id="gsN" type="number" value="100000" step="1000"></div>
+      <div class="fld"><label for="gsT">প্রকৃত তাপমাত্রা (°C)</label><input id="gsT" type="number" value="100" step="1"></div>
+      <div class="fld"><label for="gsP">গেজ চাপ (mmWC, ঋণাত্মক = ড্রাফট)</label><input id="gsP" type="number" value="-150" step="10"></div>
+      <div class="fld"><label for="gsD">ডাক্টের ব্যাস (মি, বেগের জন্য)</label><input id="gsD" type="number" value="2" step="0.1"></div>
+    </div>
+    <div class="out" id="gsOut"></div>
+    <div class="formula">Q_প্রকৃত = Q_N × (২৭৩.১৫ + T) ÷ ২৭৩.১৫ × ১০৩৩২ ÷ (১০৩৩২ + P_mmWC)
+ভর ≈ Q_N × ১.২৯৩ কেজি/Nm³ (বাতাস)       ১ mmWC = ৯.৮০৭ Pa</div>
+  </div></div>
+
+  <div class="calc" data-calc="skewm" hidden><header><h3>স্কিউ পরিমাণ: বেয়ারিং কত সরালে কত কোণ</h3><p>স্কিউ কোণ সাধারণত খুব ছোট (০.০১–০.০৫°)। এক ধাপে সামান্য সরান।</p></header><div class="bd">
+    <div class="fields">
+      <div class="fld"><label for="smC">দুই বেয়ারিং কেন্দ্রের দূরত্ব (মিমি)</label><input id="smC" type="number" value="1800" step="10"></div>
+      <div class="fld"><label for="smX">একটি বেয়ারিং সরানো (মিমি)</label><input id="smX" type="number" value="0.5" step="0.05"></div>
+      <div class="fld"><label for="smW">রোলারের বল (kN)</label><input id="smW" type="number" value="500" step="10"></div>
+      <div class="fld"><label for="smT">টায়ারের বাইরের ব্যাস (মি)</label><input id="smT" type="number" value="4.6" step="0.05"></div>
+      <div class="fld"><label for="smMu">টায়ার-রোলার ঘর্ষণ সহগ</label><input id="smMu" type="number" value="0.1" step="0.01"></div>
+    </div>
+    <div class="out" id="smOut"></div>
+    <div class="formula">স্কিউ কোণ ψ = arctan(সরানো ÷ বেয়ারিং দূরত্ব)
+পিছলানো না হলে প্রতি ড্রাম-পাকে টায়ারের অ্যাক্সিয়াল সরণ = π × D_টায়ার × tan ψ
+বাস্তবে আংশিক পিছলায়; একটি রোলার সর্বোচ্চ যে অ্যাক্সিয়াল বল দিতে পারে ≈ μ × রোলারের বল
+সাধারণ নিয়ম: প্রতিবার ≤ ০.২৫–০.৫ মিমি, ২৪ ঘণ্টা পর্যবেক্ষণ</div>
+  </div></div>
+</div>
+</section>
