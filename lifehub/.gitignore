@@ -3,3 +3,4 @@ data/*.sqlite
 uploads/*
 !uploads/.htaccess
 !uploads/index.html
+data/cron.lock

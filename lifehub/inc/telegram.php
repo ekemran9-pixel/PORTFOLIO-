@@ -26,6 +26,7 @@ function telegram_api(string $method, array $params = [], bool $multipart = fals
 function telegram_send(string $chatId, string $text): array
 {
     $res = ['ok' => false, 'error' => 'empty'];
+    $text = str_replace('**', '', $text);
     foreach (mb_str_split($text, 4000) ?: [''] as $chunk) {
         $res = telegram_api('sendMessage', ['chat_id' => $chatId, 'text' => $chunk, 'disable_web_page_preview' => true]);
         if (!$res['ok']) {

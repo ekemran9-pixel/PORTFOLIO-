@@ -52,6 +52,27 @@ function store_upload(array $file, string $title, string $tags, ?int $customerId
     return $id;
 }
 
+/** Saves a file that is already on the server (e.g. downloaded from Telegram) into the vault. */
+function store_local_file(string $path, string $name, string $title, string $tags): int|string
+{
+    $ext = strtolower(pathinfo($name, PATHINFO_EXTENSION));
+    if (!isset(MEDIA_TYPES[$ext])) {
+        return t('file_type_not_allowed') . ': .' . $ext;
+    }
+    [$kind, $mime] = MEDIA_TYPES[$ext];
+    $stored = date('Ym') . '/' . bin2hex(random_bytes(16)) . '.' . $ext;
+    $dir = uploads_dir() . '/' . date('Ym');
+    if ((!is_dir($dir) && !mkdir($dir, 0755, true)) || !copy($path, uploads_dir() . '/' . $stored)) {
+        return t('upload_error');
+    }
+    q('INSERT INTO media (kind, title, original_name, stored_name, mime, size, tags, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
+        [$kind, $title, mb_substr($name, 0, 250), $stored, $mime, (int) filesize($path), $tags, now()]);
+    $id = (int) db()->lastInsertId();
+    log_activity('media_uploaded', $name);
+    fire_event('media_uploaded', ['id' => $id, 'kind' => $kind, 'name' => $name, 'title' => $title, 'url' => base_url() . 'file.php?id=' . $id]);
+    return $id;
+}
+
 /** Normalises the multi-file $_FILES structure into a list. */
 function files_list(string $field): array
 {

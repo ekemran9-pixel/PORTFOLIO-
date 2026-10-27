@@ -4,7 +4,7 @@
 declare(strict_types=1);
 
 define('APP_ROOT', dirname(__DIR__));
-define('APP_VERSION', '1.0.0');
+define('APP_VERSION', '2.0.0');
 
 $configFile = APP_ROOT . '/config.php';
 if (!is_file($configFile)) {
@@ -204,9 +204,12 @@ function post(string $key, string $default = ''): string
 function base_url(): string
 {
     $saved = setting('site_url');
-    if ($saved) {
-        return rtrim($saved, '/') . '/';
-    }
+    return $saved ? rtrim($saved, '/') . '/' : request_base_url();
+}
+
+/** Base URL as seen in the current HTTP request. */
+function request_base_url(): string
+{
     $https = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || ($_SERVER['HTTP_X_FORWARDED_PROTO'] ?? '') === 'https';
     $dir = rtrim(str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME'] ?? '/')), '/');
     return ($https ? 'https' : 'http') . '://' . ($_SERVER['HTTP_HOST'] ?? 'localhost') . $dir . '/';

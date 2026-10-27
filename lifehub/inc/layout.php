@@ -11,6 +11,7 @@ function nav_items(): array
         'media.php'     => ['nav_media', '<path d="M21 19V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2zM8.5 13.5l2.5 3 3.5-4.5 4.5 6H5z"/>'],
         'reports.php'   => ['nav_reports', '<path d="M4 20h16v2H2V2h2zm3-3V9h3v8zm5 0V4h3v13zm5 0v-6h3v6z"/>'],
         'notion.php'    => ['nav_notion', '<path d="M4 3.5 14.8 2.7c1.3-.1 1.7 0 2.5.6l3.5 2.4c.6.4.7.6.7 1.1v13c0 .8-.3 1.3-1.4 1.4L7.6 22c-.8 0-1.2-.1-1.6-.7L3.3 17.9c-.5-.6-.7-1.1-.7-1.7V4.9c0-.7.3-1.3 1.4-1.4zm4.2 4.2v11.7l9.6-.6V7.2zM9.6 9l1.6-.1 3.5 5.4V9.2l1.4-.1v7.3l-1.3.1-3.7-5.6v5.3l-1.5.1z"/>'],
+        'recipes.php'   => ['nav_recipes', '<path d="M13 2 4 14h7l-1 8 9-12h-7z"/>'],
         'import.php'    => ['nav_import', '<path d="M5 20h14v-2H5zm7-18-5.5 5.5 1.4 1.4L11 5.8V16h2V5.8l3.1 3.1 1.4-1.4z"/>'],
         'settings.php'  => ['nav_settings', '<path d="M19.4 13a7.6 7.6 0 0 0 0-2l2.1-1.6-2-3.5-2.5 1a7.4 7.4 0 0 0-1.7-1L15 3h-4l-.4 2.6a7.4 7.4 0 0 0-1.7 1l-2.5-1-2 3.5L6.6 11a7.6 7.6 0 0 0 0 2l-2.1 1.6 2 3.5 2.5-1a7.4 7.4 0 0 0 1.7 1L11 21h4l.4-2.6a7.4 7.4 0 0 0 1.7-1l2.5 1 2-3.5zM13 15.5a3.5 3.5 0 1 1 3.5-3.5 3.5 3.5 0 0 1-3.5 3.5z"/>'],
     ];
@@ -20,6 +21,14 @@ function page_header(string $title, array $opts = []): void
 {
     $current = basename($_SERVER['SCRIPT_NAME']);
     $user = current_user();
+    if ($user && !empty($_SERVER['HTTP_HOST'])) {
+        // Remember the public address for webhooks and cron (prefer https once seen).
+        $saved = (string) setting('site_url', '');
+        $req = request_base_url();
+        if ($saved === '' || (str_starts_with($saved, 'http://') && str_starts_with($req, 'https://'))) {
+            set_setting('site_url', $req);
+        }
+    }
     $flash = flash();
     $otherLang = lang() === 'bn' ? 'en' : 'bn';
     $qs = $_GET;
@@ -57,8 +66,8 @@ function page_header(string $title, array $opts = []): void
     </nav>
     <div class="sidebar-foot">
       <div class="soon">
-        <strong><?= e(t('coming_soon')) ?></strong>
-        <span><?= e(t('coming_soon_list')) ?></span>
+        <strong><?= e(t('status')) ?></strong>
+        <span><?= ai_provider() ? '🟢' : '⚪' ?> AI · <?= setting('telegram_chat_id') ? '🟢' : '⚪' ?> Telegram · <?= setting('notion_db_entries') ? '🟢' : '⚪' ?> Notion</span>
       </div>
     </div>
   </aside>
@@ -102,6 +111,33 @@ function page_footer(array $scripts = []): void
 </body>
 </html>
 <?php
+    schedule_pseudo_cron();
+}
+
+/**
+ * Fallback when no cPanel cron job is set: after a logged-in page has been sent,
+ * run due recipes at most every 5 minutes. Only on servers that can finish the response early.
+ */
+function schedule_pseudo_cron(): void
+{
+    if (!current_user() || (strtotime((string) setting('cron_last_tick', '1970-01-01')) > time() - 300)) {
+        return;
+    }
+    $finish = function_exists('fastcgi_finish_request') ? 'fastcgi_finish_request' : (function_exists('litespeed_finish_request') ? 'litespeed_finish_request' : null);
+    if (!$finish) {
+        return;
+    }
+    register_shutdown_function(function () use ($finish) {
+        session_write_close();
+        $finish();
+        ignore_user_abort(true);
+        set_time_limit(240);
+        $fp = fopen(APP_ROOT . '/data/cron.lock', 'c');
+        if ($fp && flock($fp, LOCK_EX | LOCK_NB)) {
+            run_due_recipes();
+            flock($fp, LOCK_UN);
+        }
+    });
 }
 
 // Strings the JavaScript side needs.

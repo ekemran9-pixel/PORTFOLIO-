@@ -45,7 +45,8 @@ page_header(t('nav_dashboard'));
     <p class="muted"><?= e(t('hero_sub')) ?></p>
   </div>
   <div class="hero-actions">
-    <a class="btn primary" href="customers.php?new=1">+ <?= e(t('add_customer')) ?></a>
+    <a class="btn primary" href="ai.php">✦ <?= e(t('nav_ai')) ?></a>
+    <a class="btn" href="customers.php?new=1">+ <?= e(t('add_customer')) ?></a>
     <a class="btn" href="entries.php?new=1">+ <?= e(t('add_entry')) ?></a>
     <a class="btn" href="media.php">⬆ <?= e(t('upload_files')) ?></a>
   </div>

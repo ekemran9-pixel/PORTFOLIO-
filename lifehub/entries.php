@@ -79,7 +79,7 @@ $from = 'FROM entries e LEFT JOIN customers c ON c.id = e.customer_id';
 $total = (int) q("SELECT COUNT(*) $from $whereSql", $params)->fetchColumn();
 $sums = q("SELECT e.type, SUM(e.amount) AS s $from $whereSql GROUP BY e.type", $params)->fetchAll(PDO::FETCH_KEY_PAIR);
 $list = q("SELECT e.*, c.name AS customer_name $from $whereSql ORDER BY e.entry_date DESC, e.id DESC LIMIT $perPage OFFSET $offset", $params)->fetchAll();
-$self = 'entries.php' . ($_SERVER['QUERY_STRING'] ? '?' . $_SERVER['QUERY_STRING'] : '');
+$self = 'entries.php' . (!empty($_SERVER['QUERY_STRING']) ? '?' . $_SERVER['QUERY_STRING'] : '');
 
 page_header(t('nav_entries'));
 ?>

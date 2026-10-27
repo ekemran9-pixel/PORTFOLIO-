@@ -1,5 +1,5 @@
 // Caches only static assets so the app opens fast; private data is never cached.
-const CACHE = 'lifehub-v1';
+const CACHE = 'lifehub-v2';
 const ASSETS = ['assets/app.css', 'assets/app.js', 'assets/icon.svg', 'manifest.json'];
 self.addEventListener('install', (e) => e.waitUntil(caches.open(CACHE).then((c) => c.addAll(ASSETS))));
 self.addEventListener('activate', (e) => e.waitUntil(

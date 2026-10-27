@@ -2,6 +2,9 @@
 Options -Indexes
 DirectoryIndex index.php
 
+# Pass the Authorization header to PHP (needed by hook.php on some cPanel servers)
+SetEnvIf Authorization "(.*)" HTTP_AUTHORIZATION=$1
+
 # Block direct access to config and internal files
 <FilesMatch "^(config\.php|config\.sample\.php|.*\.sqlite|.*\.md)$">
   Require all denied
