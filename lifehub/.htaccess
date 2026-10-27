@@ -1,0 +1,19 @@
+# LifeHub — security rules for Apache / cPanel
+Options -Indexes
+DirectoryIndex index.php
+
+# Block direct access to config and internal files
+<FilesMatch "^(config\.php|config\.sample\.php|.*\.sqlite|.*\.md)$">
+  Require all denied
+</FilesMatch>
+
+# Force HTTPS (enable after SSL is installed in cPanel — AutoSSL is free)
+# RewriteEngine On
+# RewriteCond %{HTTPS} off
+# RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+<IfModule mod_php.c>
+  php_value upload_max_filesize 200M
+  php_value post_max_size 210M
+  php_value max_execution_time 300
+</IfModule>

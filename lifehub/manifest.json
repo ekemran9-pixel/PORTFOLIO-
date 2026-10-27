@@ -1,0 +1,10 @@
+{
+  "name": "LifeHub",
+  "short_name": "LifeHub",
+  "description": "Personal automation hub",
+  "start_url": "index.php",
+  "display": "standalone",
+  "background_color": "#f5f6fb",
+  "theme_color": "#5b5bf0",
+  "icons": [{ "src": "assets/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }]
+}
