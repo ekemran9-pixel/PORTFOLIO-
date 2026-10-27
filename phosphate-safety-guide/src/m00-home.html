@@ -1,0 +1,61 @@
+<section class="mod" id="m-home" data-title="হোম">
+<div class="hero"><div class="iso"></div><div class="in">
+  <div style="display:grid;gap:14px;min-width:0">
+    <span class="eb" style="font-family:var(--mono);font-size:12px;color:var(--accent)">HSE-00 · Safety Officer Guide · Phosphate Fertilizer Plant</span>
+    <h1>ফসফেট প্লান্টের <em>সেফটি অফিসার</em> গাইড<span class="e">The complete safety officer's guide for phosphate &amp; fertilizer plants</span></h1>
+    <p>শুরু থেকে শেষ: সেফটি অফিসারের নিজের সুরক্ষা ও যন্ত্রপাতি, প্লান্টের প্রতিটি ইউনিটের ঝুঁকি, অ্যাসিড-অ্যামোনিয়া-ফ্লোরাইড, পারমিট, LOTO, কনফাইন্ড স্পেস, জরুরি অবস্থা, তদন্ত, KPI এবং ১৪টি ক্যালকুলেটর। সহজ বাংলায়, পাশে ইংরেজি।<span class="e">From your own PPE to plant-wide hazard maps, permits, emergencies, investigations, KPIs and calculators — in plain Bangla with English alongside.</span></p>
+    <div class="cta"><a class="btn go" href="#role">শুরু করুন · Start →</a><a class="btn" href="#process">হ্যাজার্ড ম্যাপ</a><a class="btn" href="#emerg">জরুরি অবস্থা</a><a class="btn" href="#calc">ক্যালকুলেটর</a></div>
+  </div>
+  <svg class="isoart" viewBox="0 0 360 250" role="img" aria-label="অ্যানিমেটেড প্লান্ট: রিঅ্যাক্টর, অ্যামোনিয়া ট্যাংক, ড্রায়ার, স্ট্যাক ও সতর্কবাতি">
+    <defs><marker id="hA" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="var(--steel)"/></marker></defs>
+    <line x1="10" y1="222" x2="350" y2="222" class="s"/>
+    <!-- ammonia sphere -->
+    <circle cx="58" cy="168" r="38" class="fs"/><path d="M34 205l-8 17M82 205l8 17M58 206v16" class="s"/>
+    <text x="58" y="172" text-anchor="middle" class="txa">NH₃</text>
+    <!-- reactor -->
+    <rect x="118" y="132" width="62" height="90" class="f"/><ellipse cx="149" cy="132" rx="31" ry="8" class="f"/>
+    <rect x="140" y="104" width="18" height="24" class="fl"/><text x="149" y="180" text-anchor="middle" class="tx">H₃PO₄</text>
+    <!-- stack -->
+    <rect x="300" y="40" width="22" height="182" class="fl"/>
+    <circle class="drift" cx="311" cy="34" r="7" fill="var(--panel-3)" stroke="var(--ink-3)"/>
+    <circle class="drift" cx="318" cy="26" r="5" fill="var(--panel-3)" stroke="var(--ink-3)" style="animation-delay:1.3s"/>
+    <circle class="drift" cx="306" cy="22" r="6" fill="var(--panel-3)" stroke="var(--ink-3)" style="animation-delay:2.6s"/>
+    <!-- dryer drum -->
+    <g transform="rotate(-6 250 172)"><rect x="200" y="156" width="96" height="32" rx="4" class="fm"/><rect x="216" y="152" width="8" height="40" class="f"/><rect x="270" y="152" width="8" height="40" class="f"/></g>
+    <path d="M208 196v26M286 186v36" class="s"/>
+    <!-- pipes (animated) -->
+    <path d="M96 168H118" class="flow" style="stroke-dasharray:6 5;animation:flowdash 1s linear infinite" marker-end="url(#hA)"/>
+    <path d="M180 176H202" class="flow" style="stroke-dasharray:6 5;animation:flowdash 1s linear infinite" marker-end="url(#hA)"/>
+    <path d="M296 160V120H300" class="flow" style="stroke:var(--ink-3);stroke-dasharray:3 5;animation:flowdash 1.4s linear infinite"/>
+    <!-- beacon + windsock -->
+    <rect x="149" y="88" width="6" height="16" fill="var(--ink)"/>
+    <circle class="pulse" cx="152" cy="84" r="9" fill="var(--crit)" opacity=".85"/>
+    <path d="M30 70v60" class="s"/><path d="M30 72l34 6v12l-34 6z" fill="var(--high)" stroke="var(--ink)" stroke-width="1.5" style="transform-box:fill-box;transform-origin:left;animation:flick 1.6s ease-in-out infinite alternate"/>
+    <text x="30" y="62" text-anchor="middle" class="tx">wind</text>
+    <!-- hard hat -->
+    <g transform="translate(212 60)"><path d="M0 34a28 28 0 0 1 56 0z" class="fm"/><rect x="-6" y="34" width="68" height="7" rx="2" fill="var(--ink)"/><path d="M22 10V4h12v6" fill="none" stroke="var(--ink)" stroke-width="2.5"/></g>
+  </svg>
+</div></div>
+
+<div class="sec" id="h-rules">
+  <h2><span class="n">00.1</span><span class="h">জীবন রক্ষাকারী ১২টি নিয়ম <span class="e">12 life-saving rules</span></span></h2>
+  <p>এই নিয়মগুলো কখনো ভাঙা যাবে না। প্রতিটি নিয়মের পেছনে ফসফেট প্লান্টে ঘটে যাওয়া প্রাণঘাতী দুর্ঘটনা আছে।<span class="e">Non-negotiable. Each one is written from real fatal accidents in fertilizer plants.</span></p>
+  <div class="rules" id="rules"></div>
+</div>
+
+<div class="sec" id="h-path">
+  <h2><span class="n">00.2</span><span class="h">শেখার পথ <span class="e">Learning path</span></span></h2>
+  <div class="card" style="padding:4px 16px">
+    <div class="stage me"><div class="no">১</div><div><span class="yr">সপ্তাহ ১ · Week 1</span><h3>নিজেকে ও প্লান্ট চিনুন</h3><p>মডিউল ০১–০৩: নিজের দায়িত্ব, PPE কিট, প্রসেস ফ্লো ও প্রতিটি ইউনিটের বিপদ, রিস্ক ম্যাট্রিক্স।<span class="e">Know your role, your kit, the process and its hazards.</span></p></div></div>
+    <div class="stage"><div class="no">২</div><div><span class="yr">সপ্তাহ ২ · Week 2</span><h3>রাসায়নিক ও PPE</h3><p>মডিউল ০৪–০৫: অ্যাসিড, অ্যামোনিয়া, HF; SDS পড়া; এলাকাভিত্তিক PPE।<span class="e">Chemicals, SDS, PPE by area.</span></p></div></div>
+    <div class="stage"><div class="no">৩</div><div><span class="yr">সপ্তাহ ৩–৪ · Weeks 3–4</span><h3>ঝুঁকিপূর্ণ কাজ নিয়ন্ত্রণ</h3><p>মডিউল ০৬–১৩: পারমিট, LOTO, কনফাইন্ড স্পেস, উচ্চতা, হট ওয়ার্ক, বিদ্যুৎ, মেশিন, লিফটিং।<span class="e">Control high-risk work.</span></p></div></div>
+    <div class="stage"><div class="no">৪</div><div><span class="yr">মাস ২ · Month 2</span><h3>জরুরি অবস্থা ও স্বাস্থ্য</h3><p>মডিউল ১৪–১৬: ERP, মক ড্রিল, শব্দ, তাপ, ধুলা, পরিবেশ।<span class="e">Emergencies, health, environment.</span></p></div></div>
+    <div class="stage"><div class="no">৫</div><div><span class="yr">চলমান · Ongoing</span><h3>ব্যবস্থাপনা ও উন্নতি</h3><p>মডিউল ১৭–২১: তদন্ত, KPI, চেকলিস্ট, ট্রেনিং ও ক্যালকুলেশন; কুইজ দিয়ে নিজেকে যাচাই।<span class="e">Investigate, measure, inspect, train, improve.</span></p></div></div>
+  </div>
+</div>
+
+<div class="sec" id="h-mods">
+  <h2><span class="n">00.3</span><span class="h">সব মডিউল <span class="e">All modules</span></span></h2>
+  <div class="tiles" id="tiles"></div>
+</div>
+</section>

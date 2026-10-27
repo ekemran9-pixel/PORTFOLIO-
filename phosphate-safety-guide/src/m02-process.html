@@ -1,0 +1,39 @@
+<section class="mod" id="m-process" data-title="প্রসেস ও হ্যাজার্ড ম্যাপ" hidden>
+<div class="sheet"><div class="t">
+  <span class="eb">HSE-02 · Process flow &amp; hazard map</span>
+  <h1>প্লান্ট প্রসেস ও হ্যাজার্ড ম্যাপ<span class="e">Where each hazard lives in a phosphate fertilizer plant</span></h1>
+  <p class="lede">রক ফসফেট + সালফিউরিক অ্যাসিড → ফসফরিক অ্যাসিড + জিপসাম; তারপর অ্যামোনিয়া মিশিয়ে DAP/MAP দানা। চার্টের যেকোনো ইউনিটে চাপ দিলে সেই ইউনিটের ঝুঁকি, মাত্রা ও নিয়ন্ত্রণ দেখাবে। পাইপের চলমান রেখা মালের প্রবাহ বোঝায়।<span class="e">Tap a unit to see its hazards, severity and controls. Moving lines show material flow.</span></p>
+</div><div class="tb">
+  <div><small>ইউনিট · Units</small><b id="pfUnits">—</b></div>
+  <div><small>ঝুঁকি · Hazards</small><b id="pfHz">—</b></div>
+  <div><small>সবচেয়ে বিপজ্জনক</small><b>NH₃ · HF · SO₂</b></div>
+  <div><small>বিক্রিয়া · Reaction</small><b>রক + H₂SO₄</b></div>
+</div></div>
+
+<div class="sec" id="p-map">
+  <h2><span class="n">02.1</span><span class="h">অ্যানিমেটেড ফ্লো চার্ট <span class="e">Animated process flow chart</span></span></h2>
+  <div class="player"><button class="btn" id="pfPause" type="button" aria-pressed="false">অ্যানিমেশন থামান · Pause</button><span class="st">বিন্দুর রং = সবচেয়ে বড় ঝুঁকি · Dot colour = worst hazard</span></div>
+  <span class="scrollhint">← চার্টটি পাশে সরিয়ে দেখুন · scroll sideways →</span>
+  <div class="pfw" id="pf"></div>
+  <div class="hzpanel" id="hzInfo" aria-live="polite"></div>
+</div>
+
+<div class="sec" id="p-chem">
+  <h2><span class="n">02.2</span><span class="h">মূল বিক্রিয়া ও কোথায় কোন গ্যাস <span class="e">Key reactions and where gases form</span></span></h2>
+  <div class="formula">Ca₁₀(PO₄)₆F₂ + 10 H₂SO₄ + 20 H₂O → 6 H₃PO₄ + 10 CaSO₄·2H₂O + 2 HF↑
+4 HF + SiO₂ → SiF₄↑ + 2 H₂O        3 SiF₄ + 2 H₂O → 2 H₂SiF₆ + SiO₂
+H₃PO₄ + 2 NH₃ → (NH₄)₂HPO₄  (DAP, তাপ উৎপন্ন · exothermic)
+S + O₂ → SO₂ ;  2 SO₂ + O₂ ⇌ 2 SO₃ (V₂O₅) ;  SO₃ + H₂O → H₂SO₄</div>
+  <div class="grid g3">
+    <div class="card"><h3>ফ্লোরিন <span class="e">Fluorine</span></h3><p>রক ফসফেটে ৩–৪% ফ্লোরিন থাকে। রিঅ্যাক্টর, ফিল্টার, ইভাপোরেটর ও গ্রানুলেটর থেকে HF ও SiF₄ বের হয়, স্ক্রাবারে ধরা হয়। স্ক্রাবার বন্ধ মানে প্লান্ট বন্ধ।</p></div>
+    <div class="card"><h3>অ্যামোনিয়া <span class="e">Ammonia</span></h3><p>প্রি-নিউট্রালাইজার, পাইপ রিঅ্যাক্টর ও গ্রানুলেটরে অতিরিক্ত NH₃ বের হয়; মোল রেশিও বেশি হলে নির্গমন বাড়ে। স্ক্রাবারে ফসফরিক অ্যাসিড দিয়ে ধরা হয়।</p></div>
+    <div class="card"><h3>সালফার অক্সাইড <span class="e">SOx</span></h3><p>সালফিউরিক অ্যাসিড প্লান্টের স্টার্ট-আপ, কনভার্টার সমস্যা বা অ্যাবজর্বার ব্যর্থ হলে স্ট্যাক থেকে SO₂ ও সাদা SO₃ মিস্ট বের হয়।</p></div>
+  </div>
+</div>
+
+<div class="sec" id="p-table">
+  <h2><span class="n">02.3</span><span class="h">এলাকাভিত্তিক ঝুঁকির সারাংশ <span class="e">Hazard summary by area</span></span></h2>
+  <div class="tw"><table class="t" id="hzTable"></table></div>
+  <p class="tcap"><span class="sev x">চরম</span> মৃত্যু/বড় দুর্ঘটনা সম্ভব · <span class="sev h">উচ্চ</span> গুরুতর আঘাত · <span class="sev m">মাঝারি</span> চিকিৎসা লাগে · <span class="sev l">কম</span> প্রাথমিক চিকিৎসা</p>
+</div>
+</section>

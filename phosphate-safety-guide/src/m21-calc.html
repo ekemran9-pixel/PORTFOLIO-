@@ -1,0 +1,215 @@
+<section class="mod" id="m-calc" data-title="সব ক্যালকুলেশন" hidden>
+<div class="sheet"><div class="t">
+  <span class="eb">HSE-21 · Safety calculations</span>
+  <h1>সব সেফটি ক্যালকুলেশন<span class="e">Fourteen field calculators — results update as you type</span></h1>
+  <p class="lede">উপরের বোতাম থেকে ক্যালকুলেটর বেছে নিন। প্রতিটির নিচে সূত্র দেওয়া আছে, যাতে হাতে হিসাব মিলিয়ে নিতে পারেন। ফল সিদ্ধান্তে সাহায্য করে, কিন্তু সাইটের মাপ ও প্রসিডিউরের বিকল্প নয়।<span class="e">Formulas are shown so you can check by hand. Results support, not replace, site measurement.</span></p>
+</div><div class="tb">
+  <div><small>ক্যালকুলেটর</small><b>১৪টি</b></div>
+  <div><small>একক · Units</small><b>SI (m, kg, °C)</b></div>
+  <div><small>গ্যাস ২৫°C</small><b>24.45 L/mol</b></div>
+  <div><small>সতর্কতা</small><b>সবসময় যাচাই করুন</b></div>
+</div></div>
+
+<div class="sec" id="cl-all">
+  <div class="chips calcnav" id="calcNav" role="group" aria-label="ক্যালকুলেটর বাছাই">
+    <button class="chip" data-k="noise" aria-pressed="true">শব্দ ডোজ</button>
+    <button class="chip" data-k="hpd" aria-pressed="false">ইয়ার প্লাগ</button>
+    <button class="chip" data-k="wbgt" aria-pressed="false">WBGT তাপ</button>
+    <button class="chip" data-k="twa" aria-pressed="false">TWA এক্সপোজার</button>
+    <button class="chip" data-k="ppm" aria-pressed="false">ppm ↔ mg/m³</button>
+    <button class="chip" data-k="lel" aria-pressed="false">% LEL</button>
+    <button class="chip" data-k="vent" aria-pressed="false">ভেন্টিলেশন</button>
+    <button class="chip" data-k="fall" aria-pressed="false">ফল ক্লিয়ারেন্স</button>
+    <button class="chip" data-k="sling" aria-pressed="false">স্লিং টান</button>
+    <button class="chip" data-k="ladder" aria-pressed="false">মই</button>
+    <button class="chip" data-k="acid" aria-pressed="false">অ্যাসিড পাতলা</button>
+    <button class="chip" data-k="bund" aria-pressed="false">বান্ড</button>
+    <button class="chip" data-k="ext" aria-pressed="false">এক্সটিংগুইশার</button>
+    <button class="chip" data-k="risk" aria-pressed="false">রিস্ক স্কোর</button>
+  </div>
+
+  <div class="calc" data-calc="noise"><header><h3>শব্দের দৈনিক ডোজ <span class="e">Daily noise dose (NIOSH, 85 dB · 3 dB)</span></h3><p>সর্বোচ্চ ৪টি এলাকায় শব্দ (dB(A)) ও সময় (ঘণ্টা) লিখুন</p></header><div class="bd">
+    <div class="fields">
+      <div class="fld"><label for="nz1">এলাকা ১ dB(A)</label><input type="number" id="nz1" value="98"></div><div class="fld"><label for="nt1">ঘণ্টা</label><input type="number" id="nt1" value="2" step="0.25"></div>
+      <div class="fld"><label for="nz2">এলাকা ২ dB(A)</label><input type="number" id="nz2" value="90"></div><div class="fld"><label for="nt2">ঘণ্টা</label><input type="number" id="nt2" value="3" step="0.25"></div>
+      <div class="fld"><label for="nz3">এলাকা ৩ dB(A)</label><input type="number" id="nz3" value="70"></div><div class="fld"><label for="nt3">ঘণ্টা</label><input type="number" id="nt3" value="3" step="0.25"></div>
+      <div class="fld"><label for="nz4">এলাকা ৪ dB(A)</label><input type="number" id="nz4" value="0"></div><div class="fld"><label for="nt4">ঘণ্টা</label><input type="number" id="nt4" value="0" step="0.25"></div>
+    </div>
+    <div class="out" id="nzOut"></div>
+    <div class="formula">T(L) = 8 ÷ 2^((L − 85) ÷ 3)      Dose% = 100 × Σ (Cᵢ ÷ Tᵢ)
+L(8h TWA) = 85 + 10 × log₁₀(Dose ÷ 100)</div>
+  </div></div>
+
+  <div class="calc" data-calc="hpd" hidden><header><h3>হিয়ারিং প্রোটেক্টরের পর কানে শব্দ <span class="e">Level at the ear with protection</span></h3><p>SNR প্যাকেটে লেখা থাকে</p></header><div class="bd">
+    <div class="fields">
+      <div class="fld"><label for="hpL">এলাকার শব্দ dB(A)</label><input type="number" id="hpL" value="102"></div>
+      <div class="fld"><label for="hpS">SNR (dB)</label><input type="number" id="hpS" value="30"></div>
+      <div class="fld"><label for="hpD">বাস্তব কার্যকারিতা</label><select id="hpD"><option value="0.5" selected>৫০% (প্লাগ, সাধারণ ব্যবহার)</option><option value="0.75">৭৫% (মাফ)</option><option value="1">১০০% (ল্যাব মান)</option></select></div>
+      <div class="fld"><label for="hpX">দ্বিতীয় প্রোটেক্টর</label><select id="hpX"><option value="0">নেই</option><option value="5">প্লাগ + মাফ (+৫ dB)</option></select></div>
+    </div>
+    <div class="out" id="hpOut"></div>
+    <div class="formula">কানে শব্দ ≈ L − (SNR × কার্যকারিতা) − দ্বিতীয় প্রোটেক্টর
+লক্ষ্য ৭০–৮০ dB(A); ৭০-এর কম হলে অতিরিক্ত সুরক্ষা (সংকেত শোনা যায় না)</div>
+  </div></div>
+
+  <div class="calc" data-calc="wbgt" hidden><header><h3>WBGT ও কাজ-বিশ্রাম <span class="e">WBGT and work–rest (ACGIH TLV)</span></h3><p>NWB = ন্যাচারাল ওয়েট বাল্ব, GT = গ্লোব, DB = ড্রাই বাল্ব (°C)</p></header><div class="bd">
+    <div class="fields">
+      <div class="fld"><label for="wbN">NWB °C</label><input type="number" id="wbN" value="27" step="0.1"></div>
+      <div class="fld"><label for="wbG">GT °C</label><input type="number" id="wbG" value="40" step="0.1"></div>
+      <div class="fld"><label for="wbD">DB °C</label><input type="number" id="wbD" value="34" step="0.1"></div>
+      <div class="fld"><label for="wbS">স্থান</label><select id="wbS"><option value="in">ভেতরে / সূর্য নেই</option><option value="out">বাইরে, রোদে</option></select></div>
+      <div class="fld"><label for="wbW">কাজের ধরন</label><select id="wbW"><option value="0">হালকা (প্যানেল দেখা)</option><option value="1" selected>মাঝারি (হাঁটা, হালকা তোলা)</option><option value="2">ভারী (বেলচা, খনন)</option><option value="3">খুব ভারী</option></select></div>
+      <div class="fld"><label for="wbA">অভ্যস্ত? Acclimatised</label><select id="wbA"><option value="1">হ্যাঁ</option><option value="0">না (নতুন)</option></select></div>
+    </div>
+    <div class="out" id="wbOut"></div>
+    <div class="formula">ভেতরে: WBGT = 0.7 NWB + 0.3 GT
+বাইরে: WBGT = 0.7 NWB + 0.2 GT + 0.1 DB</div>
+  </div></div>
+
+  <div class="calc" data-calc="twa" hidden><header><h3>৮ ঘণ্টার TWA এক্সপোজার <span class="e">8-hour time-weighted average</span></h3><p>প্রতিটি সময়ে মাপা ঘনত্ব ও সময়কাল</p></header><div class="bd">
+    <div class="fields">
+      <div class="fld"><label for="tw1">C₁ (ppm)</label><input type="number" id="tw1" value="40"></div><div class="fld"><label for="th1">ঘণ্টা</label><input type="number" id="th1" value="2" step="0.25"></div>
+      <div class="fld"><label for="tw2">C₂ (ppm)</label><input type="number" id="tw2" value="15"></div><div class="fld"><label for="th2">ঘণ্টা</label><input type="number" id="th2" value="4" step="0.25"></div>
+      <div class="fld"><label for="tw3">C₃ (ppm)</label><input type="number" id="tw3" value="5"></div><div class="fld"><label for="th3">ঘণ্টা</label><input type="number" id="th3" value="2" step="0.25"></div>
+      <div class="fld"><label for="twL">সীমা TLV (ppm)</label><input type="number" id="twL" value="25"></div>
+    </div>
+    <div class="out" id="twOut"></div>
+    <div class="formula">TWA = (C₁T₁ + C₂T₂ + C₃T₃) ÷ 8</div>
+  </div></div>
+
+  <div class="calc" data-calc="ppm" hidden><header><h3>ppm ↔ mg/m³ রূপান্তর <span class="e">Gas concentration conversion (25 °C, 1 atm)</span></h3></header><div class="bd">
+    <div class="fields">
+      <div class="fld"><label for="pmG">গ্যাস</label><select id="pmG"><option value="17.03">NH₃ অ্যামোনিয়া</option><option value="20.01">HF</option><option value="64.07">SO₂</option><option value="34.08">H₂S</option><option value="28.01">CO</option><option value="98.08">H₂SO₄ (মিস্ট)</option><option value="70.9">Cl₂</option></select></div>
+      <div class="fld"><label for="pmV">মান</label><input type="number" id="pmV" value="25" step="0.01"></div>
+      <div class="fld"><label for="pmU">একক</label><select id="pmU"><option value="ppm">ppm থেকে</option><option value="mg">mg/m³ থেকে</option></select></div>
+    </div>
+    <div class="out" id="pmOut"></div>
+    <div class="formula">mg/m³ = ppm × MW ÷ 24.45        ppm = mg/m³ × 24.45 ÷ MW</div>
+  </div></div>
+
+  <div class="calc" data-calc="lel" hidden><header><h3>% LEL ↔ % আয়তন <span class="e">%LEL to %volume</span></h3></header><div class="bd">
+    <div class="fields">
+      <div class="fld"><label for="leG">গ্যাস</label><select id="leG"><option value="15">অ্যামোনিয়া (LEL 15%)</option><option value="4">হাইড্রোজেন (4%)</option><option value="5">মিথেন (5%)</option><option value="2.1">LPG/প্রোপেন (2.1%)</option><option value="4.0">H₂S (4.0%)</option><option value="12.5">CO (12.5%)</option></select></div>
+      <div class="fld"><label for="leR">ডিটেক্টরের রিডিং % LEL</label><input type="number" id="leR" value="10" step="0.1"></div>
+    </div>
+    <div class="out" id="leOut"></div>
+    <div class="formula">% আয়তন = % LEL × LEL ÷ 100         ppm = % আয়তন × 10,000</div>
+  </div></div>
+
+  <div class="calc" data-calc="vent" hidden><header><h3>কনফাইন্ড স্পেস ভেন্টিলেশন <span class="e">Purge time and air changes</span></h3></header><div class="bd">
+    <div class="fields">
+      <div class="fld"><label for="vnV">ভেতরের আয়তন m³</label><input type="number" id="vnV" value="120"></div>
+      <div class="fld"><label for="vnQ">ব্লোয়ার m³/মিনিট</label><input type="number" id="vnQ" value="40"></div>
+      <div class="fld"><label for="vnC0">শুরুর ঘনত্ব ppm</label><input type="number" id="vnC0" value="500"></div>
+      <div class="fld"><label for="vnC">লক্ষ্য ppm</label><input type="number" id="vnC" value="10"></div>
+      <div class="fld"><label for="vnK">মিক্সিং ফ্যাক্টর K</label><select id="vnK"><option value="1">১ (ভালো মিশ্রণ)</option><option value="3" selected>৩ (সাধারণ)</option><option value="5">৫ (বাধাযুক্ত ট্যাংক)</option><option value="10">১০ (খুব খারাপ)</option></select></div>
+    </div>
+    <div class="out" id="vnOut"></div>
+    <div class="formula">ACH = Q × 60 ÷ V          t = K × (V ÷ Q) × ln(C₀ ÷ C)</div>
+  </div></div>
+
+  <div class="calc" data-calc="fall" hidden><header><h3>ফল ক্লিয়ারেন্স <span class="e">Required clearance below the anchor</span></h3></header><div class="bd">
+    <div class="fields">
+      <div class="fld"><label for="fcL">ল্যানিয়ার্ড দৈর্ঘ্য m</label><input type="number" id="fcL" value="1.8" step="0.1"></div>
+      <div class="fld"><label for="fcD">অ্যাবজর্বার খোলা m</label><input type="number" id="fcD" value="1.75" step="0.05"></div>
+      <div class="fld"><label for="fcA">অ্যাঙ্কর D-রিংয়ের উপরে (+) / নিচে (−) m</label><input type="number" id="fcA" value="0" step="0.1"></div>
+      <div class="fld"><label for="fcS">নিরাপত্তা ব্যবধান m</label><input type="number" id="fcS" value="1.0" step="0.1"></div>
+      <div class="fld"><label for="fcX">প্ল্যাটফর্মের নিচে খালি জায়গা m</label><input type="number" id="fcX" value="5" step="0.1"></div>
+    </div>
+    <div class="out" id="fcOut"></div>
+    <div class="formula">ফ্রি-ফল = ল্যানিয়ার্ড − অ্যাঙ্করের উচ্চতা (D-রিংয়ের সাপেক্ষে)   (≤ ১.৮ m হতে হবে)
+প্ল্যাটফর্মের নিচে প্রয়োজন = ফ্রি-ফল + অ্যাবজর্বার খোলা + ০.৩ (হারনেস) + নিরাপত্তা ব্যবধান</div>
+  </div></div>
+
+  <div class="calc" data-calc="sling" hidden><header><h3>স্লিং লেগে টান <span class="e">Sling leg tension</span></h3></header><div class="bd">
+    <div class="fields">
+      <div class="fld"><label for="sgW">লোড টন</label><input type="number" id="sgW" value="8" step="0.1"></div>
+      <div class="fld"><label for="sgA">আনুভূমিক থেকে কোণ °</label><input type="number" id="sgA" value="60"></div>
+      <div class="fld"><label for="sgN">ভার বহনকারী লেগ</label><select id="sgN"><option value="1">১</option><option value="2" selected>২</option><option value="3">৩</option></select></div>
+      <div class="fld"><label for="sgS">প্রতি লেগের WLL টন</label><input type="number" id="sgS" value="5" step="0.1"></div>
+    </div>
+    <div class="out" id="sgOut"></div>
+    <div class="formula">প্রতি লেগে টান = W ÷ (n × sin θ)
+৩/৪ লেগের স্লিংয়ে সাধারণত ধরে নিন মাত্র ২টি লেগ পুরো ভার নেয় (অসমান দৈর্ঘ্য)</div>
+  </div></div>
+
+  <div class="calc" data-calc="ladder" hidden><header><h3>মই বসানো <span class="e">Ladder set-up (4:1)</span></h3></header><div class="bd">
+    <div class="fields"><div class="fld"><label for="ldH">ল্যান্ডিংয়ের উচ্চতা m</label><input type="number" id="ldH" value="4" step="0.1"></div></div>
+    <div class="out" id="ldOut"></div>
+    <div class="formula">নিচে দূরত্ব = H ÷ 4      মইয়ের দৈর্ঘ্য = √(H² + (H/4)²) + 1 m (উপরে বাড়তি)</div>
+  </div></div>
+
+  <div class="calc" data-calc="acid" hidden><header><h3>সালফিউরিক অ্যাসিড পাতলা করা <span class="e">Diluting sulphuric acid by mass</span></h3></header><div class="bd">
+    <div class="fields">
+      <div class="fld"><label for="acS">স্টক শক্তি %</label><input type="number" id="acS" value="98"></div>
+      <div class="fld"><label for="acT">লক্ষ্য শক্তি %</label><input type="number" id="acT" value="20"></div>
+      <div class="fld"><label for="acM">মোট দ্রবণ কেজি</label><input type="number" id="acM" value="100"></div>
+    </div>
+    <div class="out" id="acOut"></div>
+    <div class="formula">অ্যাসিড কেজি = মোট × লক্ষ্য% ÷ স্টক%        পানি = মোট − অ্যাসিড
+৯৮% H₂SO₄ ঘনত্ব ≈ 1.84 kg/L      নিয়ম: আগে পানি, তারপর ধীরে অ্যাসিড</div>
+  </div></div>
+
+  <div class="calc" data-calc="bund" hidden><header><h3>বান্ডের ক্ষমতা ও উচ্চতা <span class="e">Bund capacity and wall height</span></h3></header><div class="bd">
+    <div class="fields">
+      <div class="fld"><label for="bdV">সবচেয়ে বড় ট্যাংক m³</label><input type="number" id="bdV" value="500"></div>
+      <div class="fld"><label for="bdT">সব ট্যাংক মিলে m³</label><input type="number" id="bdT" value="900"></div>
+      <div class="fld"><label for="bdL">বান্ড দৈর্ঘ্য m</label><input type="number" id="bdL" value="30"></div>
+      <div class="fld"><label for="bdB">বান্ড প্রস্থ m</label><input type="number" id="bdB" value="20"></div>
+      <div class="fld"><label for="bdF">অন্য ট্যাংকের ফুটপ্রিন্ট m²</label><input type="number" id="bdF" value="80"></div>
+    </div>
+    <div class="out" id="bdOut"></div>
+    <div class="formula">প্রয়োজন = বড়টি (বড় ট্যাংকের ১১০%, মোটের ২৫%)
+দেয়ালের উচ্চতা = প্রয়োজন ÷ (দৈর্ঘ্য × প্রস্থ − অন্য ট্যাংকের ফুটপ্রিন্ট) + ফ্রিবোর্ড</div>
+  </div></div>
+
+  <div class="calc" data-calc="ext" hidden><header><h3>এক্সটিংগুইশারের সংখ্যা (প্রাথমিক হিসাব) <span class="e">Number of extinguishers (first estimate)</span></h3></header><div class="bd">
+    <div class="fields">
+      <div class="fld"><label for="exA">মেঝের ক্ষেত্রফল m²</label><input type="number" id="exA" value="1800"></div>
+      <div class="fld"><label for="exH">ঝুঁকি</label><select id="exH"><option value="300">কম (অফিস) · ৩০০ m²/টি</option><option value="200" selected>সাধারণ (ওয়ার্কশপ, গুদাম) · ২০০ m²/টি</option><option value="100">বেশি (জ্বালানি, সালফার) · ১০০ m²/টি</option></select></div>
+      <div class="fld"><label for="exF">তলা সংখ্যা</label><input type="number" id="exF" value="1" min="1"></div>
+    </div>
+    <div class="out" id="exOut"></div>
+    <div class="formula">সংখ্যা = ⌈ক্ষেত্রফল ÷ প্রতি এক্সটিংগুইশারের এলাকা⌉ × তলা (প্রতি তলায় ≥ ২টি)
+ভ্রমণ দূরত্ব: A শ্রেণি ≤ ২৩ মি, B শ্রেণি ≤ ১৫ মি (NFPA 10)। চূড়ান্ত সংখ্যা ফায়ার সার্ভিসের কোড অনুযায়ী।</div>
+  </div></div>
+
+  <div class="calc" data-calc="risk" hidden><header><h3>রিস্ক স্কোর ও অবশিষ্ট ঝুঁকি <span class="e">Initial and residual risk</span></h3></header><div class="bd">
+    <div class="fields">
+      <div class="fld"><label for="rkL">সম্ভাবনা (আগে) ১–৫</label><input type="number" id="rkL" value="4" min="1" max="5"></div>
+      <div class="fld"><label for="rkS">মাত্রা (আগে) ১–৫</label><input type="number" id="rkS" value="4" min="1" max="5"></div>
+      <div class="fld"><label for="rkL2">সম্ভাবনা (কন্ট্রোলের পর)</label><input type="number" id="rkL2" value="2" min="1" max="5"></div>
+      <div class="fld"><label for="rkS2">মাত্রা (কন্ট্রোলের পর)</label><input type="number" id="rkS2" value="3" min="1" max="5"></div>
+    </div>
+    <div class="out" id="rkOut"></div>
+    <div class="formula">R = L × S      ঝুঁকি কমানো % = (R₁ − R₂) ÷ R₁ × 100</div>
+  </div></div>
+</div>
+</section>
+
+<section class="mod" id="m-quiz" data-title="কুইজ" hidden>
+<div class="sheet"><div class="t">
+  <span class="eb">HSE-22 · Quiz</span>
+  <h1>নিজেকে যাচাই করুন<span class="e">Ten random questions with explanations</span></h1>
+  <p class="lede">প্রতি রাউন্ডে এলোমেলো ১০টি প্রশ্ন। উত্তর দিলেই ব্যাখ্যা দেখাবে। TBT-তে দলের সাথে খেলতে পারেন।<span class="e">Use it in toolbox talks too.</span></p>
+</div><div class="tb">
+  <div><small>প্রশ্নভান্ডার</small><b id="qzCount">—</b></div>
+  <div><small>সেরা স্কোর · Best</small><b id="qzBest">—</b></div>
+</div></div>
+<div class="sec"><div class="card qz" id="quizBox"></div></div>
+</section>
+
+<section class="mod" id="m-glossary" data-title="শব্দকোষ" hidden>
+<div class="sheet"><div class="t">
+  <span class="eb">HSE-23 · Glossary</span>
+  <h1>শব্দকোষ<span class="e">English safety terms in plain Bangla</span></h1>
+  <p class="lede">প্লান্টে প্রতিদিন শোনা ইংরেজি সেফটি শব্দের সহজ বাংলা অর্থ।</p>
+</div><div class="tb">
+  <div><small>শব্দ · Terms</small><b id="glCount">—</b></div>
+  <div><small>খুঁজুন</small><b>বাংলা বা ইংরেজি</b></div>
+</div></div>
+<div class="sec">
+  <input id="glQ" type="text" placeholder="শব্দ খুঁজুন · Find a term: LEL, permit, ঝুঁকি…" aria-label="শব্দকোষে খুঁজুন" style="max-width:460px">
+  <dl class="gl" id="glList"></dl>
+</div>
+</section>

@@ -1,0 +1,114 @@
+<section class="mod" id="m-elec" data-title="বৈদ্যুতিক নিরাপত্তা" hidden>
+<div class="sheet"><div class="t">
+  <span class="eb">HSE-11 · Electrical safety</span>
+  <h1>বৈদ্যুতিক নিরাপত্তা<span class="e">Shock, arc flash, earthing and wet acidic areas</span></h1>
+  <p class="lede">সার প্লান্টে বাতাস আর্দ্র ও ক্ষয়কারী: অ্যাসিড ও অ্যামোনিয়া কেবলের ইনসুলেশন ও প্যানেল নষ্ট করে, ভেজা মেঝে শরীরের রোধ কমিয়ে দেয়। মাত্র ৫০ mA কারেন্ট হৃদ্‌যন্ত্র বন্ধ করতে পারে।<span class="e">Corrosive, wet conditions lower body resistance; ~50 mA can be fatal.</span></p>
+</div><div class="tb">
+  <div><small>RCD</small><b>৩০ mA · ৪০ ms</b></div>
+  <div><small>নিয়ম · Rule</small><b>Test before touch</b></div>
+  <div><small>ভেজা জায়গার টুল</small><b>১১০V CTE / ২৪V</b></div>
+  <div><small>প্যানেলের সামনে</small><b>≥ ১ মিটার খালি</b></div>
+</div></div>
+
+<div class="sec" id="el-shock">
+  <h2><span class="n">11.1</span><span class="h">শরীরে কারেন্টের প্রভাব (চার্ট) <span class="e">Effect of current on the body</span></span></h2>
+  <div class="chart"><svg viewBox="0 0 640 256" id="shockSvg" role="img" aria-label="কারেন্ট বনাম প্রভাবের চার্ট"></svg>
+  <p class="tcap">৫০/৬০ Hz AC, হাত থেকে পা; প্রায় ১ সেকেন্ড স্পর্শ। লগ স্কেল · log scale (mA)</p></div>
+  <div class="formula">I = V ÷ R     শুকনো চামড়া ~১০০,০০০ Ω  → 230 V ÷ 100000 = 2.3 mA
+             ভেজা চামড়া ~১,০০০ Ω     → 230 V ÷ 1000   = 230 mA  (প্রাণঘাতী)</div>
+</div>
+
+<div class="sec" id="el-rules">
+  <h2><span class="n">11.2</span><span class="h">নিয়ম ও কন্ট্রোল <span class="e">Rules and controls</span></span></h2>
+  <div class="grid g3">
+    <div class="card"><h3>আইসোলেশন <span class="e">Isolation</span></h3><ul class="l"><li>শুধু অনুমোদিত ইলেকট্রিশিয়ান</li><li>ব্রেকার র‍্যাক-আউট + তালা</li><li>প্রমাণিত টেস্টার দিয়ে ডেড টেস্ট (টেস্ট–ডেড–টেস্ট)</li><li>HV-তে আর্থিং লিড</li></ul></div>
+    <div class="card"><h3>আর্থিং ও RCD <span class="e">Earthing &amp; RCD</span></h3><ul class="l"><li>সব ধাতব বডি আর্থ করা</li><li>আর্থ রেজিস্ট্যান্স ষাণ্মাসিক মাপা (সাধারণত ≤ ১–৫ Ω, ডিজাইন অনুযায়ী)</li><li>পোর্টেবল টুলে ৩০ mA RCD</li><li>অ্যামোনিয়া ট্যাংকার আনলোডিংয়ে বন্ডিং</li></ul></div>
+    <div class="card"><h3>ক্ষয়কারী এলাকা <span class="e">Corrosive areas</span></h3><ul class="l"><li>IP65+ এনক্লোজার, স্টেইনলেস/FRP</li><li>কেবল গ্ল্যান্ড সিল, কেবল ট্রে ঢাকা</li><li>অ্যাসিড লাইনের নিচে প্যানেল নয়</li><li>প্যানেল রুমে পজিটিভ প্রেশার</li></ul></div>
+  </div>
+  <div class="tw"><table class="t">
+    <thead><tr><th>আর্ক ফ্ল্যাশ PPE ক্যাটাগরি (NFPA 70E)</th><th>ন্যূনতম রেটিং</th><th>PPE</th></tr></thead>
+    <tbody>
+      <tr><td>CAT 1</td><td class="num">৪ cal/cm²</td><td>AR শার্ট-প্যান্ট, ফেস শিল্ড, সেফটি গ্লাস, লেদার গ্লাভস</td></tr>
+      <tr><td>CAT 2</td><td class="num">৮ cal/cm²</td><td>উপরেরটি + আর্ক-রেটেড ব্যালাক্লাভা বা হুড</td></tr>
+      <tr><td>CAT 3</td><td class="num">২৫ cal/cm²</td><td>আর্ক ফ্ল্যাশ স্যুট ও হুড, রাবার ইনসুলেটিং গ্লাভস</td></tr>
+      <tr><td>CAT 4</td><td class="num">৪০ cal/cm²</td><td>৪০ cal স্যুট ও হুড; সম্ভব হলে ডি-এনার্জাইজ করুন</td></tr>
+    </tbody></table></div>
+  <div class="callout warn"><b class="h">বৈদ্যুতিক শকে উদ্ধার · Rescue from shock</b>আগে সাপ্লাই বন্ধ করুন বা শুকনো কাঠ দিয়ে আলাদা করুন; খালি হাতে ছোঁবেন না। শ্বাস না থাকলে CPR, AED ব্যবহার; সব শকের রোগীকে হাসপাতালে নিন (পরে হৃদ্‌স্পন্দনের সমস্যা হতে পারে)।</div>
+</div>
+</section>
+
+<section class="mod" id="m-mech" data-title="মেশিন গার্ডিং ও যানবাহন" hidden>
+<div class="sheet"><div class="t">
+  <span class="eb">HSE-12 · Machine guarding &amp; traffic</span>
+  <h1>মেশিন গার্ডিং ও যানবাহন নিরাপত্তা<span class="e">Conveyors, drums, crushers, elevators, forklifts and trucks</span></h1>
+  <p class="lede">সার প্লান্টে শত শত মিটার কনভেয়র, বাকেট এলিভেটর, ঘূর্ণায়মান ড্রাম ও ক্রাশার। হাত, কাপড় বা চুল একবার নিপ পয়েন্টে ঢুকলে মুহূর্তে টেনে নেয়। চলমান যন্ত্র কখনো পরিষ্কার বা ঠিক করবেন না।<span class="e">Never clean or adjust a moving machine.</span></p>
+</div><div class="tb">
+  <div><small>গার্ড খোলা</small><b>শুধু LOTO-র পর</b></div>
+  <div><small>পুল-কর্ড</small><b>পুরো দৈর্ঘ্যে</b></div>
+  <div><small>প্লান্টে গতি · Speed</small><b>সাধারণত ১০–১৫ km/h</b></div>
+  <div><small>ক্রাশার</small><b>রান-ডাউন অপেক্ষা</b></div>
+</div></div>
+
+<div class="sec" id="mg-points">
+  <h2><span class="n">12.1</span><span class="h">বিপজ্জনক বিন্দু ও গার্ড <span class="e">Danger points and guards</span></span></h2>
+  <div class="tw"><table class="t">
+    <thead><tr><th>যন্ত্র · Machine</th><th>বিপজ্জনক বিন্দু · Danger point</th><th>সুরক্ষা · Safeguard</th></tr></thead>
+    <tbody>
+      <tr><td>বেল্ট কনভেয়র</td><td>হেড/টেল পুলি নিপ, রিটার্ন আইডলার, টেক-আপ</td><td>ফিক্সড মেশ গার্ড (টুল ছাড়া খোলা যায় না), দুই পাশে পুল-কর্ড, বেল্ট মিসঅ্যালাইনমেন্ট সুইচ, ক্রসিং ব্রিজ</td></tr>
+      <tr><td>রোটারি ড্রাম</td><td>গার্থ গিয়ার–পিনিয়ন মেশ, টায়ার–রোলার নিপ</td><td>গিয়ার গার্ড, রোলার গার্ড, ইন্সপেকশন উইন্ডো, ড্রামের নিচে চলাচল নিষেধ</td></tr>
+      <tr><td>চেইন মিল/ক্রাশার</td><td>রোটর, ফিড চুট</td><td>ইন্টারলক ডোর + জিরো-স্পিড সুইচ, রান-ডাউন সময় লেখা</td></tr>
+      <tr><td>বাকেট এলিভেটর</td><td>বুট সেকশন, পড়ন্ত মাল, ব্যাকস্টপ ব্যর্থ</td><td>বুটে LOTO, ব্যাকস্টপ পরীক্ষা, বালতি সাপোর্ট</td></tr>
+      <tr><td>স্ক্রু কনভেয়র</td><td>খোলা ট্রাফ</td><td>বোল্টেড ঢাকনা, ইন্সপেকশন হ্যাচে ইন্টারলক</td></tr>
+      <tr><td>কাপলিং ও শ্যাফট</td><td>ঘূর্ণায়মান শ্যাফটের প্রান্ত, কী</td><td>সম্পূর্ণ ঢাকা গার্ড, হলুদ রং</td></tr>
+      <tr><td>ভাইব্রেটিং স্ক্রিন</td><td>স্প্রিং ও ড্রাইভ বেল্ট</td><td>বেল্ট গার্ড, স্ক্রিন বদলে LOTO</td></tr>
+      <tr><td>ব্যাগিং মেশিন</td><td>সেলাই মাথা, প্রেস</td><td>লাইট কার্টেন, দুই-হাতে চালানো বোতাম</td></tr>
+    </tbody></table></div>
+</div>
+
+<div class="sec" id="mg-traffic">
+  <h2><span class="n">12.2</span><span class="h">যানবাহন ও ফর্কলিফট <span class="e">Vehicles and forklifts</span></span></h2>
+  <div class="grid g2">
+    <ul class="l"><li>পায়ে চলার পথ ও গাড়ির পথ আলাদা, হলুদ দাগ ও ব্যারিয়ার</li><li>ব্যাকিং অ্যালার্ম, রিয়ার ক্যামেরা, ব্যাংক্সম্যান</li><li>লাইসেন্সধারী ও প্লান্ট-প্রশিক্ষিত চালক, সিটবেল্ট</li><li>প্রতি শিফটে প্রি-ইউজ চেক (ব্রেক, হর্ন, আলো, ফর্ক, চেইন, টায়ার)</li></ul>
+    <ul class="l"><li>ফর্কে মানুষ তোলা নিষেধ</li><li>লোড নিচু করে চালান, ঢালে লোড উপরের দিকে</li><li>অ্যামোনিয়া/অ্যাসিড ট্যাংকার: চক, আর্থিং, ইঞ্জিন বন্ধ, চালক কেবিনের বাইরে</li><li>পে-লোডার স্টোরেজ শেডে: স্তূপের ঝুলন্ত মুখ ভাঙা নয়, লোকজন দূরে</li></ul>
+  </div>
+</div>
+</section>
+
+<section class="mod" id="m-lift" data-title="লিফটিং ও রিগিং" hidden>
+<div class="sheet"><div class="t">
+  <span class="eb">HSE-13 · Lifting &amp; rigging</span>
+  <h1>লিফটিং ও রিগিং<span class="e">Sling angles, gear inspection, crane checks and signals</span></h1>
+  <p class="lede">গিয়ারবক্স, মোটর, পাম্প, ফিল্টার প্যান, ড্রাম রোলার: শাটডাউনে প্রতিদিন ভারী লিফট। স্লিংয়ের কোণ যত চ্যাপ্টা, প্রতি লেগে টান তত বেশি। নিচের চার্টটি দেখুন।<span class="e">The flatter the sling, the higher the leg tension.</span></p>
+</div><div class="tb">
+  <div><small>সবচেয়ে ভালো কোণ</small><b>≥ ৬০° (আনুভূমিক থেকে)</b></div>
+  <div><small>নিষেধ · Never</small><b>&lt; ৩০°</b></div>
+  <div><small>বাতাস · Wind</small><b>সাধারণত ≤ ১০ m/s</b></div>
+  <div><small>ক্রিটিক্যাল লিফট</small><b>&gt; ক্ষমতার ৭৫%</b></div>
+</div></div>
+
+<div class="sec" id="lf-angle">
+  <h2><span class="n">13.1</span><span class="h">স্লিং অ্যাঙ্গেল চার্ট <span class="e">Sling angle chart</span></span></h2>
+  <div class="grid g2">
+    <div class="chart"><svg viewBox="0 0 360 240" id="slingBars" role="img" aria-label="স্লিং কোণ বনাম লোড ফ্যাক্টর"></svg><p class="tcap">লোড ফ্যাক্টর = ১ ÷ sin(কোণ) · দুই-লেগ লিফটে প্রতি লেগ = (W ÷ ২) × ফ্যাক্টর</p></div>
+    <div class="calc"><header><h3>দ্রুত হিসাব <span class="e">Quick check</span></h3><p>কোণ টেনে বদলান · Drag the angle</p></header><div class="bd">
+      <div class="fields"><div class="fld"><label for="slW">লোড · Load (t)</label><input type="number" id="slW" value="5" min="0" step="0.1"></div><div class="fld"><label for="slA">কোণ · Angle (°)</label><input type="number" id="slA" value="45" min="10" max="90"></div></div>
+      <input type="range" id="slR" min="10" max="90" value="45" aria-label="কোণ">
+      <svg viewBox="0 0 240 130" id="slPic" style="width:100%;max-height:160px"></svg>
+      <div class="out" id="slOut"></div>
+    </div></div>
+  </div>
+</div>
+
+<div class="sec" id="lf-gear">
+  <h2><span class="n">13.2</span><span class="h">গিয়ার পরিদর্শন ও ক্রেন চেক <span class="e">Gear inspection and crane checks</span></span></h2>
+  <div class="grid g3">
+    <div class="card"><h3>ওয়্যার রোপ বাতিল <span class="e">Wire rope discard</span></h3><ul class="l"><li>এক লে-তে ১০% তার ছেঁড়া</li><li>কিংক, বার্ডকেজ, চ্যাপ্টা</li><li>ব্যাস ১০% কমে যাওয়া</li><li>তাপ বা অ্যাসিডের দাগ</li></ul></div>
+    <div class="card"><h3>ওয়েবিং স্লিং <span class="e">Web slings</span></h3><ul class="l"><li>কাটা, ঘষা, সেলাই খোলা</li><li>লেবেল নেই = ব্যবহার নয়</li><li>অ্যাসিডে পলিয়েস্টার, ক্ষারে নাইলন চলে না (প্রস্তুতকারক দেখুন)</li></ul></div>
+    <div class="card"><h3>শ্যাকল ও হুক <span class="e">Shackles &amp; hooks</span></h3><ul class="l"><li>SWL খোদাই করা</li><li>হুকের মুখ ১০% খোলা = বাতিল</li><li>সেফটি ল্যাচ কাজ করে</li><li>পিন পুরো প্যাঁচ</li></ul></div>
+  </div>
+  <div class="grid g2">
+    <div class="card"><h3>ক্রেন প্রি-ইউজ চেক <span class="e">Crane pre-use check</span></h3><ul class="l"><li>তৃতীয় পক্ষ সার্টিফিকেট বৈধ</li><li>লিমিট সুইচ, LMI/SLI, অ্যান্টি-টু-ব্লক</li><li>আউটরিগার পুরো খোলা, ম্যাট/প্যাডের উপর</li><li>লোড চার্ট দেখে রেডিয়াসে ক্ষমতা</li><li>উপরে বৈদ্যুতিক লাইন থেকে নিরাপদ দূরত্ব</li></ul></div>
+    <div class="card"><h3>লিফটিংয়ের সময় <span class="e">During the lift</span></h3><ul class="l"><li>একজন সিগন্যালম্যান, স্পষ্ট হাতের সংকেত বা রেডিও</li><li>ঝুলন্ত লোডের নিচে কেউ নয়, এক্সক্লুশন জোন</li><li>ট্যাগ লাইন দিয়ে ঘোরা নিয়ন্ত্রণ</li><li>প্রথমে ১০–২০ সেমি তুলে ব্রেক ও ব্যালান্স পরীক্ষা</li><li>বাতাস সীমার বেশি হলে লিফট বন্ধ</li></ul></div>
+  </div>
+</div>
+</section>
