@@ -6,6 +6,32 @@
   const $ = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
 
+  /* Tiny, safe Markdown renderer for AI replies: escapes HTML first, then adds headings, bold, code and lists. */
+  const esc = (s) => s.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  window.LH = window.LH || { t: {} };
+  LH.md = (src) => {
+    const blocks = String(src).split(/```/);
+    return blocks.map((part, i) => {
+      if (i % 2) return '<pre><code>' + esc(part.replace(/^\w*\n/, '')) + '</code></pre>';
+      let html = '', list = null;
+      const close = () => { if (list) { html += '</' + list + '>'; list = null; } };
+      part.split('\n').forEach((line) => {
+        let l = esc(line)
+          .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+          .replace(/`([^`]+)`/g, '<code>$1</code>');
+        let m;
+        if ((m = l.match(/^\s*[-*•]\s+(.*)/))) { if (list !== 'ul') { close(); html += '<ul>'; list = 'ul'; } html += '<li>' + m[1] + '</li>'; return; }
+        if ((m = l.match(/^\s*\d+[.)]\s+(.*)/))) { if (list !== 'ol') { close(); html += '<ol>'; list = 'ol'; } html += '<li>' + m[1] + '</li>'; return; }
+        close();
+        if ((m = l.match(/^#{1,4}\s+(.*)/))) { html += '<h4>' + m[1] + '</h4>'; return; }
+        html += l.trim() ? '<p>' + l + '</p>' : '';
+      });
+      close();
+      return html;
+    }).join('');
+  };
+  $$('[data-md-render]').forEach((el) => { el.innerHTML = LH.md(el.textContent); });
+
   /* Sidebar on mobile */
   const sidebar = $('#sidebar'), scrim = $('#scrim');
   const toggle = (open) => { sidebar?.classList.toggle('open', open); scrim?.classList.toggle('show', open); };
@@ -14,6 +40,11 @@
 
   /* Confirm before delete */
   $$('form[data-confirm]').forEach((f) => f.addEventListener('submit', (e) => { if (!confirm(T('confirm_delete'))) e.preventDefault(); }));
+
+  /* Slow server actions (transcription): show progress on the button */
+  $$('form.transcribe-form').forEach((f) => f.addEventListener('submit', () => {
+    const b = f.querySelector('button'); b.disabled = true; b.textContent = '⏳';
+  }));
 
   /* Copy text notes */
   $$('[data-copy]').forEach((b) => b.addEventListener('click', () => {

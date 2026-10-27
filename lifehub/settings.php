@@ -39,9 +39,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
         log_activity('keys_updated');
         flash(t('saved'));
+    } elseif ($do === 'ai') {
+        set_setting('ai_provider', isset(AI_PROVIDERS[post('ai_provider')]) ? post('ai_provider') : '');
+        foreach (array_keys(AI_PROVIDERS) as $p) {
+            set_setting('ai_model_' . $p, post('ai_model_' . $p));
+        }
+        set_setting('stt_language', in_array(post('stt_language'), ['auto', 'bn', 'en'], true) ? post('stt_language') : 'auto');
+        flash(t('saved'));
+    } elseif ($do === 'ai_test') {
+        session_write_close();
+        $res = ai_chat([['role' => 'user', 'content' => 'Reply with exactly: OK']]);
+        json_out($res['ok'] ? ['ok' => true, 'text' => AI_PROVIDERS[$res['provider']]['label'] . ': ' . mb_strimwidth($res['text'], 0, 80, '…')] : ['ok' => false, 'text' => $res['error']]);
     } elseif ($do === 'backup') {
         $data = ['app' => 'LifeHub', 'version' => APP_VERSION, 'exported_at' => now()];
-        foreach (['customers', 'entries', 'media', 'activity'] as $tbl) {
+        foreach (['customers', 'entries', 'media', 'activity', 'commands', 'recipes', 'ai_chats', 'ai_messages'] as $tbl) {
             $data[$tbl] = q("SELECT * FROM $tbl")->fetchAll();
         }
         header('Content-Type: application/json; charset=utf-8');
@@ -80,6 +91,34 @@ page_header(t('nav_settings'));
     </form>
   </section>
 
+  <section class="card span-2" id="ai">
+    <div class="card-head"><h3>✦ <?= e(t('ai_settings')) ?></h3><button class="btn sm" type="button" id="aiTest"><?= e(t('ai_test')) ?></button></div>
+    <p class="muted small" id="aiTestOut"><?= e(t('ai_settings_help')) ?></p>
+    <form method="post" class="form grid-form">
+      <?= csrf_field() ?>
+      <input type="hidden" name="do" value="ai">
+      <label><?= e(t('ai_provider')) ?>
+        <select name="ai_provider">
+          <option value=""><?= e(t('ai_auto')) ?></option>
+          <?php foreach (AI_PROVIDERS as $p => $info): ?>
+            <option value="<?= $p ?>" <?= setting('ai_provider') === $p ? 'selected' : '' ?> <?= ai_key($p) === '' ? 'disabled' : '' ?>><?= e($info['label']) ?><?= ai_key($p) === '' ? ' — ' . e(t('not_set')) : '' ?></option>
+          <?php endforeach; ?>
+        </select>
+      </label>
+      <label><?= e(t('stt_language')) ?>
+        <select name="stt_language">
+          <?php foreach (['auto' => t('ai_auto'), 'bn' => 'বাংলা', 'en' => 'English'] as $v => $l): ?>
+            <option value="<?= $v ?>" <?= setting('stt_language', 'auto') === $v ? 'selected' : '' ?>><?= e($l) ?></option>
+          <?php endforeach; ?>
+        </select>
+      </label>
+      <?php foreach (AI_PROVIDERS as $p => $info): ?>
+        <label><?= e($info['label']) ?> — <?= e(t('ai_model')) ?><input name="ai_model_<?= $p ?>" value="<?= e((string) setting('ai_model_' . $p, '')) ?>" placeholder="<?= e($info['model']) ?>"></label>
+      <?php endforeach; ?>
+      <div class="full form-actions"><button class="btn primary"><?= e(t('save')) ?></button></div>
+    </form>
+  </section>
+
   <section class="card">
     <div class="card-head"><h3>🔒 <?= e(t('change_password')) ?></h3></div>
     <form method="post" class="form">
@@ -99,4 +138,14 @@ page_header(t('nav_settings'));
     <p class="muted small">LifeHub v<?= APP_VERSION ?> · PHP <?= PHP_VERSION ?> · <?= e(db()->getAttribute(PDO::ATTR_DRIVER_NAME)) ?></p>
   </section>
 </div>
+<script>
+document.getElementById('aiTest')?.addEventListener('click', async (e) => {
+  const out = document.getElementById('aiTestOut');
+  e.target.disabled = true; out.textContent = '…';
+  const fd = new FormData(); fd.append('csrf', document.querySelector('meta[name=csrf]').content); fd.append('do', 'ai_test');
+  try { const r = await (await fetch('settings.php', { method: 'POST', body: fd })).json(); out.textContent = (r.ok ? '✅ ' : '⚠ ') + r.text; }
+  catch (err) { out.textContent = '⚠ ' + err.message; }
+  e.target.disabled = false;
+});
+</script>
 <?php page_footer();

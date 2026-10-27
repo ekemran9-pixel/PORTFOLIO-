@@ -19,7 +19,13 @@ $label = $m['title'] ?: ($m['original_name'] ?: t('text'));
     <small class="muted"><?= e(substr($m['created_at'], 0, 10)) ?><?= $m['size'] ? ' · ' . human_size((int) $m['size']) : '' ?></small>
     <?php if ($m['tags']): ?><div><?php foreach (array_filter(array_map('trim', explode(',', $m['tags']))) as $tag): ?><span class="tag"><?= e($tag) ?></span><?php endforeach; ?></div><?php endif; ?>
     <div class="media-actions">
+      <span>
       <?php if ($m['kind'] !== 'text'): ?><a class="btn-link" href="file.php?id=<?= $m['id'] ?>&dl=1">⬇</a><?php else: ?><button class="btn-link" data-copy="<?= e((string) $m['content']) ?>"><?= e(t('copy')) ?></button><?php endif; ?>
+      <?php if ($m['kind'] === 'image'): ?><a class="btn-link" href="ai.php?media=<?= $m['id'] ?>">✦ <?= e(t('ai_ask_short')) ?></a><?php endif; ?>
+      <?php if (in_array($m['kind'], ['audio', 'video'], true)): ?>
+        <form method="post" action="media.php" class="inline transcribe-form"><?= csrf_field() ?><input type="hidden" name="do" value="transcribe"><input type="hidden" name="id" value="<?= $m['id'] ?>"><button class="btn-link">📝 <?= e(t('transcribe')) ?></button></form>
+      <?php endif; ?>
+      </span>
       <?= delete_button('media.php', (int) $m['id'], 'media.php') ?>
     </div>
   </figcaption>

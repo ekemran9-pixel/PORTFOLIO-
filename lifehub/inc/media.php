@@ -46,8 +46,10 @@ function store_upload(array $file, string $title, string $tags, ?int $customerId
     }
     q('INSERT INTO media (kind, title, original_name, stored_name, mime, size, tags, customer_id, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
         [$kind, $title, mb_substr($file['name'], 0, 250), $stored, $mime, (int) $file['size'], $tags, $customerId, now()]);
+    $id = (int) db()->lastInsertId();
     log_activity('media_uploaded', $file['name']);
-    return (int) db()->lastInsertId();
+    fire_event('media_uploaded', ['id' => $id, 'kind' => $kind, 'name' => $file['name'], 'title' => $title, 'url' => base_url() . 'file.php?id=' . $id]);
+    return $id;
 }
 
 /** Normalises the multi-file $_FILES structure into a list. */

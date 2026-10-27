@@ -51,6 +51,12 @@ function db(): PDO
     return $pdo;
 }
 
+function db_driver(): string
+{
+    global $CONFIG;
+    return ($CONFIG['db_driver'] ?? 'mysql') === 'sqlite' ? 'sqlite' : 'mysql';
+}
+
 function q(string $sql, array $params = []): PDOStatement
 {
     $st = db()->prepare($sql);
@@ -78,6 +84,13 @@ function log_activity(string $action, string $detail = ''): void
 function now(): string
 {
     return date('Y-m-d H:i:s');
+}
+
+/* ---------- Schema upgrades ---------- */
+
+require_once __DIR__ . '/migrate.php';
+if ((int) setting('schema_version', '1') < SCHEMA_VERSION) {
+    run_migrations(db(), db_driver());
 }
 
 /* ---------- Language ---------- */
@@ -187,6 +200,29 @@ function post(string $key, string $default = ''): string
     return is_string($v) ? trim($v) : $default;
 }
 
+/** Public base URL of the site, e.g. https://example.com/hub/ (used for webhooks). */
+function base_url(): string
+{
+    $saved = setting('site_url');
+    if ($saved) {
+        return rtrim($saved, '/') . '/';
+    }
+    $https = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || ($_SERVER['HTTP_X_FORWARDED_PROTO'] ?? '') === 'https';
+    $dir = rtrim(str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME'] ?? '/')), '/');
+    return ($https ? 'https' : 'http') . '://' . ($_SERVER['HTTP_HOST'] ?? 'localhost') . $dir . '/';
+}
+
+/** Long random token stored in settings, created on first use. */
+function secret(string $key): string
+{
+    $v = setting($key);
+    if (!$v) {
+        $v = bin2hex(random_bytes(20));
+        set_setting($key, $v);
+    }
+    return $v;
+}
+
 function json_out(array $data, int $code = 200): never
 {
     http_response_code($code);
@@ -194,3 +230,7 @@ function json_out(array $data, int $code = 200): never
     echo json_encode($data, JSON_UNESCAPED_UNICODE);
     exit;
 }
+
+require_once __DIR__ . '/ai.php';
+require_once __DIR__ . '/actions.php';
+require_once __DIR__ . '/automation.php';

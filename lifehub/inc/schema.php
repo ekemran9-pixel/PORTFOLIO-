@@ -66,5 +66,56 @@ return function (string $driver): array {
             detail VARCHAR(255),
             created_at DATETIME NOT NULL
         )$tail",
+
+        // Phase 2: AI chats and saved commands
+        "CREATE TABLE IF NOT EXISTS ai_chats (
+            id $id,
+            title VARCHAR(190) NOT NULL,
+            created_at DATETIME NOT NULL,
+            updated_at DATETIME NOT NULL
+        )$tail",
+
+        "CREATE TABLE IF NOT EXISTS ai_messages (
+            id $id,
+            chat_id $fk NOT NULL,
+            role VARCHAR(12) NOT NULL,
+            content TEXT NOT NULL,
+            media_id $fk NULL,
+            actions TEXT,
+            created_at DATETIME NOT NULL,
+            FOREIGN KEY (chat_id) REFERENCES ai_chats(id) ON DELETE CASCADE
+        )$tail",
+
+        "CREATE TABLE IF NOT EXISTS commands (
+            id $id,
+            name VARCHAR(190) NOT NULL,
+            prompt TEXT NOT NULL,
+            use_data TINYINT NOT NULL DEFAULT 1,
+            created_at DATETIME NOT NULL
+        )$tail",
+
+        // Phase 4: automation recipes
+        "CREATE TABLE IF NOT EXISTS recipes (
+            id $id,
+            name VARCHAR(190) NOT NULL,
+            enabled TINYINT NOT NULL DEFAULT 1,
+            trigger_type VARCHAR(30) NOT NULL,
+            trigger_value VARCHAR(100),
+            action_type VARCHAR(30) NOT NULL,
+            config TEXT,
+            last_run_at DATETIME NULL,
+            last_status VARCHAR(255),
+            run_count INTEGER NOT NULL DEFAULT 0,
+            created_at DATETIME NOT NULL
+        )$tail",
+
+        "CREATE TABLE IF NOT EXISTS recipe_runs (
+            id $id,
+            recipe_id $fk NOT NULL,
+            ok TINYINT NOT NULL DEFAULT 1,
+            output TEXT,
+            created_at DATETIME NOT NULL,
+            FOREIGN KEY (recipe_id) REFERENCES recipes(id) ON DELETE CASCADE
+        )$tail",
     ];
 };

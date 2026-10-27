@@ -45,10 +45,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $dsn = sprintf('mysql:host=%s;dbname=%s;charset=utf8mb4', $config['db_host'], $config['db_name']);
             $pdo = new PDO($dsn, $config['db_user'], $config['db_pass'], $opts);
         }
-        $schema = require APP_ROOT . '/inc/schema.php';
-        foreach ($schema($driver) as $sql) {
-            $pdo->exec($sql);
-        }
+        require APP_ROOT . '/inc/migrate.php';
+        run_migrations($pdo, $driver);
         $st = $pdo->prepare('INSERT INTO users (username, password_hash, created_at) VALUES (?, ?, ?)');
         $st->execute([$username, password_hash($password, PASSWORD_DEFAULT), date('Y-m-d H:i:s')]);
 

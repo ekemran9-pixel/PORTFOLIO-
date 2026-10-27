@@ -23,6 +23,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         redirect('media.php');
     }
 
+    if ($do === 'transcribe') {
+        set_time_limit(300);
+        $m = q("SELECT * FROM media WHERE id = ? AND kind IN ('audio','video')", [(int) post('id')])->fetch();
+        $res = $m ? stt_transcribe(uploads_dir() . '/' . $m['stored_name'], $m['mime'], (string) $m['original_name']) : ['ok' => false, 'error' => t('not_found')];
+        if ($res['ok']) {
+            $title = t('transcript') . ': ' . ($m['title'] ?: $m['original_name']);
+            q("INSERT INTO media (kind, title, content, tags, customer_id, created_at) VALUES ('text', ?, ?, ?, ?, ?)",
+                [$title, $res['text'], 'transcript', $m['customer_id'], now()]);
+            log_activity('note_added', $title);
+            flash(t('transcribed'));
+        } else {
+            flash($res['error'], 'err');
+        }
+        redirect('media.php?kind=text');
+    }
+
     if ($do === 'note') {
         $content = post('content');
         if ($content !== '') {

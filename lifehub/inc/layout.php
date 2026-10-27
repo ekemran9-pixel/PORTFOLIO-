@@ -5,6 +5,7 @@ function nav_items(): array
 {
     return [
         'index.php'     => ['nav_dashboard', '<path d="M3 13h8V3H3zm0 8h8v-6H3zm10 0h8V11h-8zm0-18v6h8V3z"/>'],
+        'ai.php'        => ['nav_ai', '<path d="M12 2l1.9 5.6L19.5 9.5l-5.6 1.9L12 17l-1.9-5.6L4.5 9.5l5.6-1.9zM19 14l.9 2.6 2.6.9-2.6.9L19 21l-.9-2.6-2.6-.9 2.6-.9zM5 15l.7 1.8 1.8.7-1.8.7L5 20l-.7-1.8-1.8-.7 1.8-.7z"/>'],
         'customers.php' => ['nav_customers', '<path d="M16 11a4 4 0 1 0-4-4 4 4 0 0 0 4 4zm-8 0a3 3 0 1 0-3-3 3 3 0 0 0 3 3zm0 2c-2.7 0-8 1.3-8 4v3h8v-3c0-1.1.4-2.1 1.2-3A10 10 0 0 0 8 13zm8 0c-2.7 0-8 1.3-8 4v3h16v-3c0-2.7-5.3-4-8-4z"/>'],
         'entries.php'   => ['nav_entries', '<path d="M4 4h16v2H4zm0 5h16v2H4zm0 5h10v2H4zm0 5h10v2H4zm13-4h2v3h3v2h-3v3h-2v-3h-3v-2h3z"/>'],
         'media.php'     => ['nav_media', '<path d="M21 19V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2zM8.5 13.5l2.5 3 3.5-4.5 4.5 6H5z"/>'],
@@ -104,7 +105,8 @@ function page_footer(array $scripts = []): void
 // Strings the JavaScript side needs.
 function js_strings(): array
 {
-    $keys = ['income', 'expense', 'confirm_delete', 'skip_column', 'rows_ready', 'rows_imported', 'import_failed', 'no_rows', 'uploading', 'upload_done'];
+    $keys = ['income', 'expense', 'task', 'note', 'saved', 'copy', 'ai_apply', 'ai_apply_all', 'ai_read_aloud', 'stt_no_key',
+        'act_add_entry', 'act_add_customer', 'act_add_note', 'act_complete_task', 'confirm_delete', 'skip_column', 'rows_ready', 'rows_imported', 'import_failed', 'no_rows', 'uploading', 'upload_done'];
     $out = [];
     foreach ($keys as $k) {
         $out[$k] = t($k);
