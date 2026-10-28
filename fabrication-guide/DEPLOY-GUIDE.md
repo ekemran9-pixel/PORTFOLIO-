@@ -4,20 +4,14 @@
 
 ## GitHub থেকে Netlify-তে অটো-ডিপ্লয় (প্রস্তাবিত)
 
-একবার সেট করলে GitHub-এ `main` ব্রাঞ্চে যা-ই আপডেট হবে, Netlify নিজে থেকে সাইট আপডেট করে দেবে।
+এই গাইডটি Netlify-র `emranfabrication` সাইটে (https://emranfabrication.netlify.app) GitHub থেকে চলে। এখন সেটি `fabrication-foreman-guide` ব্রাঞ্চ থেকে deploy হয়; ওই ব্রাঞ্চের রুটে থাকা `netlify.toml` বলে দেয় `fabrication-guide/site` ফোল্ডারটাই সাইট। তাই ওই ব্রাঞ্চে push করলেই সাইট আপডেট হয়।
 
-**আগের সাইট (একই লিংক) রেখে দিতে চাইলে:**
-
-1. Netlify → আপনার সাইট (যেমন `foreman-handbook`) → **Project configuration → Build & deploy → Continuous deployment → Link repository**
-2. GitHub বেছে নিন → রিপোজিটরি `ekemran9-pixel/portfolio-`
-3. সেটিংস:
+**`main` থেকে সরাসরি deploy করতে চাইলে:** Netlify → `emranfabrication` → **Project configuration → Build & deploy**:
    - **Branch to deploy:** `main`
    - **Base directory:** `fabrication-guide/site`
    - **Build command:** খালি রাখুন
-   - **Publish directory:** `fabrication-guide/site` (base directory-র সাথে মিলে যাবে)
-4. **Deploy** চাপুন। প্রথম ডিপ্লয় শেষে লিংক আগের মতোই থাকবে।
 
-**নতুন সাইট বানাতে চাইলে:** **Add new project → Import an existing project → GitHub** → একই রিপো ও উপরের একই সেটিংস।
+**নতুন সাইট বানাতে চাইলে:** **Add new project → Import an existing project → GitHub** → একই রিপো, Base directory `fabrication-guide/site`, Build command খালি।
 
 > এই রিপোতে দুটি সাইট আছে (`fabrication-guide` আর `phosphate-equipment-guide`)। Base directory আলাদা করে দিলে একটার পরিবর্তনে অন্যটা রি-ডিপ্লয় হবে না।
 
