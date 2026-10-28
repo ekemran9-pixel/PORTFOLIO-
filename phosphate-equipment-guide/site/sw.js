@@ -1,5 +1,5 @@
 /* Offline cache so the guide (and the 3D library) works on the plant floor without signal. Bump CACHE when the site changes. */
-const CACHE = "phdguide-v2";
+const CACHE = "phdguide-v3";
 const CORE = ["./", "index.html", "manifest.webmanifest", "https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"];
 self.addEventListener("install", e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(CORE)).then(() => self.skipWaiting()));
