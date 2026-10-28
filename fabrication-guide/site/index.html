@@ -3290,7 +3290,7 @@ function show(id, focusEl) {
   if (!$('.pager', mod)) {
     const i = ORDER.indexOf(id), pv = MODULES[i - 1], nx = MODULES[i + 1];
     mod.insertAdjacentHTML('beforeend', `<nav class="pager" aria-label="মডিউল নেভিগেশন">${pv ? `<a href="#${pv[0]}"><small>← আগের · ${bn(pv[1])}</small>${pv[2]}</a>` : ''}${nx ? `<a class="nx" href="#${nx[0]}"><small>পরের · ${bn(nx[1])} →</small>${nx[2]}</a>` : ''}</nav>
-      <div class="foot"><span>এই গাইডের সংখ্যা ও নিয়ম ASME, ASTM, AWS, API স্ট্যান্ডার্ড ও প্রচলিত সাইট-অনুশীলনের ভিত্তিতে শেখার জন্য সাজানো। কাজের সময় প্রজেক্ট স্পেসিফিকেশন, অনুমোদিত WPS, IFC ড্রয়িং ও স্ট্যান্ডার্ডের সর্বশেষ সংস্করণই চূড়ান্ত।</span></div>`);
+      <div class="foot"><span>এই গাইডের সংখ্যা ও নিয়ম ASME, ASTM, AWS, API স্ট্যান্ডার্ড ও প্রচলিত সাইট-অনুশীলনের ভিত্তিতে শেখার জন্য সাজানো। কাজের সময় প্রজেক্ট স্পেসিফিকেশন, অনুমোদিত WPS, IFC ড্রয়িং ও স্ট্যান্ডার্ডের সর্বশেষ সংস্করণই চূড়ান্ত।</span><span>আরও দেখুন: <a href="https://foreman-handbook.netlify.app/bn/" target="_blank" rel="noopener">মেকানিক্যাল হ্যান্ডবুক</a> (রোটারি, পাম্প, রিগিং, সেফটি ও ৪২টি ক্যালকুলেটর)</span></div>`);
   }
   document.title = (id === 'home' ? '' : mod.dataset.title + ' · ') + 'ফ্যাব্রিকেশন ফোরম্যান গাইড';
   if (focusEl) {
