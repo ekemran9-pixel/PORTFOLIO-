@@ -167,14 +167,37 @@ $('#fitTable').innerHTML = `<thead><tr><th>NPS</th><th class="num">OD</th><th cl
 /* ---------- 14 calculators ---------- */
 (function () {
   const nav = $('#calcNav');
-  const pickCalc = k => {
-    $$('.chip', nav).forEach(b => b.setAttribute('aria-pressed', String(b.dataset.k === k)));
-    $$('#m-calc .calc[data-calc]').forEach(c => c.hidden = c.dataset.calc !== k);
+  let enterT;
+  const pickCalc = (k, scroll) => {
+    if (!$(`#m-calc .calc[data-calc="${k}"]`)) k = 'cw';
+    $$('.cbtn', nav).forEach(b => b.setAttribute('aria-pressed', String(b.dataset.k === k)));
+    $$('#m-calc .calc[data-calc]').forEach(c => { c.hidden = c.dataset.calc !== k; c.classList.toggle('enter', !c.hidden); });
+    clearTimeout(enterT); enterT = setTimeout(() => $$('#m-calc .calc.enter').forEach(c => c.classList.remove('enter')), 1800);
     store.set('calc', k);
+    if (scroll) { const c = $(`#m-calc .calc[data-calc="${k}"]`), r = c.getBoundingClientRect(); if (r.top > innerHeight * .6 || r.top < 0) c.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
   };
-  nav.addEventListener('click', e => { const b = e.target.closest('.chip'); if (b) pickCalc(b.dataset.k); });
+  // each calculator header gets the same icon as its picker button
+  $$('.cbtn', nav).forEach(b => { const h = $(`#m-calc .calc[data-calc="${b.dataset.k}"]>header`); if (h) h.insertAdjacentHTML('afterbegin', `<span class="cico">${$('svg', b).outerHTML}</span>`); });
+  nav.addEventListener('click', e => { const b = e.target.closest('.cbtn'); if (b) pickCalc(b.dataset.k, true); });
   pickCalc(store.get('calc', 'cw'));
-  const on = (ids, fn) => { ids.forEach(id => { const el = $(id); el.addEventListener('input', fn); el.addEventListener('change', fn); }); fn(); };
+  // main result: count up from the previous value and pulse so the change is noticed
+  const bump = calc => {
+    const b = $('.res.main b', calc); if (!b) return;
+    const m = b.textContent.match(/-?[\d,]*\.?\d+/), box = $('.out', calc); if (!m) return;
+    const to = parseFloat(m[0].replace(/,/g, '')), from = parseFloat(box.dataset.v); box.dataset.v = to;
+    if (!isFinite(from) || from === to) return;
+    const dec = (m[0].split('.')[1] || '').length, pre = b.textContent.slice(0, m.index), post = b.textContent.slice(m.index + m[0].length), t0 = performance.now();
+    b.parentNode.classList.add('bump');
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const step = t => { const k = Math.min(1, (t - t0) / 450), e = 1 - (1 - k) ** 3; b.textContent = pre + f(from + (to - from) * e, dec) + post; if (k < 1 && b.isConnected) requestAnimationFrame(step); };
+    requestAnimationFrame(step);
+  };
+  const how = (id, steps) => { $(id).innerHTML = steps.map(x => `<li>${x}</li>`).join(''); };
+  const c = v => `<code>${v}</code>`;
+  const on = (ids, fn) => {
+    const calc = $(ids[0]).closest('.calc'), run = () => { fn(); bump(calc); };
+    ids.forEach(id => { const el = $(id); el.addEventListener('input', run); el.addEventListener('change', run); }); run();
+  };
 
   /* pipe weight */
   $('#cwN').innerHTML = nOpts('#cwN', '6'); fillSch('#cwN', '#cwS', '40');
@@ -186,6 +209,12 @@ $('#fitTable').innerHTML = `<thead><tr><th>NPS</th><th class="num">OD</th><th cl
       res(`মোট ওজন (${f(L, 1)} মি)`, f(kgm * L, 1) + ' কেজি', true) + res('পানি প্রতি মিটার', f(wl, 2) + ' লিটার/মি') +
       res('মোট পানি (হাইড্রোটেস্ট)', f(wl * L, 0) + ' লিটার') + res('পানিসহ মোট ওজন', f(kgm * L + wl * L, 1) + ' কেজি') +
       res('বাইরের তল (পেইন্টিং)', f(Math.PI * p[3] / 1000 * L, 2) + ' বর্গমিটার');
+    VZ.cw($('#cwViz'), { od: p[3], wt: w, id, L, total: kgm * L, water: wl * L });
+    how('#cwHow', [`ID = OD − ২ × WT = ${c(f(p[3]) + ' − 2 × ' + f(w, 2) + ' = ' + f(id) + ' মিমি')}`,
+      `স্টিলের প্রস্থচ্ছেদ = π/4 × (OD² − ID²) = ${c(f(Math.PI * (p[3] * p[3] - id * id) / 4, 0) + ' মিমি²')}`,
+      `প্রতি মিটার ওজন = প্রস্থচ্ছেদ × ঘনত্ব ÷ ১০০০ = ${c(f(kgm, 2) + ' কেজি/মি')}`,
+      `মোট ওজন = ${c(f(kgm, 2) + ' × ' + f(L, 1) + ' = ' + f(kgm * L, 1) + ' কেজি')}`,
+      `পানি = π/4 × ID² ÷ ১০০০ × দৈর্ঘ্য = ${c(f(wl * L, 0) + ' লিটার')} (১ লিটার পানি ≈ ১ কেজি)`]);
   });
 
   /* cut length */
@@ -198,10 +227,16 @@ $('#fitTable').innerHTML = `<thead><tr><th>NPS</th><th class="num">OD</th><th cl
     const d = FIT[$('#ctN').value], a = $('#ctA').value, b = $('#ctB').value, g = num('#ctG');
     const ta = a === 'none' ? 0 : d[idx[a]], tb = b === 'none' ? 0 : d[idx[b]];
     const gaps = (a === 'none' ? 0 : 1) + (b === 'none' ? 0 : 1);
-    if (ta == null || tb == null) { $('#ctOut').innerHTML = '<p class="hint">এই সাইজে নির্বাচিত ফিটিং B16.9 টেবিলে নেই।</p>'; return; }
+    if (ta == null || tb == null) { $('#ctOut').innerHTML = '<p class="hint">এই সাইজে নির্বাচিত ফিটিং B16.9 টেবিলে নেই।</p>'; $('#ctViz').innerHTML = ''; $('#ctHow').innerHTML = ''; return; }
     const cut = num('#ctD') - ta - tb - gaps * g - num('#ctX');
     $('#ctOut').innerHTML = res('প্রান্ত ১ টেক-অফ', f(ta, 1) + ' মিমি') + res('প্রান্ত ২ টেক-অফ', f(tb, 1) + ' মিমি') + res(`রুট গ্যাপ (${bn(gaps)} টি)`, f(gaps * g, 1) + ' মিমি') +
       res('পাইপ কাট লেংথ', f(cut, 0) + ' মিমি', true) + (cut <= 0 ? '<p class="hint" style="color:var(--crit)">কাট লেংথ শূন্য বা ঋণাত্মক: ফিটিং সরাসরি জোড়া (fitting-to-fitting) বা মাপ ভুল।</p>' : '');
+    VZ.cut($('#ctViz'), { D: num('#ctD'), ta, tb, a, b, cut });
+    how('#ctHow', ['ড্রয়িং-এর মাপ সবসময় WP থেকে WP (সেন্টারলাইনের ছেদবিন্দু), পাইপের মাথা থেকে নয়।',
+      `প্রতিটি ফিটিং তার টেক-অফ (WP থেকে ওয়েল্ডিং মুখ) পর্যন্ত জায়গা নেয়: ${c(f(ta, 1) + ' + ' + f(tb, 1) + ' মিমি')}`,
+      `প্রতিটি জয়েন্টে রুট গ্যাপ: ${c(bn(gaps) + ' × ' + f(g, 1) + ' = ' + f(gaps * g, 1) + ' মিমি')}`,
+      `কাট = ড্রয়িং মাপ − টেক-অফ − গ্যাপ − অন্য বাদ = ${c(f(num('#ctD'), 0) + ' − ' + f(ta + tb, 1) + ' − ' + f(gaps * g, 1) + ' − ' + f(num('#ctX'), 0) + ' = ' + f(cut, 0) + ' মিমি')}`,
+      'কাটার আগে টেপ দিয়ে ফিটিং-এর আসল মাপ একবার মিলিয়ে নিন; ম্যানুফ্যাকচারারভেদে ১–২ মিমি এদিক-ওদিক হয়।']);
   });
 
   /* offset */
@@ -213,21 +248,32 @@ $('#fitTable').innerHTML = `<thead><tr><th>NPS</th><th class="num">OD</th><th cl
     $('#ofOut').innerHTML = (roll ? res('আসল অফসেট (√রাইজ² + রোল²)', f(set, 1) + ' মিমি') : '') + res('ট্রাভেল (সেন্টার-টু-সেন্টার)', f(travel, 1) + ' মিমি') + res('রান (সামনের দিকে অগ্রগতি)', f(run, 1) + ' মিমি') +
       res('প্রতি এলবো টেক-অফ', f(to, 1) + ' মিমি') + res('ট্রাভেল পাইপের কাট লেংথ', f(travel - 2 * to - 2 * num('#ofG'), 0) + ' মিমি', true) +
       (roll ? res('রোলের কোণ (উল্লম্ব থেকে)', f(Math.atan2(roll, rise) * 180 / Math.PI, 1) + '°') : '');
+    VZ.off($('#ofViz'), { set, run, travel, ang: num('#ofA'), roll });
+    how('#ofHow', [(roll ? `রোলিং অফসেটে আসল সেট = √(রাইজ² + রোল²) = ${c('√(' + f(rise, 0) + '² + ' + f(roll, 0) + '²) = ' + f(set, 1))}` : `সেট (অফসেট) = ${c(f(set, 0) + ' মিমি')}`),
+      `ট্রাভেল = সেট ÷ sin(${bn(num('#ofA'))}°) = ${c(f(set, 1) + ' ÷ ' + Math.sin(a).toFixed(4) + ' = ' + f(travel, 1))}`,
+      `রান = সেট ÷ tan(${bn(num('#ofA'))}°) = ${c(f(run, 1))}`,
+      `৪৫° এর জন্য সহজ গুণক: ট্রাভেল = সেট × ${c('1.414')}, রান = সেট × ${c('1')}`,
+      `ট্রাভেল পাইপের কাট = ট্রাভেল − ২ × টেক-অফ − ২ × গ্যাপ = ${c(f(travel - 2 * to - 2 * num('#ofG'), 0) + ' মিমি')}`]);
   });
 
   /* mitre */
   on(['#miD', '#miA', '#miW', '#miR'], () => {
     const D = num('#miD'), A = num('#miA'), W = Math.max(1, Math.round(num('#miW'))), R = num('#miR');
-    const c = A / (2 * W), t = Math.tan(c * Math.PI / 180);
-    $('#miOut').innerHTML = res('টুকরো সংখ্যা', bn(W + 1) + ' (দুই মাথার টুকরো অর্ধেক মাপের)') + res('প্রতিটি কাটের কোণ (লম্ব থেকে)', f(c, 2) + '°', true) +
+    const ca = A / (2 * W), t = Math.tan(ca * Math.PI / 180);
+    $('#miOut').innerHTML = res('টুকরো সংখ্যা', bn(W + 1) + ' (দুই মাথার টুকরো অর্ধেক মাপের)') + res('প্রতিটি কাটের কোণ (লম্ব থেকে)', f(ca, 2) + '°', true) +
       res('কাট-ব্যাক (লম্বা দিক − ছোট দিক)', f(D * t, 1) + ' মিমি') + res('মাঝের টুকরোর সেন্টারলাইন দৈর্ঘ্য', f(2 * R * t, 1) + ' মিমি') +
       res('মাঝের টুকরো: বাইরের দিক / ভেতরের দিক', `${f(2 * (R + D / 2) * t, 0)} / ${f(2 * (R - D / 2) * t, 0)} মিমি`) + res('শেষের টুকরো (ট্যানজেন্ট বিন্দু পর্যন্ত, সেন্টার)', f(R * t, 1) + ' মিমি');
+    VZ.mit($('#miViz'), { D, A, W, R, c: ca });
+    how('#miHow', [`প্রতি কাটের কোণ = মোট কোণ ÷ (২ × জয়েন্ট) = ${c(f(A, 0) + ' ÷ (2 × ' + W + ') = ' + f(ca, 2) + '°')}`,
+      `কাট-ব্যাক = OD × tan(কাটের কোণ) = ${c(f(D, 1) + ' × ' + t.toFixed(4) + ' = ' + f(D * t, 1) + ' মিমি')}`,
+      `মাঝের টুকরো (সেন্টারে) = ২ × R × tan(কাটের কোণ) = ${c(f(2 * R * t, 1) + ' মিমি')}`,
+      'পাইপে র‍্যাপ-অ্যারাউন্ড দিয়ে সোজা দাগ টানুন, তারপর লম্বা দিক ও ছোট দিক মেপে কাটের লাইন আঁকুন।']);
   });
 
   /* fishmouth */
   on(['#fsM', '#fsB', '#fsD'], () => {
     const R = num('#fsM') / 2, r = num('#fsB') / 2, N = parseInt($('#fsD').value, 10), svg = $('#fsSvg');
-    if (r > R || r <= 0) { $('#fsOut').innerHTML = '<p class="hint" style="color:var(--crit)">ব্রাঞ্চ OD মূল পাইপের OD এর চেয়ে বড় হতে পারবে না।</p>'; svg.innerHTML = ''; return; }
+    if (r > R || r <= 0) { $('#fsOut').innerHTML = '<p class="hint" style="color:var(--crit)">ব্রাঞ্চ OD মূল পাইপের OD এর চেয়ে বড় হতে পারবে না।</p>'; svg.innerHTML = ''; $('#fsViz').innerHTML = ''; $('#fsHow').innerHTML = ''; return; }
     const base = Math.sqrt(R * R - r * r), C = 2 * Math.PI * r, pts = [];
     for (let i = 0; i <= N; i++) { const th = 2 * Math.PI * i / N; pts.push([C * i / N, Math.sqrt(R * R - (r * Math.sin(th)) ** 2) - base]); }
     const dmax = R - base;
@@ -237,8 +283,13 @@ $('#fitTable').innerHTML = `<thead><tr><th>NPS</th><th class="num">OD</th><th cl
     const path = pts.map((p, i) => `${i ? 'L' : 'M'}${(ox + p[0] * sx).toFixed(1)} ${(oy + p[1] * sy).toFixed(1)}`).join(' ');
     svg.innerHTML = `<rect x="${ox}" y="${oy}" width="${W}" height="${H + 10}" fill="var(--panel-2)" stroke="var(--line-2)"/>` +
       pts.map((p, i) => `<path d="M${(ox + p[0] * sx).toFixed(1)} ${oy} V${(oy + p[1] * sy).toFixed(1)}" stroke="var(--accent)" stroke-width="1"/>${i < N ? `<text x="${(ox + p[0] * sx + 2).toFixed(1)}" y="${oy - 6}" class="tx" style="font-size:9px">${i + 1}</text>` : ''}`).join('') +
-      `<path d="${path} V${oy + H + 10} H${ox} Z" fill="var(--steel-soft)" stroke="none"/><path d="${path}" fill="none" stroke="var(--ink)" stroke-width="2"/>` +
+      `<path d="${path} V${oy + H + 10} H${ox} Z" fill="var(--steel-soft)" stroke="none"/><path class="draw" pathLength="1" d="${path}" fill="none" stroke="var(--ink)" stroke-width="2"/>` +
       `<text x="${ox}" y="${oy + H + 26}" class="tx" style="font-size:10px">ব্রাঞ্চ পাইপের পরিধি খোলা অবস্থায় (স্কেল আনুপাতিক নয়); নীল অংশ রাখা হবে, উপরের অংশ কাটা হবে</text>`;
+    VZ.fish($('#fsViz'), { R, r, dmax });
+    how('#fsHow', [`ব্রাঞ্চের পরিধি = π × OD = ${c(f(C, 1) + ' মিমি')}; ${bn(N)} ভাগে প্রতি দাগ ${c(f(C / N, 1) + ' মিমি')}`,
+      `দাগ নম্বর i এর কোণ θ = ৩৬০° × i ÷ ${bn(N)}`,
+      `মাথা থেকে কাট = √(R² − (r·sinθ)²) − √(R² − r²), যেখানে R = হেডার OD/২, r = ব্রাঞ্চ OD/২`,
+      `সবচেয়ে গভীর কাট (দাগ ১ ও মাঝামাঝি) = R − √(R² − r²) = ${c(f(dmax, 1) + ' মিমি')}`]);
   });
 
   /* hydrotest */
@@ -247,6 +298,11 @@ $('#fitTable').innerHTML = `<thead><tr><th>NPS</th><th class="num">OD</th><th cl
     $('#hyOut').innerHTML = res('টেস্ট চাপ (সর্বোচ্চ বিন্দুতে)', f(Pt, 2) + ' barg', true) + (hyd ? res('গেজে পড়তে হবে (গেজ নিচে থাকলে)', f(Pt + head, 2) + ' barg') + res('পানির উচ্চতার চাপ', f(head, 2) + ' bar') : '') +
       res('প্রস্তাবিত গেজ রেঞ্জ', `${f(Pt * 1.5, 0)}–${f(Pt * 4, 0)} bar (আদর্শ ≈ ${f(Pt * 2, 0)})`) + res('রিলিফ ভাল্ভ সেট (আনুমানিক)', `${f(Pt * 1.05, 1)}–${f(Pt * 1.1, 1)} barg`) +
       res('PSI তে', f(Pt * 14.504, 0) + ' psig') + `<p class="hint">${hyd ? 'হোল্ড কমপক্ষে ১০ মিনিট (B31.3), তারপর ডিজাইন চাপে পরিদর্শন। নিচের বিন্দুর চাপ যেন কোনো ফ্ল্যাঞ্জ/ভাল্ভের টেস্ট সীমা না ছাড়ায়।' : 'নিউমেটিক টেস্টে প্রথমে ০.৫ bar বা ২৫% এ প্রাথমিক লিক চেক, তারপর ধাপে ধাপে; বিশেষ অনুমোদন ও নিরাপদ দূরত্ব বাধ্যতামূলক।'}</p>`;
+    VZ.hyd($('#hyViz'), { Pt, gauge: hyd ? Pt + head : Pt, H: hyd ? num('#hyH') : 0 });
+    how('#hyHow', [hyd ? `টেস্ট চাপ = ১.৫ × ডিজাইন চাপ × (St/S) = ${c('1.5 × ' + f(num('#hyP'), 2) + ' × ' + f(Math.min(6.5, Math.max(1, num('#hyR'))), 2) + ' = ' + f(Pt, 2) + ' barg')}` : `টেস্ট চাপ = ১.১ × ডিজাইন চাপ = ${c(f(Pt, 2) + ' barg')}`,
+      hyd ? `প্রতি ১ মিটার পানির উচ্চতায় চাপ বাড়ে ${c('0.0981 bar')}; ${c(f(num('#hyH'), 1) + ' মি × 0.0981 = ' + f(head, 2) + ' bar')}` : 'নিউমেটিক টেস্টে গ্যাসের ওজন নগণ্য, তাই উচ্চতার সংশোধন লাগে না।',
+      hyd ? `গেজ নিচে থাকলে গেজে দেখাবে = টেস্ট চাপ + উচ্চতার চাপ = ${c(f(Pt + head, 2) + ' barg')}` : 'চাপ ধাপে ধাপে বাড়ান; প্রতিটি ধাপে থেমে লিক দেখুন।',
+      `গেজের রেঞ্জ এমন নিন যাতে টেস্ট চাপ স্কেলের মাঝামাঝি (১.৫–৪ গুণ) থাকে।`]);
   });
 
   /* torque */
@@ -255,6 +311,11 @@ $('#fitTable').innerHTML = `<thead><tr><th>NPS</th><th class="num">OD</th><th cl
     const s = STUD[$('#tqD').value], A = s[1] * 645.16, F = num('#tqS') * A, T = num('#tqK') * F * s[0] * 0.0254;
     $('#tqOut').innerHTML = res('টেনসাইল স্ট্রেস এরিয়া', f(A, 1) + ' মিমি²') + res('বোল্ট টান (প্রিলোড)', f(F / 1000, 1) + ' kN') +
       res('টর্ক', `${f(T, 0)} N·m`, true) + res('টর্ক (ft·lb)', f(T * 0.7376, 0) + ' ft·lb') + res('ধাপ: ৩০% / ৬০% / ১০০%', `${f(T * 0.3, 0)} / ${f(T * 0.6, 0)} / ${f(T, 0)} N·m`) + res('নাট সাইজ', s[2]);
+    VZ.tq($('#tqViz'), { T });
+    how('#tqHow', [`টেনসাইল স্ট্রেস এরিয়া (টেবিল থেকে) = ${c(f(A, 1) + ' মিমি²')}`,
+      `বোল্ট টান F = স্ট্রেস × এরিয়া = ${c(f(num('#tqS'), 0) + ' × ' + f(A, 1) + ' = ' + f(F / 1000, 1) + ' kN')}`,
+      `টর্ক T = K × F × d = ${c(num('#tqK') + ' × ' + f(F, 0) + ' N × ' + f(s[0] * 0.0254, 4) + ' মি = ' + f(T, 0) + ' N·m')}`,
+      'ছবির মতো ক্রস প্যাটার্নে (১→২→৩…) তিন পাসে টাইট দিন, শেষে ১০০% এ ঘড়ির কাঁটার দিকে সব বোল্ট একবার চেক।']);
   });
 
   /* electrode consumption */
@@ -266,7 +327,11 @@ $('#fitTable').innerHTML = `<thead><tr><th>NPS</th><th class="num">OD</th><th cl
     const len = Math.PI * p[3], kg = area * len * 7.85e-6, J = Math.max(1, Math.round(num('#elJ'))), eff = num('#elE');
     $('#elOut2').innerHTML = res('ওয়েল্ডের প্রস্থচ্ছেদ (আনুমানিক)', f(area, 0) + ' মিমি²') + res('প্রতি জয়েন্ট ওয়েল্ড মেটাল', f(kg, 3) + ' কেজি') +
       res(`মোট ওয়েল্ড মেটাল (${bn(J)} জয়েন্ট)`, f(kg * J, 2) + ' কেজি') + res('প্রয়োজনীয় ইলেক্ট্রোড/তার', f(kg * J / eff, 2) + ' কেজি', true) +
-      res('মোট ইঞ্চ-ডায়া', f(p[1] * J, 1) + ' ID') + '<p class="hint">৩৭.৫° বেভেল, ৩ মিমি গ্যাপ, ১.৬ মিমি ল্যান্ড, ১.৫ মিমি ক্যাপ ধরে। রুট TIG ও বাকিটা SMAW হলে মোটামুটি ১৫–২০% TIG রড, বাকি স্টিক। ১০–১৫% বাড়তি রাখুন (অপচয়, স্টাব এন্ড)।</p>';
+      res('মোট ইঞ্চ-ডায়া', f(p[1] * J, 1) + ' ID') + (VZ.el($('#elViz'), { t, g, land }), how('#elHow', [
+        `জয়েন্টের প্রস্থচ্ছেদ (রুট গ্যাপ + দুই বেভেল + ক্যাপ) ≈ ${c(f(area, 0) + ' মিমি²')}`,
+        `এক জয়েন্টের ওয়েল্ড দৈর্ঘ্য = π × OD = ${c(f(len, 0) + ' মিমি')}`,
+        `ওয়েল্ড মেটাল = এরিয়া × দৈর্ঘ্য × ৭.৮৫ গ্রাম/সিসি = ${c(f(kg, 3) + ' কেজি')}`,
+        `ইলেক্ট্রোড = মোট ওয়েল্ড মেটাল ÷ দক্ষতা = ${c(f(kg * J, 2) + ' ÷ ' + eff + ' = ' + f(kg * J / eff, 2) + ' কেজি')}`]), '') + '<p class="hint">৩৭.৫° বেভেল, ৩ মিমি গ্যাপ, ১.৬ মিমি ল্যান্ড, ১.৫ মিমি ক্যাপ ধরে। রুট TIG ও বাকিটা SMAW হলে মোটামুটি ১৫–২০% TIG রড, বাকি স্টিক। ১০–১৫% বাড়তি রাখুন (অপচয়, স্টাব এন্ড)।</p>';
   });
 
   /* inch-dia & manpower */
@@ -279,6 +344,10 @@ $('#fitTable').innerHTML = `<thead><tr><th>NPS</th><th class="num">OD</th><th cl
     $('#idOut').innerHTML = res('মোট জয়েন্ট', f(jn, 0)) + res('মোট ইঞ্চ-ডায়া', f(tot, 1) + ' ID', true) + res('ওয়েল্ডার-দিন', f(wd, 1)) +
       res('প্রয়োজনীয় ওয়েল্ডার', f(Math.ceil(w), 0) + ` জন (হিসাবে ${f(w, 2)})`) + res('প্রস্তাবিত ফিটার / হেল্পার', `${f(Math.ceil(w), 0)} / ${f(Math.ceil(w * 1.5), 0)} জন`) +
       '<p class="hint">ফিটার:ওয়েল্ডার অনুপাত সাধারণত ১:১ থেকে ১:১.৫; সাইটের অবস্থা অনুযায়ী বদলান। ফিট-আপ এগিয়ে না থাকলে ওয়েল্ডার বসে থাকবে।</p>';
+    VZ.id($('#idViz'), { rows: sizes.map(s => { const n = num('#id_' + s.replace(/\W/g, '_')); return [s, n, n * pipeBy(s)[1]]; }), welders: Math.ceil(w) });
+    how('#idHow', ['ইঞ্চ-ডায়া = জয়েন্ট সংখ্যা × পাইপের নমিনাল সাইজ (ইঞ্চি)। যেমন ৬" এর ১২টি জয়েন্ট = ৭২ ID।',
+      `মোট = ${c(f(tot, 1) + ' ID')}; ওয়েল্ডার-দিন = মোট ÷ প্রতি দিনের রেট = ${c(f(tot, 1) + ' ÷ ' + f(num('#idRate'), 0) + ' = ' + f(wd, 1))}`,
+      `ওয়েল্ডার = ওয়েল্ডার-দিন ÷ কাজের দিন = ${c(f(wd, 1) + ' ÷ ' + f(num('#idDays'), 0) + ' = ' + f(w, 2))} → পূর্ণসংখ্যায় ${c(f(Math.ceil(w), 0))} জন`]);
   });
 
   /* CE */
@@ -286,18 +355,31 @@ $('#fitTable').innerHTML = `<thead><tr><th>NPS</th><th class="num">OD</th><th cl
     const ce = num('#ceC') + num('#ceMn') / 6 + (num('#ceCr') + num('#ceMo') + num('#ceV')) / 5 + (num('#ceNi') + num('#ceCu')) / 15;
     const [txt, cls] = ce <= 0.35 ? ['ভালো ওয়েল্ডেবিলিটি; পাতলা হলে সাধারণত প্রি-হিট লাগে না', 'g'] : ce <= 0.45 ? ['মাঝারি; মোটা হলে প্রি-হিট ৫০–১০০°C ও লো-H রড', 'y'] : ce <= 0.6 ? ['কঠিন; প্রি-হিট ১০০–২০০°C, নিয়ন্ত্রিত প্রক্রিয়া', 'r'] : ['খুব কঠিন; প্রি-হিট ও PWHT অপরিহার্য', 'r'];
     $('#ceOut').innerHTML = res('CE (IIW)', f(ce, 3), true) + `<p><span class="pill ${cls}">${txt}</span></p>`;
+    const parts = [['C', num('#ceC')], ['Mn/6', num('#ceMn') / 6], ['(Cr+Mo+V)/5', (num('#ceCr') + num('#ceMo') + num('#ceV')) / 5], ['(Ni+Cu)/15', (num('#ceNi') + num('#ceCu')) / 15]];
+    VZ.ce($('#ceViz'), { ce, parts });
+    how('#ceHow', ['CE = C + Mn/6 + (Cr + Mo + V)/5 + (Ni + Cu)/15', parts.map(([l, v]) => `${l} = ${c(f(v, 3))}`).join(' · '), `যোগফল = ${c(f(ce, 3))}`,
+      'CE যত বেশি, HAZ তত শক্ত ও ভঙ্গুর হয়, ক্র্যাকের ঝুঁকি বাড়ে; তাই প্রি-হিট ও লো-হাইড্রোজেন ইলেক্ট্রোড লাগে।']);
   });
 
   /* heat input */
   on(['#hiV', '#hiA', '#hiL', '#hiT', '#hiE'], () => {
     const L = Math.max(0.1, num('#hiL')), t = Math.max(0.1, num('#hiT')), sp = L / t * 60, hi = num('#hiV') * num('#hiA') * 60 / (sp * 1000) * num('#hiE');
     $('#hiOut').innerHTML = res('ট্রাভেল স্পিড', f(sp, 0) + ' মিমি/মিনিট') + res('হিট ইনপুট', f(hi, 2) + ' kJ/মিমি', true) + res('kJ/ইঞ্চি তে', f(hi * 25.4, 1) + ' kJ/in');
+    VZ.hi($('#hiViz'), { V: num('#hiV'), A: num('#hiA'), L, T: t, sp, hi });
+    how('#hiHow', [`ট্রাভেল স্পিড = দৈর্ঘ্য ÷ সময় × ৬০ = ${c(f(L, 0) + ' ÷ ' + f(t, 0) + ' × 60 = ' + f(sp, 0) + ' মিমি/মিনিট')}`,
+      `হিট ইনপুট = (V × A × ৬০) ÷ (স্পিড × ১০০০) × দক্ষতা = ${c('(' + f(num('#hiV'), 1) + ' × ' + f(num('#hiA'), 0) + ' × 60) ÷ (' + f(sp, 0) + ' × 1000) × ' + num('#hiE') + ' = ' + f(hi, 2) + ' kJ/মিমি')}`,
+      'সাইটে স্টপওয়াচ দিয়ে এক রডে কত মিমি ওয়েল্ড হলো মাপুন, ক্ল্যাম্প মিটারে কারেন্ট ও ভোল্টেজ দেখুন।']);
   });
 
   /* slope */
   on(['#slX', '#slL', '#slE'], () => {
     const x = Math.max(1, num('#slX')), drop = num('#slL') / x;
     $('#slOut').innerHTML = res('মোট নামবে', f(drop, 1) + ' মিমি', true) + res('শেষ প্রান্তের এলিভেশন', f(num('#slE') - drop, 1) + ' মিমি') + res('ঢাল শতাংশে', f(100 / x, 2) + '%') + res('কোণ', f(Math.atan(1 / x) * 180 / Math.PI, 3) + '°') + res('প্রতি মিটারে', f(1000 / x, 1) + ' মিমি');
+    VZ.slope($('#slViz'), { x, L: num('#slL'), E: num('#slE'), drop });
+    how('#slHow', [`ঢাল ১:${bn(f(x, 0))} মানে প্রতি ${bn(f(x, 0))} মিমি সামনে গেলে ১ মিমি নামবে`,
+      `মোট নামবে = দৈর্ঘ্য ÷ ${bn(f(x, 0))} = ${c(f(num('#slL'), 0) + ' ÷ ' + f(x, 0) + ' = ' + f(drop, 1) + ' মিমি')}`,
+      `শেষ এলিভেশন = শুরু − নামা = ${c(f(num('#slE'), 0) + ' − ' + f(drop, 1) + ' = ' + f(num('#slE') - drop, 1) + ' মিমি')}`,
+      'সাইটে লেভেল টিউব বা লেজার দিয়ে দুই প্রান্তের সাপোর্টের উচ্চতা মার্ক করুন।']);
   });
 
   /* units */

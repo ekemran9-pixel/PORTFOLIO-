@@ -4,7 +4,7 @@ root = pathlib.Path(__file__).parent
 src = root / 'src'
 parts = ['shell.html'] + sorted(p.name for p in src.glob('m*.html'))
 body = ''.join((src / p).read_text() for p in parts)
-body += '</main>\n</div>\n<script>\n' + (src / 'data.js').read_text() + '\n' + (src / 'app.js').read_text() + '\n</script>\n'
+body += '</main>\n</div>\n<script>\n' + (src / 'data.js').read_text() + '\n' + (src / 'viz.js').read_text() + '\n' + (src / 'app.js').read_text() + '\n</script>\n'
 head = (src / 'head.html').read_text()
 (root / 'dist').mkdir(exist_ok=True)
 (root / 'dist' / 'artifact.html').write_text(head + body)

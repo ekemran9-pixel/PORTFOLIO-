@@ -232,6 +232,107 @@ input[type=number],input[type=text],select{font:inherit;font-size:15px;font-vari
 .btn.go{background:var(--ink);color:var(--bg);border-color:var(--ink)}
 .calcnav{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:4px}
 
+/* calculator picker: grouped icon buttons */
+.cpick{display:grid;gap:14px;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px}
+.cgroup{display:grid;gap:8px}
+.cgroup h6{margin:0;font-family:var(--body);font-size:12px;font-weight:600;color:var(--ink-3);display:flex;gap:8px;align-items:center}
+.cgroup h6::after{content:"";flex:1;border-top:1px dashed var(--line-2)}
+.cbtns{display:grid;gap:8px;grid-template-columns:repeat(auto-fill,minmax(158px,1fr))}
+.cbtn{display:flex;align-items:center;gap:10px;padding:8px 10px;border:1px solid var(--line-2);border-radius:8px;background:var(--bg);color:var(--ink-2);cursor:pointer;text-align:left;font-size:14px;line-height:1.3;transition:transform .15s,border-color .15s,box-shadow .15s}
+.cbtn svg{flex:none;width:30px;height:30px;padding:4px;border-radius:7px;background:var(--panel-2);color:var(--ink);overflow:visible}
+.cbtn:hover{transform:translateY(-1px);border-color:var(--ink-3);color:var(--ink)}
+.cbtn[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink);box-shadow:3px 3px 0 var(--marker)}
+.cbtn[aria-pressed="true"] svg{background:var(--marker);color:var(--marker-ink)}
+@media(max-width:420px){.cbtns{grid-template-columns:1fr 1fr}.cbtn{font-size:13px;gap:7px;padding:7px 8px}.cbtn svg{width:26px;height:26px}}
+
+/* calculator card */
+.calc{animation:calcIn .35s ease both;scroll-margin-top:76px;border-radius:10px}
+@keyframes calcIn{from{opacity:0;transform:translateY(10px)}}
+.calc>header{grid-template-columns:auto 1fr;column-gap:12px;align-items:center}
+.calc>header .cico{grid-row:span 2;width:40px;height:40px;border-radius:9px;background:var(--marker);color:var(--marker-ink);display:grid;place-items:center;border:1.5px solid var(--ink)}
+.calc>header .cico svg{width:26px;height:26px}
+.cgrid{display:grid;gap:14px;align-items:start}
+@media(min-width:860px){.cgrid{grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)}}
+.cgrid>.fields{align-content:start}
+.stack{display:grid;gap:10px;align-content:start}
+#idRows{grid-template-columns:repeat(auto-fill,minmax(92px,1fr))}
+.viz{margin:0;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px),var(--panel-2);background-size:14px 14px;display:grid}
+.viz svg{display:block;width:100%;height:auto}
+.viz figcaption{font-size:12px;color:var(--ink-3);padding:6px 10px;border-top:1px solid var(--line);background:var(--panel)}
+.out{grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.out>:not(.res){grid-column:1/-1}
+.res.main{grid-column:1/-1;order:-1;padding:12px 14px;border:1.5px solid var(--ink)}
+.res.main b{font-size:24px}
+.res.main.bump{animation:bump .55s ease}
+@keyframes bump{35%{transform:scale(1.015);box-shadow:4px 4px 0 var(--ink)}}
+.how{border:1px solid var(--line);border-radius:8px;background:var(--panel-2)}
+.how summary{cursor:pointer;padding:9px 12px;font-weight:600;font-size:14px;display:flex;gap:8px;align-items:center;list-style:none}
+.how summary::-webkit-details-marker{display:none}
+.how summary::before{content:"▸";color:var(--accent);transition:transform .2s}
+.how[open] summary::before{transform:rotate(90deg)}
+.how ol{margin:0;padding:2px 14px 12px 36px;display:grid;gap:7px;font-size:14px;color:var(--ink-2)}
+.how ol li::marker{font-family:var(--mono);color:var(--accent);font-size:.9em}
+.how code{white-space:nowrap}
+
+/* diagram strokes */
+svg .pp-o{fill:none;stroke:var(--ink);stroke-linejoin:round}
+svg .pp-i{fill:none;stroke:var(--panel-3);stroke-linejoin:round}
+svg .pp-i.y{stroke:var(--marker)}
+svg .pp-i.b{stroke:var(--steel-soft)}
+svg .cl{fill:none;stroke:var(--steel);stroke-width:1.2;stroke-dasharray:12 3 2 3}
+svg .dm{fill:none;stroke:var(--ink-3);stroke-width:1}
+svg .dm.y{stroke:var(--accent);stroke-width:1.5}
+svg .wpt{fill:var(--panel);stroke:var(--steel);stroke-width:2}
+svg .wd{fill:var(--accent);animation:glow 1.6s ease-in-out infinite}
+svg .hl{fill:color-mix(in srgb,var(--marker) 45%,transparent);stroke:var(--accent);stroke-width:1.5}
+svg .inset{fill:var(--panel);stroke:var(--line-2)}
+svg .txs{fill:var(--ink-3);font-family:var(--body);font-size:10.5px}
+svg .txk{fill:var(--marker-ink);font-family:var(--mono);font-size:11px;font-weight:600}
+svg .big{fill:var(--ink);font-family:var(--display);font-weight:800;font-size:22px}
+svg .tx,svg .txa{font-family:var(--mono),'Hind Siliguri',sans-serif}
+svg .water{fill:color-mix(in srgb,var(--steel) 34%,transparent)}
+svg .wave{fill:none;stroke:var(--steel);stroke-width:1.5;opacity:.7;animation:wave 3s linear infinite}
+svg .flowd{fill:none;stroke:var(--steel);stroke-width:2;stroke-dasharray:4 10;stroke-linecap:round;animation:flowd 1.1s linear infinite}
+svg .cut{fill:none;stroke:var(--crit);stroke-width:3;stroke-linecap:round}
+svg .vent{stroke:var(--ink);stroke-width:2}
+svg .zone{fill:none;stroke:var(--marker);stroke-width:8}
+svg .needle{transform:rotate(var(--to));animation:needle 1.1s cubic-bezier(.3,1.4,.5,1) both}
+svg .ptr{animation:ptr .8s cubic-bezier(.3,1.3,.5,1) both}
+svg .star{fill:none;stroke:var(--accent);stroke-width:1.2;stroke-dasharray:3 3}
+svg .bolt circle{fill:var(--panel);stroke:var(--ink);stroke-width:1.5;animation:boltlit 4.4s linear infinite backwards;animation-delay:var(--d)}
+svg .bolt text{fill:var(--ink);font-family:var(--mono);font-size:10.5px;font-weight:600}
+svg .layer.l0{fill:var(--accent)}
+svg .layer.l1{fill:color-mix(in srgb,var(--accent) 60%,var(--marker))}
+svg .layer{animation:layer 5s ease infinite backwards;animation-delay:var(--d)}
+svg .bead{fill:var(--accent);transform-box:fill-box;transform-origin:0 50%;animation:bead var(--t) linear infinite}
+svg .torch{animation:torch var(--t) linear infinite}
+svg .arc{fill:#FFF6C8;stroke:var(--marker);stroke-width:3;animation:arc .18s ease-in-out infinite alternate}
+svg .zg{fill:var(--good-soft);stroke:var(--good)}svg .zy{fill:var(--warn-soft);stroke:var(--warn)}
+svg .zo{fill:color-mix(in srgb,var(--crit-soft) 60%,var(--warn-soft));stroke:var(--crit)}svg .zr{fill:var(--crit-soft);stroke:var(--crit)}
+svg .pc{stroke:var(--ink);stroke-width:1}svg .pc0{fill:var(--marker)}svg .pc1{fill:var(--steel-soft)}svg .pc2{fill:var(--accent-soft)}svg .pc3{fill:var(--good-soft)}
+svg .man{fill:var(--steel)}
+svg .pop,svg .grow{transform-box:fill-box}
+svg .pop{transform-origin:50% 50%}
+svg .grow{transform-origin:0 50%}
+.calc.enter svg .pop{animation:pop .5s cubic-bezier(.2,.8,.3,1.25) both;animation-delay:calc(var(--i,0) * 90ms)}
+.calc.enter svg .grow{animation:grow .7s ease-out both}
+.calc.enter svg .draw{stroke-dasharray:1;animation:draw 1.1s ease .3s both}
+.calc.enter svg .water{animation:fillup 1.6s ease-out both;transform-box:fill-box;transform-origin:50% 100%}
+@keyframes pop{from{opacity:0;transform:scale(.85)}}
+@keyframes grow{from{transform:scaleX(0)}}
+@keyframes draw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+@keyframes fillup{from{transform:scaleY(0)}}
+@keyframes flowd{to{stroke-dashoffset:-28}}
+@keyframes wave{to{transform:translateX(48px)}}
+@keyframes glow{50%{opacity:.35}}
+@keyframes needle{from{transform:rotate(var(--from))}to{transform:rotate(var(--to))}}
+@keyframes ptr{from{transform:translateX(var(--from))}}
+@keyframes boltlit{0%,11%{fill:var(--marker)}13%,100%{fill:var(--panel)}}
+@keyframes layer{0%{opacity:0}6%,80%{opacity:1}92%,100%{opacity:0}}
+@keyframes bead{from{transform:scaleX(0)}}
+@keyframes torch{to{transform:translateX(300px)}}
+@keyframes arc{to{r:9;opacity:.75}}
+
 /* home */
 .hero{border:1.5px solid var(--ink);background:var(--panel);margin-bottom:26px;position:relative;overflow:hidden}
 .hero .iso{position:absolute;inset:0;opacity:.9;pointer-events:none;
@@ -2371,7 +2472,7 @@ input[type=number],input[type=text],select{font:inherit;font-size:15px;font-vari
 <div class="sheet"><div class="t">
   <span class="eb">DWG FAB-14 · টুলস</span>
   <h1>ফোরম্যানের ক্যালকুলেটর</h1>
-  <p class="lede">সাইটে প্রতিদিন যেসব হিসাব লাগে: পাইপ ওজন, কাট লেংথ, অফসেট, মাইটার, ফিশমাউথ টেমপ্লেট, হাইড্রোটেস্ট চাপ, বোল্ট টর্ক, ইলেক্ট্রোড খরচ, ইঞ্চ-ডায়া, CE, হিট ইনপুট ও ইউনিট রূপান্তর।</p>
+  <p class="lede">সাইটে প্রতিদিন যেসব হিসাব লাগে: ছবি ও অ্যানিমেশন দেখে বুঝে নিন। পাইপ ওজন, কাট লেংথ, অফসেট, মাইটার, ফিশমাউথ টেমপ্লেট, হাইড্রোটেস্ট চাপ, বোল্ট টর্ক, ইলেক্ট্রোড খরচ, ইঞ্চ-ডায়া, CE, হিট ইনপুট ও ইউনিট রূপান্তর।</p>
 </div><div class="tb">
   <div><small>ক্যালকুলেটর</small><b>১৩টি</b></div>
   <div><small>ইউনিট</small><b>মিমি, bar, kg</b></div>
@@ -2380,147 +2481,188 @@ input[type=number],input[type=text],select{font:inherit;font-size:15px;font-vari
 </div></div>
 
 <div class="sec" id="calc-all">
-  <div class="chips calcnav" id="calcNav" role="tablist" aria-label="ক্যালকুলেটর বেছে নিন">
-    <button class="chip" data-k="cw" aria-pressed="true">পাইপ ওজন ও আয়তন</button>
-    <button class="chip" data-k="cut" aria-pressed="false">কাট লেংথ</button>
-    <button class="chip" data-k="off" aria-pressed="false">অফসেট</button>
-    <button class="chip" data-k="mit" aria-pressed="false">মাইটার কাট</button>
-    <button class="chip" data-k="fish" aria-pressed="false">ফিশমাউথ টেমপ্লেট</button>
-    <button class="chip" data-k="hyd" aria-pressed="false">হাইড্রোটেস্ট চাপ</button>
-    <button class="chip" data-k="tq" aria-pressed="false">বোল্ট টর্ক</button>
-    <button class="chip" data-k="el" aria-pressed="false">ইলেক্ট্রোড খরচ</button>
-    <button class="chip" data-k="id" aria-pressed="false">ইঞ্চ-ডায়া ও ম্যানপাওয়ার</button>
-    <button class="chip" data-k="ce" aria-pressed="false">কার্বন ইকুইভ্যালেন্ট</button>
-    <button class="chip" data-k="hi" aria-pressed="false">হিট ইনপুট</button>
-    <button class="chip" data-k="slope" aria-pressed="false">ঢাল</button>
-    <button class="chip" data-k="unit" aria-pressed="false">ইউনিট রূপান্তর</button>
+  <div class="cpick" id="calcNav" aria-label="ক্যালকুলেটর বেছে নিন">
+    <div class="cgroup"><h6>পাইপ, কাটিং ও লে-আউট</h6><div class="cbtns"><button class="cbtn" type="button" data-k="cw" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 9h10l3 11H4z"/><circle cx="12" cy="6" r="2.6"/></svg><span>পাইপ ওজন ও পানি</span></button><button class="cbtn" type="button" data-k="cut" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12h20M7 7v10M17 7v10"/><path d="M9.5 12h5" stroke-width="3"/></svg><span>কাট লেংথ</span></button><button class="cbtn" type="button" data-k="off" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 18h6l8-12h6"/><path d="M8 18h8V6" stroke-dasharray="2 2"/></svg><span>অফসেট</span></button><button class="cbtn" type="button" data-k="mit" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 22v-9l3-6 6-3h9"/><path d="M4 13h4M7 7l3 3M13 4l1 4"/></svg><span>মাইটার কাট</span></button><button class="cbtn" type="button" data-k="fish" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 2v10q5 5 10 0V2"/><path d="M2 21q10-10 20 0"/></svg><span>ফিশমাউথ টেমপ্লেট</span></button><button class="cbtn" type="button" data-k="slope" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 7l20 8"/><path d="M14 18h8v-6" stroke-dasharray="2 2"/></svg><span>ঢাল ও এলিভেশন</span></button></div></div>
+    <div class="cgroup"><h6>ওয়েল্ডিং</h6><div class="cbtns"><button class="cbtn" type="button" data-k="el" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20L16 8M14 6l4 4"/><path d="M19 15l2 1M17 18l1 2M20 19h2"/></svg><span>ইলেক্ট্রোড খরচ</span></button><button class="cbtn" type="button" data-k="hi" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2c3 4 6 7 6 11a6 6 0 0 1-12 0c0-2 1-4 2.5-5 0 2 1 3.5 2.5 3.5 0-3.5-1-6 1-9.5z"/></svg><span>হিট ইনপুট</span></button><button class="cbtn" type="button" data-k="ce" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6M10 3v6L5 19a1.5 1.5 0 0 0 1.3 2h11.4a1.5 1.5 0 0 0 1.3-2L14 9V3"/><path d="M7.5 15h9"/></svg><span>কার্বন ইকুইভ্যালেন্ট</span></button></div></div>
+    <div class="cgroup"><h6>টেস্টিং ও বোল্টিং</h6><div class="cbtns"><button class="cbtn" type="button" data-k="hyd" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 13l4.5-4M12 2v3M9 2h6"/></svg><span>হাইড্রোটেস্ট চাপ</span></button><button class="cbtn" type="button" data-k="tq" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="6" r="1.4"/><circle cx="12" cy="18" r="1.4"/><circle cx="6" cy="12" r="1.4"/><circle cx="18" cy="12" r="1.4"/><path d="M12 6v12M6 12h12" stroke-dasharray="2 2"/></svg><span>বোল্ট টর্ক</span></button></div></div>
+    <div class="cgroup"><h6>পরিকল্পনা ও রূপান্তর</h6><div class="cbtns"><button class="cbtn" type="button" data-k="id" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 20V11M11 20V5M17 20v-6M2 20h20"/></svg><span>ইঞ্চ-ডায়া ও লোকবল</span></button><button class="cbtn" type="button" data-k="unit" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h16l-4-4M21 16H5l4 4"/></svg><span>ইউনিট রূপান্তর</span></button></div></div>
   </div>
 
   <div class="calc" data-calc="cw"><header><h3>পাইপ ওজন, আয়তন ও পানির পরিমাণ</h3><p>সাইজ, শিডিউল আর দৈর্ঘ্য দিন। ফ্ল্যাঞ্জ-ফিটিং ছাড়া শুধু পাইপের ওজন।</p></header><div class="bd">
-    <div class="fields">
-      <div class="fld"><label for="cwN">সাইজ (NPS)</label><select id="cwN"></select></div>
-      <div class="fld"><label for="cwS">শিডিউল</label><select id="cwS"></select></div>
-      <div class="fld"><label for="cwL">দৈর্ঘ্য (মিটার)</label><input id="cwL" type="number" value="6" min="0" step="0.1"></div>
-      <div class="fld"><label for="cwM">ম্যাটেরিয়াল</label><select id="cwM"><option value="7.85">কার্বন/অ্যালয় স্টিল (৭.৮৫)</option><option value="7.98">স্টেইনলেস 304/316 (৭.৯৮)</option><option value="7.80">ডুপ্লেক্স (৭.৮০)</option><option value="8.94">কপার-নিকেল (৮.৯৪)</option></select></div>
+    <div class="cgrid">
+      <div class="fields">
+        <div class="fld"><label for="cwN">সাইজ (NPS)</label><select id="cwN"></select></div>
+        <div class="fld"><label for="cwS">শিডিউল</label><select id="cwS"></select></div>
+        <div class="fld"><label for="cwL">দৈর্ঘ্য (মিটার)</label><input id="cwL" type="number" value="6" min="0" step="0.1"></div>
+        <div class="fld"><label for="cwM">ম্যাটেরিয়াল</label><select id="cwM"><option value="7.85">কার্বন/অ্যালয় স্টিল (৭.৮৫)</option><option value="7.98">স্টেইনলেস 304/316 (৭.৯৮)</option><option value="7.80">ডুপ্লেক্স (৭.৮০)</option><option value="8.94">কপার-নিকেল (৮.৯৪)</option></select></div>
+      </div>
+      <figure class="viz"><svg id="cwViz" viewBox="0 0 360 220" role="img" aria-label="বাঁয়ে প্রস্থচ্ছেদ (OD, WT, ID), ডানে পাইপের দৈর্ঘ্য। নীল অংশ = হাইড্রোটেস্টে যতটা পানি লাগবে।"></svg><figcaption>বাঁয়ে প্রস্থচ্ছেদ (OD, WT, ID), ডানে পাইপের দৈর্ঘ্য। নীল অংশ = হাইড্রোটেস্টে যতটা পানি লাগবে।</figcaption></figure>
     </div>
     <div class="out" id="cwOut"></div>
+    <details class="how"><summary>হিসাবটা ধাপে ধাপে</summary><ol id="cwHow"></ol></details>
   </div></div>
 
   <div class="calc" data-calc="cut" hidden><header><h3>কাট লেংথ (সেন্টার-টু-সেন্টার থেকে)</h3><p>দুই প্রান্তে কোন ফিটিং আছে বেছে নিন; B16.9 টেক-অফ স্বয়ংক্রিয়ভাবে বাদ যাবে।</p></header><div class="bd">
-    <div class="fields">
-      <div class="fld"><label for="ctN">সাইজ (NPS)</label><select id="ctN"></select></div>
-      <div class="fld"><label for="ctD">ড্রয়িং মাপ (মিমি)</label><input id="ctD" type="number" value="1500" step="1"></div>
-      <div class="fld"><label for="ctA">প্রান্ত ১</label><select id="ctA"></select></div>
-      <div class="fld"><label for="ctB">প্রান্ত ২</label><select id="ctB"></select></div>
-      <div class="fld"><label for="ctG">রুট গ্যাপ প্রতি জয়েন্ট (মিমি)</label><input id="ctG" type="number" value="3" step="0.5"></div>
-      <div class="fld"><label for="ctX">অন্য বাদ (মিমি, যেমন ফ্ল্যাঞ্জ লেংথ)</label><input id="ctX" type="number" value="0" step="1"></div>
+    <div class="cgrid">
+      <div class="fields">
+        <div class="fld"><label for="ctN">সাইজ (NPS)</label><select id="ctN"></select></div>
+        <div class="fld"><label for="ctD">ড্রয়িং মাপ (মিমি)</label><input id="ctD" type="number" value="1500" step="1"></div>
+        <div class="fld"><label for="ctA">প্রান্ত ১</label><select id="ctA"></select></div>
+        <div class="fld"><label for="ctB">প্রান্ত ২</label><select id="ctB"></select></div>
+        <div class="fld"><label for="ctG">রুট গ্যাপ প্রতি জয়েন্ট (মিমি)</label><input id="ctG" type="number" value="3" step="0.5"></div>
+        <div class="fld"><label for="ctX">অন্য বাদ (মিমি, যেমন ফ্ল্যাঞ্জ লেংথ)</label><input id="ctX" type="number" value="0" step="1"></div>
+      </div>
+      <figure class="viz"><svg id="ctViz" viewBox="0 0 360 220" role="img" aria-label="WP = ওয়ার্কিং পয়েন্ট (সেন্টারলাইনের ছেদবিন্দু)। হলুদ অংশই কাটতে হবে; কমলা দাগ = ওয়েল্ড গ্যাপ।"></svg><figcaption>WP = ওয়ার্কিং পয়েন্ট (সেন্টারলাইনের ছেদবিন্দু)। হলুদ অংশই কাটতে হবে; কমলা দাগ = ওয়েল্ড গ্যাপ।</figcaption></figure>
     </div>
     <div class="out" id="ctOut"></div>
+    <details class="how"><summary>হিসাবটা ধাপে ধাপে</summary><ol id="ctHow"></ol></details>
   </div></div>
 
   <div class="calc" data-calc="off" hidden><header><h3>অফসেট ও রোলিং অফসেট</h3><p>দুই সমান্তরাল লাইনের মাঝে কোণাকুণি অংশ। রোলিং অফসেটে উচ্চতা (রাইজ) ও পাশের সরণ (রোল) দুটো দিন।</p></header><div class="bd">
-    <div class="fields">
-      <div class="fld"><label for="ofR">রাইজ / অফসেট (মিমি)</label><input id="ofR" type="number" value="600" step="1"></div>
-      <div class="fld"><label for="ofL">রোল (মিমি, না থাকলে ০)</label><input id="ofL" type="number" value="0" step="1"></div>
-      <div class="fld"><label for="ofA">ফিটিং কোণ</label><select id="ofA"><option value="45" selected>৪৫°</option><option value="60">৬০°</option><option value="30">৩০°</option><option value="22.5">২২.৫°</option><option value="11.25">১১.২৫°</option></select></div>
-      <div class="fld"><label for="ofN">সাইজ (৪৫° এলবো টেক-অফের জন্য)</label><select id="ofN"></select></div>
-      <div class="fld"><label for="ofG">রুট গ্যাপ (মিমি)</label><input id="ofG" type="number" value="3" step="0.5"></div>
+    <div class="cgrid">
+      <div class="fields">
+        <div class="fld"><label for="ofR">রাইজ / অফসেট (মিমি)</label><input id="ofR" type="number" value="600" step="1"></div>
+        <div class="fld"><label for="ofL">রোল (মিমি, না থাকলে ০)</label><input id="ofL" type="number" value="0" step="1"></div>
+        <div class="fld"><label for="ofA">ফিটিং কোণ</label><select id="ofA"><option value="45" selected>৪৫°</option><option value="60">৬০°</option><option value="30">৩০°</option><option value="22.5">২২.৫°</option><option value="11.25">১১.২৫°</option></select></div>
+        <div class="fld"><label for="ofN">সাইজ (৪৫° এলবো টেক-অফের জন্য)</label><select id="ofN"></select></div>
+        <div class="fld"><label for="ofG">রুট গ্যাপ (মিমি)</label><input id="ofG" type="number" value="3" step="0.5"></div>
+      </div>
+      <figure class="viz"><svg id="ofViz" viewBox="0 0 360 220" role="img" aria-label="আসল কোণে আঁকা। হলুদ টুকরোটাই ট্রাভেল পাইপ; নীল দাগ = প্রবাহের দিক।"></svg><figcaption>আসল কোণে আঁকা। হলুদ টুকরোটাই ট্রাভেল পাইপ; নীল দাগ = প্রবাহের দিক।</figcaption></figure>
     </div>
     <div class="out" id="ofOut"></div>
+    <details class="how"><summary>হিসাবটা ধাপে ধাপে</summary><ol id="ofHow"></ol></details>
     <p class="hint">ট্রাভেল = সেট ÷ sin(কোণ); রান = সেট ÷ tan(কোণ)। টেক-অফ শুধু ৪৫° LR এলবোর জন্য B16.9 টেবিল থেকে নেওয়া হয়; অন্য কোণে এলবো কেটে বানালে টেক-অফ = R × tan(কোণ/২)।</p>
   </div></div>
 
   <div class="calc" data-calc="mit" hidden><header><h3>মাইটার বেন্ড কাটিং</h3><p>পাইপ টুকরো করে বাঁক বানাতে প্রতিটি কাটের কোণ ও কাট-ব্যাক।</p></header><div class="bd">
-    <div class="fields">
-      <div class="fld"><label for="miD">পাইপ OD (মিমি)</label><input id="miD" type="number" value="323.8" step="0.1"></div>
-      <div class="fld"><label for="miA">মোট বাঁকের কোণ (°)</label><input id="miA" type="number" value="90" step="1"></div>
-      <div class="fld"><label for="miW">ওয়েল্ড জয়েন্ট সংখ্যা</label><input id="miW" type="number" value="3" min="1" step="1"></div>
-      <div class="fld"><label for="miR">বাঁকের রেডিয়াস (মিমি)</label><input id="miR" type="number" value="485" step="1"></div>
+    <div class="cgrid">
+      <div class="fields">
+        <div class="fld"><label for="miD">পাইপ OD (মিমি)</label><input id="miD" type="number" value="323.8" step="0.1"></div>
+        <div class="fld"><label for="miA">মোট বাঁকের কোণ (°)</label><input id="miA" type="number" value="90" step="1"></div>
+        <div class="fld"><label for="miW">ওয়েল্ড জয়েন্ট সংখ্যা</label><input id="miW" type="number" value="3" min="1" step="1"></div>
+        <div class="fld"><label for="miR">বাঁকের রেডিয়াস (মিমি)</label><input id="miR" type="number" value="485" step="1"></div>
+      </div>
+      <figure class="viz"><svg id="miViz" viewBox="0 0 360 220" role="img" aria-label="আপনার দেওয়া মাপে আসল জ্যামিতি। দুই মাথার টুকরো মাঝেরগুলোর অর্ধেক কোণের।"></svg><figcaption>আপনার দেওয়া মাপে আসল জ্যামিতি। দুই মাথার টুকরো মাঝেরগুলোর অর্ধেক কোণের।</figcaption></figure>
     </div>
     <div class="out" id="miOut"></div>
+    <details class="how"><summary>হিসাবটা ধাপে ধাপে</summary><ol id="miHow"></ol></details>
   </div></div>
 
   <div class="calc" data-calc="fish" hidden><header><h3>ফিশমাউথ / স্যাডল কাট টেমপ্লেট (৯০° ব্রাঞ্চ)</h3><p>ব্রাঞ্চ পাইপের মাথা মূল পাইপের গায়ে মেলাতে। পরিধি সমান ভাগে ভাগ করে প্রতিটি দাগে কতটা কাটতে হবে।</p></header><div class="bd">
-    <div class="fields">
-      <div class="fld"><label for="fsM">মূল পাইপ OD (মিমি)</label><input id="fsM" type="number" value="219.1" step="0.1"></div>
-      <div class="fld"><label for="fsB">ব্রাঞ্চ পাইপ OD (মিমি)</label><input id="fsB" type="number" value="114.3" step="0.1"></div>
-      <div class="fld"><label for="fsD">ভাগ সংখ্যা</label><select id="fsD"><option>8</option><option selected>16</option><option>24</option><option>32</option></select></div>
+    <div class="cgrid">
+      <div class="fields">
+        <div class="fld"><label for="fsM">মূল পাইপ OD (মিমি)</label><input id="fsM" type="number" value="219.1" step="0.1"></div>
+        <div class="fld"><label for="fsB">ব্রাঞ্চ পাইপ OD (মিমি)</label><input id="fsB" type="number" value="114.3" step="0.1"></div>
+        <div class="fld"><label for="fsD">ভাগ সংখ্যা</label><select id="fsD"><option>8</option><option selected>16</option><option>24</option><option>32</option></select></div>
+      </div>
+      <figure class="viz"><svg id="fsViz" viewBox="0 0 360 220" role="img" aria-label="হেডারের মাথা থেকে দেখলে: ব্রাঞ্চের তলা হেডারের গোল গায়ে বসে। নিচে খোলা টেমপ্লেট।"></svg><figcaption>হেডারের মাথা থেকে দেখলে: ব্রাঞ্চের তলা হেডারের গোল গায়ে বসে। নিচে খোলা টেমপ্লেট।</figcaption></figure>
     </div>
     <div class="out" id="fsOut"></div>
+    <details class="how"><summary>হিসাবটা ধাপে ধাপে</summary><ol id="fsHow"></ol></details>
     <div class="tw" style="padding:8px"><svg id="fsSvg" viewBox="0 0 600 200" style="min-width:520px;width:100%" role="img" aria-label="ফিশমাউথ টেমপ্লেটের খোলা নকশা"></svg></div>
     <p class="hint">ব্যবহার: ব্রাঞ্চ পাইপের পরিধিতে সমান দূরত্বে দাগ দিন (দূরত্ব উপরে দেখানো), প্রতিটি দাগে মাথা থেকে টেবিলের মাপ নিচে বিন্দু দিন, বিন্দুগুলো মসৃণ রেখায় যোগ করে কাটুন। কাগজে আসল মাপে এঁকে র‍্যাপ করেও করা যায়। সেট-অন জয়েন্টে বেভেল আলাদা করে দিন।</p>
   </div></div>
 
   <div class="calc" data-calc="hyd" hidden><header><h3>হাইড্রোটেস্ট চাপ (ASME B31.3)</h3><p>টেস্ট চাপ ও উচ্চতা অনুযায়ী গেজে কত দেখাতে হবে।</p></header><div class="bd">
-    <div class="fields">
-      <div class="fld"><label for="hyP">ডিজাইন চাপ (barg)</label><input id="hyP" type="number" value="10" step="0.1"></div>
-      <div class="fld"><label for="hyR">St/S অনুপাত</label><input id="hyR" type="number" value="1" step="0.01" min="1" max="6.5"></div>
-      <div class="fld"><label for="hyH">সর্বোচ্চ বিন্দু থেকে গেজ কত মিটার নিচে</label><input id="hyH" type="number" value="8" step="0.1"></div>
-      <div class="fld"><label for="hyT">ধরন</label><select id="hyT"><option value="1.5">হাইড্রোস্ট্যাটিক (১.৫×)</option><option value="1.1">নিউমেটিক (১.১×)</option></select></div>
+    <div class="cgrid">
+      <div class="fields">
+        <div class="fld"><label for="hyP">ডিজাইন চাপ (barg)</label><input id="hyP" type="number" value="10" step="0.1"></div>
+        <div class="fld"><label for="hyR">St/S অনুপাত</label><input id="hyR" type="number" value="1" step="0.01" min="1" max="6.5"></div>
+        <div class="fld"><label for="hyH">সর্বোচ্চ বিন্দু থেকে গেজ কত মিটার নিচে</label><input id="hyH" type="number" value="8" step="0.1"></div>
+        <div class="fld"><label for="hyT">ধরন</label><select id="hyT"><option value="1.5">হাইড্রোস্ট্যাটিক (১.৫×)</option><option value="1.1">নিউমেটিক (১.১×)</option></select></div>
+      </div>
+      <figure class="viz"><svg id="hyViz" viewBox="0 0 360 220" role="img" aria-label="বাঁয়ে লাইনের উঁচু বিন্দু ও নিচে গেজ; ডানে গেজের কাঁটা কোথায় থাকবে।"></svg><figcaption>বাঁয়ে লাইনের উঁচু বিন্দু ও নিচে গেজ; ডানে গেজের কাঁটা কোথায় থাকবে।</figcaption></figure>
     </div>
     <div class="out" id="hyOut"></div>
+    <details class="how"><summary>হিসাবটা ধাপে ধাপে</summary><ol id="hyHow"></ol></details>
   </div></div>
 
   <div class="calc" data-calc="tq" hidden><header><h3>বোল্ট টর্ক (আনুমানিক)</h3><p>T = K × F × d। F = বোল্ট স্ট্রেস × টেনসাইল স্ট্রেস এরিয়া। প্রজেক্টের অনুমোদিত টর্ক চার্ট থাকলে সেটাই মানুন।</p></header><div class="bd">
-    <div class="fields">
-      <div class="fld"><label for="tqD">স্টাড সাইজ</label><select id="tqD"></select></div>
-      <div class="fld"><label for="tqS">লক্ষ্য বোল্ট স্ট্রেস (MPa)</label><input id="tqS" type="number" value="345" step="5"></div>
-      <div class="fld"><label for="tqK">ঘর্ষণ ফ্যাক্টর K</label><select id="tqK"><option value="0.16">০.১৬ (মলি/নিকেল লুব্রিকেন্ট)</option><option value="0.2">০.২০ (হালকা তেল)</option><option value="0.12">০.১২ (PTFE কোটেড)</option></select></div>
+    <div class="cgrid">
+      <div class="fields">
+        <div class="fld"><label for="tqD">স্টাড সাইজ</label><select id="tqD"></select></div>
+        <div class="fld"><label for="tqS">লক্ষ্য বোল্ট স্ট্রেস (MPa)</label><input id="tqS" type="number" value="345" step="5"></div>
+        <div class="fld"><label for="tqK">ঘর্ষণ ফ্যাক্টর K</label><select id="tqK"><option value="0.16">০.১৬ (মলি/নিকেল লুব্রিকেন্ট)</option><option value="0.2">০.২০ (হালকা তেল)</option><option value="0.12">০.১২ (PTFE কোটেড)</option></select></div>
+      </div>
+      <figure class="viz"><svg id="tqViz" viewBox="0 0 360 220" role="img" aria-label="৮ বোল্টের ফ্ল্যাঞ্জে টাইট করার ক্রম (ক্রস প্যাটার্ন) ও তিন পাসের টর্ক।"></svg><figcaption>৮ বোল্টের ফ্ল্যাঞ্জে টাইট করার ক্রম (ক্রস প্যাটার্ন) ও তিন পাসের টর্ক।</figcaption></figure>
     </div>
     <div class="out" id="tqOut"></div>
+    <details class="how"><summary>হিসাবটা ধাপে ধাপে</summary><ol id="tqHow"></ol></details>
     <p class="hint">B7 বোল্টে (ইয়েল্ড ৭২৫ MPa) সাধারণ লক্ষ্য ইয়েল্ডের ৪০–৫০% (২৯০–৩৬০ MPa)। গ্যাসকেট ও ফ্ল্যাঞ্জ ক্লাস অনুযায়ী আলাদা হতে পারে।</p>
   </div></div>
 
   <div class="calc" data-calc="el" hidden><header><h3>ওয়েল্ড মেটাল ও ইলেক্ট্রোড খরচ (বাট জয়েন্ট)</h3><p>সিঙ্গেল-ভি বেভেল ধরে আনুমানিক হিসাব; পরিকল্পনা ও রিকুইজিশনের জন্য।</p></header><div class="bd">
-    <div class="fields">
-      <div class="fld"><label for="elN">সাইজ (NPS)</label><select id="elN"></select></div>
-      <div class="fld"><label for="elS">শিডিউল</label><select id="elS"></select></div>
-      <div class="fld"><label for="elJ">জয়েন্ট সংখ্যা</label><input id="elJ" type="number" value="10" min="1" step="1"></div>
-      <div class="fld"><label for="elE">প্রসেস দক্ষতা</label><select id="elE"><option value="0.6">SMAW (৬০%)</option><option value="0.95">GTAW রড (৯৫%)</option><option value="0.85">FCAW (৮৫%)</option><option value="0.92">GMAW (৯২%)</option></select></div>
+    <div class="cgrid">
+      <div class="fields">
+        <div class="fld"><label for="elN">সাইজ (NPS)</label><select id="elN"></select></div>
+        <div class="fld"><label for="elS">শিডিউল</label><select id="elS"></select></div>
+        <div class="fld"><label for="elJ">জয়েন্ট সংখ্যা</label><input id="elJ" type="number" value="10" min="1" step="1"></div>
+        <div class="fld"><label for="elE">প্রসেস দক্ষতা</label><select id="elE"><option value="0.6">SMAW (৬০%)</option><option value="0.95">GTAW রড (৯৫%)</option><option value="0.85">FCAW (৮৫%)</option><option value="0.92">GMAW (৯২%)</option></select></div>
+      </div>
+      <figure class="viz"><svg id="elViz" viewBox="0 0 360 220" role="img" aria-label="সিঙ্গেল-ভি বাট জয়েন্টের প্রস্থচ্ছেদ; লেয়ার বাই লেয়ার ভরাট দেখানো হচ্ছে।"></svg><figcaption>সিঙ্গেল-ভি বাট জয়েন্টের প্রস্থচ্ছেদ; লেয়ার বাই লেয়ার ভরাট দেখানো হচ্ছে।</figcaption></figure>
     </div>
     <div class="out" id="elOut2"></div>
+    <details class="how"><summary>হিসাবটা ধাপে ধাপে</summary><ol id="elHow"></ol></details>
   </div></div>
 
   <div class="calc" data-calc="id" hidden><header><h3>ইঞ্চ-ডায়া ও ম্যানপাওয়ার</h3><p>প্রতিটি সাইজে জয়েন্ট সংখ্যা লিখুন।</p></header><div class="bd">
-    <div class="fields" id="idRows"></div>
-    <div class="fields">
-      <div class="fld"><label for="idRate">প্রতি ওয়েল্ডার/দিন (ID)</label><input id="idRate" type="number" value="18" step="1"></div>
-      <div class="fld"><label for="idDays">কাজের দিন</label><input id="idDays" type="number" value="20" step="1"></div>
+    <div class="cgrid">
+      <div class="stack">
+        <div class="fields" id="idRows"></div>
+        <div class="fields">
+          <div class="fld"><label for="idRate">প্রতি ওয়েল্ডার/দিন (ID)</label><input id="idRate" type="number" value="18" step="1"></div>
+          <div class="fld"><label for="idDays">কাজের দিন</label><input id="idDays" type="number" value="20" step="1"></div>
+        </div>
+      </div>
+      <figure class="viz"><svg id="idViz" viewBox="0 0 360 220" role="img" aria-label="কোন সাইজে কত ইঞ্চ-ডায়া এবং কতজন ওয়েল্ডার লাগবে।"></svg><figcaption>কোন সাইজে কত ইঞ্চ-ডায়া এবং কতজন ওয়েল্ডার লাগবে।</figcaption></figure>
     </div>
     <div class="out" id="idOut"></div>
+    <details class="how"><summary>হিসাবটা ধাপে ধাপে</summary><ol id="idHow"></ol></details>
   </div></div>
 
   <div class="calc" data-calc="ce" hidden><header><h3>কার্বন ইকুইভ্যালেন্ট (IIW)</h3><p>MTC থেকে রাসায়নিক মান (%) দিন।</p></header><div class="bd">
-    <div class="fields">
-      <div class="fld"><label for="ceC">C</label><input id="ceC" type="number" value="0.18" step="0.01"></div>
-      <div class="fld"><label for="ceMn">Mn</label><input id="ceMn" type="number" value="1.05" step="0.01"></div>
-      <div class="fld"><label for="ceCr">Cr</label><input id="ceCr" type="number" value="0.05" step="0.01"></div>
-      <div class="fld"><label for="ceMo">Mo</label><input id="ceMo" type="number" value="0.02" step="0.01"></div>
-      <div class="fld"><label for="ceV">V</label><input id="ceV" type="number" value="0.01" step="0.01"></div>
-      <div class="fld"><label for="ceNi">Ni</label><input id="ceNi" type="number" value="0.04" step="0.01"></div>
-      <div class="fld"><label for="ceCu">Cu</label><input id="ceCu" type="number" value="0.06" step="0.01"></div>
+    <div class="cgrid">
+      <div class="fields">
+        <div class="fld"><label for="ceC">C</label><input id="ceC" type="number" value="0.18" step="0.01"></div>
+        <div class="fld"><label for="ceMn">Mn</label><input id="ceMn" type="number" value="1.05" step="0.01"></div>
+        <div class="fld"><label for="ceCr">Cr</label><input id="ceCr" type="number" value="0.05" step="0.01"></div>
+        <div class="fld"><label for="ceMo">Mo</label><input id="ceMo" type="number" value="0.02" step="0.01"></div>
+        <div class="fld"><label for="ceV">V</label><input id="ceV" type="number" value="0.01" step="0.01"></div>
+        <div class="fld"><label for="ceNi">Ni</label><input id="ceNi" type="number" value="0.04" step="0.01"></div>
+        <div class="fld"><label for="ceCu">Cu</label><input id="ceCu" type="number" value="0.06" step="0.01"></div>
+      </div>
+      <figure class="viz"><svg id="ceViz" viewBox="0 0 360 220" role="img" aria-label="উপরে CE কোন জোনে পড়ল; নিচে কোন উপাদান কতটা যোগ করছে।"></svg><figcaption>উপরে CE কোন জোনে পড়ল; নিচে কোন উপাদান কতটা যোগ করছে।</figcaption></figure>
     </div>
     <div class="out" id="ceOut"></div>
+    <details class="how"><summary>হিসাবটা ধাপে ধাপে</summary><ol id="ceHow"></ol></details>
   </div></div>
 
   <div class="calc" data-calc="hi" hidden><header><h3>হিট ইনপুট</h3><p>WPS এ সর্বোচ্চ/সর্বনিম্ন হিট ইনপুট থাকলে মিলিয়ে দেখুন।</p></header><div class="bd">
-    <div class="fields">
-      <div class="fld"><label for="hiV">ভোল্টেজ (V)</label><input id="hiV" type="number" value="24" step="0.5"></div>
-      <div class="fld"><label for="hiA">কারেন্ট (A)</label><input id="hiA" type="number" value="120" step="1"></div>
-      <div class="fld"><label for="hiL">ওয়েল্ডের দৈর্ঘ্য (মিমি)</label><input id="hiL" type="number" value="150" step="1"></div>
-      <div class="fld"><label for="hiT">সময় (সেকেন্ড)</label><input id="hiT" type="number" value="60" step="1"></div>
-      <div class="fld"><label for="hiE">প্রসেস</label><select id="hiE"><option value="1">ASME IX (ফ্যাক্টর ছাড়া)</option><option value="0.8">SMAW (০.৮)</option><option value="0.6">GTAW (০.৬)</option><option value="0.8">GMAW/FCAW (০.৮)</option><option value="1">SAW (১.০)</option></select></div>
+    <div class="cgrid">
+      <div class="fields">
+        <div class="fld"><label for="hiV">ভোল্টেজ (V)</label><input id="hiV" type="number" value="24" step="0.5"></div>
+        <div class="fld"><label for="hiA">কারেন্ট (A)</label><input id="hiA" type="number" value="120" step="1"></div>
+        <div class="fld"><label for="hiL">ওয়েল্ডের দৈর্ঘ্য (মিমি)</label><input id="hiL" type="number" value="150" step="1"></div>
+        <div class="fld"><label for="hiT">সময় (সেকেন্ড)</label><input id="hiT" type="number" value="60" step="1"></div>
+        <div class="fld"><label for="hiE">প্রসেস</label><select id="hiE"><option value="1">ASME IX (ফ্যাক্টর ছাড়া)</option><option value="0.8">SMAW (০.৮)</option><option value="0.6">GTAW (০.৬)</option><option value="0.8">GMAW/FCAW (০.৮)</option><option value="1">SAW (১.০)</option></select></div>
+      </div>
+      <figure class="viz"><svg id="hiViz" viewBox="0 0 360 220" role="img" aria-label="টর্চ যত ধীরে চলবে, প্রতি মিমিতে তত বেশি তাপ ঢুকবে।"></svg><figcaption>টর্চ যত ধীরে চলবে, প্রতি মিমিতে তত বেশি তাপ ঢুকবে।</figcaption></figure>
     </div>
     <div class="out" id="hiOut"></div>
+    <details class="how"><summary>হিসাবটা ধাপে ধাপে</summary><ol id="hiHow"></ol></details>
   </div></div>
 
   <div class="calc" data-calc="slope" hidden><header><h3>ঢাল ও এলিভেশন</h3><p>ড্রেন লাইন বা গ্র্যাভিটি লাইনের এক প্রান্ত থেকে অন্য প্রান্তে কত নামবে।</p></header><div class="bd">
-    <div class="fields">
-      <div class="fld"><label for="slX">ঢাল ১ : x (যেমন ১:১০০)</label><input id="slX" type="number" value="100" step="1"></div>
-      <div class="fld"><label for="slL">দৈর্ঘ্য (মিমি)</label><input id="slL" type="number" value="12000" step="10"></div>
-      <div class="fld"><label for="slE">শুরুর এলিভেশন (মিমি)</label><input id="slE" type="number" value="3500" step="1"></div>
+    <div class="cgrid">
+      <div class="fields">
+        <div class="fld"><label for="slX">ঢাল ১ : x (যেমন ১:১০০)</label><input id="slX" type="number" value="100" step="1"></div>
+        <div class="fld"><label for="slL">দৈর্ঘ্য (মিমি)</label><input id="slL" type="number" value="12000" step="10"></div>
+        <div class="fld"><label for="slE">শুরুর এলিভেশন (মিমি)</label><input id="slE" type="number" value="3500" step="1"></div>
+      </div>
+      <figure class="viz"><svg id="slViz" viewBox="0 0 360 220" role="img" aria-label="ঢাল বোঝার জন্য ছবিতে বাড়িয়ে আঁকা; সংখ্যাগুলো আসল।"></svg><figcaption>ঢাল বোঝার জন্য ছবিতে বাড়িয়ে আঁকা; সংখ্যাগুলো আসল।</figcaption></figure>
     </div>
     <div class="out" id="slOut"></div>
+    <details class="how"><summary>হিসাবটা ধাপে ধাপে</summary><ol id="slHow"></ol></details>
   </div></div>
 
   <div class="calc" data-calc="unit" hidden><header><h3>ইউনিট রূপান্তর</h3><p>যেকোনো ঘরে লিখুন, বাকিগুলো সাথে সাথে বদলাবে।</p></header><div class="bd">
@@ -2895,6 +3037,227 @@ const SKILLS = [
   ]]
 ];
 
+/* ---------- 14 calculator diagrams ----------
+   Each function redraws one calculator's SVG from the computed values, so the picture always
+   matches the numbers. Drawings are schematic (not to scale) unless noted; labels carry the real mm. */
+const VZ = (() => {
+  const r1 = v => Math.round(v * 10) / 10;
+  const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+  const fx = (v, d = 1) => isFinite(v) ? v.toLocaleString('en-US', { minimumFractionDigits: d, maximumFractionDigits: d }) : '—';
+  const T = (x, y, s, cls = 'tx', a = 'middle') => `<text x="${r1(x)}" y="${r1(y)}" class="${cls}" text-anchor="${a}">${s}</text>`;
+  // dimension line with drawing-style slash ticks at both ends
+  const dim = (x1, y1, x2, y2, cls = 'dm') => {
+    const L = Math.hypot(x2 - x1, y2 - y1) || 1, ux = (x2 - x1) / L, uy = (y2 - y1) / L, tx = 3.5 * (ux - uy), ty = 3.5 * (uy + ux);
+    const tk = (x, y) => `M${r1(x - tx)} ${r1(y - ty)}L${r1(x + tx)} ${r1(y + ty)}`;
+    return `<path class="${cls}" d="M${r1(x1)} ${r1(y1)}L${r1(x2)} ${r1(y2)}${tk(x1, y1)}${tk(x2, y2)}"/>`;
+  };
+  // pipe drawn as a thick outlined stroke along a centreline path
+  const pipe = (d, w = 18, tone = '', extra = '') => `<path class="pp-o" d="${d}" stroke-width="${w + 3}"${extra}/><path class="pp-i ${tone}" d="${d}" stroke-width="${w}"${extra}/>`;
+  const wp = (x, y) => `<circle cx="${r1(x)}" cy="${r1(y)}" r="3" class="wpt"/>`;
+  const weld = (x, y, h = 22) => `<rect x="${r1(x - 2)}" y="${r1(y - h / 2)}" width="4" height="${h}" rx="1" class="wd"/>`;
+  // animate a value change (needle, pointer) from the previous drawing's value
+  const prev = (svg, key, v) => { const p = svg.dataset[key]; svg.dataset[key] = v; return p == null ? v : +p; };
+  const set = (svg, html) => { svg.innerHTML = html; };
+
+  /* pipe weight: cross-section with water + side view */
+  function cw(svg, o) {
+    const cx = 92, cy = 118, R = 72, ri = Math.min(R - 3, R * o.id / o.od), id = 'cwc' + Math.random().toString(36).slice(2, 6);
+    set(svg, `<defs><clipPath id="${id}"><circle cx="${cx}" cy="${cy}" r="${r1(ri)}"/></clipPath></defs>
+      <circle cx="${cx}" cy="${cy}" r="${R}" class="fl"/><circle cx="${cx}" cy="${cy}" r="${r1(ri)}" fill="var(--panel)" stroke="var(--ink)" stroke-width="1.5"/>
+      <g clip-path="url(#${id})"><rect class="water" x="${cx - R}" y="${cy - R}" width="${2 * R}" height="${2 * R}"/>
+        <path class="wave" d="M${cx - R * 2} ${cy - ri + 6} q 12 -6 24 0 t 24 0 t 24 0 t 24 0 t 24 0 t 24 0 t 24 0 t 24 0 t 24 0 t 24 0 t 24 0 t 24 0"/></g>
+      ${dim(cx - R, 26, cx + R, 26)}${T(cx, 20, 'OD ' + fx(o.od), 'txa')}
+      ${dim(cx - ri, cy, cx + ri, cy)}${T(cx, cy - 6, 'ID ' + fx(o.id))}
+      <path class="dm" d="M${cx + R * .7} ${cy - R * .7}L${cx + R + 6} ${cy - R - 4}h18"/>${T(cx + R + 26, cy - R - 7, 'WT ' + fx(o.wt, 2), 'tx', 'start')}
+      <g class="pop" style="--i:2">
+        <path class="fl" d="M196 96h132a10 22 0 0 1 0 44h-132z"/><ellipse cx="196" cy="118" rx="10" ry="22" class="f"/>
+        <path class="water" d="M196 108h132a10 22 0 0 1 4 10a10 22 0 0 1-4 22h-132z" opacity=".8"/>
+      </g>
+      ${dim(196, 160, 328, 160)}${T(262, 176, 'L = ' + fx(o.L, 1) + ' মি')}
+      ${T(262, 62, 'মোট ওজন', 'tx')}${T(262, 86, fx(o.total, 1) + ' kg', 'big')}
+      ${T(262, 204, 'পানি ≈ ' + fx(o.water, 0) + ' লিটার', 'txs')}`);
+  }
+
+  /* cut length: WP-to-WP with fittings at both ends */
+  function fit(type, x, y, dir, w) {
+    const face = x + dir * w, sw = dir > 0 ? 1 : 0;
+    if (type === '90lr' || type === '90sr') return pipe(`M${r1(face)} ${y}A${r1(w)} ${r1(w)} 0 0 ${sw} ${r1(x)} ${r1(y - w)}V${r1(y - w - 14)}`, 18, 'b');
+    if (type === '45lr') {
+      const R = w / Math.tan(Math.PI / 8), ex = face - dir * R * Math.SQRT1_2, ey = y - R + R * Math.SQRT1_2;
+      return pipe(`M${r1(face)} ${y}A${r1(R)} ${r1(R)} 0 0 ${sw} ${r1(ex)} ${r1(ey)}l${r1(-dir * 16)} -16`, 18, 'b');
+    }
+    if (type === 'tee') return pipe(`M${r1(face)} ${y}H${r1(x - dir * w)}`, 18, 'b') + pipe(`M${r1(x)} ${y}V${r1(y - w)}`, 18, 'b');
+    if (type === 'wn150' || type === 'wn300') return `<path class="fs" d="M${r1(face)} ${y - 10}L${r1(x + dir * 9)} ${y - 15}V${y + 15}L${r1(face)} ${y + 10}z"/><rect class="fl" x="${r1(dir > 0 ? x : x - 9)}" y="${y - 32}" width="9" height="64"/>`;
+    if (type === 'red') return `<path class="fs" d="M${r1(face)} ${y - 10}L${r1(x)} ${y - 16}V${y + 16}L${r1(face)} ${y + 10}z"/>`;
+    if (type === 'cap') return `<path class="fs" d="M${r1(face)} ${y - 10}C${r1(x)} ${y - 10} ${r1(x)} ${y + 10} ${r1(face)} ${y + 10}z"/>`;
+    return '';
+  }
+  function cut(svg, o) {
+    const y = 132, A = 28, B = 332, k = o.D > 0 ? (B - A) / o.D : 0;
+    const wa = o.ta ? clamp(o.ta * k, 22, 84) : 0, wb = o.tb ? clamp(o.tb * k, 22, 84) : 0;
+    const ga = o.a === 'none' ? 0 : 4, gb = o.b === 'none' ? 0 : 4, p1 = A + wa + ga, p2 = B - wb - gb;
+    set(svg, `${dim(A, 22, B, 22)}${T((A + B) / 2, 16, 'ড্রয়িং মাপ (WP–WP) ' + fx(o.D, 0), 'txa')}
+      <path class="d" d="M${A} 26V${y}M${B} 26V${y}"/>
+      ${fit(o.a, A, y, 1, wa)}${fit(o.b, B, y, -1, wb)}
+      ${p2 > p1 ? `<g class="pop" style="--i:2">${pipe(`M${r1(p1)} ${y}H${r1(p2)}`, 18, 'y')}${T((p1 + p2) / 2, y + 4, 'কাট ' + fx(o.cut, 0), 'txk')}</g>` : ''}
+      ${ga ? weld(A + wa + 2, y) : ''}${gb ? weld(B - wb - 2, y) : ''}${wp(A, y)}${wp(B, y)}
+      ${T(A, y + 44, 'WP', 'txs')}${T(B, y + 44, 'WP', 'txs')}
+      ${wa ? dim(A, 192, A + wa, 192) + T(A + wa / 2, 208, fx(o.ta, 0)) : ''}${wb ? dim(B - wb, 192, B, 192) + T(B - wb / 2, 208, fx(o.tb, 0)) : ''}
+      ${p2 > p1 ? dim(p1, 192, p2, 192, 'dm y') : ''}`);
+  }
+
+  /* offset: true angle, scaled to fit */
+  function off(svg, o) {
+    const a = o.ang * Math.PI / 180, k = Math.min(120 / Math.max(o.set, 1), 210 / Math.max(o.run, 1));
+    const sp = o.set * k, rp = o.run * k, x0 = clamp(140 - rp / 2, 60, 140), y0 = 186, x1 = x0 + rp, y1 = y0 - sp;
+    const path = `M14 ${y0}H${r1(x0)}L${r1(x1)} ${r1(y1)}H346`;
+    const mx = (x0 + x1) / 2, my = (y0 + y1) / 2, nx = -Math.sin(a), ny = -Math.cos(a);
+    set(svg, `<path class="d" d="M${r1(x0)} ${y0}H${r1(x1)}V${r1(y1)}"/>
+      ${pipe(path, 14, 'b')}<path class="flowd" d="${path}"/>
+      <path class="pp-o" d="M${r1(x0)} ${y0}L${r1(x1)} ${r1(y1)}" stroke-width="17"/><path class="pp-i y" d="M${r1(x0)} ${y0}L${r1(x1)} ${r1(y1)}" stroke-width="14"/><path class="flowd" d="M${r1(x0)} ${y0}L${r1(x1)} ${r1(y1)}"/>
+      <path class="dm" d="M${r1(x0 + 30)} ${y0}A30 30 0 0 0 ${r1(x0 + 30 * Math.cos(a))} ${r1(y0 - 30 * Math.sin(a))}"/>${T(x0 + 44 * Math.cos(a / 2), y0 - 44 * Math.sin(a / 2) + 4, fx(o.ang, o.ang % 1 ? 2 : 0) + '°', 'txa', 'start')}
+      ${dim(x1 + 22, y0, x1 + 22, y1)}${T(x1 + 28, (y0 + y1) / 2 + 4, 'সেট ' + fx(o.set, 0), 'tx', 'start')}
+      ${dim(x0, y0 + 20, x1, y0 + 20)}${T(mx, y0 + 34, 'রান ' + fx(o.run, 0))}
+      ${T(mx + nx * 22, my + ny * 22, 'ট্রাভেল ' + fx(o.travel, 0), 'txa', 'end')}
+      ${o.roll ? `<g class="pop" style="--i:3"><rect x="12" y="10" width="104" height="74" rx="6" class="inset"/><path class="s2" d="M28 72V30M28 72H82M28 30L82 72"/>${T(22, 54, 'রাইজ', 'txs', 'end')}${T(55, 82, 'রোল', 'txs')}${T(62, 46, 'সেট', 'txa', 'start')}${T(64, 22, 'রোলিং অফসেট', 'txs')}</g>` : ''}`);
+  }
+
+  /* mitre bend: real geometry of the segments */
+  function mit(svg, o) {
+    if (!(o.A > 0 && o.A <= 180 && o.W >= 1 && o.R > o.D / 2 && o.D > 0)) { set(svg, T(180, 110, 'রেডিয়াস OD/২ এর বেশি ও কোণ ০–১৮০° হতে হবে', 'txa')); return; }
+    const c = o.c * Math.PI / 180, A = o.A * Math.PI / 180, Ri = o.R - o.D / 2, Ro = o.R + o.D / 2, E = Math.max(o.D, o.R * .35);
+    const P = (r, f) => [r * Math.cos(f), r * Math.sin(f)], cc = Math.cos(c);
+    const pieces = [[[Ri, -E], [Ro, -E], P(Ro / cc, c), P(Ri / cc, c)]];
+    for (let j = 1; j < o.W; j++) { const a0 = (2 * j - 1) * c, a1 = (2 * j + 1) * c; pieces.push([P(Ri / cc, a0), P(Ro / cc, a0), P(Ro / cc, a1), P(Ri / cc, a1)]); }
+    const tA = [-Math.sin(A) * E, Math.cos(A) * E], q1 = P(Ro, A), q2 = P(Ri, A);
+    pieces.push([P(Ri / cc, A - c), P(Ro / cc, A - c), [q1[0] + tA[0], q1[1] + tA[1]], [q2[0] + tA[0], q2[1] + tA[1]]]);
+    const all = pieces.flat().concat([[0, 0]]), xs = all.map(p => p[0]), ys = all.map(p => p[1]);
+    const minx = Math.min(...xs), maxx = Math.max(...xs), miny = Math.min(...ys), maxy = Math.max(...ys);
+    const s = Math.min(320 / (maxx - minx || 1), 180 / (maxy - miny || 1)), ox = 180 - (minx + maxx) / 2 * s, oy = 112 + (miny + maxy) / 2 * s;
+    const M = p => [ox + p[0] * s, oy - p[1] * s], pt = p => M(p).map(r1).join(' ');
+    const arc = Array.from({ length: 41 }, (_, i) => pt(P(o.R, A * i / 40))).join('L');
+    const j0 = M(P(Ro / cc, c)), O = M([0, 0]), mid = M(P(o.R, A / 2));
+    set(svg, pieces.map((q, i) => `<path class="${i % 2 ? 'fm' : 'fs'} pop" style="--i:${i}" d="M${q.map(pt).join('L')}z"/>`).join('') +
+      `<path class="cl" d="M${arc}"/><circle cx="${r1(O[0])}" cy="${r1(O[1])}" r="3" class="wpt"/>
+      <path class="dm" d="M${r1(O[0])} ${r1(O[1])}L${r1(mid[0])} ${r1(mid[1])}"/>${T((O[0] + mid[0]) / 2 + 6, (O[1] + mid[1]) / 2 - 4, 'R ' + fx(o.R, 0), 'txs', 'start')}
+      <circle cx="${r1(j0[0])}" cy="${r1(j0[1])}" r="12" class="hl"/>${T(j0[0] + 16, j0[1] + 4, fx(o.c, 2) + '°', 'txa', 'start')}
+      ${T(14, 210, bn(o.W + 1) + ' টুকরো · ' + bn(o.W) + ' জয়েন্ট (আসল জ্যামিতি)', 'txs', 'start')}`);
+  }
+
+  /* fishmouth: end view of branch sitting on the header */
+  function fish(svg, o) {
+    const cx = 180, cy = 150, Rp = 62, rp = Rp * o.r / o.R, yb = cy - Math.sqrt(Rp * Rp - rp * rp), top = cy - Rp;
+    set(svg, `<circle cx="${cx}" cy="${cy}" r="${Rp}" class="fl"/><circle cx="${cx}" cy="${cy}" r="${Rp - 6}" fill="var(--panel)" stroke="var(--ink)" stroke-width="1"/>
+      <g class="pop" style="--i:1"><path class="fs" d="M${r1(cx - rp)} 8V${r1(yb)}A${Rp} ${Rp} 0 0 1 ${r1(cx + rp)} ${r1(yb)}V8z"/></g>
+      <path class="cut draw" pathLength="1" d="M${r1(cx - rp)} ${r1(yb)}A${Rp} ${Rp} 0 0 1 ${r1(cx + rp)} ${r1(yb)}"/>
+      <path class="d" d="M${r1(cx - rp - 34)} ${r1(top)}H${r1(cx + rp + 40)}M${r1(cx - rp - 34)} ${r1(yb)}H${r1(cx - rp)}"/>
+      ${dim(cx - rp - 26, yb, cx - rp - 26, top)}${T(cx - rp - 32, (yb + top) / 2 + 4, 'গভীরতা ' + fx(o.dmax, 1), 'txa', 'end')}
+      ${dim(cx - rp, 18, cx + rp, 18)}${T(cx, 34, 'ব্রাঞ্চ ' + fx(2 * o.r, 1))}
+      ${T(cx, cy + 5, 'হেডার ' + fx(2 * o.R, 1))}${T(cx + rp + 8, 70, 'লাল রেখা = কাটের লাইন', 'txs', 'start')}`);
+  }
+
+  /* hydrotest: line height + animated gauge */
+  const ranges = [1, 1.6, 2.5, 4, 6, 10, 16, 25, 40, 60, 100, 160, 250, 400, 600, 1000];
+  function hyd(svg, o) {
+    const max = ranges.find(r => r >= o.gauge * 1.5) || 1000, cx = 252, cy = 112, R = 80, a0 = -225, sweep = 270;
+    const ang = v => a0 + sweep * clamp(v / max, 0, 1.04), to = ang(o.gauge), from = prev(svg, 'ang', to);
+    const P = (a, r) => [cx + r * Math.cos(a * Math.PI / 180), cy + r * Math.sin(a * Math.PI / 180)];
+    let ticks = '';
+    for (let i = 0; i <= 10; i++) { const a = a0 + sweep * i / 10, p = P(a, R - 6), q = P(a, R - 16), l = P(a, R - 28); ticks += `<path class="s2" d="M${p.map(r1).join(' ')}L${q.map(r1).join(' ')}"/>${i % 2 ? '' : T(l[0], l[1] + 4, +(max * i / 10).toPrecision(3), 'txs')}`; }
+    const z0 = P(ang(o.Pt), R - 6), z1 = P(ang(o.Pt * 1.1), R - 6);
+    const h = clamp(o.H * 12, 20, 140);
+    set(svg, `<path class="d" d="M30 30H120"/>${pipe(`M24 ${170 - h}H120M60 ${170 - h}V172`, 12, 'b')}
+      <path class="vent" d="M100 ${158 - h}v-12"/>${T(100, 142 - h, 'ভেন্ট', 'txs')}
+      <circle cx="60" cy="184" r="10" class="f"/><path class="s" d="M60 184l5-5"/>
+      ${dim(36, 170 - h, 36, 184)}${T(30, 177 - h / 2, fx(o.H, 1) + ' মি', 'txs', 'end')}
+      ${T(84, 196, 'গেজ', 'txs', 'start')}
+      <circle cx="${cx}" cy="${cy}" r="${R}" class="f"/><circle cx="${cx}" cy="${cy}" r="${R - 4}" fill="none" stroke="var(--line-2)"/>
+      <path class="zone" d="M${z0.map(r1).join(' ')}A${R - 6} ${R - 6} 0 0 1 ${z1.map(r1).join(' ')}"/>${ticks}
+      <g class="needle" style="transform-origin:${cx}px ${cy}px;--from:${r1(from + 90)}deg;--to:${r1(to + 90)}deg"><path d="M${cx - 4} ${cy}L${cx} ${cy - R + 12}L${cx + 4} ${cy}z" fill="var(--crit)"/></g>
+      <circle cx="${cx}" cy="${cy}" r="6" fill="var(--ink)"/>
+      ${T(cx, cy + 36, fx(o.gauge, 2), 'big')}${T(cx, cy + 52, 'bar · গেজে পড়বেন', 'txs')}
+      ${T(cx, 212, 'হলুদ দাগ = টেস্ট চাপ ' + fx(o.Pt, 2) + ' (উপরে)', 'txs')}`);
+  }
+
+  /* bolt torque: star pattern + three passes */
+  function tq(svg, o) {
+    const cx = 100, cy = 110, seq = [0, 4, 2, 6, 1, 5, 3, 7], order = seq.map((p, i) => [p, i]);
+    const P = i => [cx + 66 * Math.sin(i * Math.PI / 4), cy - 66 * Math.cos(i * Math.PI / 4)];
+    const star = seq.map(i => P(i).map(r1).join(' ')).join('L');
+    const bars = [[.3, '৩০%'], [.6, '৬০%'], [1, '১০০%']];
+    set(svg, `<circle cx="${cx}" cy="${cy}" r="92" class="fl"/><circle cx="${cx}" cy="${cy}" r="40" fill="var(--panel)" stroke="var(--ink)" stroke-width="1.5"/>
+      <path class="star" d="M${star}z"/>
+      ${order.map(([p, n]) => { const q = P(p); return `<g class="bolt" style="--d:${n * .55}s"><circle cx="${r1(q[0])}" cy="${r1(q[1])}" r="11"/><text x="${r1(q[0])}" y="${r1(q[1] + 4)}" text-anchor="middle">${bn(n + 1)}</text></g>`; }).join('')}
+      ${T(cx, 218, 'ক্রস (স্টার) প্যাটার্নে টাইট', 'txs')}
+      ${bars.map(([fr, l], i) => `<g class="pop" style="--i:${i + 1}">${T(214, 52 + i * 52, 'পাস ' + bn(i + 1) + ' · ' + l, 'txs', 'start')}<rect x="214" y="${58 + i * 52}" width="${r1(96 * fr)}" height="16" rx="3" class="${i === 2 ? 'fm' : 'fs'} grow"/>${T(214 + 96 * fr + 4, 71 + i * 52, fx(o.T * fr, 0), 'tx', 'start')}</g>`).join('')}
+      ${T(214, 210, 'N·m · শেষে ঘড়ির কাঁটার দিকে এক চক্কর', 'txs', 'start')}`);
+  }
+
+  /* electrode: groove cross-section with passes building up */
+  function el(svg, o) {
+    const tn = Math.tan(37.5 * Math.PI / 180), wTop = o.g + 2 * (o.t - o.land) * tn;
+    const k = Math.min(120 / o.t, 220 / (wTop + 3)), cx = 180, yb = 170, h = o.t * k, g2 = o.g / 2 * k, ln = o.land * k, wt = wTop / 2 * k;
+    const id = 'elc' + Math.random().toString(36).slice(2, 6), n = clamp(Math.round(o.t / 3), 2, 7), capH = 1.5 * k;
+    const groove = `M${r1(cx - g2)} ${yb + 3}H${r1(cx + g2)}V${r1(yb - ln)}L${r1(cx + wt)} ${r1(yb - h)}Q${cx} ${r1(yb - h - capH * 2.2)} ${r1(cx - wt)} ${r1(yb - h)}L${r1(cx - g2)} ${r1(yb - ln)}z`;
+    const layers = Array.from({ length: n }, (_, i) => { const y0 = yb + 4 - (h + 4) * i / n, y1 = i === n - 1 ? yb - h - capH * 2 : yb + 4 - (h + 4) * (i + 1) / n; return `<rect class="layer l${i % 2}" style="--d:${i * .45}s" x="${cx - wt - 10}" y="${r1(y1)}" width="${r1(2 * wt + 20)}" height="${r1(y0 - y1 + .5)}"/>`; }).join('');
+    const plate = s => `<path class="fl" d="M${cx + s * 168} ${yb}H${r1(cx + s * g2)}V${r1(yb - ln)}L${r1(cx + s * wt)} ${r1(yb - h)}H${cx + s * 168}z"/>`;
+    set(svg, `<defs><clipPath id="${id}"><path d="${groove}"/></clipPath></defs>${plate(-1)}${plate(1)}
+      <g clip-path="url(#${id})">${layers}</g><path d="${groove}" fill="none" stroke="var(--ink)" stroke-width="1" stroke-dasharray="3 2"/>
+      ${dim(cx + 150, yb, cx + 150, yb - h)}${T(cx + 144, yb - h / 2 + 4, 't ' + fx(o.t, 2), 'tx', 'end')}
+      ${dim(cx - g2, yb + 18, cx + g2, yb + 18)}${T(cx, yb + 34, 'গ্যাপ ' + fx(o.g, 0) + ' · ল্যান্ড ' + fx(o.land, 1))}
+      ${T(cx + wt + 6, yb - h - 8, '৩৭.৫°', 'txa', 'start')}${T(cx - wt - 4, yb - h - 8, 'ক্যাপ', 'txs', 'end')}${T(12, yb + 34, 'রুট → ফিল → ক্যাপ', 'txs', 'start')}
+      ${T(cx, 20, bn(n) + ' লেয়ারে ভরাট (আনুমানিক)', 'txs')}`);
+  }
+
+  /* inch-dia: bars per size + welders needed */
+  function idv(svg, o) {
+    const rows = o.rows.filter(r => r[1] > 0), max = Math.max(1, ...rows.map(r => r[2])), H = 36 + rows.length * 24 + 56;
+    svg.setAttribute('viewBox', `0 0 360 ${Math.max(140, H)}`);
+    const men = Math.min(o.welders, 30);
+    set(svg, T(12, 20, 'সাইজ অনুযায়ী ইঞ্চ-ডায়া', 'txs', 'start') + rows.map((r, i) => `<g class="pop" style="--i:${i}">${T(46, 42 + i * 24, r[0] + '"', 'tx', 'end')}<rect class="fs grow" x="52" y="${30 + i * 24}" width="${r1(Math.max(2, 230 * r[2] / max))}" height="16" rx="3"/>${T(56 + Math.max(2, 230 * r[2] / max), 42 + i * 24, fx(r[2], 0), 'tx', 'start')}</g>`).join('') +
+      (rows.length ? '' : T(180, 60, 'জয়েন্ট সংখ্যা লিখুন', 'txa')) +
+      `<g transform="translate(12 ${Math.max(140, H) - 34})">${Array.from({ length: men }, (_, i) => `<g class="pop man" style="--i:${i}" transform="translate(${i * 11} 0)"><circle cx="4" cy="4" r="3.6"/><path d="M0 18v-6a4 4 0 0 1 8 0v6z"/></g>`).join('')}
+      ${T(men * 11 + 6, 15, (o.welders > 30 ? '+' + (o.welders - 30) + ' · ' : '') + bn(o.welders) + ' জন ওয়েল্ডার', 'txa', 'start')}</g>`);
+  }
+
+  /* carbon equivalent: scale + contribution of each element */
+  function ce(svg, o) {
+    const X = v => 24 + 312 * clamp(v / .7, 0, 1), from = prev(svg, 'x', X(o.ce)), to = X(o.ce);
+    const zones = [[0, .35, 'g', 'সহজ'], [.35, .45, 'y', 'মাঝারি'], [.45, .6, 'o', 'কঠিন'], [.6, .7, 'r', 'খুব কঠিন']];
+    let x = 24;
+    const parts = o.parts.map(([l, v], i) => { const w = 312 * v / .7, s = `<rect class="pc pc${i} grow" x="${r1(x)}" y="150" width="${r1(Math.max(0, w))}" height="20"/>${w > 26 ? T(x + w / 2, 164, l, i ? 'tx' : 'txk') : ''}`; x += w; return s; }).join('');
+    set(svg, zones.map(([a, b, c, l]) => `<rect class="z${c}" x="${r1(X(a))}" y="64" width="${r1(X(b) - X(a))}" height="26"/>${T((X(a) + X(b)) / 2, 106, l, 'txs')}`).join('') +
+      [0, .35, .45, .6, .7].map(v => T(X(v), 58, v.toFixed(2), 'txs')).join('') +
+      `<g class="ptr" style="--from:${r1(from - to)}px"><path d="M${r1(to)} 92l-7 -12h14z" fill="var(--ink)"/><path d="M${r1(to)} 92V62" stroke="var(--ink)" stroke-width="2"/>${T(to, 30, 'CE ' + fx(o.ce, 3), 'big')}</g>
+      ${T(24, 140, 'কোন উপাদান কতটা যোগ করছে', 'txs', 'start')}${parts}
+      ${o.parts.map(([l, v], i) => `<rect class="pc pc${i}" x="${24 + (i % 2) * 168}" y="${182 + (i >> 1) * 18}" width="10" height="10"/>${T(38 + (i % 2) * 168, 191 + (i >> 1) * 18, l + ' = ' + fx(v, 3), 'txs', 'start')}`).join('')}`);
+  }
+
+  /* heat input: torch travelling along the joint */
+  function hi(svg, o) {
+    const dur = clamp(o.T / 10, 2.5, 9).toFixed(2) + 's';
+    set(svg, `<rect x="24" y="128" width="312" height="30" class="fl"/><path class="s2" d="M24 128H336"/>
+      <rect class="bead" x="30" y="121" width="300" height="10" rx="5" style="--t:${dur}"/>
+      <g class="torch" style="--t:${dur}"><path class="fs" d="M24 46l12 0 4 58h-20z"/><path d="M26 104h8l-4 12z" fill="var(--ink-2)"/><circle class="arc" cx="30" cy="120" r="7"/></g>
+      ${dim(30, 176, 330, 176)}${T(180, 192, 'দৈর্ঘ্য ' + fx(o.L, 0) + ' মিমি · সময় ' + fx(o.T, 0) + ' সে', 'tx')}
+      ${T(336, 36, fx(o.V, 1) + ' V × ' + fx(o.A, 0) + ' A', 'tx', 'end')}${T(336, 60, 'স্পিড ' + fx(o.sp, 0) + ' মিমি/মিনিট', 'tx', 'end')}
+      ${T(336, 96, fx(o.hi, 2) + ' kJ/মিমি', 'big', 'end')}
+      ${T(180, 214, 'ধীরে চালালে (স্পিড কম) হিট ইনপুট বাড়ে', 'txs')}`);
+  }
+
+  /* slope: exaggerated fall with elevations */
+  function slope(svg, o) {
+    const d = clamp(o.drop / Math.max(o.L, 1) * 300 * 25, 10, 110), y0 = 70, y1 = y0 + d, path = `M30 ${y0}L330 ${r1(y1)}`;
+    set(svg, `<path class="d" d="M20 ${y0}H340"/>${pipe(path, 16, 'b')}<path class="flowd" d="${path}"/>
+      ${dim(344, y0, 344, y1)}${T(340, (y0 + y1) / 2 - 8, '↓ ' + fx(o.drop, 1), 'txa', 'end')}
+      ${T(30, y0 - 18, 'EL ' + fx(o.E, 0), 'tx', 'start')}${T(330, y1 + 30, 'EL ' + fx(o.E - o.drop, 0), 'tx', 'end')}
+      ${dim(30, 200, 330, 200)}${T(180, 194, 'দৈর্ঘ্য ' + fx(o.L, 0) + ' মিমি', 'txs')}
+      ${T(180, 30, 'ঢাল ১ : ' + bn(fx(o.x, 0)) + ' (ছবিতে বাড়িয়ে দেখানো)', 'txs')}`);
+  }
+
+  return { cw, cut, off, mit, fish, hyd, tq, el, id: idv, ce, hi, slope };
+})();
+
 /* ---------- helpers ---------- */
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
@@ -3064,14 +3427,37 @@ $('#fitTable').innerHTML = `<thead><tr><th>NPS</th><th class="num">OD</th><th cl
 /* ---------- 14 calculators ---------- */
 (function () {
   const nav = $('#calcNav');
-  const pickCalc = k => {
-    $$('.chip', nav).forEach(b => b.setAttribute('aria-pressed', String(b.dataset.k === k)));
-    $$('#m-calc .calc[data-calc]').forEach(c => c.hidden = c.dataset.calc !== k);
+  let enterT;
+  const pickCalc = (k, scroll) => {
+    if (!$(`#m-calc .calc[data-calc="${k}"]`)) k = 'cw';
+    $$('.cbtn', nav).forEach(b => b.setAttribute('aria-pressed', String(b.dataset.k === k)));
+    $$('#m-calc .calc[data-calc]').forEach(c => { c.hidden = c.dataset.calc !== k; c.classList.toggle('enter', !c.hidden); });
+    clearTimeout(enterT); enterT = setTimeout(() => $$('#m-calc .calc.enter').forEach(c => c.classList.remove('enter')), 1800);
     store.set('calc', k);
+    if (scroll) { const c = $(`#m-calc .calc[data-calc="${k}"]`), r = c.getBoundingClientRect(); if (r.top > innerHeight * .6 || r.top < 0) c.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
   };
-  nav.addEventListener('click', e => { const b = e.target.closest('.chip'); if (b) pickCalc(b.dataset.k); });
+  // each calculator header gets the same icon as its picker button
+  $$('.cbtn', nav).forEach(b => { const h = $(`#m-calc .calc[data-calc="${b.dataset.k}"]>header`); if (h) h.insertAdjacentHTML('afterbegin', `<span class="cico">${$('svg', b).outerHTML}</span>`); });
+  nav.addEventListener('click', e => { const b = e.target.closest('.cbtn'); if (b) pickCalc(b.dataset.k, true); });
   pickCalc(store.get('calc', 'cw'));
-  const on = (ids, fn) => { ids.forEach(id => { const el = $(id); el.addEventListener('input', fn); el.addEventListener('change', fn); }); fn(); };
+  // main result: count up from the previous value and pulse so the change is noticed
+  const bump = calc => {
+    const b = $('.res.main b', calc); if (!b) return;
+    const m = b.textContent.match(/-?[\d,]*\.?\d+/), box = $('.out', calc); if (!m) return;
+    const to = parseFloat(m[0].replace(/,/g, '')), from = parseFloat(box.dataset.v); box.dataset.v = to;
+    if (!isFinite(from) || from === to) return;
+    const dec = (m[0].split('.')[1] || '').length, pre = b.textContent.slice(0, m.index), post = b.textContent.slice(m.index + m[0].length), t0 = performance.now();
+    b.parentNode.classList.add('bump');
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const step = t => { const k = Math.min(1, (t - t0) / 450), e = 1 - (1 - k) ** 3; b.textContent = pre + f(from + (to - from) * e, dec) + post; if (k < 1 && b.isConnected) requestAnimationFrame(step); };
+    requestAnimationFrame(step);
+  };
+  const how = (id, steps) => { $(id).innerHTML = steps.map(x => `<li>${x}</li>`).join(''); };
+  const c = v => `<code>${v}</code>`;
+  const on = (ids, fn) => {
+    const calc = $(ids[0]).closest('.calc'), run = () => { fn(); bump(calc); };
+    ids.forEach(id => { const el = $(id); el.addEventListener('input', run); el.addEventListener('change', run); }); run();
+  };
 
   /* pipe weight */
   $('#cwN').innerHTML = nOpts('#cwN', '6'); fillSch('#cwN', '#cwS', '40');
@@ -3083,6 +3469,12 @@ $('#fitTable').innerHTML = `<thead><tr><th>NPS</th><th class="num">OD</th><th cl
       res(`মোট ওজন (${f(L, 1)} মি)`, f(kgm * L, 1) + ' কেজি', true) + res('পানি প্রতি মিটার', f(wl, 2) + ' লিটার/মি') +
       res('মোট পানি (হাইড্রোটেস্ট)', f(wl * L, 0) + ' লিটার') + res('পানিসহ মোট ওজন', f(kgm * L + wl * L, 1) + ' কেজি') +
       res('বাইরের তল (পেইন্টিং)', f(Math.PI * p[3] / 1000 * L, 2) + ' বর্গমিটার');
+    VZ.cw($('#cwViz'), { od: p[3], wt: w, id, L, total: kgm * L, water: wl * L });
+    how('#cwHow', [`ID = OD − ২ × WT = ${c(f(p[3]) + ' − 2 × ' + f(w, 2) + ' = ' + f(id) + ' মিমি')}`,
+      `স্টিলের প্রস্থচ্ছেদ = π/4 × (OD² − ID²) = ${c(f(Math.PI * (p[3] * p[3] - id * id) / 4, 0) + ' মিমি²')}`,
+      `প্রতি মিটার ওজন = প্রস্থচ্ছেদ × ঘনত্ব ÷ ১০০০ = ${c(f(kgm, 2) + ' কেজি/মি')}`,
+      `মোট ওজন = ${c(f(kgm, 2) + ' × ' + f(L, 1) + ' = ' + f(kgm * L, 1) + ' কেজি')}`,
+      `পানি = π/4 × ID² ÷ ১০০০ × দৈর্ঘ্য = ${c(f(wl * L, 0) + ' লিটার')} (১ লিটার পানি ≈ ১ কেজি)`]);
   });
 
   /* cut length */
@@ -3095,10 +3487,16 @@ $('#fitTable').innerHTML = `<thead><tr><th>NPS</th><th class="num">OD</th><th cl
     const d = FIT[$('#ctN').value], a = $('#ctA').value, b = $('#ctB').value, g = num('#ctG');
     const ta = a === 'none' ? 0 : d[idx[a]], tb = b === 'none' ? 0 : d[idx[b]];
     const gaps = (a === 'none' ? 0 : 1) + (b === 'none' ? 0 : 1);
-    if (ta == null || tb == null) { $('#ctOut').innerHTML = '<p class="hint">এই সাইজে নির্বাচিত ফিটিং B16.9 টেবিলে নেই।</p>'; return; }
+    if (ta == null || tb == null) { $('#ctOut').innerHTML = '<p class="hint">এই সাইজে নির্বাচিত ফিটিং B16.9 টেবিলে নেই।</p>'; $('#ctViz').innerHTML = ''; $('#ctHow').innerHTML = ''; return; }
     const cut = num('#ctD') - ta - tb - gaps * g - num('#ctX');
     $('#ctOut').innerHTML = res('প্রান্ত ১ টেক-অফ', f(ta, 1) + ' মিমি') + res('প্রান্ত ২ টেক-অফ', f(tb, 1) + ' মিমি') + res(`রুট গ্যাপ (${bn(gaps)} টি)`, f(gaps * g, 1) + ' মিমি') +
       res('পাইপ কাট লেংথ', f(cut, 0) + ' মিমি', true) + (cut <= 0 ? '<p class="hint" style="color:var(--crit)">কাট লেংথ শূন্য বা ঋণাত্মক: ফিটিং সরাসরি জোড়া (fitting-to-fitting) বা মাপ ভুল।</p>' : '');
+    VZ.cut($('#ctViz'), { D: num('#ctD'), ta, tb, a, b, cut });
+    how('#ctHow', ['ড্রয়িং-এর মাপ সবসময় WP থেকে WP (সেন্টারলাইনের ছেদবিন্দু), পাইপের মাথা থেকে নয়।',
+      `প্রতিটি ফিটিং তার টেক-অফ (WP থেকে ওয়েল্ডিং মুখ) পর্যন্ত জায়গা নেয়: ${c(f(ta, 1) + ' + ' + f(tb, 1) + ' মিমি')}`,
+      `প্রতিটি জয়েন্টে রুট গ্যাপ: ${c(bn(gaps) + ' × ' + f(g, 1) + ' = ' + f(gaps * g, 1) + ' মিমি')}`,
+      `কাট = ড্রয়িং মাপ − টেক-অফ − গ্যাপ − অন্য বাদ = ${c(f(num('#ctD'), 0) + ' − ' + f(ta + tb, 1) + ' − ' + f(gaps * g, 1) + ' − ' + f(num('#ctX'), 0) + ' = ' + f(cut, 0) + ' মিমি')}`,
+      'কাটার আগে টেপ দিয়ে ফিটিং-এর আসল মাপ একবার মিলিয়ে নিন; ম্যানুফ্যাকচারারভেদে ১–২ মিমি এদিক-ওদিক হয়।']);
   });
 
   /* offset */
@@ -3110,21 +3508,32 @@ $('#fitTable').innerHTML = `<thead><tr><th>NPS</th><th class="num">OD</th><th cl
     $('#ofOut').innerHTML = (roll ? res('আসল অফসেট (√রাইজ² + রোল²)', f(set, 1) + ' মিমি') : '') + res('ট্রাভেল (সেন্টার-টু-সেন্টার)', f(travel, 1) + ' মিমি') + res('রান (সামনের দিকে অগ্রগতি)', f(run, 1) + ' মিমি') +
       res('প্রতি এলবো টেক-অফ', f(to, 1) + ' মিমি') + res('ট্রাভেল পাইপের কাট লেংথ', f(travel - 2 * to - 2 * num('#ofG'), 0) + ' মিমি', true) +
       (roll ? res('রোলের কোণ (উল্লম্ব থেকে)', f(Math.atan2(roll, rise) * 180 / Math.PI, 1) + '°') : '');
+    VZ.off($('#ofViz'), { set, run, travel, ang: num('#ofA'), roll });
+    how('#ofHow', [(roll ? `রোলিং অফসেটে আসল সেট = √(রাইজ² + রোল²) = ${c('√(' + f(rise, 0) + '² + ' + f(roll, 0) + '²) = ' + f(set, 1))}` : `সেট (অফসেট) = ${c(f(set, 0) + ' মিমি')}`),
+      `ট্রাভেল = সেট ÷ sin(${bn(num('#ofA'))}°) = ${c(f(set, 1) + ' ÷ ' + Math.sin(a).toFixed(4) + ' = ' + f(travel, 1))}`,
+      `রান = সেট ÷ tan(${bn(num('#ofA'))}°) = ${c(f(run, 1))}`,
+      `৪৫° এর জন্য সহজ গুণক: ট্রাভেল = সেট × ${c('1.414')}, রান = সেট × ${c('1')}`,
+      `ট্রাভেল পাইপের কাট = ট্রাভেল − ২ × টেক-অফ − ২ × গ্যাপ = ${c(f(travel - 2 * to - 2 * num('#ofG'), 0) + ' মিমি')}`]);
   });
 
   /* mitre */
   on(['#miD', '#miA', '#miW', '#miR'], () => {
     const D = num('#miD'), A = num('#miA'), W = Math.max(1, Math.round(num('#miW'))), R = num('#miR');
-    const c = A / (2 * W), t = Math.tan(c * Math.PI / 180);
-    $('#miOut').innerHTML = res('টুকরো সংখ্যা', bn(W + 1) + ' (দুই মাথার টুকরো অর্ধেক মাপের)') + res('প্রতিটি কাটের কোণ (লম্ব থেকে)', f(c, 2) + '°', true) +
+    const ca = A / (2 * W), t = Math.tan(ca * Math.PI / 180);
+    $('#miOut').innerHTML = res('টুকরো সংখ্যা', bn(W + 1) + ' (দুই মাথার টুকরো অর্ধেক মাপের)') + res('প্রতিটি কাটের কোণ (লম্ব থেকে)', f(ca, 2) + '°', true) +
       res('কাট-ব্যাক (লম্বা দিক − ছোট দিক)', f(D * t, 1) + ' মিমি') + res('মাঝের টুকরোর সেন্টারলাইন দৈর্ঘ্য', f(2 * R * t, 1) + ' মিমি') +
       res('মাঝের টুকরো: বাইরের দিক / ভেতরের দিক', `${f(2 * (R + D / 2) * t, 0)} / ${f(2 * (R - D / 2) * t, 0)} মিমি`) + res('শেষের টুকরো (ট্যানজেন্ট বিন্দু পর্যন্ত, সেন্টার)', f(R * t, 1) + ' মিমি');
+    VZ.mit($('#miViz'), { D, A, W, R, c: ca });
+    how('#miHow', [`প্রতি কাটের কোণ = মোট কোণ ÷ (২ × জয়েন্ট) = ${c(f(A, 0) + ' ÷ (2 × ' + W + ') = ' + f(ca, 2) + '°')}`,
+      `কাট-ব্যাক = OD × tan(কাটের কোণ) = ${c(f(D, 1) + ' × ' + t.toFixed(4) + ' = ' + f(D * t, 1) + ' মিমি')}`,
+      `মাঝের টুকরো (সেন্টারে) = ২ × R × tan(কাটের কোণ) = ${c(f(2 * R * t, 1) + ' মিমি')}`,
+      'পাইপে র‍্যাপ-অ্যারাউন্ড দিয়ে সোজা দাগ টানুন, তারপর লম্বা দিক ও ছোট দিক মেপে কাটের লাইন আঁকুন।']);
   });
 
   /* fishmouth */
   on(['#fsM', '#fsB', '#fsD'], () => {
     const R = num('#fsM') / 2, r = num('#fsB') / 2, N = parseInt($('#fsD').value, 10), svg = $('#fsSvg');
-    if (r > R || r <= 0) { $('#fsOut').innerHTML = '<p class="hint" style="color:var(--crit)">ব্রাঞ্চ OD মূল পাইপের OD এর চেয়ে বড় হতে পারবে না।</p>'; svg.innerHTML = ''; return; }
+    if (r > R || r <= 0) { $('#fsOut').innerHTML = '<p class="hint" style="color:var(--crit)">ব্রাঞ্চ OD মূল পাইপের OD এর চেয়ে বড় হতে পারবে না।</p>'; svg.innerHTML = ''; $('#fsViz').innerHTML = ''; $('#fsHow').innerHTML = ''; return; }
     const base = Math.sqrt(R * R - r * r), C = 2 * Math.PI * r, pts = [];
     for (let i = 0; i <= N; i++) { const th = 2 * Math.PI * i / N; pts.push([C * i / N, Math.sqrt(R * R - (r * Math.sin(th)) ** 2) - base]); }
     const dmax = R - base;
@@ -3134,8 +3543,13 @@ $('#fitTable').innerHTML = `<thead><tr><th>NPS</th><th class="num">OD</th><th cl
     const path = pts.map((p, i) => `${i ? 'L' : 'M'}${(ox + p[0] * sx).toFixed(1)} ${(oy + p[1] * sy).toFixed(1)}`).join(' ');
     svg.innerHTML = `<rect x="${ox}" y="${oy}" width="${W}" height="${H + 10}" fill="var(--panel-2)" stroke="var(--line-2)"/>` +
       pts.map((p, i) => `<path d="M${(ox + p[0] * sx).toFixed(1)} ${oy} V${(oy + p[1] * sy).toFixed(1)}" stroke="var(--accent)" stroke-width="1"/>${i < N ? `<text x="${(ox + p[0] * sx + 2).toFixed(1)}" y="${oy - 6}" class="tx" style="font-size:9px">${i + 1}</text>` : ''}`).join('') +
-      `<path d="${path} V${oy + H + 10} H${ox} Z" fill="var(--steel-soft)" stroke="none"/><path d="${path}" fill="none" stroke="var(--ink)" stroke-width="2"/>` +
+      `<path d="${path} V${oy + H + 10} H${ox} Z" fill="var(--steel-soft)" stroke="none"/><path class="draw" pathLength="1" d="${path}" fill="none" stroke="var(--ink)" stroke-width="2"/>` +
       `<text x="${ox}" y="${oy + H + 26}" class="tx" style="font-size:10px">ব্রাঞ্চ পাইপের পরিধি খোলা অবস্থায় (স্কেল আনুপাতিক নয়); নীল অংশ রাখা হবে, উপরের অংশ কাটা হবে</text>`;
+    VZ.fish($('#fsViz'), { R, r, dmax });
+    how('#fsHow', [`ব্রাঞ্চের পরিধি = π × OD = ${c(f(C, 1) + ' মিমি')}; ${bn(N)} ভাগে প্রতি দাগ ${c(f(C / N, 1) + ' মিমি')}`,
+      `দাগ নম্বর i এর কোণ θ = ৩৬০° × i ÷ ${bn(N)}`,
+      `মাথা থেকে কাট = √(R² − (r·sinθ)²) − √(R² − r²), যেখানে R = হেডার OD/২, r = ব্রাঞ্চ OD/২`,
+      `সবচেয়ে গভীর কাট (দাগ ১ ও মাঝামাঝি) = R − √(R² − r²) = ${c(f(dmax, 1) + ' মিমি')}`]);
   });
 
   /* hydrotest */
@@ -3144,6 +3558,11 @@ $('#fitTable').innerHTML = `<thead><tr><th>NPS</th><th class="num">OD</th><th cl
     $('#hyOut').innerHTML = res('টেস্ট চাপ (সর্বোচ্চ বিন্দুতে)', f(Pt, 2) + ' barg', true) + (hyd ? res('গেজে পড়তে হবে (গেজ নিচে থাকলে)', f(Pt + head, 2) + ' barg') + res('পানির উচ্চতার চাপ', f(head, 2) + ' bar') : '') +
       res('প্রস্তাবিত গেজ রেঞ্জ', `${f(Pt * 1.5, 0)}–${f(Pt * 4, 0)} bar (আদর্শ ≈ ${f(Pt * 2, 0)})`) + res('রিলিফ ভাল্ভ সেট (আনুমানিক)', `${f(Pt * 1.05, 1)}–${f(Pt * 1.1, 1)} barg`) +
       res('PSI তে', f(Pt * 14.504, 0) + ' psig') + `<p class="hint">${hyd ? 'হোল্ড কমপক্ষে ১০ মিনিট (B31.3), তারপর ডিজাইন চাপে পরিদর্শন। নিচের বিন্দুর চাপ যেন কোনো ফ্ল্যাঞ্জ/ভাল্ভের টেস্ট সীমা না ছাড়ায়।' : 'নিউমেটিক টেস্টে প্রথমে ০.৫ bar বা ২৫% এ প্রাথমিক লিক চেক, তারপর ধাপে ধাপে; বিশেষ অনুমোদন ও নিরাপদ দূরত্ব বাধ্যতামূলক।'}</p>`;
+    VZ.hyd($('#hyViz'), { Pt, gauge: hyd ? Pt + head : Pt, H: hyd ? num('#hyH') : 0 });
+    how('#hyHow', [hyd ? `টেস্ট চাপ = ১.৫ × ডিজাইন চাপ × (St/S) = ${c('1.5 × ' + f(num('#hyP'), 2) + ' × ' + f(Math.min(6.5, Math.max(1, num('#hyR'))), 2) + ' = ' + f(Pt, 2) + ' barg')}` : `টেস্ট চাপ = ১.১ × ডিজাইন চাপ = ${c(f(Pt, 2) + ' barg')}`,
+      hyd ? `প্রতি ১ মিটার পানির উচ্চতায় চাপ বাড়ে ${c('0.0981 bar')}; ${c(f(num('#hyH'), 1) + ' মি × 0.0981 = ' + f(head, 2) + ' bar')}` : 'নিউমেটিক টেস্টে গ্যাসের ওজন নগণ্য, তাই উচ্চতার সংশোধন লাগে না।',
+      hyd ? `গেজ নিচে থাকলে গেজে দেখাবে = টেস্ট চাপ + উচ্চতার চাপ = ${c(f(Pt + head, 2) + ' barg')}` : 'চাপ ধাপে ধাপে বাড়ান; প্রতিটি ধাপে থেমে লিক দেখুন।',
+      `গেজের রেঞ্জ এমন নিন যাতে টেস্ট চাপ স্কেলের মাঝামাঝি (১.৫–৪ গুণ) থাকে।`]);
   });
 
   /* torque */
@@ -3152,6 +3571,11 @@ $('#fitTable').innerHTML = `<thead><tr><th>NPS</th><th class="num">OD</th><th cl
     const s = STUD[$('#tqD').value], A = s[1] * 645.16, F = num('#tqS') * A, T = num('#tqK') * F * s[0] * 0.0254;
     $('#tqOut').innerHTML = res('টেনসাইল স্ট্রেস এরিয়া', f(A, 1) + ' মিমি²') + res('বোল্ট টান (প্রিলোড)', f(F / 1000, 1) + ' kN') +
       res('টর্ক', `${f(T, 0)} N·m`, true) + res('টর্ক (ft·lb)', f(T * 0.7376, 0) + ' ft·lb') + res('ধাপ: ৩০% / ৬০% / ১০০%', `${f(T * 0.3, 0)} / ${f(T * 0.6, 0)} / ${f(T, 0)} N·m`) + res('নাট সাইজ', s[2]);
+    VZ.tq($('#tqViz'), { T });
+    how('#tqHow', [`টেনসাইল স্ট্রেস এরিয়া (টেবিল থেকে) = ${c(f(A, 1) + ' মিমি²')}`,
+      `বোল্ট টান F = স্ট্রেস × এরিয়া = ${c(f(num('#tqS'), 0) + ' × ' + f(A, 1) + ' = ' + f(F / 1000, 1) + ' kN')}`,
+      `টর্ক T = K × F × d = ${c(num('#tqK') + ' × ' + f(F, 0) + ' N × ' + f(s[0] * 0.0254, 4) + ' মি = ' + f(T, 0) + ' N·m')}`,
+      'ছবির মতো ক্রস প্যাটার্নে (১→২→৩…) তিন পাসে টাইট দিন, শেষে ১০০% এ ঘড়ির কাঁটার দিকে সব বোল্ট একবার চেক।']);
   });
 
   /* electrode consumption */
@@ -3163,7 +3587,11 @@ $('#fitTable').innerHTML = `<thead><tr><th>NPS</th><th class="num">OD</th><th cl
     const len = Math.PI * p[3], kg = area * len * 7.85e-6, J = Math.max(1, Math.round(num('#elJ'))), eff = num('#elE');
     $('#elOut2').innerHTML = res('ওয়েল্ডের প্রস্থচ্ছেদ (আনুমানিক)', f(area, 0) + ' মিমি²') + res('প্রতি জয়েন্ট ওয়েল্ড মেটাল', f(kg, 3) + ' কেজি') +
       res(`মোট ওয়েল্ড মেটাল (${bn(J)} জয়েন্ট)`, f(kg * J, 2) + ' কেজি') + res('প্রয়োজনীয় ইলেক্ট্রোড/তার', f(kg * J / eff, 2) + ' কেজি', true) +
-      res('মোট ইঞ্চ-ডায়া', f(p[1] * J, 1) + ' ID') + '<p class="hint">৩৭.৫° বেভেল, ৩ মিমি গ্যাপ, ১.৬ মিমি ল্যান্ড, ১.৫ মিমি ক্যাপ ধরে। রুট TIG ও বাকিটা SMAW হলে মোটামুটি ১৫–২০% TIG রড, বাকি স্টিক। ১০–১৫% বাড়তি রাখুন (অপচয়, স্টাব এন্ড)।</p>';
+      res('মোট ইঞ্চ-ডায়া', f(p[1] * J, 1) + ' ID') + (VZ.el($('#elViz'), { t, g, land }), how('#elHow', [
+        `জয়েন্টের প্রস্থচ্ছেদ (রুট গ্যাপ + দুই বেভেল + ক্যাপ) ≈ ${c(f(area, 0) + ' মিমি²')}`,
+        `এক জয়েন্টের ওয়েল্ড দৈর্ঘ্য = π × OD = ${c(f(len, 0) + ' মিমি')}`,
+        `ওয়েল্ড মেটাল = এরিয়া × দৈর্ঘ্য × ৭.৮৫ গ্রাম/সিসি = ${c(f(kg, 3) + ' কেজি')}`,
+        `ইলেক্ট্রোড = মোট ওয়েল্ড মেটাল ÷ দক্ষতা = ${c(f(kg * J, 2) + ' ÷ ' + eff + ' = ' + f(kg * J / eff, 2) + ' কেজি')}`]), '') + '<p class="hint">৩৭.৫° বেভেল, ৩ মিমি গ্যাপ, ১.৬ মিমি ল্যান্ড, ১.৫ মিমি ক্যাপ ধরে। রুট TIG ও বাকিটা SMAW হলে মোটামুটি ১৫–২০% TIG রড, বাকি স্টিক। ১০–১৫% বাড়তি রাখুন (অপচয়, স্টাব এন্ড)।</p>';
   });
 
   /* inch-dia & manpower */
@@ -3176,6 +3604,10 @@ $('#fitTable').innerHTML = `<thead><tr><th>NPS</th><th class="num">OD</th><th cl
     $('#idOut').innerHTML = res('মোট জয়েন্ট', f(jn, 0)) + res('মোট ইঞ্চ-ডায়া', f(tot, 1) + ' ID', true) + res('ওয়েল্ডার-দিন', f(wd, 1)) +
       res('প্রয়োজনীয় ওয়েল্ডার', f(Math.ceil(w), 0) + ` জন (হিসাবে ${f(w, 2)})`) + res('প্রস্তাবিত ফিটার / হেল্পার', `${f(Math.ceil(w), 0)} / ${f(Math.ceil(w * 1.5), 0)} জন`) +
       '<p class="hint">ফিটার:ওয়েল্ডার অনুপাত সাধারণত ১:১ থেকে ১:১.৫; সাইটের অবস্থা অনুযায়ী বদলান। ফিট-আপ এগিয়ে না থাকলে ওয়েল্ডার বসে থাকবে।</p>';
+    VZ.id($('#idViz'), { rows: sizes.map(s => { const n = num('#id_' + s.replace(/\W/g, '_')); return [s, n, n * pipeBy(s)[1]]; }), welders: Math.ceil(w) });
+    how('#idHow', ['ইঞ্চ-ডায়া = জয়েন্ট সংখ্যা × পাইপের নমিনাল সাইজ (ইঞ্চি)। যেমন ৬" এর ১২টি জয়েন্ট = ৭২ ID।',
+      `মোট = ${c(f(tot, 1) + ' ID')}; ওয়েল্ডার-দিন = মোট ÷ প্রতি দিনের রেট = ${c(f(tot, 1) + ' ÷ ' + f(num('#idRate'), 0) + ' = ' + f(wd, 1))}`,
+      `ওয়েল্ডার = ওয়েল্ডার-দিন ÷ কাজের দিন = ${c(f(wd, 1) + ' ÷ ' + f(num('#idDays'), 0) + ' = ' + f(w, 2))} → পূর্ণসংখ্যায় ${c(f(Math.ceil(w), 0))} জন`]);
   });
 
   /* CE */
@@ -3183,18 +3615,31 @@ $('#fitTable').innerHTML = `<thead><tr><th>NPS</th><th class="num">OD</th><th cl
     const ce = num('#ceC') + num('#ceMn') / 6 + (num('#ceCr') + num('#ceMo') + num('#ceV')) / 5 + (num('#ceNi') + num('#ceCu')) / 15;
     const [txt, cls] = ce <= 0.35 ? ['ভালো ওয়েল্ডেবিলিটি; পাতলা হলে সাধারণত প্রি-হিট লাগে না', 'g'] : ce <= 0.45 ? ['মাঝারি; মোটা হলে প্রি-হিট ৫০–১০০°C ও লো-H রড', 'y'] : ce <= 0.6 ? ['কঠিন; প্রি-হিট ১০০–২০০°C, নিয়ন্ত্রিত প্রক্রিয়া', 'r'] : ['খুব কঠিন; প্রি-হিট ও PWHT অপরিহার্য', 'r'];
     $('#ceOut').innerHTML = res('CE (IIW)', f(ce, 3), true) + `<p><span class="pill ${cls}">${txt}</span></p>`;
+    const parts = [['C', num('#ceC')], ['Mn/6', num('#ceMn') / 6], ['(Cr+Mo+V)/5', (num('#ceCr') + num('#ceMo') + num('#ceV')) / 5], ['(Ni+Cu)/15', (num('#ceNi') + num('#ceCu')) / 15]];
+    VZ.ce($('#ceViz'), { ce, parts });
+    how('#ceHow', ['CE = C + Mn/6 + (Cr + Mo + V)/5 + (Ni + Cu)/15', parts.map(([l, v]) => `${l} = ${c(f(v, 3))}`).join(' · '), `যোগফল = ${c(f(ce, 3))}`,
+      'CE যত বেশি, HAZ তত শক্ত ও ভঙ্গুর হয়, ক্র্যাকের ঝুঁকি বাড়ে; তাই প্রি-হিট ও লো-হাইড্রোজেন ইলেক্ট্রোড লাগে।']);
   });
 
   /* heat input */
   on(['#hiV', '#hiA', '#hiL', '#hiT', '#hiE'], () => {
     const L = Math.max(0.1, num('#hiL')), t = Math.max(0.1, num('#hiT')), sp = L / t * 60, hi = num('#hiV') * num('#hiA') * 60 / (sp * 1000) * num('#hiE');
     $('#hiOut').innerHTML = res('ট্রাভেল স্পিড', f(sp, 0) + ' মিমি/মিনিট') + res('হিট ইনপুট', f(hi, 2) + ' kJ/মিমি', true) + res('kJ/ইঞ্চি তে', f(hi * 25.4, 1) + ' kJ/in');
+    VZ.hi($('#hiViz'), { V: num('#hiV'), A: num('#hiA'), L, T: t, sp, hi });
+    how('#hiHow', [`ট্রাভেল স্পিড = দৈর্ঘ্য ÷ সময় × ৬০ = ${c(f(L, 0) + ' ÷ ' + f(t, 0) + ' × 60 = ' + f(sp, 0) + ' মিমি/মিনিট')}`,
+      `হিট ইনপুট = (V × A × ৬০) ÷ (স্পিড × ১০০০) × দক্ষতা = ${c('(' + f(num('#hiV'), 1) + ' × ' + f(num('#hiA'), 0) + ' × 60) ÷ (' + f(sp, 0) + ' × 1000) × ' + num('#hiE') + ' = ' + f(hi, 2) + ' kJ/মিমি')}`,
+      'সাইটে স্টপওয়াচ দিয়ে এক রডে কত মিমি ওয়েল্ড হলো মাপুন, ক্ল্যাম্প মিটারে কারেন্ট ও ভোল্টেজ দেখুন।']);
   });
 
   /* slope */
   on(['#slX', '#slL', '#slE'], () => {
     const x = Math.max(1, num('#slX')), drop = num('#slL') / x;
     $('#slOut').innerHTML = res('মোট নামবে', f(drop, 1) + ' মিমি', true) + res('শেষ প্রান্তের এলিভেশন', f(num('#slE') - drop, 1) + ' মিমি') + res('ঢাল শতাংশে', f(100 / x, 2) + '%') + res('কোণ', f(Math.atan(1 / x) * 180 / Math.PI, 3) + '°') + res('প্রতি মিটারে', f(1000 / x, 1) + ' মিমি');
+    VZ.slope($('#slViz'), { x, L: num('#slL'), E: num('#slE'), drop });
+    how('#slHow', [`ঢাল ১:${bn(f(x, 0))} মানে প্রতি ${bn(f(x, 0))} মিমি সামনে গেলে ১ মিমি নামবে`,
+      `মোট নামবে = দৈর্ঘ্য ÷ ${bn(f(x, 0))} = ${c(f(num('#slL'), 0) + ' ÷ ' + f(x, 0) + ' = ' + f(drop, 1) + ' মিমি')}`,
+      `শেষ এলিভেশন = শুরু − নামা = ${c(f(num('#slE'), 0) + ' − ' + f(drop, 1) + ' = ' + f(num('#slE') - drop, 1) + ' মিমি')}`,
+      'সাইটে লেভেল টিউব বা লেজার দিয়ে দুই প্রান্তের সাপোর্টের উচ্চতা মার্ক করুন।']);
   });
 
   /* units */
