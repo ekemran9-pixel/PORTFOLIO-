@@ -1,5 +1,5 @@
 /* Offline cache so the guide works on site without signal. Bump CACHE when the site changes. */
-const CACHE = "fabguide-v4";
+const CACHE = "fabguide-v5";
 const CORE = ["./", "index.html", "manifest.webmanifest"];
 self.addEventListener("install", e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(CORE)).then(() => self.skipWaiting()));
