@@ -33,7 +33,7 @@ function show(id, focusEl) {
   if (!$('.pager', mod)) {
     const i = ORDER.indexOf(id), pv = MODULES[i - 1], nx = MODULES[i + 1];
     mod.insertAdjacentHTML('beforeend', `<nav class="pager" aria-label="মডিউল নেভিগেশন">${pv ? `<a href="#${pv[0]}"><small>← আগের · ${bn(pv[1])}</small>${pv[2]}</a>` : ''}${nx ? `<a class="nx" href="#${nx[0]}"><small>পরের · ${bn(nx[1])} →</small>${nx[2]}</a>` : ''}</nav>
-      <div class="foot"><span>এই গাইডের সংখ্যা, রেঞ্জ ও সূত্র প্রচলিত ডিজাইন রেফারেন্স (TVA, Perry's, ভেন্ডর বুলেটিন, ISO), সরবরাহকারীদের সুপারিশ ও প্লান্ট-অনুশীলনের ভিত্তিতে শেখার জন্য সাজানো। কাজের সময় আপনার ইকুইপমেন্টের OEM ম্যানুয়াল, ডেটাশিট, প্লান্টের SOP ও সেফটি নিয়মই চূড়ান্ত।</span></div>`);
+      <div class="foot"><span>এই গাইডের সংখ্যা, রেঞ্জ ও সূত্র প্রচলিত ডিজাইন রেফারেন্স (TVA, Perry's, ভেন্ডর বুলেটিন, ISO), সরবরাহকারীদের সুপারিশ ও প্লান্ট-অনুশীলনের ভিত্তিতে শেখার জন্য সাজানো। কাজের সময় আপনার ইকুইপমেন্টের OEM ম্যানুয়াল, ডেটাশিট, প্লান্টের SOP ও সেফটি নিয়মই চূড়ান্ত।</span><span class="morelinks">আরও দেখুন: <a href="https://ekemran9-pixel.github.io/foreman-handbook/bn/" target="_blank" rel="noopener">মেকানিক্যাল হ্যান্ডবুক</a> · <a href="https://emranfabrication.netlify.app/" target="_blank" rel="noopener">ফ্যাব্রিকেশন গাইড</a> · <a href="https://phosphate-safety-bd.netlify.app/" target="_blank" rel="noopener">ফসফেট সেফটি গাইড</a></span></div>`);
   }
   document.title = (id === 'home' ? '' : mod.dataset.title + ' · ') + 'ফসফেট প্লান্ট ড্রাম গাইড';
   if (typeof V3D !== 'undefined') V3D.wake(mod);
