@@ -2,7 +2,7 @@
 <div class="sheet"><div class="t">
   <span class="eb">DWG FAB-14 · টুলস</span>
   <h1>ফোরম্যানের ক্যালকুলেটর</h1>
-  <p class="lede">সাইটে প্রতিদিন যেসব হিসাব লাগে: পাইপ ওজন, কাট লেংথ, অফসেট, মাইটার, ফিশমাউথ টেমপ্লেট, হাইড্রোটেস্ট চাপ, বোল্ট টর্ক, ইলেক্ট্রোড খরচ, ইঞ্চ-ডায়া, CE, হিট ইনপুট ও ইউনিট রূপান্তর।</p>
+  <p class="lede">সাইটে প্রতিদিন যেসব হিসাব লাগে: ছবি ও অ্যানিমেশন দেখে বুঝে নিন। পাইপ ওজন, কাট লেংথ, অফসেট, মাইটার, ফিশমাউথ টেমপ্লেট, হাইড্রোটেস্ট চাপ, বোল্ট টর্ক, ইলেক্ট্রোড খরচ, ইঞ্চ-ডায়া, CE, হিট ইনপুট ও ইউনিট রূপান্তর।</p>
 </div><div class="tb">
   <div><small>ক্যালকুলেটর</small><b>১৩টি</b></div>
   <div><small>ইউনিট</small><b>মিমি, bar, kg</b></div>
@@ -11,147 +11,188 @@
 </div></div>
 
 <div class="sec" id="calc-all">
-  <div class="chips calcnav" id="calcNav" role="tablist" aria-label="ক্যালকুলেটর বেছে নিন">
-    <button class="chip" data-k="cw" aria-pressed="true">পাইপ ওজন ও আয়তন</button>
-    <button class="chip" data-k="cut" aria-pressed="false">কাট লেংথ</button>
-    <button class="chip" data-k="off" aria-pressed="false">অফসেট</button>
-    <button class="chip" data-k="mit" aria-pressed="false">মাইটার কাট</button>
-    <button class="chip" data-k="fish" aria-pressed="false">ফিশমাউথ টেমপ্লেট</button>
-    <button class="chip" data-k="hyd" aria-pressed="false">হাইড্রোটেস্ট চাপ</button>
-    <button class="chip" data-k="tq" aria-pressed="false">বোল্ট টর্ক</button>
-    <button class="chip" data-k="el" aria-pressed="false">ইলেক্ট্রোড খরচ</button>
-    <button class="chip" data-k="id" aria-pressed="false">ইঞ্চ-ডায়া ও ম্যানপাওয়ার</button>
-    <button class="chip" data-k="ce" aria-pressed="false">কার্বন ইকুইভ্যালেন্ট</button>
-    <button class="chip" data-k="hi" aria-pressed="false">হিট ইনপুট</button>
-    <button class="chip" data-k="slope" aria-pressed="false">ঢাল</button>
-    <button class="chip" data-k="unit" aria-pressed="false">ইউনিট রূপান্তর</button>
+  <div class="cpick" id="calcNav" aria-label="ক্যালকুলেটর বেছে নিন">
+    <div class="cgroup"><h6>পাইপ, কাটিং ও লে-আউট</h6><div class="cbtns"><button class="cbtn" type="button" data-k="cw" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 9h10l3 11H4z"/><circle cx="12" cy="6" r="2.6"/></svg><span>পাইপ ওজন ও পানি</span></button><button class="cbtn" type="button" data-k="cut" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12h20M7 7v10M17 7v10"/><path d="M9.5 12h5" stroke-width="3"/></svg><span>কাট লেংথ</span></button><button class="cbtn" type="button" data-k="off" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 18h6l8-12h6"/><path d="M8 18h8V6" stroke-dasharray="2 2"/></svg><span>অফসেট</span></button><button class="cbtn" type="button" data-k="mit" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 22v-9l3-6 6-3h9"/><path d="M4 13h4M7 7l3 3M13 4l1 4"/></svg><span>মাইটার কাট</span></button><button class="cbtn" type="button" data-k="fish" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 2v10q5 5 10 0V2"/><path d="M2 21q10-10 20 0"/></svg><span>ফিশমাউথ টেমপ্লেট</span></button><button class="cbtn" type="button" data-k="slope" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 7l20 8"/><path d="M14 18h8v-6" stroke-dasharray="2 2"/></svg><span>ঢাল ও এলিভেশন</span></button></div></div>
+    <div class="cgroup"><h6>ওয়েল্ডিং</h6><div class="cbtns"><button class="cbtn" type="button" data-k="el" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20L16 8M14 6l4 4"/><path d="M19 15l2 1M17 18l1 2M20 19h2"/></svg><span>ইলেক্ট্রোড খরচ</span></button><button class="cbtn" type="button" data-k="hi" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2c3 4 6 7 6 11a6 6 0 0 1-12 0c0-2 1-4 2.5-5 0 2 1 3.5 2.5 3.5 0-3.5-1-6 1-9.5z"/></svg><span>হিট ইনপুট</span></button><button class="cbtn" type="button" data-k="ce" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6M10 3v6L5 19a1.5 1.5 0 0 0 1.3 2h11.4a1.5 1.5 0 0 0 1.3-2L14 9V3"/><path d="M7.5 15h9"/></svg><span>কার্বন ইকুইভ্যালেন্ট</span></button></div></div>
+    <div class="cgroup"><h6>টেস্টিং ও বোল্টিং</h6><div class="cbtns"><button class="cbtn" type="button" data-k="hyd" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 13l4.5-4M12 2v3M9 2h6"/></svg><span>হাইড্রোটেস্ট চাপ</span></button><button class="cbtn" type="button" data-k="tq" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="6" r="1.4"/><circle cx="12" cy="18" r="1.4"/><circle cx="6" cy="12" r="1.4"/><circle cx="18" cy="12" r="1.4"/><path d="M12 6v12M6 12h12" stroke-dasharray="2 2"/></svg><span>বোল্ট টর্ক</span></button></div></div>
+    <div class="cgroup"><h6>পরিকল্পনা ও রূপান্তর</h6><div class="cbtns"><button class="cbtn" type="button" data-k="id" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 20V11M11 20V5M17 20v-6M2 20h20"/></svg><span>ইঞ্চ-ডায়া ও লোকবল</span></button><button class="cbtn" type="button" data-k="unit" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h16l-4-4M21 16H5l4 4"/></svg><span>ইউনিট রূপান্তর</span></button></div></div>
   </div>
 
   <div class="calc" data-calc="cw"><header><h3>পাইপ ওজন, আয়তন ও পানির পরিমাণ</h3><p>সাইজ, শিডিউল আর দৈর্ঘ্য দিন। ফ্ল্যাঞ্জ-ফিটিং ছাড়া শুধু পাইপের ওজন।</p></header><div class="bd">
-    <div class="fields">
-      <div class="fld"><label for="cwN">সাইজ (NPS)</label><select id="cwN"></select></div>
-      <div class="fld"><label for="cwS">শিডিউল</label><select id="cwS"></select></div>
-      <div class="fld"><label for="cwL">দৈর্ঘ্য (মিটার)</label><input id="cwL" type="number" value="6" min="0" step="0.1"></div>
-      <div class="fld"><label for="cwM">ম্যাটেরিয়াল</label><select id="cwM"><option value="7.85">কার্বন/অ্যালয় স্টিল (৭.৮৫)</option><option value="7.98">স্টেইনলেস 304/316 (৭.৯৮)</option><option value="7.80">ডুপ্লেক্স (৭.৮০)</option><option value="8.94">কপার-নিকেল (৮.৯৪)</option></select></div>
+    <div class="cgrid">
+      <div class="fields">
+        <div class="fld"><label for="cwN">সাইজ (NPS)</label><select id="cwN"></select></div>
+        <div class="fld"><label for="cwS">শিডিউল</label><select id="cwS"></select></div>
+        <div class="fld"><label for="cwL">দৈর্ঘ্য (মিটার)</label><input id="cwL" type="number" value="6" min="0" step="0.1"></div>
+        <div class="fld"><label for="cwM">ম্যাটেরিয়াল</label><select id="cwM"><option value="7.85">কার্বন/অ্যালয় স্টিল (৭.৮৫)</option><option value="7.98">স্টেইনলেস 304/316 (৭.৯৮)</option><option value="7.80">ডুপ্লেক্স (৭.৮০)</option><option value="8.94">কপার-নিকেল (৮.৯৪)</option></select></div>
+      </div>
+      <figure class="viz"><svg id="cwViz" viewBox="0 0 360 220" role="img" aria-label="বাঁয়ে প্রস্থচ্ছেদ (OD, WT, ID), ডানে পাইপের দৈর্ঘ্য। নীল অংশ = হাইড্রোটেস্টে যতটা পানি লাগবে।"></svg><figcaption>বাঁয়ে প্রস্থচ্ছেদ (OD, WT, ID), ডানে পাইপের দৈর্ঘ্য। নীল অংশ = হাইড্রোটেস্টে যতটা পানি লাগবে।</figcaption></figure>
     </div>
     <div class="out" id="cwOut"></div>
+    <details class="how"><summary>হিসাবটা ধাপে ধাপে</summary><ol id="cwHow"></ol></details>
   </div></div>
 
   <div class="calc" data-calc="cut" hidden><header><h3>কাট লেংথ (সেন্টার-টু-সেন্টার থেকে)</h3><p>দুই প্রান্তে কোন ফিটিং আছে বেছে নিন; B16.9 টেক-অফ স্বয়ংক্রিয়ভাবে বাদ যাবে।</p></header><div class="bd">
-    <div class="fields">
-      <div class="fld"><label for="ctN">সাইজ (NPS)</label><select id="ctN"></select></div>
-      <div class="fld"><label for="ctD">ড্রয়িং মাপ (মিমি)</label><input id="ctD" type="number" value="1500" step="1"></div>
-      <div class="fld"><label for="ctA">প্রান্ত ১</label><select id="ctA"></select></div>
-      <div class="fld"><label for="ctB">প্রান্ত ২</label><select id="ctB"></select></div>
-      <div class="fld"><label for="ctG">রুট গ্যাপ প্রতি জয়েন্ট (মিমি)</label><input id="ctG" type="number" value="3" step="0.5"></div>
-      <div class="fld"><label for="ctX">অন্য বাদ (মিমি, যেমন ফ্ল্যাঞ্জ লেংথ)</label><input id="ctX" type="number" value="0" step="1"></div>
+    <div class="cgrid">
+      <div class="fields">
+        <div class="fld"><label for="ctN">সাইজ (NPS)</label><select id="ctN"></select></div>
+        <div class="fld"><label for="ctD">ড্রয়িং মাপ (মিমি)</label><input id="ctD" type="number" value="1500" step="1"></div>
+        <div class="fld"><label for="ctA">প্রান্ত ১</label><select id="ctA"></select></div>
+        <div class="fld"><label for="ctB">প্রান্ত ২</label><select id="ctB"></select></div>
+        <div class="fld"><label for="ctG">রুট গ্যাপ প্রতি জয়েন্ট (মিমি)</label><input id="ctG" type="number" value="3" step="0.5"></div>
+        <div class="fld"><label for="ctX">অন্য বাদ (মিমি, যেমন ফ্ল্যাঞ্জ লেংথ)</label><input id="ctX" type="number" value="0" step="1"></div>
+      </div>
+      <figure class="viz"><svg id="ctViz" viewBox="0 0 360 220" role="img" aria-label="WP = ওয়ার্কিং পয়েন্ট (সেন্টারলাইনের ছেদবিন্দু)। হলুদ অংশই কাটতে হবে; কমলা দাগ = ওয়েল্ড গ্যাপ।"></svg><figcaption>WP = ওয়ার্কিং পয়েন্ট (সেন্টারলাইনের ছেদবিন্দু)। হলুদ অংশই কাটতে হবে; কমলা দাগ = ওয়েল্ড গ্যাপ।</figcaption></figure>
     </div>
     <div class="out" id="ctOut"></div>
+    <details class="how"><summary>হিসাবটা ধাপে ধাপে</summary><ol id="ctHow"></ol></details>
   </div></div>
 
   <div class="calc" data-calc="off" hidden><header><h3>অফসেট ও রোলিং অফসেট</h3><p>দুই সমান্তরাল লাইনের মাঝে কোণাকুণি অংশ। রোলিং অফসেটে উচ্চতা (রাইজ) ও পাশের সরণ (রোল) দুটো দিন।</p></header><div class="bd">
-    <div class="fields">
-      <div class="fld"><label for="ofR">রাইজ / অফসেট (মিমি)</label><input id="ofR" type="number" value="600" step="1"></div>
-      <div class="fld"><label for="ofL">রোল (মিমি, না থাকলে ০)</label><input id="ofL" type="number" value="0" step="1"></div>
-      <div class="fld"><label for="ofA">ফিটিং কোণ</label><select id="ofA"><option value="45" selected>৪৫°</option><option value="60">৬০°</option><option value="30">৩০°</option><option value="22.5">২২.৫°</option><option value="11.25">১১.২৫°</option></select></div>
-      <div class="fld"><label for="ofN">সাইজ (৪৫° এলবো টেক-অফের জন্য)</label><select id="ofN"></select></div>
-      <div class="fld"><label for="ofG">রুট গ্যাপ (মিমি)</label><input id="ofG" type="number" value="3" step="0.5"></div>
+    <div class="cgrid">
+      <div class="fields">
+        <div class="fld"><label for="ofR">রাইজ / অফসেট (মিমি)</label><input id="ofR" type="number" value="600" step="1"></div>
+        <div class="fld"><label for="ofL">রোল (মিমি, না থাকলে ০)</label><input id="ofL" type="number" value="0" step="1"></div>
+        <div class="fld"><label for="ofA">ফিটিং কোণ</label><select id="ofA"><option value="45" selected>৪৫°</option><option value="60">৬০°</option><option value="30">৩০°</option><option value="22.5">২২.৫°</option><option value="11.25">১১.২৫°</option></select></div>
+        <div class="fld"><label for="ofN">সাইজ (৪৫° এলবো টেক-অফের জন্য)</label><select id="ofN"></select></div>
+        <div class="fld"><label for="ofG">রুট গ্যাপ (মিমি)</label><input id="ofG" type="number" value="3" step="0.5"></div>
+      </div>
+      <figure class="viz"><svg id="ofViz" viewBox="0 0 360 220" role="img" aria-label="আসল কোণে আঁকা। হলুদ টুকরোটাই ট্রাভেল পাইপ; নীল দাগ = প্রবাহের দিক।"></svg><figcaption>আসল কোণে আঁকা। হলুদ টুকরোটাই ট্রাভেল পাইপ; নীল দাগ = প্রবাহের দিক।</figcaption></figure>
     </div>
     <div class="out" id="ofOut"></div>
+    <details class="how"><summary>হিসাবটা ধাপে ধাপে</summary><ol id="ofHow"></ol></details>
     <p class="hint">ট্রাভেল = সেট ÷ sin(কোণ); রান = সেট ÷ tan(কোণ)। টেক-অফ শুধু ৪৫° LR এলবোর জন্য B16.9 টেবিল থেকে নেওয়া হয়; অন্য কোণে এলবো কেটে বানালে টেক-অফ = R × tan(কোণ/২)।</p>
   </div></div>
 
   <div class="calc" data-calc="mit" hidden><header><h3>মাইটার বেন্ড কাটিং</h3><p>পাইপ টুকরো করে বাঁক বানাতে প্রতিটি কাটের কোণ ও কাট-ব্যাক।</p></header><div class="bd">
-    <div class="fields">
-      <div class="fld"><label for="miD">পাইপ OD (মিমি)</label><input id="miD" type="number" value="323.8" step="0.1"></div>
-      <div class="fld"><label for="miA">মোট বাঁকের কোণ (°)</label><input id="miA" type="number" value="90" step="1"></div>
-      <div class="fld"><label for="miW">ওয়েল্ড জয়েন্ট সংখ্যা</label><input id="miW" type="number" value="3" min="1" step="1"></div>
-      <div class="fld"><label for="miR">বাঁকের রেডিয়াস (মিমি)</label><input id="miR" type="number" value="485" step="1"></div>
+    <div class="cgrid">
+      <div class="fields">
+        <div class="fld"><label for="miD">পাইপ OD (মিমি)</label><input id="miD" type="number" value="323.8" step="0.1"></div>
+        <div class="fld"><label for="miA">মোট বাঁকের কোণ (°)</label><input id="miA" type="number" value="90" step="1"></div>
+        <div class="fld"><label for="miW">ওয়েল্ড জয়েন্ট সংখ্যা</label><input id="miW" type="number" value="3" min="1" step="1"></div>
+        <div class="fld"><label for="miR">বাঁকের রেডিয়াস (মিমি)</label><input id="miR" type="number" value="485" step="1"></div>
+      </div>
+      <figure class="viz"><svg id="miViz" viewBox="0 0 360 220" role="img" aria-label="আপনার দেওয়া মাপে আসল জ্যামিতি। দুই মাথার টুকরো মাঝেরগুলোর অর্ধেক কোণের।"></svg><figcaption>আপনার দেওয়া মাপে আসল জ্যামিতি। দুই মাথার টুকরো মাঝেরগুলোর অর্ধেক কোণের।</figcaption></figure>
     </div>
     <div class="out" id="miOut"></div>
+    <details class="how"><summary>হিসাবটা ধাপে ধাপে</summary><ol id="miHow"></ol></details>
   </div></div>
 
   <div class="calc" data-calc="fish" hidden><header><h3>ফিশমাউথ / স্যাডল কাট টেমপ্লেট (৯০° ব্রাঞ্চ)</h3><p>ব্রাঞ্চ পাইপের মাথা মূল পাইপের গায়ে মেলাতে। পরিধি সমান ভাগে ভাগ করে প্রতিটি দাগে কতটা কাটতে হবে।</p></header><div class="bd">
-    <div class="fields">
-      <div class="fld"><label for="fsM">মূল পাইপ OD (মিমি)</label><input id="fsM" type="number" value="219.1" step="0.1"></div>
-      <div class="fld"><label for="fsB">ব্রাঞ্চ পাইপ OD (মিমি)</label><input id="fsB" type="number" value="114.3" step="0.1"></div>
-      <div class="fld"><label for="fsD">ভাগ সংখ্যা</label><select id="fsD"><option>8</option><option selected>16</option><option>24</option><option>32</option></select></div>
+    <div class="cgrid">
+      <div class="fields">
+        <div class="fld"><label for="fsM">মূল পাইপ OD (মিমি)</label><input id="fsM" type="number" value="219.1" step="0.1"></div>
+        <div class="fld"><label for="fsB">ব্রাঞ্চ পাইপ OD (মিমি)</label><input id="fsB" type="number" value="114.3" step="0.1"></div>
+        <div class="fld"><label for="fsD">ভাগ সংখ্যা</label><select id="fsD"><option>8</option><option selected>16</option><option>24</option><option>32</option></select></div>
+      </div>
+      <figure class="viz"><svg id="fsViz" viewBox="0 0 360 220" role="img" aria-label="হেডারের মাথা থেকে দেখলে: ব্রাঞ্চের তলা হেডারের গোল গায়ে বসে। নিচে খোলা টেমপ্লেট।"></svg><figcaption>হেডারের মাথা থেকে দেখলে: ব্রাঞ্চের তলা হেডারের গোল গায়ে বসে। নিচে খোলা টেমপ্লেট।</figcaption></figure>
     </div>
     <div class="out" id="fsOut"></div>
+    <details class="how"><summary>হিসাবটা ধাপে ধাপে</summary><ol id="fsHow"></ol></details>
     <div class="tw" style="padding:8px"><svg id="fsSvg" viewBox="0 0 600 200" style="min-width:520px;width:100%" role="img" aria-label="ফিশমাউথ টেমপ্লেটের খোলা নকশা"></svg></div>
     <p class="hint">ব্যবহার: ব্রাঞ্চ পাইপের পরিধিতে সমান দূরত্বে দাগ দিন (দূরত্ব উপরে দেখানো), প্রতিটি দাগে মাথা থেকে টেবিলের মাপ নিচে বিন্দু দিন, বিন্দুগুলো মসৃণ রেখায় যোগ করে কাটুন। কাগজে আসল মাপে এঁকে র‍্যাপ করেও করা যায়। সেট-অন জয়েন্টে বেভেল আলাদা করে দিন।</p>
   </div></div>
 
   <div class="calc" data-calc="hyd" hidden><header><h3>হাইড্রোটেস্ট চাপ (ASME B31.3)</h3><p>টেস্ট চাপ ও উচ্চতা অনুযায়ী গেজে কত দেখাতে হবে।</p></header><div class="bd">
-    <div class="fields">
-      <div class="fld"><label for="hyP">ডিজাইন চাপ (barg)</label><input id="hyP" type="number" value="10" step="0.1"></div>
-      <div class="fld"><label for="hyR">St/S অনুপাত</label><input id="hyR" type="number" value="1" step="0.01" min="1" max="6.5"></div>
-      <div class="fld"><label for="hyH">সর্বোচ্চ বিন্দু থেকে গেজ কত মিটার নিচে</label><input id="hyH" type="number" value="8" step="0.1"></div>
-      <div class="fld"><label for="hyT">ধরন</label><select id="hyT"><option value="1.5">হাইড্রোস্ট্যাটিক (১.৫×)</option><option value="1.1">নিউমেটিক (১.১×)</option></select></div>
+    <div class="cgrid">
+      <div class="fields">
+        <div class="fld"><label for="hyP">ডিজাইন চাপ (barg)</label><input id="hyP" type="number" value="10" step="0.1"></div>
+        <div class="fld"><label for="hyR">St/S অনুপাত</label><input id="hyR" type="number" value="1" step="0.01" min="1" max="6.5"></div>
+        <div class="fld"><label for="hyH">সর্বোচ্চ বিন্দু থেকে গেজ কত মিটার নিচে</label><input id="hyH" type="number" value="8" step="0.1"></div>
+        <div class="fld"><label for="hyT">ধরন</label><select id="hyT"><option value="1.5">হাইড্রোস্ট্যাটিক (১.৫×)</option><option value="1.1">নিউমেটিক (১.১×)</option></select></div>
+      </div>
+      <figure class="viz"><svg id="hyViz" viewBox="0 0 360 220" role="img" aria-label="বাঁয়ে লাইনের উঁচু বিন্দু ও নিচে গেজ; ডানে গেজের কাঁটা কোথায় থাকবে।"></svg><figcaption>বাঁয়ে লাইনের উঁচু বিন্দু ও নিচে গেজ; ডানে গেজের কাঁটা কোথায় থাকবে।</figcaption></figure>
     </div>
     <div class="out" id="hyOut"></div>
+    <details class="how"><summary>হিসাবটা ধাপে ধাপে</summary><ol id="hyHow"></ol></details>
   </div></div>
 
   <div class="calc" data-calc="tq" hidden><header><h3>বোল্ট টর্ক (আনুমানিক)</h3><p>T = K × F × d। F = বোল্ট স্ট্রেস × টেনসাইল স্ট্রেস এরিয়া। প্রজেক্টের অনুমোদিত টর্ক চার্ট থাকলে সেটাই মানুন।</p></header><div class="bd">
-    <div class="fields">
-      <div class="fld"><label for="tqD">স্টাড সাইজ</label><select id="tqD"></select></div>
-      <div class="fld"><label for="tqS">লক্ষ্য বোল্ট স্ট্রেস (MPa)</label><input id="tqS" type="number" value="345" step="5"></div>
-      <div class="fld"><label for="tqK">ঘর্ষণ ফ্যাক্টর K</label><select id="tqK"><option value="0.16">০.১৬ (মলি/নিকেল লুব্রিকেন্ট)</option><option value="0.2">০.২০ (হালকা তেল)</option><option value="0.12">০.১২ (PTFE কোটেড)</option></select></div>
+    <div class="cgrid">
+      <div class="fields">
+        <div class="fld"><label for="tqD">স্টাড সাইজ</label><select id="tqD"></select></div>
+        <div class="fld"><label for="tqS">লক্ষ্য বোল্ট স্ট্রেস (MPa)</label><input id="tqS" type="number" value="345" step="5"></div>
+        <div class="fld"><label for="tqK">ঘর্ষণ ফ্যাক্টর K</label><select id="tqK"><option value="0.16">০.১৬ (মলি/নিকেল লুব্রিকেন্ট)</option><option value="0.2">০.২০ (হালকা তেল)</option><option value="0.12">০.১২ (PTFE কোটেড)</option></select></div>
+      </div>
+      <figure class="viz"><svg id="tqViz" viewBox="0 0 360 220" role="img" aria-label="৮ বোল্টের ফ্ল্যাঞ্জে টাইট করার ক্রম (ক্রস প্যাটার্ন) ও তিন পাসের টর্ক।"></svg><figcaption>৮ বোল্টের ফ্ল্যাঞ্জে টাইট করার ক্রম (ক্রস প্যাটার্ন) ও তিন পাসের টর্ক।</figcaption></figure>
     </div>
     <div class="out" id="tqOut"></div>
+    <details class="how"><summary>হিসাবটা ধাপে ধাপে</summary><ol id="tqHow"></ol></details>
     <p class="hint">B7 বোল্টে (ইয়েল্ড ৭২৫ MPa) সাধারণ লক্ষ্য ইয়েল্ডের ৪০–৫০% (২৯০–৩৬০ MPa)। গ্যাসকেট ও ফ্ল্যাঞ্জ ক্লাস অনুযায়ী আলাদা হতে পারে।</p>
   </div></div>
 
   <div class="calc" data-calc="el" hidden><header><h3>ওয়েল্ড মেটাল ও ইলেক্ট্রোড খরচ (বাট জয়েন্ট)</h3><p>সিঙ্গেল-ভি বেভেল ধরে আনুমানিক হিসাব; পরিকল্পনা ও রিকুইজিশনের জন্য।</p></header><div class="bd">
-    <div class="fields">
-      <div class="fld"><label for="elN">সাইজ (NPS)</label><select id="elN"></select></div>
-      <div class="fld"><label for="elS">শিডিউল</label><select id="elS"></select></div>
-      <div class="fld"><label for="elJ">জয়েন্ট সংখ্যা</label><input id="elJ" type="number" value="10" min="1" step="1"></div>
-      <div class="fld"><label for="elE">প্রসেস দক্ষতা</label><select id="elE"><option value="0.6">SMAW (৬০%)</option><option value="0.95">GTAW রড (৯৫%)</option><option value="0.85">FCAW (৮৫%)</option><option value="0.92">GMAW (৯২%)</option></select></div>
+    <div class="cgrid">
+      <div class="fields">
+        <div class="fld"><label for="elN">সাইজ (NPS)</label><select id="elN"></select></div>
+        <div class="fld"><label for="elS">শিডিউল</label><select id="elS"></select></div>
+        <div class="fld"><label for="elJ">জয়েন্ট সংখ্যা</label><input id="elJ" type="number" value="10" min="1" step="1"></div>
+        <div class="fld"><label for="elE">প্রসেস দক্ষতা</label><select id="elE"><option value="0.6">SMAW (৬০%)</option><option value="0.95">GTAW রড (৯৫%)</option><option value="0.85">FCAW (৮৫%)</option><option value="0.92">GMAW (৯২%)</option></select></div>
+      </div>
+      <figure class="viz"><svg id="elViz" viewBox="0 0 360 220" role="img" aria-label="সিঙ্গেল-ভি বাট জয়েন্টের প্রস্থচ্ছেদ; লেয়ার বাই লেয়ার ভরাট দেখানো হচ্ছে।"></svg><figcaption>সিঙ্গেল-ভি বাট জয়েন্টের প্রস্থচ্ছেদ; লেয়ার বাই লেয়ার ভরাট দেখানো হচ্ছে।</figcaption></figure>
     </div>
     <div class="out" id="elOut2"></div>
+    <details class="how"><summary>হিসাবটা ধাপে ধাপে</summary><ol id="elHow"></ol></details>
   </div></div>
 
   <div class="calc" data-calc="id" hidden><header><h3>ইঞ্চ-ডায়া ও ম্যানপাওয়ার</h3><p>প্রতিটি সাইজে জয়েন্ট সংখ্যা লিখুন।</p></header><div class="bd">
-    <div class="fields" id="idRows"></div>
-    <div class="fields">
-      <div class="fld"><label for="idRate">প্রতি ওয়েল্ডার/দিন (ID)</label><input id="idRate" type="number" value="18" step="1"></div>
-      <div class="fld"><label for="idDays">কাজের দিন</label><input id="idDays" type="number" value="20" step="1"></div>
+    <div class="cgrid">
+      <div class="stack">
+        <div class="fields" id="idRows"></div>
+        <div class="fields">
+          <div class="fld"><label for="idRate">প্রতি ওয়েল্ডার/দিন (ID)</label><input id="idRate" type="number" value="18" step="1"></div>
+          <div class="fld"><label for="idDays">কাজের দিন</label><input id="idDays" type="number" value="20" step="1"></div>
+        </div>
+      </div>
+      <figure class="viz"><svg id="idViz" viewBox="0 0 360 220" role="img" aria-label="কোন সাইজে কত ইঞ্চ-ডায়া এবং কতজন ওয়েল্ডার লাগবে।"></svg><figcaption>কোন সাইজে কত ইঞ্চ-ডায়া এবং কতজন ওয়েল্ডার লাগবে।</figcaption></figure>
     </div>
     <div class="out" id="idOut"></div>
+    <details class="how"><summary>হিসাবটা ধাপে ধাপে</summary><ol id="idHow"></ol></details>
   </div></div>
 
   <div class="calc" data-calc="ce" hidden><header><h3>কার্বন ইকুইভ্যালেন্ট (IIW)</h3><p>MTC থেকে রাসায়নিক মান (%) দিন।</p></header><div class="bd">
-    <div class="fields">
-      <div class="fld"><label for="ceC">C</label><input id="ceC" type="number" value="0.18" step="0.01"></div>
-      <div class="fld"><label for="ceMn">Mn</label><input id="ceMn" type="number" value="1.05" step="0.01"></div>
-      <div class="fld"><label for="ceCr">Cr</label><input id="ceCr" type="number" value="0.05" step="0.01"></div>
-      <div class="fld"><label for="ceMo">Mo</label><input id="ceMo" type="number" value="0.02" step="0.01"></div>
-      <div class="fld"><label for="ceV">V</label><input id="ceV" type="number" value="0.01" step="0.01"></div>
-      <div class="fld"><label for="ceNi">Ni</label><input id="ceNi" type="number" value="0.04" step="0.01"></div>
-      <div class="fld"><label for="ceCu">Cu</label><input id="ceCu" type="number" value="0.06" step="0.01"></div>
+    <div class="cgrid">
+      <div class="fields">
+        <div class="fld"><label for="ceC">C</label><input id="ceC" type="number" value="0.18" step="0.01"></div>
+        <div class="fld"><label for="ceMn">Mn</label><input id="ceMn" type="number" value="1.05" step="0.01"></div>
+        <div class="fld"><label for="ceCr">Cr</label><input id="ceCr" type="number" value="0.05" step="0.01"></div>
+        <div class="fld"><label for="ceMo">Mo</label><input id="ceMo" type="number" value="0.02" step="0.01"></div>
+        <div class="fld"><label for="ceV">V</label><input id="ceV" type="number" value="0.01" step="0.01"></div>
+        <div class="fld"><label for="ceNi">Ni</label><input id="ceNi" type="number" value="0.04" step="0.01"></div>
+        <div class="fld"><label for="ceCu">Cu</label><input id="ceCu" type="number" value="0.06" step="0.01"></div>
+      </div>
+      <figure class="viz"><svg id="ceViz" viewBox="0 0 360 220" role="img" aria-label="উপরে CE কোন জোনে পড়ল; নিচে কোন উপাদান কতটা যোগ করছে।"></svg><figcaption>উপরে CE কোন জোনে পড়ল; নিচে কোন উপাদান কতটা যোগ করছে।</figcaption></figure>
     </div>
     <div class="out" id="ceOut"></div>
+    <details class="how"><summary>হিসাবটা ধাপে ধাপে</summary><ol id="ceHow"></ol></details>
   </div></div>
 
   <div class="calc" data-calc="hi" hidden><header><h3>হিট ইনপুট</h3><p>WPS এ সর্বোচ্চ/সর্বনিম্ন হিট ইনপুট থাকলে মিলিয়ে দেখুন।</p></header><div class="bd">
-    <div class="fields">
-      <div class="fld"><label for="hiV">ভোল্টেজ (V)</label><input id="hiV" type="number" value="24" step="0.5"></div>
-      <div class="fld"><label for="hiA">কারেন্ট (A)</label><input id="hiA" type="number" value="120" step="1"></div>
-      <div class="fld"><label for="hiL">ওয়েল্ডের দৈর্ঘ্য (মিমি)</label><input id="hiL" type="number" value="150" step="1"></div>
-      <div class="fld"><label for="hiT">সময় (সেকেন্ড)</label><input id="hiT" type="number" value="60" step="1"></div>
-      <div class="fld"><label for="hiE">প্রসেস</label><select id="hiE"><option value="1">ASME IX (ফ্যাক্টর ছাড়া)</option><option value="0.8">SMAW (০.৮)</option><option value="0.6">GTAW (০.৬)</option><option value="0.8">GMAW/FCAW (০.৮)</option><option value="1">SAW (১.০)</option></select></div>
+    <div class="cgrid">
+      <div class="fields">
+        <div class="fld"><label for="hiV">ভোল্টেজ (V)</label><input id="hiV" type="number" value="24" step="0.5"></div>
+        <div class="fld"><label for="hiA">কারেন্ট (A)</label><input id="hiA" type="number" value="120" step="1"></div>
+        <div class="fld"><label for="hiL">ওয়েল্ডের দৈর্ঘ্য (মিমি)</label><input id="hiL" type="number" value="150" step="1"></div>
+        <div class="fld"><label for="hiT">সময় (সেকেন্ড)</label><input id="hiT" type="number" value="60" step="1"></div>
+        <div class="fld"><label for="hiE">প্রসেস</label><select id="hiE"><option value="1">ASME IX (ফ্যাক্টর ছাড়া)</option><option value="0.8">SMAW (০.৮)</option><option value="0.6">GTAW (০.৬)</option><option value="0.8">GMAW/FCAW (০.৮)</option><option value="1">SAW (১.০)</option></select></div>
+      </div>
+      <figure class="viz"><svg id="hiViz" viewBox="0 0 360 220" role="img" aria-label="টর্চ যত ধীরে চলবে, প্রতি মিমিতে তত বেশি তাপ ঢুকবে।"></svg><figcaption>টর্চ যত ধীরে চলবে, প্রতি মিমিতে তত বেশি তাপ ঢুকবে।</figcaption></figure>
     </div>
     <div class="out" id="hiOut"></div>
+    <details class="how"><summary>হিসাবটা ধাপে ধাপে</summary><ol id="hiHow"></ol></details>
   </div></div>
 
   <div class="calc" data-calc="slope" hidden><header><h3>ঢাল ও এলিভেশন</h3><p>ড্রেন লাইন বা গ্র্যাভিটি লাইনের এক প্রান্ত থেকে অন্য প্রান্তে কত নামবে।</p></header><div class="bd">
-    <div class="fields">
-      <div class="fld"><label for="slX">ঢাল ১ : x (যেমন ১:১০০)</label><input id="slX" type="number" value="100" step="1"></div>
-      <div class="fld"><label for="slL">দৈর্ঘ্য (মিমি)</label><input id="slL" type="number" value="12000" step="10"></div>
-      <div class="fld"><label for="slE">শুরুর এলিভেশন (মিমি)</label><input id="slE" type="number" value="3500" step="1"></div>
+    <div class="cgrid">
+      <div class="fields">
+        <div class="fld"><label for="slX">ঢাল ১ : x (যেমন ১:১০০)</label><input id="slX" type="number" value="100" step="1"></div>
+        <div class="fld"><label for="slL">দৈর্ঘ্য (মিমি)</label><input id="slL" type="number" value="12000" step="10"></div>
+        <div class="fld"><label for="slE">শুরুর এলিভেশন (মিমি)</label><input id="slE" type="number" value="3500" step="1"></div>
+      </div>
+      <figure class="viz"><svg id="slViz" viewBox="0 0 360 220" role="img" aria-label="ঢাল বোঝার জন্য ছবিতে বাড়িয়ে আঁকা; সংখ্যাগুলো আসল।"></svg><figcaption>ঢাল বোঝার জন্য ছবিতে বাড়িয়ে আঁকা; সংখ্যাগুলো আসল।</figcaption></figure>
     </div>
     <div class="out" id="slOut"></div>
+    <details class="how"><summary>হিসাবটা ধাপে ধাপে</summary><ol id="slHow"></ol></details>
   </div></div>
 
   <div class="calc" data-calc="unit" hidden><header><h3>ইউনিট রূপান্তর</h3><p>যেকোনো ঘরে লিখুন, বাকিগুলো সাথে সাথে বদলাবে।</p></header><div class="bd">

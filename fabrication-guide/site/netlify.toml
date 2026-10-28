@@ -1,3 +1,5 @@
+# Git deploy: in Netlify set Base directory = fabrication-guide/site and leave the build command empty.
+# With a base directory set, Netlify skips the deploy when nothing in this folder changed.
 [build]
   publish = "."
 
