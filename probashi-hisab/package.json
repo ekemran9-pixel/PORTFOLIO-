@@ -1,6 +1,6 @@
 {
   "name": "probashi-hisab",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "main": "expo-router/entry",
   "dependencies": {
     "@expo-google-fonts/hind-siliguri": "^0.4.1",
@@ -42,7 +42,9 @@
     "typecheck": "tsc --noEmit",
     "lint": "expo lint",
     "format": "prettier --write \"src/**/*.{ts,tsx}\" \"__tests__/**/*.ts\"",
-    "check": "npm run typecheck && npm run lint && npm test"
+    "check": "npm run typecheck && npm run lint && npm test",
+    "build:web": "expo export --platform web",
+    "e2e": "node e2e/flow.js"
   },
   "private": true,
   "jest": {
