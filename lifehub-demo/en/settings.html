@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f6f7fb">
+<meta name="csrf" content="demo">
+<title>Settings · LifeHub</title>
+
+<link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/app.css?v=2.0.0">
+</head>
+<body class="lang-en"><div class="demo-banner">👀 Demo version — sample data, view only. <a href="https://github.com/ekemran9-pixel/PORTFOLIO-/tree/main/lifehub" target="_blank" rel="noopener">Code & install guide →</a></div>
+<div class="shell">
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="index.html">
+      <span class="brand-mark"><img src="../assets/icon.svg" alt=""></span>
+      <span>LifeHub<small>Your personal automation hub</small></span>
+    </a>
+    <nav>
+              <a href="index.html" class="">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 13h8V3H3zm0 8h8v-6H3zm10 0h8V11h-8zm0-18v6h8V3z"/></svg>Dashboard        </a>
+              <a href="ai.html" class="">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l1.9 5.6L19.5 9.5l-5.6 1.9L12 17l-1.9-5.6L4.5 9.5l5.6-1.9zM19 14l.9 2.6 2.6.9-2.6.9L19 21l-.9-2.6-2.6-.9 2.6-.9zM5 15l.7 1.8 1.8.7-1.8.7L5 20l-.7-1.8-1.8-.7 1.8-.7z"/></svg>AI Commands        </a>
+              <a href="customers.html" class="">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 11a4 4 0 1 0-4-4 4 4 0 0 0 4 4zm-8 0a3 3 0 1 0-3-3 3 3 0 0 0 3 3zm0 2c-2.7 0-8 1.3-8 4v3h8v-3c0-1.1.4-2.1 1.2-3A10 10 0 0 0 8 13zm8 0c-2.7 0-8 1.3-8 4v3h16v-3c0-2.7-5.3-4-8-4z"/></svg>Customers        </a>
+              <a href="entries.html" class="">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16v2H4zm0 5h16v2H4zm0 5h10v2H4zm0 5h10v2H4zm13-4h2v3h3v2h-3v3h-2v-3h-3v-2h3z"/></svg>Data Entry        </a>
+              <a href="media.html" class="">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 19V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2zM8.5 13.5l2.5 3 3.5-4.5 4.5 6H5z"/></svg>Media Vault        </a>
+              <a href="reports.html" class="">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h16v2H2V2h2zm3-3V9h3v8zm5 0V4h3v13zm5 0v-6h3v6z"/></svg>Overview        </a>
+              <a href="notion.html" class="">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 3.5 14.8 2.7c1.3-.1 1.7 0 2.5.6l3.5 2.4c.6.4.7.6.7 1.1v13c0 .8-.3 1.3-1.4 1.4L7.6 22c-.8 0-1.2-.1-1.6-.7L3.3 17.9c-.5-.6-.7-1.1-.7-1.7V4.9c0-.7.3-1.3 1.4-1.4zm4.2 4.2v11.7l9.6-.6V7.2zM9.6 9l1.6-.1 3.5 5.4V9.2l1.4-.1v7.3l-1.3.1-3.7-5.6v5.3l-1.5.1z"/></svg>Notion        </a>
+              <a href="recipes.html" class="">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg>Automation        </a>
+              <a href="import.html" class="">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20h14v-2H5zm7-18-5.5 5.5 1.4 1.4L11 5.8V16h2V5.8l3.1 3.1 1.4-1.4z"/></svg>Excel Import        </a>
+              <a href="settings.html" class="active">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.4 13a7.6 7.6 0 0 0 0-2l2.1-1.6-2-3.5-2.5 1a7.4 7.4 0 0 0-1.7-1L15 3h-4l-.4 2.6a7.4 7.4 0 0 0-1.7 1l-2.5-1-2 3.5L6.6 11a7.6 7.6 0 0 0 0 2l-2.1 1.6 2 3.5 2.5-1a7.4 7.4 0 0 0 1.7 1L11 21h4l.4-2.6a7.4 7.4 0 0 0 1.7-1l2.5 1 2-3.5zM13 15.5a3.5 3.5 0 1 1 3.5-3.5 3.5 3.5 0 0 1-3.5 3.5z"/></svg>Settings        </a>
+          </nav>
+    <div class="sidebar-foot">
+      <div class="soon">
+        <strong>Connections</strong>
+        <span>🟢 AI · 🟢 Telegram · ⚪ Notion</span>
+      </div>
+    </div>
+  </aside>
+  <div class="scrim" id="scrim"></div>
+  <main class="main">
+    <header class="topbar">
+      <button class="icon-btn menu-btn" id="menuBtn" aria-label="Menu">
+        <svg viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+      </button>
+      <h1>Settings</h1>
+      <div class="topbar-right">
+        <a class="pill" href="../settings.html">বাংলা</a>
+        <span class="user-chip"><span class="avatar">E</span>emran</span>
+        <form method="post" action="#" class="inline"><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><button class="pill ghost">Logout</button></form>
+      </div>
+    </header>
+        <div class="content">
+<div class="grid-2">
+  <section class="card span-2" id="keys">
+    <div class="card-head"><h3>🔑 API connections</h3></div>
+    <p class="muted">Send requests to this URL from iPhone Shortcuts, Android MacroDroid/Tasker, n8n, Zapier, IFTTT or Make and LifeHub acts on them.</p>
+    <form method="post" class="form">
+      <input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043">      <input type="hidden" name="do" value="keys">
+      <div class="keys">
+                  <div class="key-row">
+            <div class="key-label">
+              <strong>Google Gemini</strong>
+              <span class="status-dot on"></span><small class="mono">••••••••xxxx</small>              <a class="small" href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener">Get key ↗</a>
+            </div>
+            <input name="api_gemini" type="password" autocomplete="off" placeholder="Enter a new key to replace">
+            <label class="check-label"><input type="checkbox" name="clear_api_gemini" value="1"> Remove</label>          </div>
+                  <div class="key-row">
+            <div class="key-label">
+              <strong>Groq (Whisper + Llama)</strong>
+              <span class="status-dot on"></span><small class="mono">••••••••yyyy</small>              <a class="small" href="https://console.groq.com/keys" target="_blank" rel="noopener">Get key ↗</a>
+            </div>
+            <input name="api_groq" type="password" autocomplete="off" placeholder="Enter a new key to replace">
+            <label class="check-label"><input type="checkbox" name="clear_api_groq" value="1"> Remove</label>          </div>
+                  <div class="key-row">
+            <div class="key-label">
+              <strong>OpenAI</strong>
+              <span class="status-dot"></span><small class="muted">Not set</small>              <a class="small" href="https://platform.openai.com/api-keys" target="_blank" rel="noopener">Get key ↗</a>
+            </div>
+            <input name="api_openai" type="password" autocomplete="off" placeholder="Paste API key">
+                      </div>
+                  <div class="key-row">
+            <div class="key-label">
+              <strong>Anthropic Claude</strong>
+              <span class="status-dot"></span><small class="muted">Not set</small>              <a class="small" href="https://console.anthropic.com/settings/keys" target="_blank" rel="noopener">Get key ↗</a>
+            </div>
+            <input name="api_claude" type="password" autocomplete="off" placeholder="Paste API key">
+                      </div>
+                  <div class="key-row">
+            <div class="key-label">
+              <strong>Notion Integration</strong>
+              <span class="status-dot"></span><small class="muted">Not set</small>              <a class="small" href="https://www.notion.so/my-integrations" target="_blank" rel="noopener">Get key ↗</a>
+            </div>
+            <input name="api_notion" type="password" autocomplete="off" placeholder="Paste API key">
+                      </div>
+                  <div class="key-row">
+            <div class="key-label">
+              <strong>Telegram Bot</strong>
+              <span class="status-dot on"></span><small class="mono">••••••••gram</small>              <a class="small" href="https://t.me/BotFather" target="_blank" rel="noopener">Get key ↗</a>
+            </div>
+            <input name="api_telegram" type="password" autocomplete="off" placeholder="Enter a new key to replace">
+            <label class="check-label"><input type="checkbox" name="clear_api_telegram" value="1"> Remove</label>          </div>
+              </div>
+      <button class="btn primary">Save</button>
+    </form>
+  </section>
+
+  <section class="card span-2" id="ai">
+    <div class="card-head"><h3>✦ AI settings</h3><button class="btn sm" type="button" id="aiTest">Test</button></div>
+    <p class="muted small" id="aiTestOut">Choose which AI to use. Leave model empty for the default. Press &quot;Test&quot; to check your key.</p>
+    <form method="post" class="form grid-form">
+      <input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043">      <input type="hidden" name="do" value="ai">
+      <label>AI provider        <select name="ai_provider">
+          <option value="">Automatic</option>
+                      <option value="gemini"  >Google Gemini</option>
+                      <option value="groq"  >Groq (Llama)</option>
+                      <option value="openai"  disabled>OpenAI — Not set</option>
+                      <option value="claude"  disabled>Anthropic Claude — Not set</option>
+                  </select>
+      </label>
+      <label>Voice → text language        <select name="stt_language">
+                      <option value="auto" selected>Automatic</option>
+                      <option value="bn" >বাংলা</option>
+                      <option value="en" >English</option>
+                  </select>
+      </label>
+              <label>Google Gemini — model<input name="ai_model_gemini" value="" placeholder="gemini-2.5-flash"></label>
+              <label>Groq (Llama) — model<input name="ai_model_groq" value="" placeholder="llama-3.3-70b-versatile"></label>
+              <label>OpenAI — model<input name="ai_model_openai" value="" placeholder="gpt-4o-mini"></label>
+              <label>Anthropic Claude — model<input name="ai_model_claude" value="" placeholder="claude-opus-5-5"></label>
+            <div class="full form-actions"><button class="btn primary">Save</button></div>
+    </form>
+  </section>
+
+  <section class="card span-2" id="feed">
+    <div class="card-head"><h3>📗 Excel / Google Sheets live link</h3>
+      <form method="post" data-confirm><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="feed_reset"><button class="btn sm">New link</button></form></div>
+    <p class="muted small">Paste a formula below into any Google Sheets cell and your data keeps itself up to date. Keep the link secret; press “New link” if it leaks.</p>
+        <div class="form">
+              <label>Data Entry          <div class="code-box"><input readonly value="=IMPORTDATA(&quot;https://lifehub-demo.netlify.app/feed.php?key=0a9363762f9a55287428281563790b3766b29dd3&amp;table=entries&quot;)" onclick="this.select()"><button type="button" class="btn sm" data-copy="=IMPORTDATA(&quot;https://lifehub-demo.netlify.app/feed.php?key=0a9363762f9a55287428281563790b3766b29dd3&amp;table=entries&quot;)">Copy</button></div>
+        </label>
+              <label>Customers          <div class="code-box"><input readonly value="=IMPORTDATA(&quot;https://lifehub-demo.netlify.app/feed.php?key=0a9363762f9a55287428281563790b3766b29dd3&amp;table=customers&quot;)" onclick="this.select()"><button type="button" class="btn sm" data-copy="=IMPORTDATA(&quot;https://lifehub-demo.netlify.app/feed.php?key=0a9363762f9a55287428281563790b3766b29dd3&amp;table=customers&quot;)">Copy</button></div>
+        </label>
+              <label>Monthly summary          <div class="code-box"><input readonly value="=IMPORTDATA(&quot;https://lifehub-demo.netlify.app/feed.php?key=0a9363762f9a55287428281563790b3766b29dd3&amp;table=summary&quot;)" onclick="this.select()"><button type="button" class="btn sm" data-copy="=IMPORTDATA(&quot;https://lifehub-demo.netlify.app/feed.php?key=0a9363762f9a55287428281563790b3766b29dd3&amp;table=summary&quot;)">Copy</button></div>
+        </label>
+            <p class="small"><strong>Excel:</strong> Data → From Web → paste the link below → Load. Later press Refresh All for new data.<br><code>https://lifehub-demo.netlify.app/feed.php?key=0a9363762f9a55287428281563790b3766b29dd3&amp;table=entries&amp;bom=1</code></p>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="card-head"><h3>🔒 Change password</h3></div>
+    <form method="post" class="form">
+      <input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043">      <input type="hidden" name="do" value="password">
+      <label>Current password<input type="password" name="current_password" required autocomplete="current-password"></label>
+      <label>New password (8+ characters)<input type="password" name="new_password" required minlength="8" autocomplete="new-password"></label>
+      <button class="btn primary">Save</button>
+    </form>
+  </section>
+
+  <section class="card">
+    <div class="card-head"><h3>💾 Backup</h3></div>
+    <p class="muted">Download all customers, entries and notes as one JSON file. Photos and videos live in the uploads folder in cPanel.</p>
+    <form method="post"><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="backup"><button class="btn">⬇ Download backup</button></form>
+    <hr>
+    <p class="muted small">LifeHub v2.0.0 · PHP 8.3.6 · sqlite</p>
+  </section>
+</div>
+<script>
+document.getElementById('aiTest')?.addEventListener('click', async (e) => {
+  const out = document.getElementById('aiTestOut');
+  e.target.disabled = true; out.textContent = '…';
+  const fd = new FormData(); fd.append('csrf', document.querySelector('meta[name=csrf]').content); fd.append('do', 'ai_test');
+  try { const r = await (await fetch('settings.php', { method: 'POST', body: fd })).json(); out.textContent = (r.ok ? '✅ ' : '⚠ ') + r.text; }
+  catch (err) { out.textContent = '⚠ ' + err.message; }
+  e.target.disabled = false;
+});
+</script>
+    </div>
+  </main>
+</div>
+<script>window.LH = { lang: "en", t: {"income":"Income","expense":"Expense","task":"Task","note":"Note","saved":"Saved ✓","copy":"Copy","ai_apply":"Add","ai_apply_all":"Add all","ai_read_aloud":"Read aloud","stt_no_key":"For voice → text add a Groq, OpenAI or Gemini key (or use the Chrome browser).","act_add_entry":"Entry","act_add_customer":"New customer","act_add_note":"Note","act_complete_task":"Task done","confirm_delete":"Delete this for sure?","skip_column":"Skip","rows_ready":"rows ready","rows_imported":"rows imported","import_failed":"Failed","no_rows":"No data found in the file","uploading":"Uploading…","upload_done":"Upload complete"} };</script>
+<script src="../assets/app.js?v=2.0.0"></script>
+<script src="../assets/demo.js"></script>
+</body>
+</html>

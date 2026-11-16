@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f6f7fb">
+<meta name="csrf" content="demo">
+<title>Automation · LifeHub</title>
+
+<link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/app.css?v=2.0.0">
+</head>
+<body class="lang-en"><div class="demo-banner">👀 Demo version — sample data, view only. <a href="https://github.com/ekemran9-pixel/PORTFOLIO-/tree/main/lifehub" target="_blank" rel="noopener">Code & install guide →</a></div>
+<div class="shell">
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="index.html">
+      <span class="brand-mark"><img src="../assets/icon.svg" alt=""></span>
+      <span>LifeHub<small>Your personal automation hub</small></span>
+    </a>
+    <nav>
+              <a href="index.html" class="">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 13h8V3H3zm0 8h8v-6H3zm10 0h8V11h-8zm0-18v6h8V3z"/></svg>Dashboard        </a>
+              <a href="ai.html" class="">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l1.9 5.6L19.5 9.5l-5.6 1.9L12 17l-1.9-5.6L4.5 9.5l5.6-1.9zM19 14l.9 2.6 2.6.9-2.6.9L19 21l-.9-2.6-2.6-.9 2.6-.9zM5 15l.7 1.8 1.8.7-1.8.7L5 20l-.7-1.8-1.8-.7 1.8-.7z"/></svg>AI Commands        </a>
+              <a href="customers.html" class="">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 11a4 4 0 1 0-4-4 4 4 0 0 0 4 4zm-8 0a3 3 0 1 0-3-3 3 3 0 0 0 3 3zm0 2c-2.7 0-8 1.3-8 4v3h8v-3c0-1.1.4-2.1 1.2-3A10 10 0 0 0 8 13zm8 0c-2.7 0-8 1.3-8 4v3h16v-3c0-2.7-5.3-4-8-4z"/></svg>Customers        </a>
+              <a href="entries.html" class="">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16v2H4zm0 5h16v2H4zm0 5h10v2H4zm0 5h10v2H4zm13-4h2v3h3v2h-3v3h-2v-3h-3v-2h3z"/></svg>Data Entry        </a>
+              <a href="media.html" class="">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 19V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2zM8.5 13.5l2.5 3 3.5-4.5 4.5 6H5z"/></svg>Media Vault        </a>
+              <a href="reports.html" class="">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h16v2H2V2h2zm3-3V9h3v8zm5 0V4h3v13zm5 0v-6h3v6z"/></svg>Overview        </a>
+              <a href="notion.html" class="">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 3.5 14.8 2.7c1.3-.1 1.7 0 2.5.6l3.5 2.4c.6.4.7.6.7 1.1v13c0 .8-.3 1.3-1.4 1.4L7.6 22c-.8 0-1.2-.1-1.6-.7L3.3 17.9c-.5-.6-.7-1.1-.7-1.7V4.9c0-.7.3-1.3 1.4-1.4zm4.2 4.2v11.7l9.6-.6V7.2zM9.6 9l1.6-.1 3.5 5.4V9.2l1.4-.1v7.3l-1.3.1-3.7-5.6v5.3l-1.5.1z"/></svg>Notion        </a>
+              <a href="recipes.html" class="active">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg>Automation        </a>
+              <a href="import.html" class="">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20h14v-2H5zm7-18-5.5 5.5 1.4 1.4L11 5.8V16h2V5.8l3.1 3.1 1.4-1.4z"/></svg>Excel Import        </a>
+              <a href="settings.html" class="">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.4 13a7.6 7.6 0 0 0 0-2l2.1-1.6-2-3.5-2.5 1a7.4 7.4 0 0 0-1.7-1L15 3h-4l-.4 2.6a7.4 7.4 0 0 0-1.7 1l-2.5-1-2 3.5L6.6 11a7.6 7.6 0 0 0 0 2l-2.1 1.6 2 3.5 2.5-1a7.4 7.4 0 0 0 1.7 1L11 21h4l.4-2.6a7.4 7.4 0 0 0 1.7-1l2.5 1 2-3.5zM13 15.5a3.5 3.5 0 1 1 3.5-3.5 3.5 3.5 0 0 1-3.5 3.5z"/></svg>Settings        </a>
+          </nav>
+    <div class="sidebar-foot">
+      <div class="soon">
+        <strong>Connections</strong>
+        <span>🟢 AI · 🟢 Telegram · ⚪ Notion</span>
+      </div>
+    </div>
+  </aside>
+  <div class="scrim" id="scrim"></div>
+  <main class="main">
+    <header class="topbar">
+      <button class="icon-btn menu-btn" id="menuBtn" aria-label="Menu">
+        <svg viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+      </button>
+      <h1>Automation</h1>
+      <div class="topbar-right">
+        <a class="pill" href="../recipes--reconnect-1.html">বাংলা</a>
+        <span class="user-chip"><span class="avatar">E</span>emran</span>
+        <form method="post" action="#" class="inline"><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><button class="pill ghost">Logout</button></form>
+      </div>
+    </header>
+        <div class="content">
+<section class="hero">
+  <div>
+    <p class="eyebrow">Automation</p>
+    <h2>Recipes: “when this happens → do that”</h2>
+    <p class="muted">Work happens by itself on a schedule, when entries arrive, or when your phone calls in: Telegram messages, AI reports, Notion pages, n8n/Zapier webhooks.</p>
+  </div>
+  <div class="hero-actions">
+    <a class="btn primary" href="recipes--new-1.html#form">+ New recipe</a>
+    <a class="btn" href="#presets">✨ Ready-made recipes</a>
+  </div>
+</section>
+
+<div class="conn-grid">
+  <section class="card" id="telegram">
+    <div class="card-head"><h3>✈ Telegram</h3>
+      <span class="type type-income">✓ Connected</span>    </div>
+          <p class="small muted">Press the button to link your bot to this site.</p>
+            <form method="post"><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="tg_connect"><button class="btn primary">Connect bot</button></form>
+      </section>
+
+  <section class="card" id="api">
+    <div class="card-head"><h3>📱 Phone apps &amp; webhook API</h3>
+      <form method="post" data-confirm><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="api_reset"><button class="btn-link">New link</button></form></div>
+    <p class="small muted">Send requests to this URL from iPhone Shortcuts, Android MacroDroid/Tasker, n8n, Zapier, IFTTT or Make and LifeHub acts on them.</p>
+    <label class="small"><strong>URL</strong><div class="code-box"><input readonly value="https://lifehub-demo.netlify.app/hook.php" onclick="this.select()"><button type="button" class="btn sm" data-copy="https://lifehub-demo.netlify.app/hook.php">Copy</button></div></label>
+    <label class="small"><strong>Token</strong><div class="code-box"><input readonly type="password" value="fa80558647ace2d7135740b52d4a8eac2a871296" onfocus="this.type='text';this.select()"><button type="button" class="btn sm" data-copy="fa80558647ace2d7135740b52d4a8eac2a871296">Copy</button></div></label>
+    <details class="small"><summary>Examples &amp; rules</summary>
+      <p><strong>iPhone Shortcuts / Android MacroDroid:</strong> Create a “Get Contents of URL” / “HTTP Request” action, Method = POST, add the Authorization header, Body = JSON. Combine with “Dictate text” to log by voice and “Speak text” to hear the answer.</p>
+      <pre class="cmd-help">POST https://lifehub-demo.netlify.app/hook.php
+Authorization: Bearer fa8055…
+Content-Type: application/json
+
+{"action":"say","text":"আজ ৫০০ টাকা যাতায়াত খরচ"}
+{"action":"add_entry","type":"income","title":"Sale","amount":2500}
+{"action":"add_customer","name":"Karim","phone":"017…"}
+{"action":"report","period":"today"}
+{"action":"run_recipe","id":1}</pre>
+      <p><strong>n8n / Zapier / Make / IFTTT:</strong> Use the same URL and token in a Webhook/HTTP action. To send data the other way use a recipe with “Send a webhook”.</p>
+    </details>
+  </section>
+
+  <section class="card" id="cron">
+    <div class="card-head"><h3>⏰ Schedule (cron)</h3>
+      <span class="type type-income">✓ Running</span></div>
+    <p class="small muted">For scheduled recipes add this command in cPanel → Cron Jobs, every 5 minutes.</p>
+    <label class="small"><strong>Cron command</strong><div class="code-box"><input readonly value="*/5 * * * * php /home/user/PORTFOLIO-/lifehub/cron.php" onclick="this.select()"></div></label>
+    <label class="small"><strong>Or this URL (with wget/curl)</strong><div class="code-box"><input readonly value="https://lifehub-demo.netlify.app/cron.php?key=177808ab9a868a4f1aaf5ae6c47ac82fc3d3c90a" onclick="this.select()"></div></label>
+    <p class="small muted">Last run: 2026-11-16 21:32:44</p>
+    <form method="post"><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="cron_now"><button class="btn sm">▶ Check now</button></form>
+  </section>
+</div>
+
+
+<section class="card">
+  <div class="card-head"><h3>⚙ My recipes <span class="badge">5</span></h3><a class="small" href="recipes--new-1.html#form">+ New recipe</a></div>
+        <div class="recipe-card">
+      <form method="post"><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="toggle"><input type="hidden" name="id" value="1">
+        <label class="switch" title="On"><input type="checkbox" checked onchange="this.form.submit()"><span></span></label></form>
+      <div>
+        <strong>সকালের পরিকল্পনা</strong>
+        <div class="recipe-flow"><span class="type type-note">Daily 08:00</span><span class="arrow">→</span><span class="type type-task">Let the AI do a task</span>
+          <span class="muted">3× · 2026-11-16 20:32:44</span></div>
+        <small class="muted">✓ আজকের পরিকল্পনা: ১) করিম স্টিলকে কোটেশন ২) Hasan Fertilizer-এর মাপ…</small>      </div>
+      <div class="chips">
+        <form method="post"><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="run"><input type="hidden" name="id" value="1"><button class="btn sm">▶ Run now</button></form>
+        <a class="btn-link" href="recipes--edit-1.html#form">Edit</a>
+        <a class="btn-link" href="recipes--log-1.html#log">Log</a>
+        <form method="post" data-confirm><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="delete"><input type="hidden" name="id" value="1"><button class="btn-link danger">Delete</button></form>
+      </div>
+    </div>
+      <div class="recipe-card">
+      <form method="post"><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="toggle"><input type="hidden" name="id" value="2">
+        <label class="switch" title="On"><input type="checkbox" checked onchange="this.form.submit()"><span></span></label></form>
+      <div>
+        <strong>রাতের হিসাব</strong>
+        <div class="recipe-flow"><span class="type type-note">Daily 21:00</span><span class="arrow">→</span><span class="type type-task">Send a report to Telegram</span>
+          <span class="muted">7× · 2026-11-16 19:32:44</span></div>
+        <small class="muted">✓ 📊 আজ — আয় ৳ 12,000.00 · ব্যয় ৳ 1,700.00</small>      </div>
+      <div class="chips">
+        <form method="post"><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="run"><input type="hidden" name="id" value="2"><button class="btn sm">▶ Run now</button></form>
+        <a class="btn-link" href="recipes--edit-2.html#form">Edit</a>
+        <a class="btn-link" href="recipes--log-2.html#log">Log</a>
+        <form method="post" data-confirm><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="delete"><input type="hidden" name="id" value="2"><button class="btn-link danger">Delete</button></form>
+      </div>
+    </div>
+      <div class="recipe-card">
+      <form method="post"><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="toggle"><input type="hidden" name="id" value="3">
+        <label class="switch" title="On"><input type="checkbox" checked onchange="this.form.submit()"><span></span></label></form>
+      <div>
+        <strong>বড় আয়ের নোটিফিকেশন</strong>
+        <div class="recipe-flow"><span class="type type-note">New entry added</span><span class="arrow">→</span><span class="type type-task">Send a Telegram message</span>
+          <span class="muted">11× · 2026-11-16 18:32:44</span></div>
+        <small class="muted">✓ 💰 নতুন আয়: পাইপ স্পুল ফ্যাব্রিকেশন — ৳ 45,000.00</small>      </div>
+      <div class="chips">
+        <form method="post"><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="run"><input type="hidden" name="id" value="3"><button class="btn sm">▶ Run now</button></form>
+        <a class="btn-link" href="recipes--edit-3.html#form">Edit</a>
+        <a class="btn-link" href="recipes--log-3.html#log">Log</a>
+        <form method="post" data-confirm><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="delete"><input type="hidden" name="id" value="3"><button class="btn-link danger">Delete</button></form>
+      </div>
+    </div>
+      <div class="recipe-card">
+      <form method="post"><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="toggle"><input type="hidden" name="id" value="4">
+        <label class="switch" title="On"><input type="checkbox" checked onchange="this.form.submit()"><span></span></label></form>
+      <div>
+        <strong>মাসিক Notion রিপোর্ট</strong>
+        <div class="recipe-flow"><span class="type type-note">Monthly on day 1 09:00</span><span class="arrow">→</span><span class="type type-task">Create a Notion overview page</span>
+          <span class="muted">15× · 2026-11-16 17:32:44</span></div>
+        <small class="muted">✓ https://notion.so/…</small>      </div>
+      <div class="chips">
+        <form method="post"><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="run"><input type="hidden" name="id" value="4"><button class="btn sm">▶ Run now</button></form>
+        <a class="btn-link" href="recipes--edit-4.html#form">Edit</a>
+        <a class="btn-link" href="recipes--log-4.html#log">Log</a>
+        <form method="post" data-confirm><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="delete"><input type="hidden" name="id" value="4"><button class="btn-link danger">Delete</button></form>
+      </div>
+    </div>
+      <div class="recipe-card">
+      <form method="post"><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="toggle"><input type="hidden" name="id" value="5">
+        <label class="switch" title="On"><input type="checkbox" checked onchange="this.form.submit()"><span></span></label></form>
+      <div>
+        <strong>মাসিক ভাড়া খরচ</strong>
+        <div class="recipe-flow"><span class="type type-note">Monthly on day 1 10:00</span><span class="arrow">→</span><span class="type type-task">Add an entry (recurring cost/income)</span>
+          <span class="muted">19× · 2026-11-16 16:32:44</span></div>
+        <small class="muted">✓ ব্যয়: দোকান ভাড়া — ৳ 15,000.00</small>      </div>
+      <div class="chips">
+        <form method="post"><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="run"><input type="hidden" name="id" value="5"><button class="btn sm">▶ Run now</button></form>
+        <a class="btn-link" href="recipes--edit-5.html#form">Edit</a>
+        <a class="btn-link" href="recipes--log-5.html#log">Log</a>
+        <form method="post" data-confirm><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="delete"><input type="hidden" name="id" value="5"><button class="btn-link danger">Delete</button></form>
+      </div>
+    </div>
+  </section>
+
+
+<section class="card" id="presets">
+  <div class="card-head"><h3>✨ Ready-made recipes</h3></div>
+  <div class="preset-grid">
+          <div class="preset">
+        <strong>☀️ Morning plan</strong>
+        <p>Every day at 8:00 the AI reviews tasks and accounts and sends a day plan to Telegram.</p>
+        <form method="post"><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="preset"><input type="hidden" name="preset" value="morning"><button class="btn sm">+ Add</button></form>
+      </div>
+          <div class="preset">
+        <strong>🌙 Evening summary</strong>
+        <p>Every day at 21:00, today&#039;s income, expenses and open tasks to Telegram.</p>
+        <form method="post"><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="preset"><input type="hidden" name="preset" value="evening"><button class="btn sm">+ Add</button></form>
+      </div>
+          <div class="preset">
+        <strong>📈 Weekly AI review</strong>
+        <p>Every Friday night the AI sends a weekly analysis and suggestions, also saved as a note.</p>
+        <form method="post"><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="preset"><input type="hidden" name="preset" value="weekly"><button class="btn sm">+ Add</button></form>
+      </div>
+          <div class="preset">
+        <strong>📄 Monthly Notion report</strong>
+        <p>On the 1st of each month, last month&#039;s overview page (with AI analysis) is created in Notion.</p>
+        <form method="post"><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="preset"><input type="hidden" name="preset" value="notion_month"><button class="btn sm">+ Add</button></form>
+      </div>
+          <div class="preset">
+        <strong>💰 Big income alert</strong>
+        <p>Telegram alert whenever an income entry is over 10,000.</p>
+        <form method="post"><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="preset"><input type="hidden" name="preset" value="big_income"><button class="btn sm">+ Add</button></form>
+      </div>
+          <div class="preset">
+        <strong>🔗 New customer → n8n/Zapier</strong>
+        <p>Sends new customers to your n8n/Zapier/IFTTT webhook (add the URL, then switch on).</p>
+        <form method="post"><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="preset"><input type="hidden" name="preset" value="new_customer"><button class="btn sm">+ Add</button></form>
+      </div>
+          <div class="preset">
+        <strong>🏠 Monthly rent expense</strong>
+        <p>Adds the rent expense automatically on the 1st of every month.</p>
+        <form method="post"><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="preset"><input type="hidden" name="preset" value="rent"><button class="btn sm">+ Add</button></form>
+      </div>
+      </div>
+</section>
+<script>
+document.querySelectorAll('[data-switch]').forEach((sel) => {
+  const key = sel.dataset.switch;
+  const sync = () => document.querySelectorAll('[data-show^="' + key + ':"]').forEach((el) => {
+    el.hidden = !el.dataset.show.split(':')[1].split(',').includes(sel.value);
+  });
+  sel.addEventListener('change', sync); sync();
+});
+let lastField = null;
+document.querySelectorAll('.recipe-form textarea').forEach((ta) => ta.addEventListener('focus', () => { lastField = ta; }));
+document.querySelectorAll('.var-chip').forEach((chip) => chip.addEventListener('click', () => {
+  const ta = (lastField && !lastField.closest('[hidden]')) ? lastField : document.querySelector('.recipe-form label:not([hidden]) > textarea');
+  if (!ta) return;
+  const pos = ta.selectionStart ?? ta.value.length;
+  ta.value = ta.value.slice(0, pos) + chip.textContent + ta.value.slice(pos);
+  ta.focus();
+}));
+</script>
+    </div>
+  </main>
+</div>
+<script>window.LH = { lang: "en", t: {"income":"Income","expense":"Expense","task":"Task","note":"Note","saved":"Saved ✓","copy":"Copy","ai_apply":"Add","ai_apply_all":"Add all","ai_read_aloud":"Read aloud","stt_no_key":"For voice → text add a Groq, OpenAI or Gemini key (or use the Chrome browser).","act_add_entry":"Entry","act_add_customer":"New customer","act_add_note":"Note","act_complete_task":"Task done","confirm_delete":"Delete this for sure?","skip_column":"Skip","rows_ready":"rows ready","rows_imported":"rows imported","import_failed":"Failed","no_rows":"No data found in the file","uploading":"Uploading…","upload_done":"Upload complete"} };</script>
+<script src="../assets/app.js?v=2.0.0"></script>
+<script src="../assets/demo.js"></script>
+</body>
+</html>

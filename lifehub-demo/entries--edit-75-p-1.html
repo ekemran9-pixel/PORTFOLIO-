@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f6f7fb">
+<meta name="csrf" content="demo">
+<title>ডেটা এন্ট্রি · LifeHub</title>
+
+<link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/app.css?v=2.0.0">
+</head>
+<body class="lang-bn"><div class="demo-banner">👀 ডেমো সংস্করণ — নমুনা ডেটা, শুধু দেখার জন্য। <a href="https://github.com/ekemran9-pixel/PORTFOLIO-/tree/main/lifehub" target="_blank" rel="noopener">কোড ও ইনস্টল গাইড →</a></div>
+<div class="shell">
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="index.html">
+      <span class="brand-mark"><img src="assets/icon.svg" alt=""></span>
+      <span>LifeHub<small>আপনার ব্যক্তিগত অটোমেশন হাব</small></span>
+    </a>
+    <nav>
+              <a href="index.html" class="">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 13h8V3H3zm0 8h8v-6H3zm10 0h8V11h-8zm0-18v6h8V3z"/></svg>ড্যাশবোর্ড        </a>
+              <a href="ai.html" class="">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l1.9 5.6L19.5 9.5l-5.6 1.9L12 17l-1.9-5.6L4.5 9.5l5.6-1.9zM19 14l.9 2.6 2.6.9-2.6.9L19 21l-.9-2.6-2.6-.9 2.6-.9zM5 15l.7 1.8 1.8.7-1.8.7L5 20l-.7-1.8-1.8-.7 1.8-.7z"/></svg>AI কমান্ড        </a>
+              <a href="customers.html" class="">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 11a4 4 0 1 0-4-4 4 4 0 0 0 4 4zm-8 0a3 3 0 1 0-3-3 3 3 0 0 0 3 3zm0 2c-2.7 0-8 1.3-8 4v3h8v-3c0-1.1.4-2.1 1.2-3A10 10 0 0 0 8 13zm8 0c-2.7 0-8 1.3-8 4v3h16v-3c0-2.7-5.3-4-8-4z"/></svg>কাস্টমার        </a>
+              <a href="entries.html" class="active">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16v2H4zm0 5h16v2H4zm0 5h10v2H4zm0 5h10v2H4zm13-4h2v3h3v2h-3v3h-2v-3h-3v-2h3z"/></svg>ডেটা এন্ট্রি        </a>
+              <a href="media.html" class="">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 19V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2zM8.5 13.5l2.5 3 3.5-4.5 4.5 6H5z"/></svg>মিডিয়া ভল্ট        </a>
+              <a href="reports.html" class="">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h16v2H2V2h2zm3-3V9h3v8zm5 0V4h3v13zm5 0v-6h3v6z"/></svg>ওভারভিউ রিপোর্ট        </a>
+              <a href="notion.html" class="">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 3.5 14.8 2.7c1.3-.1 1.7 0 2.5.6l3.5 2.4c.6.4.7.6.7 1.1v13c0 .8-.3 1.3-1.4 1.4L7.6 22c-.8 0-1.2-.1-1.6-.7L3.3 17.9c-.5-.6-.7-1.1-.7-1.7V4.9c0-.7.3-1.3 1.4-1.4zm4.2 4.2v11.7l9.6-.6V7.2zM9.6 9l1.6-.1 3.5 5.4V9.2l1.4-.1v7.3l-1.3.1-3.7-5.6v5.3l-1.5.1z"/></svg>Notion        </a>
+              <a href="recipes.html" class="">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg>অটোমেশন        </a>
+              <a href="import.html" class="">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20h14v-2H5zm7-18-5.5 5.5 1.4 1.4L11 5.8V16h2V5.8l3.1 3.1 1.4-1.4z"/></svg>Excel ইমপোর্ট        </a>
+              <a href="settings.html" class="">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.4 13a7.6 7.6 0 0 0 0-2l2.1-1.6-2-3.5-2.5 1a7.4 7.4 0 0 0-1.7-1L15 3h-4l-.4 2.6a7.4 7.4 0 0 0-1.7 1l-2.5-1-2 3.5L6.6 11a7.6 7.6 0 0 0 0 2l-2.1 1.6 2 3.5 2.5-1a7.4 7.4 0 0 0 1.7 1L11 21h4l.4-2.6a7.4 7.4 0 0 0 1.7-1l2.5 1 2-3.5zM13 15.5a3.5 3.5 0 1 1 3.5-3.5 3.5 3.5 0 0 1-3.5 3.5z"/></svg>সেটিংস        </a>
+          </nav>
+    <div class="sidebar-foot">
+      <div class="soon">
+        <strong>সংযোগ</strong>
+        <span>🟢 AI · 🟢 Telegram · ⚪ Notion</span>
+      </div>
+    </div>
+  </aside>
+  <div class="scrim" id="scrim"></div>
+  <main class="main">
+    <header class="topbar">
+      <button class="icon-btn menu-btn" id="menuBtn" aria-label="Menu">
+        <svg viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+      </button>
+      <h1>ডেটা এন্ট্রি</h1>
+      <div class="topbar-right">
+        <a class="pill" href="en/entries--edit-75-p-1.html">English</a>
+        <span class="user-chip"><span class="avatar">E</span>emran</span>
+        <form method="post" action="#" class="inline"><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><button class="pill ghost">লগআউট</button></form>
+      </div>
+    </header>
+        <div class="content">
+<section class="card form-card">
+  <div class="card-head"><h3>এন্ট্রি এডিট</h3><a href="entries.html" class="small">বাতিল</a></div>
+  <form method="post" class="form grid-form">
+    <input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043">    <input type="hidden" name="id" value="75">
+        <div class="full segmented">
+              <label><input type="radio" name="type" value="income" ><span class="type-income">আয়</span></label>
+              <label><input type="radio" name="type" value="expense" checked><span class="type-expense">ব্যয়</span></label>
+              <label><input type="radio" name="type" value="task" ><span class="type-task">কাজ</span></label>
+              <label><input type="radio" name="type" value="note" ><span class="type-note">নোট</span></label>
+          </div>
+    <label class="full">শিরোনাম *<input name="title" required value="গ্রাইন্ডিং ডিস্ক"></label>
+    <label>টাকা (৳)<input name="amount" type="number" step="0.01" inputmode="decimal" value="6900"></label>
+    <label>তারিখ<input name="entry_date" type="date" value="2026-11-16"></label>
+    <label>কাস্টমার      <select name="customer_id"><option value="">— কেউ না —</option>
+        <option value="8" >Bengal Pipes Co.</option><option value="5" >Hasan Fertilizer Ltd</option><option value="2" >করিম আহমেদ</option><option value="6" >জামাল হোসেন</option><option value="4" >নাসরিন আক্তার</option><option value="7" >মিতু রহমান</option><option value="1" >রহিম উদ্দিন</option><option value="3" >সুমন দাস</option>      </select>
+    </label>
+    <label>সংযোগ      <select name="status"><option value="open" >বাকি</option><option value="done" selected>সম্পন্ন</option></select>
+    </label>
+    <label class="full">নোট<textarea name="notes" rows="3"></textarea></label>
+    <div class="full form-actions"><button class="btn primary">সেভ করুন</button></div>
+  </form>
+</section>
+
+<section class="card">
+  <form class="filters" method="get">
+    <input name="q" value="" placeholder="🔍 খুঁজুন…">
+    <select name="type"><option value="">সব ধরন</option><option value="income" >আয়</option><option value="expense" >ব্যয়</option><option value="task" >কাজ</option><option value="note" >নোট</option></select>
+    <select name="status"><option value="">সব অবস্থা</option><option value="open" >বাকি</option><option value="done" >সম্পন্ন</option></select>
+    <input type="date" name="from" value="" title="থেকে">
+    <input type="date" name="to" value="" title="পর্যন্ত">
+    <button class="btn">ফিল্টার</button>
+  </form>
+  <div class="toolbar">
+    <div class="sums">
+      <span class="type type-income">আয়: ৳ 1,412,000.00</span>
+      <span class="type type-expense">ব্যয়: ৳ 330,900.00</span>
+      <span class="muted small">মোট: 82</span>
+    </div>
+    <div class="toolbar-actions">
+      <a class="btn" href="data/entries.csv">⬇ CSV</a>
+      <button class="btn" data-xlsx="data/export-entries.json" data-filename="entries.xlsx">⬇ Excel</button>
+      <a class="btn primary" href="entries--new-1.html">+ এন্ট্রি দিন</a>
+    </div>
+  </div>
+    <div class="table-wrap"><table class="table">
+    <thead><tr><th></th><th>তারিখ</th><th>ধরন</th><th>শিরোনাম</th><th class="hide-sm">কাস্টমার</th><th class="right">টাকা</th><th></th></tr></thead>
+    <tbody>
+          <tr class="">
+        <td><form method="post" class="inline"><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="toggle"><input type="hidden" name="id" value="81"><input type="hidden" name="back" value="entries.php?edit=75&amp;p=1"><button class="check " title="বাকি"></button></form></td>
+        <td class="nowrap">2026-11-24</td>
+        <td><span class="type type-task">কাজ</span></td>
+        <td><a href="entries--edit-81.html">নতুন গ্রাইন্ডিং মেশিন কেনা</a></td>
+        <td class="hide-sm"></td>
+        <td class="right nowrap">—</td>
+        <td class="right"><form method="post" action="#" class="inline" data-confirm><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="delete"><input type="hidden" name="id" value="81"><input type="hidden" name="back" value="entries.php?edit=75&amp;p=1"><button class="btn-link danger">মুছুন</button></form></td>
+      </tr>
+          <tr class="">
+        <td><form method="post" class="inline"><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="toggle"><input type="hidden" name="id" value="80"><input type="hidden" name="back" value="entries.php?edit=75&amp;p=1"><button class="check " title="বাকি"></button></form></td>
+        <td class="nowrap">2026-11-21</td>
+        <td><span class="type type-task">কাজ</span></td>
+        <td><a href="entries--edit-80.html">রহিম ট্রেডার্সের বাকি টাকা আদায়</a></td>
+        <td class="hide-sm"><a href="customer--id-1.html">রহিম উদ্দিন</a></td>
+        <td class="right nowrap">—</td>
+        <td class="right"><form method="post" action="#" class="inline" data-confirm><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="delete"><input type="hidden" name="id" value="80"><input type="hidden" name="back" value="entries.php?edit=75&amp;p=1"><button class="btn-link danger">মুছুন</button></form></td>
+      </tr>
+          <tr class="">
+        <td><form method="post" class="inline"><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="toggle"><input type="hidden" name="id" value="79"><input type="hidden" name="back" value="entries.php?edit=75&amp;p=1"><button class="check " title="বাকি"></button></form></td>
+        <td class="nowrap">2026-11-19</td>
+        <td><span class="type type-task">কাজ</span></td>
+        <td><a href="entries--edit-79.html">ওয়েল্ডারদের সেফটি ট্রেনিং</a></td>
+        <td class="hide-sm"></td>
+        <td class="right nowrap">—</td>
+        <td class="right"><form method="post" action="#" class="inline" data-confirm><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="delete"><input type="hidden" name="id" value="79"><input type="hidden" name="back" value="entries.php?edit=75&amp;p=1"><button class="btn-link danger">মুছুন</button></form></td>
+      </tr>
+          <tr class="">
+        <td><form method="post" class="inline"><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="toggle"><input type="hidden" name="id" value="78"><input type="hidden" name="back" value="entries.php?edit=75&amp;p=1"><button class="check " title="বাকি"></button></form></td>
+        <td class="nowrap">2026-11-18</td>
+        <td><span class="type type-task">কাজ</span></td>
+        <td><a href="entries--edit-78.html">Hasan Fertilizer-এর ড্রায়ার শেলের মাপ নেওয়া</a></td>
+        <td class="hide-sm"><a href="customer--id-5.html">Hasan Fertilizer Ltd</a></td>
+        <td class="right nowrap">—</td>
+        <td class="right"><form method="post" action="#" class="inline" data-confirm><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="delete"><input type="hidden" name="id" value="78"><input type="hidden" name="back" value="entries.php?edit=75&amp;p=1"><button class="btn-link danger">মুছুন</button></form></td>
+      </tr>
+          <tr class="">
+        <td><form method="post" class="inline"><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="toggle"><input type="hidden" name="id" value="77"><input type="hidden" name="back" value="entries.php?edit=75&amp;p=1"><button class="check " title="বাকি"></button></form></td>
+        <td class="nowrap">2026-11-16</td>
+        <td><span class="type type-task">কাজ</span></td>
+        <td><a href="entries--edit-77.html">করিম স্টিলকে কোটেশন পাঠানো</a></td>
+        <td class="hide-sm"><a href="customer--id-2.html">করিম আহমেদ</a></td>
+        <td class="right nowrap">—</td>
+        <td class="right"><form method="post" action="#" class="inline" data-confirm><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="delete"><input type="hidden" name="id" value="77"><input type="hidden" name="back" value="entries.php?edit=75&amp;p=1"><button class="btn-link danger">মুছুন</button></form></td>
+      </tr>
+          <tr class="is-done">
+        <td><form method="post" class="inline"><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="toggle"><input type="hidden" name="id" value="75"><input type="hidden" name="back" value="entries.php?edit=75&amp;p=1"><button class="check on" title="সম্পন্ন"></button></form></td>
+        <td class="nowrap">2026-11-16</td>
+        <td><span class="type type-expense">ব্যয়</span></td>
+        <td><a href="entries--edit-75.html">গ্রাইন্ডিং ডিস্ক</a></td>
+        <td class="hide-sm"></td>
+        <td class="right nowrap">৳ 6,900.00</td>
+        <td class="right"><form method="post" action="#" class="inline" data-confirm><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="delete"><input type="hidden" name="id" value="75"><input type="hidden" name="back" value="entries.php?edit=75&amp;p=1"><button class="btn-link danger">মুছুন</button></form></td>
+      </tr>
+          <tr class="is-done">
+        <td><form method="post" class="inline"><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="toggle"><input type="hidden" name="id" value="73"><input type="hidden" name="back" value="entries.php?edit=75&amp;p=1"><button class="check on" title="সম্পন্ন"></button></form></td>
+        <td class="nowrap">2026-11-16</td>
+        <td><span class="type type-expense">ব্যয়</span></td>
+        <td><a href="entries--edit-73.html">চা-নাস্তা</a></td>
+        <td class="hide-sm"></td>
+        <td class="right nowrap">৳ 9,500.00</td>
+        <td class="right"><form method="post" action="#" class="inline" data-confirm><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="delete"><input type="hidden" name="id" value="73"><input type="hidden" name="back" value="entries.php?edit=75&amp;p=1"><button class="btn-link danger">মুছুন</button></form></td>
+      </tr>
+          <tr class="is-done">
+        <td><form method="post" class="inline"><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="toggle"><input type="hidden" name="id" value="82"><input type="hidden" name="back" value="entries.php?edit=75&amp;p=1"><button class="check on" title="সম্পন্ন"></button></form></td>
+        <td class="nowrap">2026-11-14</td>
+        <td><span class="type type-task">কাজ</span></td>
+        <td><a href="entries--edit-82.html">ব্যাংকে চেক জমা</a></td>
+        <td class="hide-sm"></td>
+        <td class="right nowrap">—</td>
+        <td class="right"><form method="post" action="#" class="inline" data-confirm><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="delete"><input type="hidden" name="id" value="82"><input type="hidden" name="back" value="entries.php?edit=75&amp;p=1"><button class="btn-link danger">মুছুন</button></form></td>
+      </tr>
+          <tr class="is-done">
+        <td><form method="post" class="inline"><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="toggle"><input type="hidden" name="id" value="71"><input type="hidden" name="back" value="entries.php?edit=75&amp;p=1"><button class="check on" title="সম্পন্ন"></button></form></td>
+        <td class="nowrap">2026-11-14</td>
+        <td><span class="type type-expense">ব্যয়</span></td>
+        <td><a href="entries--edit-71.html">শ্রমিকের মজুরি</a></td>
+        <td class="hide-sm"></td>
+        <td class="right nowrap">৳ 11,400.00</td>
+        <td class="right"><form method="post" action="#" class="inline" data-confirm><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="delete"><input type="hidden" name="id" value="71"><input type="hidden" name="back" value="entries.php?edit=75&amp;p=1"><button class="btn-link danger">মুছুন</button></form></td>
+      </tr>
+          <tr class="is-done">
+        <td><form method="post" class="inline"><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="toggle"><input type="hidden" name="id" value="67"><input type="hidden" name="back" value="entries.php?edit=75&amp;p=1"><button class="check on" title="সম্পন্ন"></button></form></td>
+        <td class="nowrap">2026-11-13</td>
+        <td><span class="type type-income">আয়</span></td>
+        <td><a href="entries--edit-67.html">হাইড্রোটেস্ট সার্ভিস</a></td>
+        <td class="hide-sm"><a href="customer--id-4.html">নাসরিন আক্তার</a></td>
+        <td class="right nowrap">৳ 24,000.00</td>
+        <td class="right"><form method="post" action="#" class="inline" data-confirm><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="delete"><input type="hidden" name="id" value="67"><input type="hidden" name="back" value="entries.php?edit=75&amp;p=1"><button class="btn-link danger">মুছুন</button></form></td>
+      </tr>
+          <tr class="is-done">
+        <td><form method="post" class="inline"><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="toggle"><input type="hidden" name="id" value="65"><input type="hidden" name="back" value="entries.php?edit=75&amp;p=1"><button class="check on" title="সম্পন্ন"></button></form></td>
+        <td class="nowrap">2026-11-13</td>
+        <td><span class="type type-income">আয়</span></td>
+        <td><a href="entries--edit-65.html">ওয়েল্ডিং কাজ</a></td>
+        <td class="hide-sm"><a href="customer--id-2.html">করিম আহমেদ</a></td>
+        <td class="right nowrap">৳ 64,000.00</td>
+        <td class="right"><form method="post" action="#" class="inline" data-confirm><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="delete"><input type="hidden" name="id" value="65"><input type="hidden" name="back" value="entries.php?edit=75&amp;p=1"><button class="btn-link danger">মুছুন</button></form></td>
+      </tr>
+          <tr class="is-done">
+        <td><form method="post" class="inline"><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="toggle"><input type="hidden" name="id" value="74"><input type="hidden" name="back" value="entries.php?edit=75&amp;p=1"><button class="check on" title="সম্পন্ন"></button></form></td>
+        <td class="nowrap">2026-11-11</td>
+        <td><span class="type type-expense">ব্যয়</span></td>
+        <td><a href="entries--edit-74.html">যাতায়াত</a></td>
+        <td class="hide-sm"></td>
+        <td class="right nowrap">৳ 5,900.00</td>
+        <td class="right"><form method="post" action="#" class="inline" data-confirm><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="delete"><input type="hidden" name="id" value="74"><input type="hidden" name="back" value="entries.php?edit=75&amp;p=1"><button class="btn-link danger">মুছুন</button></form></td>
+      </tr>
+          <tr class="is-done">
+        <td><form method="post" class="inline"><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="toggle"><input type="hidden" name="id" value="72"><input type="hidden" name="back" value="entries.php?edit=75&amp;p=1"><button class="check on" title="সম্পন্ন"></button></form></td>
+        <td class="nowrap">2026-11-11</td>
+        <td><span class="type type-expense">ব্যয়</span></td>
+        <td><a href="entries--edit-72.html">দোকান ভাড়া</a></td>
+        <td class="hide-sm"></td>
+        <td class="right nowrap">৳ 15,000.00</td>
+        <td class="right"><form method="post" action="#" class="inline" data-confirm><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="delete"><input type="hidden" name="id" value="72"><input type="hidden" name="back" value="entries.php?edit=75&amp;p=1"><button class="btn-link danger">মুছুন</button></form></td>
+      </tr>
+          <tr class="is-done">
+        <td><form method="post" class="inline"><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="toggle"><input type="hidden" name="id" value="70"><input type="hidden" name="back" value="entries.php?edit=75&amp;p=1"><button class="check on" title="সম্পন্ন"></button></form></td>
+        <td class="nowrap">2026-11-05</td>
+        <td><span class="type type-expense">ব্যয়</span></td>
+        <td><a href="entries--edit-70.html">গ্যাস সিলিন্ডার</a></td>
+        <td class="hide-sm"></td>
+        <td class="right nowrap">৳ 11,900.00</td>
+        <td class="right"><form method="post" action="#" class="inline" data-confirm><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="delete"><input type="hidden" name="id" value="70"><input type="hidden" name="back" value="entries.php?edit=75&amp;p=1"><button class="btn-link danger">মুছুন</button></form></td>
+      </tr>
+          <tr class="is-done">
+        <td><form method="post" class="inline"><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="toggle"><input type="hidden" name="id" value="76"><input type="hidden" name="back" value="entries.php?edit=75&amp;p=1"><button class="check on" title="সম্পন্ন"></button></form></td>
+        <td class="nowrap">2026-11-04</td>
+        <td><span class="type type-expense">ব্যয়</span></td>
+        <td><a href="entries--edit-76.html">শ্রমিকের মজুরি</a></td>
+        <td class="hide-sm"></td>
+        <td class="right nowrap">৳ 6,000.00</td>
+        <td class="right"><form method="post" action="#" class="inline" data-confirm><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="delete"><input type="hidden" name="id" value="76"><input type="hidden" name="back" value="entries.php?edit=75&amp;p=1"><button class="btn-link danger">মুছুন</button></form></td>
+      </tr>
+          <tr class="is-done">
+        <td><form method="post" class="inline"><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="toggle"><input type="hidden" name="id" value="66"><input type="hidden" name="back" value="entries.php?edit=75&amp;p=1"><button class="check on" title="সম্পন্ন"></button></form></td>
+        <td class="nowrap">2026-11-03</td>
+        <td><span class="type type-income">আয়</span></td>
+        <td><a href="entries--edit-66.html">হাইড্রোটেস্ট সার্ভিস</a></td>
+        <td class="hide-sm"><a href="customer--id-2.html">করিম আহমেদ</a></td>
+        <td class="right nowrap">৳ 39,000.00</td>
+        <td class="right"><form method="post" action="#" class="inline" data-confirm><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="delete"><input type="hidden" name="id" value="66"><input type="hidden" name="back" value="entries.php?edit=75&amp;p=1"><button class="btn-link danger">মুছুন</button></form></td>
+      </tr>
+          <tr class="is-done">
+        <td><form method="post" class="inline"><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="toggle"><input type="hidden" name="id" value="69"><input type="hidden" name="back" value="entries.php?edit=75&amp;p=1"><button class="check on" title="সম্পন্ন"></button></form></td>
+        <td class="nowrap">2026-11-01</td>
+        <td><span class="type type-income">আয়</span></td>
+        <td><a href="entries--edit-69.html">ফ্ল্যাঞ্জ ও ফিটিংস বিক্রি</a></td>
+        <td class="hide-sm"><a href="customer--id-6.html">জামাল হোসেন</a></td>
+        <td class="right nowrap">৳ 29,000.00</td>
+        <td class="right"><form method="post" action="#" class="inline" data-confirm><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="delete"><input type="hidden" name="id" value="69"><input type="hidden" name="back" value="entries.php?edit=75&amp;p=1"><button class="btn-link danger">মুছুন</button></form></td>
+      </tr>
+          <tr class="is-done">
+        <td><form method="post" class="inline"><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="toggle"><input type="hidden" name="id" value="68"><input type="hidden" name="back" value="entries.php?edit=75&amp;p=1"><button class="check on" title="সম্পন্ন"></button></form></td>
+        <td class="nowrap">2026-11-01</td>
+        <td><span class="type type-income">আয়</span></td>
+        <td><a href="entries--edit-68.html">ওয়েল্ডিং কাজ</a></td>
+        <td class="hide-sm"><a href="customer--id-6.html">জামাল হোসেন</a></td>
+        <td class="right nowrap">৳ 62,000.00</td>
+        <td class="right"><form method="post" action="#" class="inline" data-confirm><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="delete"><input type="hidden" name="id" value="68"><input type="hidden" name="back" value="entries.php?edit=75&amp;p=1"><button class="btn-link danger">মুছুন</button></form></td>
+      </tr>
+          <tr class="is-done">
+        <td><form method="post" class="inline"><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="toggle"><input type="hidden" name="id" value="53"><input type="hidden" name="back" value="entries.php?edit=75&amp;p=1"><button class="check on" title="সম্পন্ন"></button></form></td>
+        <td class="nowrap">2026-10-31</td>
+        <td><span class="type type-income">আয়</span></td>
+        <td><a href="entries--edit-53.html">ড্রায়ার মেরামত</a></td>
+        <td class="hide-sm"><a href="customer--id-6.html">জামাল হোসেন</a></td>
+        <td class="right nowrap">৳ 18,000.00</td>
+        <td class="right"><form method="post" action="#" class="inline" data-confirm><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="delete"><input type="hidden" name="id" value="53"><input type="hidden" name="back" value="entries.php?edit=75&amp;p=1"><button class="btn-link danger">মুছুন</button></form></td>
+      </tr>
+          <tr class="is-done">
+        <td><form method="post" class="inline"><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="toggle"><input type="hidden" name="id" value="63"><input type="hidden" name="back" value="entries.php?edit=75&amp;p=1"><button class="check on" title="সম্পন্ন"></button></form></td>
+        <td class="nowrap">2026-10-21</td>
+        <td><span class="type type-expense">ব্যয়</span></td>
+        <td><a href="entries--edit-63.html">শ্রমিকের মজুরি</a></td>
+        <td class="hide-sm"></td>
+        <td class="right nowrap">৳ 4,300.00</td>
+        <td class="right"><form method="post" action="#" class="inline" data-confirm><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="delete"><input type="hidden" name="id" value="63"><input type="hidden" name="back" value="entries.php?edit=75&amp;p=1"><button class="btn-link danger">মুছুন</button></form></td>
+      </tr>
+          <tr class="is-done">
+        <td><form method="post" class="inline"><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="toggle"><input type="hidden" name="id" value="59"><input type="hidden" name="back" value="entries.php?edit=75&amp;p=1"><button class="check on" title="সম্পন্ন"></button></form></td>
+        <td class="nowrap">2026-10-21</td>
+        <td><span class="type type-expense">ব্যয়</span></td>
+        <td><a href="entries--edit-59.html">শ্রমিকের মজুরি</a></td>
+        <td class="hide-sm"></td>
+        <td class="right nowrap">৳ 10,200.00</td>
+        <td class="right"><form method="post" action="#" class="inline" data-confirm><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="delete"><input type="hidden" name="id" value="59"><input type="hidden" name="back" value="entries.php?edit=75&amp;p=1"><button class="btn-link danger">মুছুন</button></form></td>
+      </tr>
+          <tr class="is-done">
+        <td><form method="post" class="inline"><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="toggle"><input type="hidden" name="id" value="62"><input type="hidden" name="back" value="entries.php?edit=75&amp;p=1"><button class="check on" title="সম্পন্ন"></button></form></td>
+        <td class="nowrap">2026-10-18</td>
+        <td><span class="type type-expense">ব্যয়</span></td>
+        <td><a href="entries--edit-62.html">বিদ্যুৎ বিল</a></td>
+        <td class="hide-sm"></td>
+        <td class="right nowrap">৳ 1,100.00</td>
+        <td class="right"><form method="post" action="#" class="inline" data-confirm><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="delete"><input type="hidden" name="id" value="62"><input type="hidden" name="back" value="entries.php?edit=75&amp;p=1"><button class="btn-link danger">মুছুন</button></form></td>
+      </tr>
+          <tr class="is-done">
+        <td><form method="post" class="inline"><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="toggle"><input type="hidden" name="id" value="52"><input type="hidden" name="back" value="entries.php?edit=75&amp;p=1"><button class="check on" title="সম্পন্ন"></button></form></td>
+        <td class="nowrap">2026-10-18</td>
+        <td><span class="type type-income">আয়</span></td>
+        <td><a href="entries--edit-52.html">হাইড্রোটেস্ট সার্ভিস</a></td>
+        <td class="hide-sm"><a href="customer--id-2.html">করিম আহমেদ</a></td>
+        <td class="right nowrap">৳ 12,000.00</td>
+        <td class="right"><form method="post" action="#" class="inline" data-confirm><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="delete"><input type="hidden" name="id" value="52"><input type="hidden" name="back" value="entries.php?edit=75&amp;p=1"><button class="btn-link danger">মুছুন</button></form></td>
+      </tr>
+          <tr class="is-done">
+        <td><form method="post" class="inline"><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="toggle"><input type="hidden" name="id" value="55"><input type="hidden" name="back" value="entries.php?edit=75&amp;p=1"><button class="check on" title="সম্পন্ন"></button></form></td>
+        <td class="nowrap">2026-10-17</td>
+        <td><span class="type type-income">আয়</span></td>
+        <td><a href="entries--edit-55.html">ফ্ল্যাঞ্জ ও ফিটিংস বিক্রি</a></td>
+        <td class="hide-sm"><a href="customer--id-5.html">Hasan Fertilizer Ltd</a></td>
+        <td class="right nowrap">৳ 49,000.00</td>
+        <td class="right"><form method="post" action="#" class="inline" data-confirm><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="delete"><input type="hidden" name="id" value="55"><input type="hidden" name="back" value="entries.php?edit=75&amp;p=1"><button class="btn-link danger">মুছুন</button></form></td>
+      </tr>
+          <tr class="is-done">
+        <td><form method="post" class="inline"><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="toggle"><input type="hidden" name="id" value="57"><input type="hidden" name="back" value="entries.php?edit=75&amp;p=1"><button class="check on" title="সম্পন্ন"></button></form></td>
+        <td class="nowrap">2026-10-16</td>
+        <td><span class="type type-expense">ব্যয়</span></td>
+        <td><a href="entries--edit-57.html">শ্রমিকের মজুরি</a></td>
+        <td class="hide-sm"></td>
+        <td class="right nowrap">৳ 4,400.00</td>
+        <td class="right"><form method="post" action="#" class="inline" data-confirm><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="delete"><input type="hidden" name="id" value="57"><input type="hidden" name="back" value="entries.php?edit=75&amp;p=1"><button class="btn-link danger">মুছুন</button></form></td>
+      </tr>
+          <tr class="is-done">
+        <td><form method="post" class="inline"><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="toggle"><input type="hidden" name="id" value="58"><input type="hidden" name="back" value="entries.php?edit=75&amp;p=1"><button class="check on" title="সম্পন্ন"></button></form></td>
+        <td class="nowrap">2026-10-15</td>
+        <td><span class="type type-expense">ব্যয়</span></td>
+        <td><a href="entries--edit-58.html">ওয়েল্ডিং রড</a></td>
+        <td class="hide-sm"></td>
+        <td class="right nowrap">৳ 9,200.00</td>
+        <td class="right"><form method="post" action="#" class="inline" data-confirm><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="delete"><input type="hidden" name="id" value="58"><input type="hidden" name="back" value="entries.php?edit=75&amp;p=1"><button class="btn-link danger">মুছুন</button></form></td>
+      </tr>
+          <tr class="is-done">
+        <td><form method="post" class="inline"><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="toggle"><input type="hidden" name="id" value="60"><input type="hidden" name="back" value="entries.php?edit=75&amp;p=1"><button class="check on" title="সম্পন্ন"></button></form></td>
+        <td class="nowrap">2026-10-14</td>
+        <td><span class="type type-expense">ব্যয়</span></td>
+        <td><a href="entries--edit-60.html">যাতায়াত</a></td>
+        <td class="hide-sm"></td>
+        <td class="right nowrap">৳ 6,700.00</td>
+        <td class="right"><form method="post" action="#" class="inline" data-confirm><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="delete"><input type="hidden" name="id" value="60"><input type="hidden" name="back" value="entries.php?edit=75&amp;p=1"><button class="btn-link danger">মুছুন</button></form></td>
+      </tr>
+          <tr class="is-done">
+        <td><form method="post" class="inline"><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="toggle"><input type="hidden" name="id" value="64"><input type="hidden" name="back" value="entries.php?edit=75&amp;p=1"><button class="check on" title="সম্পন্ন"></button></form></td>
+        <td class="nowrap">2026-10-12</td>
+        <td><span class="type type-expense">ব্যয়</span></td>
+        <td><a href="entries--edit-64.html">গ্রাইন্ডিং ডিস্ক</a></td>
+        <td class="hide-sm"></td>
+        <td class="right nowrap">৳ 8,000.00</td>
+        <td class="right"><form method="post" action="#" class="inline" data-confirm><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="delete"><input type="hidden" name="id" value="64"><input type="hidden" name="back" value="entries.php?edit=75&amp;p=1"><button class="btn-link danger">মুছুন</button></form></td>
+      </tr>
+          <tr class="is-done">
+        <td><form method="post" class="inline"><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="toggle"><input type="hidden" name="id" value="56"><input type="hidden" name="back" value="entries.php?edit=75&amp;p=1"><button class="check on" title="সম্পন্ন"></button></form></td>
+        <td class="nowrap">2026-10-11</td>
+        <td><span class="type type-income">আয়</span></td>
+        <td><a href="entries--edit-56.html">ফ্ল্যাঞ্জ ও ফিটিংস বিক্রি</a></td>
+        <td class="hide-sm"><a href="customer--id-5.html">Hasan Fertilizer Ltd</a></td>
+        <td class="right nowrap">৳ 50,000.00</td>
+        <td class="right"><form method="post" action="#" class="inline" data-confirm><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="delete"><input type="hidden" name="id" value="56"><input type="hidden" name="back" value="entries.php?edit=75&amp;p=1"><button class="btn-link danger">মুছুন</button></form></td>
+      </tr>
+          <tr class="is-done">
+        <td><form method="post" class="inline"><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="toggle"><input type="hidden" name="id" value="61"><input type="hidden" name="back" value="entries.php?edit=75&amp;p=1"><button class="check on" title="সম্পন্ন"></button></form></td>
+        <td class="nowrap">2026-10-10</td>
+        <td><span class="type type-expense">ব্যয়</span></td>
+        <td><a href="entries--edit-61.html">যাতায়াত</a></td>
+        <td class="hide-sm"></td>
+        <td class="right nowrap">৳ 700.00</td>
+        <td class="right"><form method="post" action="#" class="inline" data-confirm><input type="hidden" name="csrf" value="a08b5c2647e9376db9164dfba19c4b55c466c10f15e200cc6d64546c030c8043"><input type="hidden" name="do" value="delete"><input type="hidden" name="id" value="61"><input type="hidden" name="back" value="entries.php?edit=75&amp;p=1"><button class="btn-link danger">মুছুন</button></form></td>
+      </tr>
+        </tbody></table></div>
+  <div class="pager"><span>1 / 3</span><a class="pill" href="entries--edit-75-p-2.html">পরের →</a></div>  </section>
+    </div>
+  </main>
+</div>
+<script>window.LH = { lang: "bn", t: {"income":"আয়","expense":"ব্যয়","task":"কাজ","note":"নোট","saved":"সেভ হয়েছে ✓","copy":"কপি","ai_apply":"যোগ করুন","ai_apply_all":"সব যোগ করুন","ai_read_aloud":"পড়ে শোনাও","stt_no_key":"ভয়েস → টেক্সটের জন্য Groq, OpenAI বা Gemini key দিন (অথবা Chrome ব্রাউজার ব্যবহার করুন)।","act_add_entry":"এন্ট্রি","act_add_customer":"নতুন কাস্টমার","act_add_note":"নোট","act_complete_task":"কাজ সম্পন্ন","confirm_delete":"সত্যিই মুছে ফেলবেন?","skip_column":"বাদ দিন","rows_ready":"সারি প্রস্তুত","rows_imported":"সারি যোগ হয়েছে","import_failed":"ব্যর্থ হয়েছে","no_rows":"ফাইলে কোনো ডেটা পাওয়া যায়নি","uploading":"আপলোড হচ্ছে…","upload_done":"আপলোড সম্পন্ন"} };</script>
+<script src="assets/vendor/xlsx.full.min.js"></script>
+<script src="assets/app.js?v=2.0.0"></script>
+<script src="assets/demo.js"></script>
+</body>
+</html>
